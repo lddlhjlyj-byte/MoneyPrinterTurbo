@@ -18,7 +18,7 @@
 - 음성: `ko-KR-SunHiNeural-Female` (코드에서 지정하지 않으면 `Invalid voice ''` 오류)
 - 클립 길이: 8초 (WebUI는 접속할 때마다 3으로 돌아가 있었음)
 - 자막 위치: custom 62 (플랫폼 제목·버튼 영역을 피하려는 값)
-- 한글 폰트: `NanumGothicBold.ttf`는 설치돼 있으나, 렌더링 로그에는 `STHeitiMedium.ttc`가 사용됨 → 한글 자막이 깨지는지 영상으로 확인 필요
+- 한글 폰트: **한글 자막이 영상에 나오지 않음(2026-11-07 사용자가 영상 확인).** 원인 확인: 기본값 `STHeitiMedium.ttc`를 포함해 `resource/fonts`의 폰트 9개 모두 한글 글자 0/14 지원. 폰트는 `resource/fonts` 안의 파일만 쓸 수 있어서 시스템에 설치된 NanumGothicBold.ttf는 쓰이지 않음 → 한글 폰트 파일을 `resource/fonts`로 복사하고 `font_name`을 코드에서 지정해야 함(수정안은 아래 셀, Colab 실행 확인 전)
 
 ## 실행 방법
 1. Colab에서 설치 셀(칸 1-A) 실행. 패키지는 `uv` 환경에 설치되므로 일반 파이썬이 아닌 `uv run python`으로 실행해야 한다
@@ -26,9 +26,9 @@
 3. 결과 영상은 구글 드라이브 `MyDrive/shorts_output`에 저장됨. "저장:" 줄과 폴더 파일로 성공을 판단
 4. 웹 화면(WebUI)은 cloudflared 터널 셀로 접속하는 테스트용. 자동화에는 쓰지 않음
 
-## 일괄 생성 셀 (동작 확인된 버전)
+## 일괄 생성 셀 (2026-11-07 한글 폰트 수정 반영 — Colab 실행 확인 전. 이전 버전은 영상 생성까지만 확인됨)
 ```python
-import subprocess, textwrap
+import subprocess, textwrap, shutil
 from pathlib import Path
 
 REPO = Path("/content/MoneyPrinterTurbo")
@@ -41,7 +41,14 @@ CLIP_SECONDS = 8
 SUBTITLE_POS = 62.0
 VOICE = "ko-KR-SunHiNeural-Female"
 VIDEO_SOURCE = "pixabay"
+FONT = "NanumGothicBold.ttf"
 # =======================
+
+# 한글 폰트를 resource/fonts 로 복사 (이 폴더 밖의 폰트는 사용 불가)
+subprocess.run("apt-get install -y -qq fonts-nanum", shell=True)
+src = next(Path("/usr/share/fonts").rglob(FONT), None)
+assert src, "한글 폰트를 찾지 못했습니다"
+shutil.copy(src, REPO / "resource" / "fonts" / FONT)
 
 from google.colab import drive
 drive.mount("/content/drive")
@@ -65,7 +72,7 @@ OUT = Path("{OUT}")
 for i, topic in enumerate(TOPICS, 1):
     print(f"[{{i}}/{{len(TOPICS)}}] {{topic}} 생성 중...")
     params = VideoParams(video_subject=topic, video_language="ko",
-                         voice_name="{VOICE}",
+                         voice_name="{VOICE}", font_name="{FONT}",
                          video_source="{VIDEO_SOURCE}",
                          video_clip_duration={CLIP_SECONDS},
                          subtitle_position="custom", custom_position={SUBTITLE_POS})
@@ -92,7 +99,8 @@ print(r.stderr[-3000:])
 - API 키는 이 파일에 적지 않는다
 
 ## 아직 못 한 것 / 미확인
-- 완성 영상에서 자막 위치(62%)와 한글 폰트가 제대로 나오는지 눈으로 확인 전
+- 한글 폰트 수정 후 영상에서 한글 자막·위치(62%)가 나오는지 확인 전
+- 사용자 평가: 발성은 정확한 편이나 영상 완성도가 높아 보이지 않음(구체 원인은 아직 파악 전)
 - 하이퍼프레임 트랙: 아래 "하이퍼프레임" 섹션 참고. 음성 연동, 일괄 생성, Colab 실행은 미확인
 - 스톡 영상 매칭용 대본 규칙(한 줄 15~20자, 시각적 명사/동사)을 일괄 생성 셀에 연결하는 작업
 
@@ -118,5 +126,6 @@ print(r.stderr[-3000:])
 - 역할 겹침: 스톡+음성+자막 자동 생성은 MoneyPrinterTurbo가 이미 동작. 리모션 `Captioned`은 Vrew/CapCut 등으로 만든 영상에 자막만 입히는 용도
 
 ## 진행 기록
+- 2026-11-07: 드라이브 영상 확인 결과 한글 자막 미표시. 원인(번들 폰트 전부 한글 미지원)과 수정 셀 정리, 수정 후 실행은 확인 전
 - 2026-11-07: 리모션 템플릿(Shorts, Captioned) 제작·샌드박스 전체 렌더링 확인. MoneyPrinterTurbo 결과 영상의 자막·폰트 확인은 아직 전
 - 2026-11-06: GitHub 계정을 `lddlhjlyj-byte`로 전환, 포크 생성, Colab 일괄 생성 셀로 영상 1개 생성해 드라이브 저장까지 확인
