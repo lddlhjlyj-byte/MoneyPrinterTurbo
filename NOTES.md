@@ -106,5 +106,17 @@ print(r.stderr[-3000:])
 - 결정 대기: ① edge TTS 음성 입히기 ② 대본 10개 → 영상 10개 일괄 생성 구조로 변환 중 어느 쪽으로 갈지
 - 원테이크(OneTake AI)는 무료 플랜 없음(월 $92~), 대본→영상 도구 아님, API 미확인이라 제외
 
+## 리모션 (Remotion) — 2026-11-07 추가
+- 정체: React로 영상을 코딩해 MP4로 렌더링하는 도구. 개인·3인 이하 팀은 무료(설치 시 안내 문구 기준)
+- 만든 것: `shorts-video` 프로젝트(저장소 밖, 사용자에게 zip으로 전달). 1080×1920, 30fps
+  - `Shorts` 합성: `src/script.json`(줄별 text/clip/seconds)의 스톡 영상 + 자막 → MP4
+  - `Captioned` 합성: `public/input.mp4` + `captions.json` 또는 `.srt` → 자막 번인(말하는 단어 노란색 강조)
+  - `npm run transcribe`: 로컬 Whisper(small, 한국어)로 captions.json 생성
+- 확인됨(샌드박스): 두 합성 모두 전체 렌더링 성공(Shorts 9초, Captioned 5초, h264 1080×1920), 한글 자막 깨짐 없음, 테스트 프레임 눈으로 확인
+- 걸렸던 문제: 샌드박스에서 Remotion 자체 Chrome 다운로드와 Google Fonts가 차단됨 → 시스템 Chrome(`--browser-executable`) 지정, 한글 폰트는 설치 폰트 목록(Noto Sans KR → Noto Sans CJK KR → 맑은 고딕 → Apple SD Gothic Neo)으로 지정
+- 미확인: `npm run transcribe`(Whisper 설치·다운로드가 샌드박스에서 막힘), 음성(TTS) 없음, 스톡 영상 자동 검색·일괄 생성 없음(테스트 영상은 색상 패턴), 사용자 PC·Colab에서의 실행
+- 역할 겹침: 스톡+음성+자막 자동 생성은 MoneyPrinterTurbo가 이미 동작. 리모션 `Captioned`은 Vrew/CapCut 등으로 만든 영상에 자막만 입히는 용도
+
 ## 진행 기록
+- 2026-11-07: 리모션 템플릿(Shorts, Captioned) 제작·샌드박스 전체 렌더링 확인. MoneyPrinterTurbo 결과 영상의 자막·폰트 확인은 아직 전
 - 2026-11-06: GitHub 계정을 `lddlhjlyj-byte`로 전환, 포크 생성, Colab 일괄 생성 셀로 영상 1개 생성해 드라이브 저장까지 확인
