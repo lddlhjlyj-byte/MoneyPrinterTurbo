@@ -39,9 +39,28 @@ from google.colab import drive, userdata
 
 # ===== 여기만 수정 =====
 TOPICS = [
-    "코엔자임Q10 올바르게 먹는 법 4가지",
+    {
+        "subject": "코엔자임Q10 올바르게 먹는 법 4가지",
+        "script": """코엔자임Q10, 공복에 드시나요?
+그렇게 드시면 흡수가 떨어집니다
+영양제 병을 열기 전에 확인하세요
+올바르게 먹는 법 네 가지입니다
+하나, 식사 직후에 드세요
+아침 식탁의 계란과 함께 삼킵니다
+둘, 지방이 있는 음식과 함께
+아보카도와 올리브유가 좋습니다
+셋, 매일 같은 시간에 드세요
+알람 시계를 식탁 옆에 두세요
+넷, 복용 중인 약을 확인하세요
+약사에게 약 목록을 보여주세요
+기억하세요, 식사와 지방이 핵심입니다
+식사 직후 물 한 컵과 함께 드세요
+오늘 한 가지만 실천해 보세요
+도움이 됐다면 팔로우 해주세요""",
+        "terms": "supplement bottle, woman taking pill, breakfast table, fried eggs, avocado, olive oil, glass of water, alarm clock, pharmacist, capsules in hand",
+    },
 ]
-CLIP_SECONDS = 8
+CLIP_SECONDS = 6
 SUBTITLE_POS = 62.0
 VOICE = "ko-KR-SunHiNeural-Female"
 VIDEO_SOURCE = "pixabay"
@@ -109,9 +128,11 @@ from app.services import task as tm
 
 TOPICS = {TOPICS!r}
 OUT = Path("{OUT}")
-for i, topic in enumerate(TOPICS, 1):
-    print(f"[{{i}}/{{len(TOPICS)}}] {{topic}} 생성 중...")
-    params = VideoParams(video_subject=topic, video_language="ko",
+for i, t in enumerate(TOPICS, 1):
+    print(f"[{{i}}/{{len(TOPICS)}}] {{t['subject']}} 생성 중...")
+    params = VideoParams(video_subject=t["subject"], video_language="ko",
+                         video_script=t["script"], video_terms=t["terms"],
+                         video_concat_mode="sequential",
                          voice_name="{VOICE}", font_name="{FONT}",
                          video_source="{VIDEO_SOURCE}",
                          video_clip_duration={CLIP_SECONDS},
@@ -167,6 +188,8 @@ print(r.stderr[-3000:])
 - 역할 겹침: 스톡+음성+자막 자동 생성은 MoneyPrinterTurbo가 이미 동작. 리모션 `Captioned`은 Vrew/CapCut 등으로 만든 영상에 자막만 입히는 용도
 
 ## 진행 기록
+- 2026-11-07 밤: 사용자 평가 — 후킹 없음, 영상과 내용 연관성 낮음, 허접함. 원인: 주제만 넘겨 무료 LLM이 대본·검색어를 자동 생성함(사용자의 infomed-shorts-script 스킬 미사용). MPT는 `video_script`·`video_terms`를 직접 받으면 그대로 사용(코드 확인) → 셀을 대본·영어 키워드 직접 입력 방식으로 변경, `sequential`(순서대로 배치)·클립 6초 적용. Colab 실행·결과 확인 전
+- 리모션·하이퍼프레임·모션그래픽은 MPT 영상에 아직 연결되지 않음(별도 샘플만 존재)
 - 2026-11-07: 올인원 셀 Colab 실행 성공(1/4~4/4 통과, 폰트 NanumGothicBold 적용 로그 확인, 최종 렌더 약 5분, 드라이브 shorts_output에 21MB mp4 저장 확인). 영상 속 한글 자막 표시 여부는 사용자 확인 전
 - 2026-11-07: 매일 반복 설정을 없애려고 올인원 셀 작성(보안 비밀로 키 읽기). Colab 실행 확인 전
 - 2026-11-07: 드라이브 영상 확인 결과 한글 자막 미표시. 원인(번들 폰트 전부 한글 미지원)과 수정 셀 정리, 수정 후 실행은 확인 전
