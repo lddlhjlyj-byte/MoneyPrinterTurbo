@@ -30,7 +30,8 @@
 - 준비(최초 1회): Colab 왼쪽 열쇠 아이콘(보안 비밀)에 `PIXABAY_API_KEY`, `OPENROUTER_API_KEY` 저장 + "노트북 액세스" 켜기. 키는 코드·이 파일에 적지 않는다
 - 매일: 이 셀을 붙여넣고 `TOPICS`만 바꿔 실행. 런타임이 초기화돼도 같은 셀이 설치부터 다시 한다
 - 확인됨(샌드박스): 셀 문법, config.example.toml 치환 4개 항목이 각각 1회 일치하고 TOML로 정상 해석됨
-- 미확인: Colab에서의 `uv sync --frozen` 설치, 폰트 복사, 한글 자막 출력, 보안 비밀 읽기
+- 확인됨(Colab 실행): `uv sync --frozen` 설치, 보안 비밀 읽기, 폰트 복사·적용, 영상 생성·드라이브 저장
+- 미확인: 영상 속 한글 자막이 실제로 보이는지
 ```python
 import re, shutil, subprocess, textwrap
 from pathlib import Path
@@ -166,6 +167,7 @@ print(r.stderr[-3000:])
 - 역할 겹침: 스톡+음성+자막 자동 생성은 MoneyPrinterTurbo가 이미 동작. 리모션 `Captioned`은 Vrew/CapCut 등으로 만든 영상에 자막만 입히는 용도
 
 ## 진행 기록
+- 2026-11-07: 올인원 셀 Colab 실행 성공(1/4~4/4 통과, 폰트 NanumGothicBold 적용 로그 확인, 최종 렌더 약 5분, 드라이브 shorts_output에 21MB mp4 저장 확인). 영상 속 한글 자막 표시 여부는 사용자 확인 전
 - 2026-11-07: 매일 반복 설정을 없애려고 올인원 셀 작성(보안 비밀로 키 읽기). Colab 실행 확인 전
 - 2026-11-07: 드라이브 영상 확인 결과 한글 자막 미표시. 원인(번들 폰트 전부 한글 미지원)과 수정 셀 정리, 수정 후 실행은 확인 전
 - 2026-11-07: 리모션 템플릿(Shorts, Captioned) 제작·샌드박스 전체 렌더링 확인. MoneyPrinterTurbo 결과 영상의 자막·폰트 확인은 아직 전
