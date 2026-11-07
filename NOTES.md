@@ -26,12 +26,15 @@
 3. 결과 영상은 구글 드라이브 `MyDrive/shorts_output`에 저장됨. "저장:" 줄과 폴더 파일로 성공을 판단
 4. 웹 화면(WebUI)은 cloudflared 터널 셀로 접속하는 테스트용. 자동화에는 쓰지 않음
 
-## 일괄 생성 셀 (2026-11-07 한글 폰트 수정 반영 — Colab 실행 확인 전. 이전 버전은 영상 생성까지만 확인됨)
+## 올인원 셀 (2026-11-07 — 설치·키·폰트·생성을 셀 하나로. Colab 실행은 확인 전)
+- 준비(최초 1회): Colab 왼쪽 열쇠 아이콘(보안 비밀)에 `PIXABAY_API_KEY`, `OPENROUTER_API_KEY` 저장 + "노트북 액세스" 켜기. 키는 코드·이 파일에 적지 않는다
+- 매일: 이 셀을 붙여넣고 `TOPICS`만 바꿔 실행. 런타임이 초기화돼도 같은 셀이 설치부터 다시 한다
+- 확인됨(샌드박스): 셀 문법, config.example.toml 치환 4개 항목이 각각 1회 일치하고 TOML로 정상 해석됨
+- 미확인: Colab에서의 `uv sync --frozen` 설치, 폰트 복사, 한글 자막 출력, 보안 비밀 읽기
 ```python
-import subprocess, textwrap, shutil
+import re, shutil, subprocess, textwrap
 from pathlib import Path
-
-REPO = Path("/content/MoneyPrinterTurbo")
+from google.colab import drive, userdata
 
 # ===== 여기만 수정 =====
 TOPICS = [
@@ -42,15 +45,55 @@ SUBTITLE_POS = 62.0
 VOICE = "ko-KR-SunHiNeural-Female"
 VIDEO_SOURCE = "pixabay"
 FONT = "NanumGothicBold.ttf"
+LLM_MODEL = "nvidia/nemotron-3.5-super-vl:free"
 # =======================
+FORK = "https://github.com/lddlhjlyj-byte/MoneyPrinterTurbo"
+REPO = Path("/content/MoneyPrinterTurbo")
 
-# 한글 폰트를 resource/fonts 로 복사 (이 폴더 밖의 폰트는 사용 불가)
-subprocess.run("apt-get install -y -qq fonts-nanum", shell=True)
+
+def sh(cmd, cwd=None):
+    r = subprocess.run(cmd, shell=True, cwd=cwd, capture_output=True, text=True)
+    if r.returncode:
+        print(r.stdout[-2000:], r.stderr[-2000:])
+        raise SystemExit(f"실패: {cmd}")
+    return r
+
+
+def secret(name):
+    try:
+        return userdata.get(name)
+    except Exception:
+        raise SystemExit(f"왼쪽 열쇠 아이콘(보안 비밀)에 {name} 을 저장하고 '노트북 액세스'를 켜세요")
+
+
+pixabay_key = secret("PIXABAY_API_KEY")
+openrouter_key = secret("OPENROUTER_API_KEY")
+
+print("1/4 설치 확인...")
+if not REPO.exists():
+    sh(f"git clone --depth 1 {FORK} {REPO}")
+if not (REPO / ".venv").exists():
+    sh("pip install -q uv")
+    sh("uv sync --frozen", cwd=REPO)
+
+print("2/4 설정 파일 작성...")
+cfg = (REPO / "config.example.toml").read_text(encoding="utf-8")
+for pattern, value in [
+    (r'^pixabay_api_keys = \[\]', f'pixabay_api_keys = ["{pixabay_key}"]'),
+    (r'^llm_provider = ".*"', 'llm_provider = "openrouter"'),
+    (r'^openrouter_api_key = ""', f'openrouter_api_key = "{openrouter_key}"'),
+    (r'^openrouter_model_name = ""', f'openrouter_model_name = "{LLM_MODEL}"'),
+]:
+    cfg, n = re.subn(pattern, lambda m: value, cfg, count=1, flags=re.M)
+    assert n == 1, f"설정 항목을 찾지 못함: {pattern}"
+(REPO / "config.toml").write_text(cfg, encoding="utf-8")
+
+print("3/4 한글 폰트 준비...")
+sh("apt-get install -y -qq fonts-nanum")
 src = next(Path("/usr/share/fonts").rglob(FONT), None)
 assert src, "한글 폰트를 찾지 못했습니다"
 shutil.copy(src, REPO / "resource" / "fonts" / FONT)
 
-from google.colab import drive
 drive.mount("/content/drive")
 OUT = Path("/content/drive/MyDrive/shorts_output")
 OUT.mkdir(parents=True, exist_ok=True)
@@ -62,10 +105,6 @@ sys.path.insert(0, "{REPO}")
 from app.config import config
 from app.models.schema import VideoParams
 from app.services import task as tm
-
-if not config.app.get("pixabay_api_keys"):
-    print("중단: config.toml에 pixabay_api_keys가 비어 있습니다")
-    sys.exit(1)
 
 TOPICS = {TOPICS!r}
 OUT = Path("{OUT}")
@@ -87,6 +126,7 @@ for i, topic in enumerate(TOPICS, 1):
 ''')
 Path("/content/run_batch.py").write_text(script, encoding="utf-8")
 
+print("4/4 영상 생성 중... (약 7분, 주제당)")
 r = subprocess.run(f"cd {REPO} && uv run python /content/run_batch.py",
                    shell=True, capture_output=True, text=True)
 print(r.stdout[-3000:])
@@ -126,6 +166,7 @@ print(r.stderr[-3000:])
 - 역할 겹침: 스톡+음성+자막 자동 생성은 MoneyPrinterTurbo가 이미 동작. 리모션 `Captioned`은 Vrew/CapCut 등으로 만든 영상에 자막만 입히는 용도
 
 ## 진행 기록
+- 2026-11-07: 매일 반복 설정을 없애려고 올인원 셀 작성(보안 비밀로 키 읽기). Colab 실행 확인 전
 - 2026-11-07: 드라이브 영상 확인 결과 한글 자막 미표시. 원인(번들 폰트 전부 한글 미지원)과 수정 셀 정리, 수정 후 실행은 확인 전
 - 2026-11-07: 리모션 템플릿(Shorts, Captioned) 제작·샌드박스 전체 렌더링 확인. MoneyPrinterTurbo 결과 영상의 자막·폰트 확인은 아직 전
 - 2026-11-06: GitHub 계정을 `lddlhjlyj-byte`로 전환, 포크 생성, Colab 일괄 생성 셀로 영상 1개 생성해 드라이브 저장까지 확인
