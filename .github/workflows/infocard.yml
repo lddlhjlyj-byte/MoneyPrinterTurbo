@@ -2,6 +2,9 @@ name: infocard-video
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -27,6 +30,22 @@ jobs:
         run: npx remotion render InfoCard out/infocard.mp4
       - name: 영상 정보 확인
         run: ffprobe -v error -show_entries stream=codec_name,width,height,duration -of default=nw=1 out/infocard.mp4
+      - name: 확인용 장면 사진·음량 저장 (저장소 verify/ 폴더)
+        run: |
+          mkdir -p ../verify
+          for t in 1 5 9 14 19 24 29 34 40 46; do
+            ffmpeg -v error -y -ss $t -i out/infocard.mp4 -frames:v 1 -vf scale=360:-1 ../verify/f_$t.jpg
+          done
+          ffmpeg -v error -i out/infocard.mp4 -af volumedetect -f null - 2>&1 | grep -E "mean_volume|max_volume" > ../verify/audio.txt || true
+          ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,duration -of default=nw=1 out/infocard.mp4 > ../verify/probe.txt
+      - name: verify 폴더 커밋
+        working-directory: .
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add verify
+          git commit -m "chore: InfoCard 확인용 장면 사진" || echo "변경 없음"
+          git push
       - uses: actions/upload-artifact@v4
         with:
           name: infocard
