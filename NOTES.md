@@ -212,3 +212,4 @@ print(r.stderr[-3000:])
 - 2026-11-07: 드라이브 영상 확인 결과 한글 자막 미표시. 원인(번들 폰트 전부 한글 미지원)과 수정 셀 정리, 수정 후 실행은 확인 전
 - 2026-11-07: 리모션 템플릿(Shorts, Captioned) 제작·샌드박스 전체 렌더링 확인. MoneyPrinterTurbo 결과 영상의 자막·폰트 확인은 아직 전
 - 2026-11-06: GitHub 계정을 `lddlhjlyj-byte`로 전환, 포크 생성, Colab 일괄 생성 셀로 영상 1개 생성해 드라이브 저장까지 확인
+- 2026-11-09: InfoCard(shorts-video/)와 워크플로 `.github/workflows/infocard.yml`을 포크에 추가. GitHub Actions 수동 실행 1회 성공(약 2분 30초): edge-tts 음성 8장면 생성(장면 길이 3.5~8초, 총 49.5초=1485프레임), Remotion 렌더링 성공, 산출물 6.0MB(Artifacts의 `infocard`). 샌드박스에서는 산출물 다운로드가 막혀 영상·음성 품질·한글 폰트는 아직 눈/귀로 확인 못 함. 실행 방법: Actions 탭 → infocard-video → Run workflow
