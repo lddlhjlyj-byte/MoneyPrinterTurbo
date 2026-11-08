@@ -187,6 +187,13 @@ print(r.stderr[-3000:])
 - 미확인: `npm run transcribe`(Whisper 설치·다운로드가 샌드박스에서 막힘), 음성(TTS) 없음, 스톡 영상 자동 검색·일괄 생성 없음(테스트 영상은 색상 패턴), 사용자 PC·Colab에서의 실행
 - 역할 겹침: 스톡+음성+자막 자동 생성은 MoneyPrinterTurbo가 이미 동작. 리모션 `Captioned`은 Vrew/CapCut 등으로 만든 영상에 자막만 입히는 용도
 
+## 영상 제작 스킬 지도 (2026-11-09 검색 결과, 설명문 기준 — 내용 직접 열어보기 전)
+- 켜져 있음·직접 사용: infomed-shorts-script(후킹 대본 16줄+영어 키워드), shorts-script-stockmatch, Remotion 플러그인(create/markup/captions/render/studio/multimedia/docs), video-making(렌더링 원칙), AI YouTube OS(daily/new-channel/preflight/channel-operations), image-generation, zizi-skills(design-assets/design-guide/orchestration), marketing(content-creation·seo-audit)
+- 켜면 쓸 수 있음(꺼져 있음, 스킬만 있고 외부 서비스 불필요로 보임): Social Media Skills(106개: hook-writer·short-form-video-script·youtube-shorts·thumbnail-design·hashtag-strategy·batch-content-plan·platform-specs-and-validation 등), video-shotcraft(Remotion 연출), ffmpeg-llm
+- 별도 계정·크레딧이 필요해 보임(무료 우선 원칙과 충돌, 비용 미확인): ManyMotions 계열, Abracadabrax 계열, Arcads, CreativeClaw, CellCog
+- 연결돼 있음: Google Drive, Metricool(예약 게시 도구 있음, 플랜 제한 미확인), Zapier
+- 비어 있는 단계: 음성(TTS)은 스킬 없음 → scripts/tts.py(edge-tts)로 대체
+
 ## 진행 기록
 - 2026-11-07 밤: 사용자 요청 — "머리 크고 몸통 없음, 짧은 다리·팔, 눈썹·코 없음, 눈이 얼굴의 1/3인 귀여운 캐릭터가 설명하는 영상". 오리지널 캐릭터를 SVG로 설계해 `InfoCard`에 적용(`src/Character.tsx`: 노란 얼굴, 눈 깜빡임·통통 튀기·장면별 팔 제스처, 음성 크기에 맞춘 입 움직임). 샌드박스에서 35초 mp4 렌더링 후 출력 파일에서 프레임을 뽑아 눈으로 확인. 합성 테스트 음성으로 입 연동 경로 동작 확인. 실제 한국어 음성·사용자 평가는 확인 전
 - 2026-11-07 밤: 사용자 지적 — 애니메이션 형태를 먼저 물었는데 MPT를 우선으로 잡은 것은 잘못. **방향 수정: 애니메이션 정보카드(Remotion `InfoCard`)를 주력, MPT 스톡영상은 보조.** 근거: 정보카드형 주제는 스톡 매칭 문제(연관성)가 없음. `src/cards.json`(장면 JSON)으로 대본 N개→영상 N개 구조. 샌드박스에서 35초 mp4 렌더링·프레임 눈으로 확인(한글 정상, 음성 없음). 음성은 `scripts/tts.py`(edge-tts, 샌드박스는 인터넷 차단으로 실행 못 함, 문법만 확인). 사용자 PC·Colab 실행 확인 전
