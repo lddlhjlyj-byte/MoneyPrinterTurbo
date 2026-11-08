@@ -1,0 +1,8 @@
+{
+  "bgm": null,
+  "lines": [
+    { "text": "우주의 반짝이는 은하수와\n블랙홀은 정말 신비롭습니다", "clip": "clip1.mp4", "seconds": 3 },
+    { "text": "밤하늘에 쏟아지는 별똥별과\n붉은 화성의 모래폭풍", "clip": "clip2.mp4", "seconds": 3 },
+    { "text": "지금 구독하고\n더 많은 우주를 만나보세요", "clip": "clip1.mp4", "seconds": 3 }
+  ]
+}
