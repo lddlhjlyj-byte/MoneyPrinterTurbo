@@ -213,3 +213,4 @@ print(r.stderr[-3000:])
 - 2026-11-07: 리모션 템플릿(Shorts, Captioned) 제작·샌드박스 전체 렌더링 확인. MoneyPrinterTurbo 결과 영상의 자막·폰트 확인은 아직 전
 - 2026-11-06: GitHub 계정을 `lddlhjlyj-byte`로 전환, 포크 생성, Colab 일괄 생성 셀로 영상 1개 생성해 드라이브 저장까지 확인
 - 2026-11-09: InfoCard(shorts-video/)와 워크플로 `.github/workflows/infocard.yml`을 포크에 추가. GitHub Actions 수동 실행 1회 성공(약 2분 30초): edge-tts 음성 8장면 생성(장면 길이 3.5~8초, 총 49.5초=1485프레임), Remotion 렌더링 성공, 산출물 6.0MB(Artifacts의 `infocard`). 샌드박스에서는 산출물 다운로드가 막혀 영상·음성 품질·한글 폰트는 아직 눈/귀로 확인 못 함. 실행 방법: Actions 탭 → infocard-video → Run workflow
+- 2026-11-09: 워크플로가 실행 후 장면 사진 10장+probe를 저장소 verify/ 폴더에 자동 커밋하도록 변경(권한 contents: write). 2차 실행 성공: 1080x1920, h264+aac, 49.5초. verify 사진으로 한글 정상 렌더링 확인, 캐릭터 입 모양이 장면마다 다르게 나옴. 실제 음질·싱크는 귀로 확인 전. audio.txt(음량)는 로그 레벨 문제로 빈 파일
