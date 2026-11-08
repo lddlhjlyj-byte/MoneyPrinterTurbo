@@ -194,6 +194,14 @@ print(r.stderr[-3000:])
 - 연결돼 있음: Google Drive, Metricool(예약 게시 도구 있음, 플랜 제한 미확인), Zapier
 - 비어 있는 단계: 음성(TTS)은 스킬 없음 → scripts/tts.py(edge-tts)로 대체
 
+## 외부 자동화 후보 (2026-11-09 검색, README 요약만 확인 — 실제 실행 전)
+- rushindrasinha/youtube-shorts-pipeline (MIT, 별 약 2.3k): 주제→대본→음성→자막→ffmpeg→YouTube 업로드. Edge TTS·Ollama 무료. `--lang ko` 옵션 있으나 한글 음성·자막 품질 미확인. TikTok/Reels 업로드·예약 배치는 v3.1 예정(미출시)
+- gyoridavid/short-video-maker (MIT, 별 1.3k): MCP+REST, Docker. 영어만 지원(Kokoro) → 한국어 부적합
+- Chamanrajragu/purffle-shorts: 별 14개, 검증 부족
+- 목록: sasharun/awesome-faceless, AbdullahNaveed/ai-shorts-generator, SaarD00/AI-Youtube-Shorts-Generator (내용 미확인)
+- 꺼져 있는 플러그인: IT Reelsmaker(talking-head 편집용), BlitzReels, TubeAlfred YouTube(읽기 전용 분석), vidIQ(커넥터). 요금 미확인. 켜는 것은 사용자가 직접
+- 다음 후보 작업: youtube-shorts-pipeline 포크 → 한국어 영상 1개 생성 → 눈으로 확인 후 InfoCard 방식과 비교
+
 ## 진행 기록
 - 2026-11-07 밤: 사용자 요청 — "머리 크고 몸통 없음, 짧은 다리·팔, 눈썹·코 없음, 눈이 얼굴의 1/3인 귀여운 캐릭터가 설명하는 영상". 오리지널 캐릭터를 SVG로 설계해 `InfoCard`에 적용(`src/Character.tsx`: 노란 얼굴, 눈 깜빡임·통통 튀기·장면별 팔 제스처, 음성 크기에 맞춘 입 움직임). 샌드박스에서 35초 mp4 렌더링 후 출력 파일에서 프레임을 뽑아 눈으로 확인. 합성 테스트 음성으로 입 연동 경로 동작 확인. 실제 한국어 음성·사용자 평가는 확인 전
 - 2026-11-07 밤: 사용자 지적 — 애니메이션 형태를 먼저 물었는데 MPT를 우선으로 잡은 것은 잘못. **방향 수정: 애니메이션 정보카드(Remotion `InfoCard`)를 주력, MPT 스톡영상은 보조.** 근거: 정보카드형 주제는 스톡 매칭 문제(연관성)가 없음. `src/cards.json`(장면 JSON)으로 대본 N개→영상 N개 구조. 샌드박스에서 35초 mp4 렌더링·프레임 눈으로 확인(한글 정상, 음성 없음). 음성은 `scripts/tts.py`(edge-tts, 샌드박스는 인터넷 차단으로 실행 못 함, 문법만 확인). 사용자 PC·Colab 실행 확인 전
