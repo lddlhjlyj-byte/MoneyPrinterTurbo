@@ -150,6 +150,14 @@ export const itemPose = (n: number, f: number, D: number): Pose => {
       landSy(f, 32),
     );
   }
+  if (n >= 5) {
+    // 밝은 마무리: 통통 뛰다가 땅으로 꺼짐
+    return {
+      ...BASE,
+      y: arc(f, 12, 16, 170) + arc(f, 32, 16, 130),
+      sink: lerp(f, [D - 22, D - 6], [0, 1], IN),
+    };
+  }
   // n === 4: 불안하게 떨다가 땅으로 꺼짐
   return {
     ...BASE,

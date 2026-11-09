@@ -47,6 +47,7 @@ type Scene =
       seconds: number;
       head: string;
       sub: string;
+      kind?: "capsule" | "bottle";
       a: string;
       b: string;
       c: string;
@@ -63,6 +64,7 @@ type Scene =
       type: "item";
       seconds: number;
       n: number;
+      worry?: boolean;
       head: string;
       sub: string;
       tags: string[];
@@ -221,6 +223,16 @@ const Capsule: React.FC = () => (
   </svg>
 );
 
+const Bottle: React.FC = () => (
+  <svg width="150" height="200" viewBox="0 0 150 200">
+    <rect x="55" y="8" width="40" height="46" rx="18" fill={BRAND} stroke={INK} strokeWidth="7" />
+    <rect x="42" y="50" width="66" height="24" rx="7" fill="#fff" stroke={INK} strokeWidth="7" />
+    <rect x="28" y="70" width="94" height="122" rx="24" fill="#EAF7FF" stroke={INK} strokeWidth="7" />
+    <path d="M 31 124 H 119 V 168 Q 119 189 98 189 H 52 Q 31 189 31 168 Z" fill="#BFE6FF" />
+    <ellipse cx="50" cy="110" rx="8" ry="22" fill="#fff" opacity="0.8" />
+  </svg>
+);
+
 const Drop: React.FC<{ size?: number }> = ({ size = 1 }) => (
   <svg width={130 * size} height={160 * size} viewBox="0 0 130 160">
     <path
@@ -314,7 +326,7 @@ const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
         }}
       >
         <div style={{ ...enter(frame, 22), display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Capsule />
+          {s.kind === "bottle" ? <Bottle /> : <Capsule />}
           {label(s.a, 24)}
         </div>
         {op("+", 40)}
@@ -637,7 +649,7 @@ const poseFor = (s: Scene, f: number, D: number): Pose => {
     case "title":
       return titlePose(f);
     case "item":
-      return itemPose(s.n, f, D);
+      return itemPose(s.n === 4 && s.worry === false ? 5 : s.n, f, D);
     case "summary":
       return summaryPose(f, D);
     case "outro":
@@ -670,7 +682,7 @@ const CharLayer: React.FC<{ s: Scene; start: number; dur: number }> = ({
 }) => {
   const f = useCurrentFrame();
   const pose = poseFor(s, f, dur);
-  const surprised = s.type === "hook" || (s.type === "item" && s.n === 4);
+  const surprised = s.type === "hook" || (s.type === "item" && s.n === 4 && s.worry !== false);
   return (
     <AbsoluteFill
       style={{
