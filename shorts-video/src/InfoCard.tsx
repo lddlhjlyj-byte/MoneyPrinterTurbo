@@ -1,4 +1,5 @@
 import { Audio } from "@remotion/media";
+import cardsData from "./cards.json";
 import { CharacterSynthetic, CharacterTalking, Gesture } from "./Character";
 import {
   HANDS_REST_Y,
@@ -401,7 +402,7 @@ const Title: React.FC<{ s: Extract<Scene, { type: "title" }> }> = ({ s }) => {
   );
 };
 
-const Progress: React.FC<{ n: number }> = ({ n }) => (
+const Progress: React.FC<{ n: number; total?: number }> = ({ n, total = 4 }) => (
   <div
     style={{
       position: "absolute",
@@ -412,7 +413,7 @@ const Progress: React.FC<{ n: number }> = ({ n }) => (
       gap: 16,
     }}
   >
-    {[1, 2, 3, 4].map((i) => (
+    {Array.from({ length: total }, (_, k) => k + 1).map((i) => (
       <div
         key={i}
         style={{
@@ -453,7 +454,7 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
 
   return (
     <>
-      <Progress n={s.n} />
+      <Progress n={s.n} total={Math.max(...((cardsData.scenes as { type: string; n?: number }[]).filter((x) => x.type === "item") as { n: number }[]).map((x) => x.n))} />
       <Center gap={50}>
         <div
           style={{
