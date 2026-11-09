@@ -409,3 +409,14 @@ export const CharacterTalking: React.FC<{
     />
   );
 };
+
+// 채널 프로필·배너용 정지 캐릭터
+export const CharacterStill: React.FC<{ mouth?: number }> = ({ mouth = 0.28 }) => (
+  <CharacterView
+    mouth={mouth}
+    gesture="idle"
+    localFrame={30}
+    globalFrame={0}
+    pose={BASE}
+  />
+);
