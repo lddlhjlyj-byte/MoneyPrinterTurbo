@@ -46,6 +46,16 @@ jobs:
           git add verify
           git commit -m "chore: InfoCard 확인용 장면 사진" || echo "변경 없음"
           git push
+      - name: 영상 파일을 video 브랜치에 저장 (바로 받을 수 있게)
+        working-directory: .
+        run: |
+          cp shorts-video/out/infocard.mp4 /tmp/infocard.mp4
+          git checkout --orphan video
+          git rm -rf -q . || true
+          cp /tmp/infocard.mp4 infocard.mp4
+          git add infocard.mp4
+          git commit -q -m "latest infocard video"
+          git push -f origin video
       - uses: actions/upload-artifact@v4
         with:
           name: infocard
