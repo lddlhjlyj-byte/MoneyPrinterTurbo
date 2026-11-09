@@ -47,7 +47,7 @@ type Scene =
       seconds: number;
       head: string;
       sub: string;
-      kind?: "capsule" | "bottle";
+      kind?: "capsule" | "bottle" | "sun";
       a: string;
       b: string;
       c: string;
@@ -233,6 +233,28 @@ const Bottle: React.FC = () => (
   </svg>
 );
 
+const Sun: React.FC<{ t: string }> = ({ t }) => (
+  <svg width="170" height="170" viewBox="0 0 170 170">
+    {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+      <line
+        key={a}
+        x1="85"
+        y1="14"
+        x2="85"
+        y2="30"
+        stroke={INK}
+        strokeWidth="9"
+        strokeLinecap="round"
+        transform={`rotate(${a} 85 85)`}
+      />
+    ))}
+    <circle cx="85" cy="85" r="48" fill={BRAND} stroke={INK} strokeWidth="7" />
+    <text x="85" y="97" textAnchor="middle" fontSize="34" fontWeight="900" fill={INK} fontFamily={FONT}>
+      {t}
+    </text>
+  </svg>
+);
+
 const Drop: React.FC<{ size?: number }> = ({ size = 1 }) => (
   <svg width={130 * size} height={160 * size} viewBox="0 0 130 160">
     <path
@@ -326,12 +348,12 @@ const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
         }}
       >
         <div style={{ ...enter(frame, 22), display: "flex", flexDirection: "column", alignItems: "center" }}>
-          {s.kind === "bottle" ? <Bottle /> : <Capsule />}
+          {s.kind === "sun" ? <Sun t="UVB" /> : s.kind === "bottle" ? <Bottle /> : <Capsule />}
           {label(s.a, 24)}
         </div>
         {op("+", 40)}
         <div style={{ ...enter(frame, 46), display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Drop />
+          {s.kind === "sun" ? <Sun t="UVA" /> : <Drop />}
           {label(s.b, 48)}
         </div>
         {op("→", 64)}
