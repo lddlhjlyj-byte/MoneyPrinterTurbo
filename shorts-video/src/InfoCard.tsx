@@ -1,6 +1,20 @@
 import { Audio } from "@remotion/media";
 import { CharacterSynthetic, CharacterTalking, Gesture } from "./Character";
 import {
+  HANDS_REST_Y,
+  IN,
+  OUT,
+  Pose,
+  arc,
+  hookPose,
+  itemPose,
+  lerp,
+  outroPose,
+  summaryPose,
+  titlePose,
+  whyPose,
+} from "./choreo";
+import {
   AbsoluteFill,
   CalculateMetadataFunction,
   Easing,
@@ -16,6 +30,7 @@ const FONT =
 const INK = "#111111";
 const SUB = "#666666";
 const ACCENT = "#E5322D"; // 색 강조는 숫자에만
+const BRAND = "#FFD84D"; // 캐릭터 노랑
 const EASE = Easing.bezier(0.16, 1, 0.3, 1);
 
 type Scene =
@@ -25,6 +40,16 @@ type Scene =
       line1: string;
       line2: string;
       warn: string;
+      audio?: string;
+    }
+  | {
+      type: "why";
+      seconds: number;
+      head: string;
+      sub: string;
+      a: string;
+      b: string;
+      c: string;
       audio?: string;
     }
   | {
@@ -55,6 +80,7 @@ type Scene =
       seconds: number;
       text: string;
       sub: string;
+      note?: string;
       audio?: string;
     };
 
@@ -110,22 +136,34 @@ const Center: React.FC<{ children: React.ReactNode; gap?: number }> = ({
   </AbsoluteFill>
 );
 
+// 쿵 떨어져 튕기는 등장 (위에서 내리꽂힘)
+const slam = (f: number, t0: number) =>
+  lerp(f, [t0, t0 + 9], [-1000, 0], IN) + arc(f, t0 + 9, 9, 36);
+
+/* ───────── 후킹: 점프해서 위의 자막을 잡아 끌어내림 ───────── */
 const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
   const frame = useCurrentFrame();
+  const p = hookPose(frame);
+  const grabbed = frame >= 54;
+  // 손이 잡은 높이를 따라 내려오다가 캐릭터 머리 위(1100)에서 멈춘다
+  const bannerTop = grabbed
+    ? Math.min(1100, HANDS_REST_Y - 354 + p.y)
+    : 426;
+  const bannerOpacity = lerp(frame, [24, 34], [0, 1]);
+  const bannerScale = lerp(frame, [54, 58], [1.1, 1]);
   const pulse = 1 + 0.03 * Math.sin((frame / FPS) * Math.PI * 3);
-  const bar = interpolate(frame, [40, 70], [0, 100], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE,
-  });
   return (
-    <Center gap={30}>
+    <AbsoluteFill style={{ textAlign: "center" }}>
       <div
         style={{
-          ...enter(frame, 0),
+          position: "absolute",
+          top: 100,
+          left: 0,
+          right: 0,
           fontSize: 150,
           fontWeight: 900,
           color: INK,
+          translate: `0px ${slam(frame, 6)}px`,
           scale: pulse,
         }}
       >
@@ -133,8 +171,12 @@ const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
       </div>
       <div
         style={{
-          ...enter(frame, 10),
-          fontSize: 124,
+          ...enter(frame, 18),
+          position: "absolute",
+          top: 280,
+          left: 0,
+          right: 0,
+          fontSize: 100,
           fontWeight: 900,
           color: INK,
         }}
@@ -143,58 +185,183 @@ const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
       </div>
       <div
         style={{
-          ...enter(frame, 40),
-          fontSize: 62,
-          fontWeight: 700,
-          color: INK,
-          marginTop: 70,
+          position: "absolute",
+          top: bannerTop,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          opacity: bannerOpacity,
         }}
       >
-        {s.warn}
         <div
           style={{
-            height: 10,
             background: INK,
-            width: `${bar}%`,
-            marginTop: 14,
-            marginInline: "auto",
+            color: "#fff",
+            fontSize: 56,
+            fontWeight: 800,
+            padding: "22px 48px",
+            borderRadius: 24,
+            scale: bannerScale,
           }}
-        />
+        >
+          {s.warn}
+        </div>
       </div>
-    </Center>
+    </AbsoluteFill>
   );
 };
 
-const Title: React.FC<{ s: Extract<Scene, { type: "title" }> }> = ({ s }) => {
+/* ───────── 원리 설명: Q10 캡슐 + 지방 → 흡수 ───────── */
+const Capsule: React.FC = () => (
+  <svg width="230" height="120" viewBox="0 0 230 120" style={{ rotate: "-18deg" }}>
+    <rect x="5" y="5" width="220" height="110" rx="55" fill="#fff" stroke={INK} strokeWidth="7" />
+    <path d="M 60 5 H 115 V 115 H 60 A 55 55 0 0 1 60 5 Z" fill={BRAND} stroke={INK} strokeWidth="7" strokeLinejoin="round" />
+    <ellipse cx="62" cy="34" rx="22" ry="8" fill="#fff" opacity="0.6" />
+  </svg>
+);
+
+const Drop: React.FC<{ size?: number }> = ({ size = 1 }) => (
+  <svg width={130 * size} height={160 * size} viewBox="0 0 130 160">
+    <path
+      d="M 65 8 C 65 8 14 74 14 106 C 14 136 36 152 65 152 C 94 152 116 136 116 106 C 116 74 65 8 65 8 Z"
+      fill="#FFE9A0"
+      stroke={INK}
+      strokeWidth="7"
+      strokeLinejoin="round"
+    />
+    <ellipse cx="44" cy="100" rx="10" ry="20" fill="#fff" opacity="0.7" transform="rotate(18 44 100)" />
+  </svg>
+);
+
+const Absorb: React.FC = () => (
+  <svg width="190" height="190" viewBox="0 0 190 190">
+    <circle cx="95" cy="95" r="84" fill="#fff" stroke={INK} strokeWidth="9" />
+    <polyline points="52,98 84,130 140,64" fill="none" stroke={INK} strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
   const frame = useCurrentFrame();
-  const t = interpolate(frame, [6, 30], [0.4, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE,
-  });
+  const label = (t: string, delay: number) => (
+    <div
+      style={{
+        ...enter(frame, delay),
+        fontSize: 44,
+        fontWeight: 800,
+        color: INK,
+        marginTop: 14,
+      }}
+    >
+      {t}
+    </div>
+  );
+  const op = (t: string, delay: number) => (
+    <div
+      style={{
+        ...enter(frame, delay),
+        fontSize: 110,
+        fontWeight: 900,
+        color: INK,
+        lineHeight: 1,
+        paddingBottom: 60,
+      }}
+    >
+      {t}
+    </div>
+  );
   return (
-    <Center gap={10}>
+    <AbsoluteFill style={{ textAlign: "center", padding: "0 60px" }}>
       <div
         style={{
           ...enter(frame, 0),
-          fontSize: 110,
+          position: "absolute",
+          top: 150,
+          left: 0,
+          right: 0,
+          fontSize: 92,
           fontWeight: 900,
           color: INK,
         }}
       >
-        {s.text}
+        {s.head}
       </div>
       <div
         style={{
-          fontSize: 300,
-          fontWeight: 900,
-          color: ACCENT,
-          opacity: t,
-          scale: t,
-          lineHeight: 1.1,
+          ...enter(frame, 10),
+          position: "absolute",
+          top: 290,
+          left: 0,
+          right: 0,
+          fontSize: 54,
+          fontWeight: 600,
+          color: SUB,
         }}
       >
-        {s.num}
+        {s.sub}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 560,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-end",
+          gap: 26,
+          scale: 1.25,
+        }}
+      >
+        <div style={{ ...enter(frame, 22), display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Capsule />
+          {label(s.a, 24)}
+        </div>
+        {op("+", 40)}
+        <div style={{ ...enter(frame, 46), display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Drop />
+          {label(s.b, 48)}
+        </div>
+        {op("→", 64)}
+        <div style={{ ...enter(frame, 70), display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Absorb />
+          {label(s.c, 72)}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/* ───────── 타이틀: 숫자가 쿵 내리꽂힘 ───────── */
+const Title: React.FC<{ s: Extract<Scene, { type: "title" }> }> = ({ s }) => {
+  const frame = useCurrentFrame();
+  const hit = frame - 12;
+  const shake = hit > 0 ? 16 * Math.exp(-hit / 6) * Math.sin(hit * 2.4) : 0;
+  return (
+    <Center gap={10}>
+      <div style={{ translate: `0px ${shake}px`, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        <div
+          style={{
+            ...enter(frame, 0),
+            fontSize: 110,
+            fontWeight: 900,
+            color: INK,
+          }}
+        >
+          {s.text}
+        </div>
+        <div
+          style={{
+            fontSize: 300,
+            fontWeight: 900,
+            color: ACCENT,
+            lineHeight: 1.1,
+            opacity: frame >= 4 ? 1 : 0,
+            translate: `0px ${lerp(frame, [4, 12], [-1100, 0], IN) + arc(frame, 12, 10, 40)}px`,
+          }}
+        >
+          {s.num}
+        </div>
       </div>
     </Center>
   );
@@ -204,7 +371,7 @@ const Progress: React.FC<{ n: number }> = ({ n }) => (
   <div
     style={{
       position: "absolute",
-      top: 90,
+      top: 64,
       left: 70,
       right: 70,
       display: "flex",
@@ -225,7 +392,11 @@ const Progress: React.FC<{ n: number }> = ({ n }) => (
   </div>
 );
 
-const Item: React.FC<{ s: Extract<Scene, { type: "item" }> }> = ({ s }) => {
+/* ───────── 항목: n마다 다른 등장 (달려옴 / 솟아오름 / 회전 / 쿵) ───────── */
+const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
+  s,
+  dur,
+}) => {
   const frame = useCurrentFrame();
   const ring = interpolate(frame, [0, 26], [0, 1], {
     extrapolateLeft: "clamp",
@@ -234,96 +405,118 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }> }> = ({ s }) => {
   });
   const R = 190;
   const C = 2 * Math.PI * R;
+
+  let tx = 0;
+  let ty = 0;
+  if (s.n === 1) tx = lerp(frame, [4, 30], [-1100, 0], OUT); // 캐릭터가 밀고 들어옴
+  if (s.n === 3) tx = lerp(frame, [0, 22], [1100, 0], OUT); // 오른쪽에서 휙
+  if (s.n === 4) {
+    ty = slam(frame, 0);
+    const h = frame - 10;
+    tx = h > 0 ? 14 * Math.exp(-h / 6) * Math.sin(h * 2.2) : 0;
+  }
+  void dur;
+
   return (
     <>
       <Progress n={s.n} />
       <Center gap={50}>
         <div
           style={{
-            position: "relative",
-            width: 400,
-            height: 400,
-            ...enter(frame, 0, 14),
+            translate: `${tx}px ${ty}px`,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 50,
           }}
         >
-          <svg
-            width="400"
-            height="400"
-            viewBox="0 0 460 460"
-            style={{ position: "absolute", inset: 0, rotate: "-90deg" }}
-          >
-            <circle
-              cx="230"
-              cy="230"
-              r={R}
-              fill="none"
-              stroke="#EEEEEE"
-              strokeWidth="26"
-            />
-            <circle
-              cx="230"
-              cy="230"
-              r={R}
-              fill="none"
-              stroke={ACCENT}
-              strokeWidth="26"
-              strokeLinecap="round"
-              strokeDasharray={C}
-              strokeDashoffset={C * (1 - ring)}
-            />
-          </svg>
           <div
             style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: 240,
-              fontWeight: 900,
-              color: ACCENT,
+              position: "relative",
+              width: 400,
+              height: 400,
+              ...enter(frame, 0, 14),
             }}
           >
-            {s.n}
-          </div>
-        </div>
-        <div
-          style={{
-            ...enter(frame, 14),
-            fontSize: 124,
-            fontWeight: 900,
-            color: INK,
-          }}
-        >
-          {s.head}
-        </div>
-        <div
-          style={{
-            ...enter(frame, 24),
-            fontSize: 64,
-            fontWeight: 500,
-            color: SUB,
-          }}
-        >
-          {s.sub}
-        </div>
-        <div style={{ display: "flex", gap: 22, marginTop: 20 }}>
-          {s.tags.map((tag, i) => (
+            <svg
+              width="400"
+              height="400"
+              viewBox="0 0 460 460"
+              style={{ position: "absolute", inset: 0, rotate: "-90deg" }}
+            >
+              <circle
+                cx="230"
+                cy="230"
+                r={R}
+                fill="none"
+                stroke="#EEEEEE"
+                strokeWidth="26"
+              />
+              <circle
+                cx="230"
+                cy="230"
+                r={R}
+                fill="none"
+                stroke={ACCENT}
+                strokeWidth="26"
+                strokeLinecap="round"
+                strokeDasharray={C}
+                strokeDashoffset={C * (1 - ring)}
+              />
+            </svg>
             <div
-              key={tag}
               style={{
-                ...enter(frame, 34 + i * 7),
-                fontSize: 52,
-                fontWeight: 700,
-                color: INK,
-                border: `5px solid ${INK}`,
-                borderRadius: 60,
-                padding: "14px 38px",
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: 240,
+                fontWeight: 900,
+                color: ACCENT,
               }}
             >
-              {tag}
+              {s.n}
             </div>
-          ))}
+          </div>
+          <div
+            style={{
+              ...enter(frame, 14),
+              fontSize: s.head.length > 7 ? 104 : 124,
+              fontWeight: 900,
+              color: INK,
+            }}
+          >
+            {s.head}
+          </div>
+          <div
+            style={{
+              ...enter(frame, 24),
+              fontSize: 58,
+              fontWeight: 500,
+              color: SUB,
+            }}
+          >
+            {s.sub}
+          </div>
+          <div style={{ display: "flex", gap: 22, marginTop: 10 }}>
+            {s.tags.map((tag, i) => (
+              <div
+                key={tag}
+                style={{
+                  ...enter(frame, 34 + i * 7),
+                  fontSize: 50,
+                  fontWeight: 700,
+                  color: INK,
+                  border: `5px solid ${INK}`,
+                  borderRadius: 60,
+                  padding: "14px 34px",
+                }}
+              >
+                {tag}
+              </div>
+            ))}
+          </div>
         </div>
       </Center>
     </>
@@ -341,7 +534,7 @@ const Summary: React.FC<{ s: Extract<Scene, { type: "summary" }> }> = ({
       <div
         style={{
           ...enter(frame, 0),
-          fontSize: 110,
+          fontSize: 100,
           fontWeight: 900,
           color: INK,
           marginBottom: 30,
@@ -369,7 +562,7 @@ const Summary: React.FC<{ s: Extract<Scene, { type: "summary" }> }> = ({
           >
             {i + 1}
           </div>
-          <div style={{ fontSize: 78, fontWeight: 800, color: INK }}>{r}</div>
+          <div style={{ fontSize: 76, fontWeight: 800, color: INK }}>{r}</div>
         </div>
       ))}
     </AbsoluteFill>
@@ -382,24 +575,38 @@ const Outro: React.FC<{ s: Extract<Scene, { type: "outro" }> }> = ({ s }) => {
     <Center>
       <div
         style={{
-          ...enter(frame, 0),
           fontSize: 130,
           fontWeight: 900,
           color: INK,
+          opacity: frame >= 14 ? 1 : 0,
+          translate: `0px ${slam(frame, 14)}px`,
         }}
       >
         {s.text}
       </div>
       <div
         style={{
-          ...enter(frame, 12),
-          fontSize: 62,
+          ...enter(frame, 30),
+          fontSize: 56,
           fontWeight: 500,
           color: SUB,
         }}
       >
         {s.sub}
       </div>
+      {s.note ? (
+        <div
+          style={{
+            ...enter(frame, 40),
+            fontSize: 38,
+            fontWeight: 500,
+            color: "#999",
+            marginTop: 30,
+          }}
+        >
+          ※ {s.note}
+        </div>
+      ) : null}
     </Center>
   );
 };
@@ -408,6 +615,8 @@ const gestureFor = (s: Scene): Gesture => {
   switch (s.type) {
     case "hook":
       return "up";
+    case "why":
+      return "pointR";
     case "title":
       return "pointR";
     case "item":
@@ -419,19 +628,77 @@ const gestureFor = (s: Scene): Gesture => {
   }
 };
 
-const SceneView: React.FC<{ s: Scene }> = ({ s }) => {
+const poseFor = (s: Scene, f: number, D: number): Pose => {
+  switch (s.type) {
+    case "hook":
+      return hookPose(f);
+    case "why":
+      return whyPose(f);
+    case "title":
+      return titlePose(f);
+    case "item":
+      return itemPose(s.n, f, D);
+    case "summary":
+      return summaryPose(f, D);
+    case "outro":
+      return outroPose(f);
+  }
+};
+
+const SceneView: React.FC<{ s: Scene; dur: number }> = ({ s, dur }) => {
   switch (s.type) {
     case "hook":
       return <Hook s={s} />;
+    case "why":
+      return <Why s={s} />;
     case "title":
       return <Title s={s} />;
     case "item":
-      return <Item s={s} />;
+      return <Item s={s} dur={dur} />;
     case "summary":
       return <Summary s={s} />;
     case "outro":
       return <Outro s={s} />;
   }
+};
+
+// 캐릭터 레이어: 바닥선 아래는 잘라서 '땅으로 꺼지는' 연출을 만든다
+const CharLayer: React.FC<{ s: Scene; start: number; dur: number }> = ({
+  s,
+  start,
+  dur,
+}) => {
+  const f = useCurrentFrame();
+  const pose = poseFor(s, f, dur);
+  const surprised = s.type === "hook" || (s.type === "item" && s.n === 4);
+  return (
+    <AbsoluteFill
+      style={{
+        justifyContent: "flex-end",
+        alignItems: "center",
+        paddingBottom: 40,
+        clipPath: "inset(-3000px -3000px 40px -3000px)",
+      }}
+    >
+      {s.audio ? (
+        <CharacterTalking
+          src={s.audio}
+          gesture={gestureFor(s)}
+          offset={start}
+          surprised={surprised}
+          pose={pose}
+        />
+      ) : (
+        <CharacterSynthetic
+          gesture={gestureFor(s)}
+          offset={start}
+          totalFrames={dur}
+          surprised={surprised}
+          pose={pose}
+        />
+      )}
+    </AbsoluteFill>
+  );
 };
 
 export const InfoCard: React.FC<InfoCardProps> = ({ scenes }) => {
@@ -442,6 +709,17 @@ export const InfoCard: React.FC<InfoCardProps> = ({ scenes }) => {
       name="InfoCard"
       style={{ backgroundColor: "#FFFFFF", fontFamily: FONT }}
     >
+      {/* 바닥선 */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 1880,
+          height: 6,
+          background: "#E6E6E6",
+        }}
+      />
       {scenes.map((s, i) => {
         const dur = Math.round(s.seconds * fps);
         const start = from;
@@ -449,31 +727,9 @@ export const InfoCard: React.FC<InfoCardProps> = ({ scenes }) => {
         return (
           <Sequence key={i} from={start} durationInFrames={dur} layout="none">
             <Fade total={dur}>
-              <SceneView s={s} />
+              <SceneView s={s} dur={dur} />
             </Fade>
-            <AbsoluteFill
-              style={{
-                justifyContent: "flex-end",
-                alignItems: "center",
-                paddingBottom: 40,
-              }}
-            >
-              {s.audio ? (
-                <CharacterTalking
-                  src={s.audio}
-                  gesture={gestureFor(s)}
-                  offset={start}
-                  surprised={s.type === "hook"}
-                />
-              ) : (
-                <CharacterSynthetic
-                  gesture={gestureFor(s)}
-                  offset={start}
-                  totalFrames={dur}
-                  surprised={s.type === "hook"}
-                />
-              )}
-            </AbsoluteFill>
+            <CharLayer s={s} start={start} dur={dur} />
             {s.audio ? <Audio src={staticFile(s.audio)} /> : null}
           </Sequence>
         );

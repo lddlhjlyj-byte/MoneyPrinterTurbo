@@ -33,7 +33,7 @@ jobs:
       - name: 확인용 장면 사진·음량 저장 (저장소 verify/ 폴더)
         run: |
           mkdir -p ../verify
-          for t in 1 5 9 14 19 24 29 34 40 46; do
+          for t in 2 6 9 13 18 22 27 33 38 44 50 56; do
             ffmpeg -v error -y -ss $t -i out/infocard.mp4 -frames:v 1 -vf scale=360:-1 ../verify/f_$t.jpg
           done
           ffmpeg -v error -i out/infocard.mp4 -af volumedetect -f null - 2>&1 | grep -E "mean_volume|max_volume" > ../verify/audio.txt || true

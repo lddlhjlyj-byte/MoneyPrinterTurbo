@@ -1,0 +1,169 @@
+import { Easing, interpolate } from "remotion";
+
+/**
+ * 캐릭터 동선(안무). 모든 값은 장면 안의 프레임(f, 30fps) 기준.
+ * x,y: 이동(px)  rot: 회전(도)  sx,sy: 찌그러짐  sink: 0~1 (1이면 바닥 아래로 완전히 꺼짐)
+ * armA/armW: 팔 각도 강제값과 그 적용 비율(0~1)
+ */
+export type Pose = {
+  x: number;
+  y: number;
+  rot: number;
+  sx: number;
+  sy: number;
+  sink: number;
+  armA: number;
+  armW: number;
+};
+
+export const BASE: Pose = {
+  x: 0,
+  y: 0,
+  rot: 0,
+  sx: 1,
+  sy: 1,
+  sink: 0,
+  armA: 150,
+  armW: 0,
+};
+
+const CL = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+export const lerp = (
+  f: number,
+  a: number[],
+  b: number[],
+  easing?: (t: number) => number,
+) => interpolate(f, a, b, { ...CL, easing });
+
+export const OUT = Easing.out(Easing.cubic);
+export const IN = Easing.in(Easing.quad);
+export const INOUT = Easing.inOut(Easing.quad);
+
+/** t0부터 dur 프레임 동안 포물선 점프(높이 h) */
+export const arc = (f: number, t0: number, dur: number, h: number) => {
+  const u = (f - t0) / dur;
+  return u <= 0 || u >= 1 ? 0 : -h * 4 * u * (1 - u);
+};
+
+/** 착지 순간 납작해졌다가 복원 */
+const landSy = (f: number, t0: number) =>
+  f < t0 ? 1 : lerp(f, [t0, t0 + 3, t0 + 11], [0.78, 0.78, 1]);
+
+const withSy = (p: Pose, sy: number): Pose => ({
+  ...p,
+  sy,
+  sx: 1 + (1 - sy) * 0.7,
+});
+
+// 캐릭터 손 높이(화면 y) 기준: 쉬는 자세에서 약 1520, 점프하면 y만큼 올라감
+export const HANDS_REST_Y = 1520;
+export const HOOK_APEX = -740;
+
+export const hookPose = (f: number): Pose => {
+  const jump =
+    f < 64
+      ? lerp(f, [46, 56], [0, HOOK_APEX], OUT)
+      : lerp(f, [64, 78], [HOOK_APEX, 0], IN);
+  const sy =
+    f < 46
+      ? lerp(f, [36, 45], [1, 0.8])
+      : f < 78
+        ? 1.08
+        : landSy(f, 78);
+  return withSy(
+    {
+      ...BASE,
+      y: jump + arc(f, 8, 14, 70),
+      sink: lerp(f, [0, 9], [1, 0], OUT),
+      armA: 165,
+      armW: lerp(f, [46, 52, 72, 80], [0, 1, 1, 0]),
+    },
+    sy,
+  );
+};
+
+export const whyPose = (f: number): Pose =>
+  withSy(
+    {
+      ...BASE,
+      y: arc(f, 12, 26, 260),
+      rot: lerp(f, [12, 38], [0, 720], INOUT),
+      armA: 150,
+      armW: lerp(f, [10, 16, 34, 42], [0, 1, 1, 0]),
+    },
+    landSy(f, 38),
+  );
+
+export const titlePose = (f: number): Pose =>
+  withSy(
+    {
+      ...BASE,
+      y: arc(f, 0, 12, 170),
+      armA: 150,
+      armW: lerp(f, [0, 5, 12, 18], [0, 1, 1, 0]),
+    },
+    landSy(f, 12),
+  );
+
+export const itemPose = (n: number, f: number, D: number): Pose => {
+  if (n === 1) {
+    // 왼쪽에서 달려 들어옴
+    const run = f < 26;
+    return {
+      ...BASE,
+      x: lerp(f, [0, 26], [-950, 0], OUT),
+      y: run ? -Math.abs(Math.sin(f * 0.6)) * 36 * lerp(f, [0, 26], [1, 0.3]) : 0,
+      rot: lerp(f, [0, 26], [-8, 0]),
+    };
+  }
+  if (n === 2) {
+    // 땅속에서 솟아올라 점프
+    return withSy(
+      {
+        ...BASE,
+        sink: lerp(f, [0, 20, 28], [1, 1, 0]),
+        y: arc(f, 22, 22, 420),
+      },
+      landSy(f, 44),
+    );
+  }
+  if (n === 3) {
+    // 한 바퀴 회전 점프
+    return withSy(
+      {
+        ...BASE,
+        y: arc(f, 10, 22, 220),
+        rot: lerp(f, [10, 32], [0, 360], INOUT),
+      },
+      landSy(f, 32),
+    );
+  }
+  // n === 4: 불안하게 떨다가 땅으로 꺼짐
+  return {
+    ...BASE,
+    x: f > 10 && f < D - 24 ? 6 * Math.sin(f * 1.7) : 0,
+    rot: -9 * lerp(f, [0, 8], [0, 1]) * lerp(f, [D - 24, D - 18], [1, 0]),
+    sink: lerp(f, [D - 22, D - 6], [0, 1], IN),
+  };
+};
+
+export const summaryPose = (f: number, D: number): Pose => ({
+  ...BASE,
+  y:
+    arc(f, 12, 10, 100) +
+    arc(f, 24, 10, 100) +
+    arc(f, 36, 10, 100) +
+    arc(f, 48, 10, 100),
+  sink: lerp(f, [D - 22, D - 6], [0, 1], IN),
+});
+
+export const outroPose = (f: number): Pose =>
+  withSy(
+    {
+      ...BASE,
+      sink: lerp(f, [0, 8], [1, 0], OUT),
+      y: arc(f, 6, 16, 220) + arc(f, 22, 26, 260),
+      rot: lerp(f, [22, 48], [0, 360], INOUT),
+    },
+    landSy(f, 48),
+  );
