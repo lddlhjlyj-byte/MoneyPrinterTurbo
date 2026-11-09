@@ -14,6 +14,8 @@ export type Pose = {
   sink: number;
   armA: number;
   armW: number;
+  star: number; // 착지 별 폭발 진행(0=없음)
+  sweat: number; // 땀방울(0/1)
 };
 
 export const BASE: Pose = {
@@ -23,8 +25,10 @@ export const BASE: Pose = {
   sx: 1,
   sy: 1,
   sink: 0,
-  armA: 150,
+  armA: 125,
   armW: 0,
+  star: 0,
+  sweat: 0,
 };
 
 const CL = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -48,6 +52,9 @@ export const arc = (f: number, t0: number, dur: number, h: number) => {
 /** 착지 순간 납작해졌다가 복원 */
 const landSy = (f: number, t0: number) =>
   f < t0 ? 1 : lerp(f, [t0, t0 + 3, t0 + 11], [0.78, 0.78, 1]);
+
+export const burst = (f: number, t0: number) =>
+  f >= t0 && f < t0 + 16 ? (f - t0 + 1) / 17 : 0;
 
 const withSy = (p: Pose, sy: number): Pose => ({
   ...p,
@@ -75,7 +82,8 @@ export const hookPose = (f: number): Pose => {
       ...BASE,
       y: jump + arc(f, 8, 14, 70),
       sink: lerp(f, [0, 9], [1, 0], OUT),
-      armA: 165,
+      armA: 125,
+      star: burst(f, 78),
       armW: lerp(f, [46, 52, 72, 80], [0, 1, 1, 0]),
     },
     sy,
@@ -88,7 +96,8 @@ export const whyPose = (f: number): Pose =>
       ...BASE,
       y: arc(f, 12, 26, 260),
       rot: lerp(f, [12, 38], [0, 720], INOUT),
-      armA: 150,
+      armA: 125,
+      star: burst(f, 38),
       armW: lerp(f, [10, 16, 34, 42], [0, 1, 1, 0]),
     },
     landSy(f, 38),
@@ -99,7 +108,8 @@ export const titlePose = (f: number): Pose =>
     {
       ...BASE,
       y: arc(f, 0, 12, 170),
-      armA: 150,
+      armA: 125,
+      star: burst(f, 12),
       armW: lerp(f, [0, 5, 12, 18], [0, 1, 1, 0]),
     },
     landSy(f, 12),
@@ -123,6 +133,7 @@ export const itemPose = (n: number, f: number, D: number): Pose => {
         ...BASE,
         sink: lerp(f, [0, 20, 28], [1, 1, 0]),
         y: arc(f, 22, 22, 420),
+        star: burst(f, 44),
       },
       landSy(f, 44),
     );
@@ -134,6 +145,7 @@ export const itemPose = (n: number, f: number, D: number): Pose => {
         ...BASE,
         y: arc(f, 10, 22, 220),
         rot: lerp(f, [10, 32], [0, 360], INOUT),
+        star: burst(f, 32),
       },
       landSy(f, 32),
     );
@@ -144,6 +156,7 @@ export const itemPose = (n: number, f: number, D: number): Pose => {
     x: f > 10 && f < D - 24 ? 6 * Math.sin(f * 1.7) : 0,
     rot: -9 * lerp(f, [0, 8], [0, 1]) * lerp(f, [D - 24, D - 18], [1, 0]),
     sink: lerp(f, [D - 22, D - 6], [0, 1], IN),
+    sweat: f > 10 && f < D - 20 ? 1 : 0,
   };
 };
 
@@ -164,6 +177,7 @@ export const outroPose = (f: number): Pose =>
       sink: lerp(f, [0, 8], [1, 0], OUT),
       y: arc(f, 6, 16, 220) + arc(f, 22, 26, 260),
       rot: lerp(f, [22, 48], [0, 360], INOUT),
+      star: burst(f, 48),
     },
     landSy(f, 48),
   );

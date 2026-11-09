@@ -24,17 +24,17 @@ const armTarget = (g: Gesture, f: number): { l: number; r: number } => {
   switch (g) {
     case "up":
       return {
-        l: 150 + 12 * Math.sin(f * 0.4),
-        r: 150 + 12 * Math.sin(f * 0.4 + 1),
+        l: 125 + 10 * Math.sin(f * 0.4),
+        r: 125 + 10 * Math.sin(f * 0.4 + 1),
       };
     case "pointR":
-      return { l: rest, r: 135 + 8 * Math.sin(f * 0.25) };
+      return { l: rest, r: 105 + 8 * Math.sin(f * 0.25) };
     case "pointL":
-      return { l: 135 + 8 * Math.sin(f * 0.25), r: rest };
+      return { l: 105 + 8 * Math.sin(f * 0.25), r: rest };
     case "count":
-      return { l: rest, r: 95 + 28 * Math.abs(Math.sin(f * 0.16)) };
+      return { l: rest, r: 75 + 30 * Math.abs(Math.sin(f * 0.16)) };
     case "wave":
-      return { l: rest, r: 140 + 24 * Math.sin(f * 0.5) };
+      return { l: rest, r: 120 + 24 * Math.sin(f * 0.5) };
     default:
       return {
         l: rest + 3 * Math.sin(f * 0.1),
@@ -100,15 +100,15 @@ const CharacterView: React.FC<ViewProps> = ({
 
   // 팔: 손(노랑) + 흰 가운 소매
   const arm = (side: "L" | "R", ang: number) => {
-    const x = side === "L" ? 52 : 548;
+    const x = side === "L" ? 128 : 472;
     const rot = side === "L" ? ang : -ang;
     return (
-      <g transform={`translate(${x},330) rotate(${rot})`}>
+      <g transform={`translate(${x},505) rotate(${rot})`}>
         <line
           x1="0"
           y1="0"
           x2="0"
-          y2="92"
+          y2="104"
           stroke={LINE}
           strokeWidth="56"
           strokeLinecap="round"
@@ -117,7 +117,7 @@ const CharacterView: React.FC<ViewProps> = ({
           x1="0"
           y1="0"
           x2="0"
-          y2="92"
+          y2="104"
           stroke={SKIN}
           strokeWidth="42"
           strokeLinecap="round"
@@ -302,6 +302,38 @@ const CharacterView: React.FC<ViewProps> = ({
                   strokeWidth="5"
                   strokeLinejoin="round"
                 />
+                {pose.star > 0
+                  ? [0, 1, 2, 3, 4, 5].map((i) => {
+                      const a = (-150 + i * 60) * (Math.PI / 180);
+                      const r = 330 + 170 * pose.star;
+                      const cx = 300 + Math.cos(a) * r * 1.05;
+                      const cy = 270 + Math.sin(a) * r * 0.9;
+                      const k = 1 - pose.star * 0.5;
+                      return (
+                        <polygon
+                          key={i}
+                          transform={`translate(${cx},${cy}) rotate(${pose.star * 120 + i * 20}) scale(${k})`}
+                          points="0,-30 9,-10 30,-9 13,5 19,26 0,14 -19,26 -13,5 -30,-9 -9,-10"
+                          fill={SKIN}
+                          stroke={LINE}
+                          strokeWidth="5"
+                          strokeLinejoin="round"
+                          opacity={1 - pose.star * 0.6}
+                        />
+                      );
+                    })
+                  : null}
+                {pose.sweat > 0 ? (
+                  <g transform={`translate(500,${70 + 12 * Math.abs(Math.sin(f * 0.2))})`}>
+                    <path
+                      d="M 0 -34 C 0 -34 -26 4 -26 20 C -26 36 -14 46 0 46 C 14 46 26 36 26 20 C 26 4 0 -34 0 -34 Z"
+                      fill="#BFE6FF"
+                      stroke={LINE}
+                      strokeWidth="5"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                ) : null}
               </g>
             </g>
           </svg>
