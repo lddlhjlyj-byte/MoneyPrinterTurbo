@@ -38,8 +38,11 @@ jobs:
       - name: 확인용 장면 사진·음량 저장 (저장소 verify/ 폴더)
         run: |
           mkdir -p ../verify
+          DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 out/infocard.mp4 | cut -d. -f1)
           for t in 2 6 9 13 18 22 27 33 38 44 50 56; do
-            ffmpeg -v error -y -ss $t -i out/infocard.mp4 -frames:v 1 -vf scale=360:-1 ../verify/f_$t.jpg
+            if [ "$t" -lt "$DUR" ]; then
+              ffmpeg -v error -y -ss $t -i out/infocard.mp4 -frames:v 1 -vf scale=360:-1 ../verify/f_$t.jpg || true
+            fi
           done
           ffmpeg -v error -i out/infocard.mp4 -af volumedetect -f null - 2>&1 | grep -E "mean_volume|max_volume" > ../verify/audio.txt || true
           ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,duration -of default=nw=1 out/infocard.mp4 > ../verify/probe.txt
