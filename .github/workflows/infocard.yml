@@ -1,6 +1,11 @@
 name: infocard-video
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - shorts-video/src/cards.json
+      - .github/workflows/infocard.yml
 
 permissions:
   contents: write
