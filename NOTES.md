@@ -228,3 +228,4 @@ print(r.stderr[-3000:])
 - 2026-11-10: 메트리쿨 연결 유튜브 채널 ID UChZyHxpFMZcybO0AYRlkVfQ가 '노랑이 스킨랩'인지 미확인(사용자가 스튜디오 채널 ID 확인 예정). 확인 전 게시 안 함
 - 2026-11-10: 포크 저장소의 Actions가 비활성화됨(워크플로 실행 시 422 'Actions has been disabled'). 샌드박스에서는 활성화 불가(프록시 차단) → 사용자가 GitHub Settings > Actions > General에서 켜야 영상 3 렌더링 가능. 원인은 미확인
 - 2026-11-11: 사용자가 Settings > Actions > General에서 Actions를 켬(사용자 진술). infocard.yml에 push 트리거 추가(shorts-video/src/cards.json 또는 워크플로 파일 변경 시 main 푸시로 자동 렌더링). 푸시 완료, 영상 3(선크림 세안) 렌더링 시작 여부·결과는 이 환경에서 Actions API가 막혀 확인 못 함 → 사용자가 Actions 탭에서 확인. 대본의 '워터프루프' 내레이션은 FDA 표기(water resistant)와 달라 변경 여부 사용자 답변 대기
+- 2026-11-11: 사용자 결정(진술): 영상 3 내레이션의 '워터프루프' 표기는 그대로 유지(FDA는 water resistant 표기 안내). 대본 수정 없음
