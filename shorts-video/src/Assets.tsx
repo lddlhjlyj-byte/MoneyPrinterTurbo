@@ -66,10 +66,10 @@ export const Thumbnail: React.FC = () => (
   <AbsoluteFill style={{ background: "#FFFFFF", fontFamily: FONT, overflow: "hidden", textAlign: "center" }}>
     <div style={{ position: "absolute", left: -300, top: 900, width: 1000, height: 1000, borderRadius: 500, background: "#FFF1A8", opacity: 0.8 }} />
     <div style={{ position: "absolute", right: -360, top: 1100, width: 900, height: 900, borderRadius: 450, background: "#EAF7FF" }} />
-    <div style={{ position: "absolute", top: 170, left: 0, right: 0, fontSize: 150, fontWeight: 900, color: "#111", lineHeight: 1.15, whiteSpace: "nowrap" }}>
+    <div style={{ position: "absolute", top: 170, left: 0, right: 0, fontSize: Math.min(150, 1000 / ((hook.line1 ?? "").length * 0.9 || 1)), fontWeight: 900, color: "#111", lineHeight: 1.15, whiteSpace: "nowrap" }}>
       {hook.line1}
     </div>
-    <div style={{ position: "absolute", top: 360, left: 0, right: 0, fontSize: 112, fontWeight: 900, color: "#111", lineHeight: 1.15, whiteSpace: "nowrap" }}>
+    <div style={{ position: "absolute", top: 360, left: 0, right: 0, fontSize: Math.min(112, 1000 / ((hook.line2 ?? "").length * 0.85 || 1)), fontWeight: 900, color: "#111", lineHeight: 1.15, whiteSpace: "nowrap" }}>
       {hook.line2}
     </div>
     <div style={{ position: "absolute", top: 580, left: 0, right: 0, display: "flex", justifyContent: "center" }}>

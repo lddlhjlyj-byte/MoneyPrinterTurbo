@@ -189,3 +189,83 @@ export const outroPose = (f: number): Pose =>
     },
     landSy(f, 48),
   );
+
+
+/* ───────── 새 동작들 (cards.json 장면의 "move"로 선택) ───────── */
+
+// 덜덜 떨기 (추위): 몸을 움츠리고 빠르게 떨림
+export const shiverPose = (f: number, D: number): Pose =>
+  withSy(
+    {
+      ...BASE,
+      x: f > 6 ? 7 * Math.sin(f * 2.1) : 0,
+      rot: f > 6 ? 3 * Math.sin(f * 2.6 + 1) : 0,
+      y: arc(f, 0, 10, 60),
+      sink: lerp(f, [D - 14, D - 4], [0, 1], IN),
+      sweat: 0,
+    },
+    0.94,
+  );
+
+// 갸웃: 고개(몸)를 기울이며 천천히 좌우로 흔들림 (생각/고민)
+export const tiltPose = (f: number, D: number): Pose => ({
+  ...BASE,
+  x: lerp(f, [0, 14], [900, 0], OUT),
+  rot: lerp(f, [14, 26], [0, -12], OUT) + 4 * Math.sin(f * 0.18) * lerp(f, [26, 34], [0, 1]),
+  y: arc(f, 28, 14, 50),
+  sink: lerp(f, [D - 14, D - 4], [0, 1], IN),
+});
+
+// 살랑살랑 춤: 좌우 이동하며 리듬 타기 (촉촉/편안)
+export const swayPose = (f: number, D: number): Pose => ({
+  ...BASE,
+  x: lerp(f, [0, 12], [1000, 0], OUT) + (f > 12 ? 70 * Math.sin((f - 12) * 0.13) : 0),
+  rot: f > 12 ? 11 * Math.sin((f - 12) * 0.13 + 1.3) : 0,
+  y: f > 12 ? -Math.abs(Math.sin((f - 12) * 0.13)) * 40 : 0,
+  sink: lerp(f, [D - 14, D - 4], [0, 1], IN),
+});
+
+// 통통 세 번 앞으로: 점프할 때마다 조금씩 커짐 (다가와서 알려줌)
+export const hop3Pose = (f: number, D: number): Pose =>
+  withSy(
+    {
+      ...BASE,
+      y: arc(f, 4, 14, 150) + arc(f, 20, 14, 190) + arc(f, 36, 16, 240),
+      rot: lerp(f, [36, 52], [0, -360], INOUT),
+      star: burst(f, 52),
+      sink: lerp(f, [D - 14, D - 4], [0, 1], IN),
+    },
+    landSy(f, 52),
+  );
+
+// 위아래로 끄덕이며 설명 (고개 끄덕)
+export const nodPose = (f: number, D: number): Pose => ({
+  ...BASE,
+  y: lerp(f, [0, 10], [-900, 0], OUT) + (f > 12 ? 24 * Math.abs(Math.sin((f - 12) * 0.22)) * -1 : 0),
+  sink: lerp(f, [D - 14, D - 4], [0, 1], IN),
+});
+
+export type MoveName =
+  | "run"
+  | "rise"
+  | "spinJump"
+  | "tremble"
+  | "bounce"
+  | "shiver"
+  | "tilt"
+  | "sway"
+  | "hop3"
+  | "nod";
+
+export const MOVES: Record<MoveName, (f: number, D: number) => Pose> = {
+  run: (f, D) => itemPose(1, f, D),
+  rise: (f, D) => itemPose(2, f, D),
+  spinJump: (f, D) => itemPose(3, f, D),
+  tremble: (f, D) => itemPose(4, f, D),
+  bounce: (f, D) => itemPose(5, f, D),
+  shiver: shiverPose,
+  tilt: tiltPose,
+  sway: swayPose,
+  hop3: hop3Pose,
+  nod: nodPose,
+};

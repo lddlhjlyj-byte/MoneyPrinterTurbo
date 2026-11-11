@@ -46,13 +46,23 @@ jobs:
           done
           ffmpeg -v error -i out/infocard.mp4 -af volumedetect -f null - 2>&1 | grep -E "mean_volume|max_volume" > ../verify/audio.txt || true
           ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,duration -of default=nw=1 out/infocard.mp4 > ../verify/probe.txt
-      - name: verify 폴더 커밋
+      - name: 영상·썸네일을 고유 파일명으로 보관 (cards.json의 name, 덮어쓰기 방지)
+        run: |
+          NAME=$(python3 -c "import json;print(json.load(open('src/cards.json',encoding='utf-8')).get('name') or '')")
+          if [ -z "$NAME" ]; then NAME="video-$(date +%Y%m%d-%H%M)"; fi
+          echo "파일명: $NAME"
+          mkdir -p ../content/videos ../content/thumbnails
+          cp out/infocard.mp4 "../content/videos/$NAME.mp4"
+          npx remotion still Thumbnail "../content/thumbnails/$NAME.png"
+          echo "$NAME" > ../verify/name.txt
+      - name: verify·content 폴더 커밋
         working-directory: .
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add verify
-          git commit -m "chore: InfoCard 확인용 장면 사진" || echo "변경 없음"
+          git add verify content/videos content/thumbnails
+          git commit -m "chore: InfoCard 결과 보관 ($(cat verify/name.txt))" || echo "변경 없음"
+          git pull --rebase origin main
           git push
       - name: 영상 파일을 video 브랜치에 저장 (바로 받을 수 있게)
         working-directory: .

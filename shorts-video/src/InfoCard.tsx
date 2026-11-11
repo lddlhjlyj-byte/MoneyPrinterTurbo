@@ -2,6 +2,18 @@ import { Audio } from "@remotion/media";
 import cardsData from "./cards.json";
 import { CharacterSynthetic, CharacterTalking, Gesture } from "./Character";
 import {
+  CreamJar,
+  DryPatch,
+  Faucet,
+  FlakeIcon,
+  Heater,
+  Humidifier,
+  Snow,
+  Snowflake,
+  TightIcon,
+  WrinkleIcon,
+} from "./Icons";
+import {
   HANDS_REST_Y,
   IN,
   OUT,
@@ -10,6 +22,8 @@ import {
   hookPose,
   itemPose,
   lerp,
+  MOVES,
+  MoveName,
   outroPose,
   summaryPose,
   titlePose,
@@ -34,7 +48,9 @@ const ACCENT = "#E5322D"; // 색 강조는 숫자에만
 const BRAND = "#FFD84D"; // 캐릭터 노랑
 const EASE = Easing.bezier(0.16, 1, 0.3, 1);
 
-type Scene =
+type Common = { move?: MoveName; gesture?: Gesture; deco?: "snow" };
+
+type Scene = (
   | {
       type: "hook";
       seconds: number;
@@ -48,7 +64,7 @@ type Scene =
       seconds: number;
       head: string;
       sub: string;
-      kind?: "capsule" | "bottle" | "sun";
+      kind?: "capsule" | "bottle" | "sun" | "winter";
       a: string;
       b: string;
       c: string;
@@ -66,9 +82,19 @@ type Scene =
       seconds: number;
       n: number;
       worry?: boolean;
+      icon?: "faucet" | "cream" | "bottle" | "humidifier";
       head: string;
       sub: string;
       tags: string[];
+      audio?: string;
+    }
+  | {
+      type: "signs";
+      seconds: number;
+      head: string;
+      sub: string;
+      rows: string[];
+      icons: ("wrinkle" | "flake" | "tight")[];
       audio?: string;
     }
   | {
@@ -85,7 +111,9 @@ type Scene =
       sub: string;
       note?: string;
       audio?: string;
-    };
+    }
+) &
+  Common;
 
 export type InfoCardProps = { scenes: Scene[] };
 export const FPS = 30;
@@ -349,17 +377,17 @@ const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
         }}
       >
         <div style={{ ...enter(frame, 22), display: "flex", flexDirection: "column", alignItems: "center" }}>
-          {s.kind === "sun" ? <Sun t="UVB" /> : s.kind === "bottle" ? <Bottle /> : <Capsule />}
+          {s.kind === "winter" ? <Snowflake /> : s.kind === "sun" ? <Sun t="UVB" /> : s.kind === "bottle" ? <Bottle /> : <Capsule />}
           {label(s.a, 24)}
         </div>
         {op("+", 40)}
         <div style={{ ...enter(frame, 46), display: "flex", flexDirection: "column", alignItems: "center" }}>
-          {s.kind === "sun" ? <Sun t="UVA" /> : <Drop />}
+          {s.kind === "winter" ? <Heater /> : s.kind === "sun" ? <Sun t="UVA" /> : <Drop />}
           {label(s.b, 48)}
         </div>
         {op("→", 64)}
         <div style={{ ...enter(frame, 70), display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Absorb />
+          {s.kind === "winter" ? <DryPatch /> : <Absorb />}
           {label(s.c, 72)}
         </div>
       </div>
@@ -426,6 +454,13 @@ const Progress: React.FC<{ n: number; total?: number }> = ({ n, total = 4 }) => 
     ))}
   </div>
 );
+
+const ITEM_ICONS = {
+  faucet: <Faucet />,
+  cream: <CreamJar />,
+  bottle: <Bottle />,
+  humidifier: <Humidifier />,
+};
 
 /* ───────── 항목: n마다 다른 등장 (달려옴 / 솟아오름 / 회전 / 쿵) ───────── */
 const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
@@ -511,8 +546,30 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
                 color: ACCENT,
               }}
             >
-              {s.n}
+              {s.icon ? ITEM_ICONS[s.icon] : s.n}
             </div>
+            {s.icon ? (
+              <div
+                style={{
+                  position: "absolute",
+                  left: -14,
+                  top: -14,
+                  width: 112,
+                  height: 112,
+                  borderRadius: 56,
+                  background: "#FFFFFF",
+                  border: `7px solid ${INK}`,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontSize: 72,
+                  fontWeight: 900,
+                  color: ACCENT,
+                }}
+              >
+                {s.n}
+              </div>
+            ) : null}
           </div>
           <div
             style={{
@@ -555,6 +612,76 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
         </div>
       </Center>
     </>
+  );
+};
+
+const SIGN_ICONS = {
+  wrinkle: <WrinkleIcon />,
+  flake: <FlakeIcon />,
+  tight: <TightIcon />,
+};
+
+/* ───────── 건조 신호: 아이콘 + 문구 세 줄 ───────── */
+const Signs: React.FC<{ s: Extract<Scene, { type: "signs" }> }> = ({ s }) => {
+  const frame = useCurrentFrame();
+  return (
+    <AbsoluteFill style={{ textAlign: "center", padding: "0 60px" }}>
+      <div
+        style={{
+          ...enter(frame, 0),
+          position: "absolute",
+          top: 150,
+          left: 0,
+          right: 0,
+          fontSize: 92,
+          fontWeight: 900,
+          color: INK,
+        }}
+      >
+        {s.head}
+      </div>
+      <div
+        style={{
+          ...enter(frame, 10),
+          position: "absolute",
+          top: 290,
+          left: 0,
+          right: 0,
+          fontSize: 54,
+          fontWeight: 600,
+          color: SUB,
+        }}
+      >
+        {s.sub}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 440,
+          left: 90,
+          right: 90,
+          display: "flex",
+          flexDirection: "column",
+          gap: 50,
+        }}
+      >
+        {s.rows.map((r, i) => (
+          <div
+            key={r}
+            style={{
+              ...enter(frame, 20 + i * 20),
+              display: "flex",
+              alignItems: "center",
+              gap: 44,
+              textAlign: "left",
+            }}
+          >
+            <div style={{ flex: "none" }}>{SIGN_ICONS[s.icons[i]]}</div>
+            <div style={{ fontSize: 72, fontWeight: 800, color: INK }}>{r}</div>
+          </div>
+        ))}
+      </div>
+    </AbsoluteFill>
   );
 };
 
@@ -613,6 +740,8 @@ const Outro: React.FC<{ s: Extract<Scene, { type: "outro" }> }> = ({ s }) => {
           fontSize: 130,
           fontWeight: 900,
           color: INK,
+          whiteSpace: "pre-line",
+          lineHeight: 1.15,
           opacity: frame >= 14 ? 1 : 0,
           translate: `0px ${slam(frame, 14)}px`,
         }}
@@ -647,6 +776,7 @@ const Outro: React.FC<{ s: Extract<Scene, { type: "outro" }> }> = ({ s }) => {
 };
 
 const gestureFor = (s: Scene): Gesture => {
+  if (s.gesture) return s.gesture;
   switch (s.type) {
     case "hook":
       return "up";
@@ -656,6 +786,8 @@ const gestureFor = (s: Scene): Gesture => {
       return "pointR";
     case "item":
       return s.n % 2 === 1 ? "pointR" : "pointL";
+    case "signs":
+      return "pointR";
     case "summary":
       return "count";
     case "outro":
@@ -664,6 +796,7 @@ const gestureFor = (s: Scene): Gesture => {
 };
 
 const poseFor = (s: Scene, f: number, D: number): Pose => {
+  if (s.move) return MOVES[s.move](f, D);
   switch (s.type) {
     case "hook":
       return hookPose(f);
@@ -673,6 +806,8 @@ const poseFor = (s: Scene, f: number, D: number): Pose => {
       return titlePose(f);
     case "item":
       return itemPose(s.n === 4 && s.worry === false ? 5 : s.n, f, D);
+    case "signs":
+      return MOVES.nod(f, D);
     case "summary":
       return summaryPose(f, D);
     case "outro":
@@ -680,7 +815,14 @@ const poseFor = (s: Scene, f: number, D: number): Pose => {
   }
 };
 
-const SceneView: React.FC<{ s: Scene; dur: number }> = ({ s, dur }) => {
+const SceneView: React.FC<{ s: Scene; dur: number }> = ({ s, dur }) => (
+  <>
+    {s.deco === "snow" ? <Snow /> : null}
+    <SceneBody s={s} dur={dur} />
+  </>
+);
+
+const SceneBody: React.FC<{ s: Scene; dur: number }> = ({ s, dur }) => {
   switch (s.type) {
     case "hook":
       return <Hook s={s} />;
@@ -690,6 +832,8 @@ const SceneView: React.FC<{ s: Scene; dur: number }> = ({ s, dur }) => {
       return <Title s={s} />;
     case "item":
       return <Item s={s} dur={dur} />;
+    case "signs":
+      return <Signs s={s} />;
     case "summary":
       return <Summary s={s} />;
     case "outro":

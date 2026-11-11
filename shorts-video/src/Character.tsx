@@ -11,7 +11,16 @@ import { BASE, Pose } from "./choreo";
  * 오리지널 캐릭터: 머리만 큰 마스코트 (몸통 없음, 짧은 팔·다리, 눈썹·코 없음) + 흰 가운
  * 눈 2개의 면적 합 = 얼굴 면적의 약 1/3 (눈 rx100·ry115 ×2 ≈ 72,256 / 얼굴 rx270·ry250 ≈ 212,058)
  */
-export type Gesture = "idle" | "up" | "pointR" | "pointL" | "count" | "wave";
+export type Gesture =
+  | "idle"
+  | "up"
+  | "pointR"
+  | "pointL"
+  | "count"
+  | "wave"
+  | "both"
+  | "cheer"
+  | "shy";
 
 const SKIN = "#FFD84D";
 const SKIN_LIGHT = "#FFF1A8";
@@ -35,6 +44,21 @@ const armTarget = (g: Gesture, f: number): { l: number; r: number } => {
       return { l: rest, r: 75 + 30 * Math.abs(Math.sin(f * 0.16)) };
     case "wave":
       return { l: rest, r: 120 + 24 * Math.sin(f * 0.5) };
+    case "both": // 두 팔을 벌려 보여주기
+      return {
+        l: 62 + 8 * Math.sin(f * 0.18),
+        r: 62 + 8 * Math.sin(f * 0.18 + 1.5),
+      };
+    case "cheer": // 두 팔 번쩍
+      return {
+        l: 150 + 14 * Math.sin(f * 0.5),
+        r: 150 + 14 * Math.sin(f * 0.5 + 1.2),
+      };
+    case "shy": // 팔을 몸 쪽으로 오므림 (추울 때)
+      return {
+        l: 8 + 4 * Math.sin(f * 1.6),
+        r: 8 + 4 * Math.sin(f * 1.6 + 1),
+      };
     default:
       return {
         l: rest + 3 * Math.sin(f * 0.1),
