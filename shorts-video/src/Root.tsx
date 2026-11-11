@@ -1,5 +1,5 @@
 import { Composition, Still } from "remotion";
-import { Banner, Profile } from "./Assets";
+import { Banner, Profile, Thumbnail } from "./Assets";
 import script from "./script.json";
 import cards from "./cards.json";
 import { InfoCard, calculateInfoCardMetadata } from "./InfoCard";
@@ -41,6 +41,7 @@ export const RemotionRoot: React.FC = () => {
       />
       <Still id="Profile" component={Profile} width={800} height={800} />
       <Still id="Banner" component={Banner} width={2560} height={1440} />
+      <Still id="Thumbnail" component={Thumbnail} width={1080} height={1920} />
     </>
   );
 };

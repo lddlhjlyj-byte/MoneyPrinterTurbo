@@ -54,3 +54,31 @@ export const Banner: React.FC = () => (
     </div>
   </AbsoluteFill>
 );
+
+// 쇼츠 썸네일 1080x1920: cards.json의 후킹 장면 문구를 그대로 사용 (영상마다 자동 변경)
+import cardsData from "./cards.json";
+
+type HookScene = { type: string; line1?: string; line2?: string; warn?: string };
+const hook = ((cardsData as { scenes: HookScene[] }).scenes.find((s) => s.type === "hook") ??
+  {}) as HookScene;
+
+export const Thumbnail: React.FC = () => (
+  <AbsoluteFill style={{ background: "#FFFFFF", fontFamily: FONT, overflow: "hidden", textAlign: "center" }}>
+    <div style={{ position: "absolute", left: -300, top: 900, width: 1000, height: 1000, borderRadius: 500, background: "#FFF1A8", opacity: 0.8 }} />
+    <div style={{ position: "absolute", right: -360, top: 1100, width: 900, height: 900, borderRadius: 450, background: "#EAF7FF" }} />
+    <div style={{ position: "absolute", top: 170, left: 0, right: 0, fontSize: 150, fontWeight: 900, color: "#111", lineHeight: 1.15, whiteSpace: "nowrap" }}>
+      {hook.line1}
+    </div>
+    <div style={{ position: "absolute", top: 360, left: 0, right: 0, fontSize: 112, fontWeight: 900, color: "#111", lineHeight: 1.15, whiteSpace: "nowrap" }}>
+      {hook.line2}
+    </div>
+    <div style={{ position: "absolute", top: 580, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+      <div style={{ background: "#111", color: "#fff", fontSize: 64, fontWeight: 800, padding: "24px 52px", borderRadius: 28 }}>
+        {hook.warn}
+      </div>
+    </div>
+    <div style={{ position: "absolute", left: 540 - 280 * 1.7, top: 1180 - 246 * 1.7, scale: 1.7, transformOrigin: "0 0" }}>
+      <CharacterStill mouth={0.5} />
+    </div>
+  </AbsoluteFill>
+);
