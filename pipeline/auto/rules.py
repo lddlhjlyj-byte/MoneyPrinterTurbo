@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 CFG = json.loads((Path(__file__).parent / "config.json").read_text("utf-8"))
-ICONS = {"faucet", "cream", "bottle", "humidifier", "patch"}
+ICONS = {"faucet", "cream", "bottle", "humidifier", "patch", "heater"}
 SIGN_ICONS = {"wrinkle", "flake", "tight"}
 
 
