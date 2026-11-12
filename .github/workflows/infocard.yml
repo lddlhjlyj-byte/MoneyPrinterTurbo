@@ -55,12 +55,19 @@ jobs:
           cp out/infocard.mp4 "../content/videos/$NAME.mp4"
           npx remotion still Thumbnail "../content/thumbnails/$NAME.png"
           echo "$NAME" > ../verify/name.txt
+      - name: 유튜브 예약 업로드 (자격 정보가 있을 때만, 실패해도 렌더링 결과는 보관)
+        continue-on-error: true
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python3 ../pipeline/auto/upload_youtube.py "$(cat ../verify/name.txt)"
       - name: verify·content 폴더 커밋
         working-directory: .
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add verify content/videos content/thumbnails
+          git add -A verify content
           git commit -m "chore: InfoCard 결과 보관 ($(cat verify/name.txt))" || echo "변경 없음"
           git pull --rebase --autostash origin main
           git push

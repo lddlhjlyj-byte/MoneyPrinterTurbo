@@ -1,0 +1,7 @@
+{
+  "publish_hour_kst": 18,
+  "models": ["openai/gpt-4.1", "openai/gpt-4o"],
+  "openrouter_model": "nvidia/nemotron-3.5-super-vl:free",
+  "max_attempts": 3,
+  "banned_words": ["무조건", "100%", "최고", "반드시", "완치", "치료", "재생", "보장", "즉시", "부작용 없", "시술 전후"]
+}
