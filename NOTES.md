@@ -244,4 +244,4 @@ print(r.stderr[-3000:])
 
 - 2026-11-12: winter-dry-skin 예약을 11/13 15:00 → 11/12 16:22 KST로 변경(사용자 요청). Metricool post id 425127626 → 425343665, 상태 PENDING. 실제 게시·썸네일 표시는 미확인.
 - 2026-11-13: 영상 7 toner-timing-guide 제작(사용자 요청: 조회수 상위 분석 반영한 스킨토너 사용법). 분석(vidIQ, 같은 주제 한국 쇼츠 약 29개): 상위는 13~45초·제목에 답을 숨김·첫 3초 후킹, 노랑이는 53~67초·답 나열 제목·좋아요율 약 0.16%(표본 3개, 업로드 직후라 방향만 참고). 반영: 7장면(후킹·제목·항목3·요약·마무리) 음성 약 245자(목표 25~40초), 제목 "토너, 바르는 타이밍 놓치고 계신가요?". 근거(확인): 세안 후 젖은 피부에·손 또는 화장솜·T존부터 눈가 입술 제외·아침저녁(CeraVe, Dermstore 페이지). 간접 근거: "3분 안"은 보습 기준(Cleveland Clinic·GQ Korea)을 토너에 적용 → 게시 전 확인 필요. 미확인: 토너 사용량, 손 vs 화장솜 낭비 차이. 동작 지정: hook 기본(놀람 표정)·title 기본 up·item1 run+pointR(faucet)·item2 tilt+both(bottle)·item3 bounce+cheer(cream)·summary sway·outro hop3+wave. 표정 변형은 미구현. 별도 에이전트 검수 4건 반영. 이전판은 cards.winter-numbers-routine.json로 보관. 렌더링·예약은 푸시 후 기록
-
+- 2026-11-13: toner-timing-guide 렌더링 성공(43.5초, 1080x1920, h264+aac, 8.3MB). 영상에서 직접 뽑은 장면 8장으로 한글·글자 넘침·그림(수도꼭지/병/크림) 확인, 음성 싱크·움직임은 전체 재생 확인 전. 영상 content/videos/toner-timing-guide.mp4, 썸네일 content/thumbnails/toner-timing-guide.png. 예약 게시 전(사용자 답변 대기, 후보: 오늘 18:00 KST)
