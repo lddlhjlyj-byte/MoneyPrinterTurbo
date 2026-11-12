@@ -235,6 +235,7 @@ const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
             padding: "22px 48px",
             borderRadius: 24,
             scale: bannerScale,
+            display: s.warn ? undefined : "none",
           }}
         >
           {s.warn}
@@ -577,7 +578,7 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
           <div
             style={{
               ...enter(frame, 14),
-              fontSize: s.head.length > 7 ? 104 : 124,
+              fontSize: s.head.length > 14 ? 72 : s.head.length > 10 ? 84 : s.head.length > 7 ? 104 : 124,
               fontWeight: 900,
               color: INK,
             }}
