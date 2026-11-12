@@ -147,6 +147,18 @@ export const TightIcon: React.FC = () => (
   </svg>
 );
 
+/** 패치 테스트 (피부 반응 확인) */
+export const PatchTest: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <rect x="20" y="40" width="200" height="160" rx="40" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <circle cx="96" cy="118" r="38" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <circle cx="96" cy="118" r="14" fill={BRAND} stroke={INK} strokeWidth="5" />
+    <circle cx="170" cy="168" r="36" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <polyline points="152,168 166,182 190,154" fill="none" stroke={INK} strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="176" cy="84" r="9" fill="#FF8A80" stroke={INK} strokeWidth="4" />
+  </svg>
+);
+
 /** 눈 내리는 배경 (deco: "snow") */
 const FLAKES = Array.from({ length: 16 }, (_, i) => ({
   x: (i * 173 + 60) % 1040,

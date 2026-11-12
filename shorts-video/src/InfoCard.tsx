@@ -8,6 +8,7 @@ import {
   FlakeIcon,
   Heater,
   Humidifier,
+  PatchTest,
   Snow,
   Snowflake,
   TightIcon,
@@ -82,7 +83,7 @@ type Scene = (
       seconds: number;
       n: number;
       worry?: boolean;
-      icon?: "faucet" | "cream" | "bottle" | "humidifier";
+      icon?: "faucet" | "cream" | "bottle" | "humidifier" | "patch";
       head: string;
       sub: string;
       tags: string[];
@@ -460,6 +461,7 @@ const ITEM_ICONS = {
   cream: <CreamJar />,
   bottle: <Bottle />,
   humidifier: <Humidifier />,
+  patch: <PatchTest />,
 };
 
 /* ───────── 항목: n마다 다른 등장 (달려옴 / 솟아오름 / 회전 / 쿵) ───────── */
