@@ -241,3 +241,5 @@ print(r.stderr[-3000:])
 - 2026-11-12: 영상 5(salmon-repair-cream-guide) — 사용자가 지피티에서 받은 cards.json을 붙여넣음. Claude가 title 중복 표기·글자 한도 4건·아이콘 불일치 교정, patch(패치 테스트) 아이콘 추가, 동작 지정(item: nod/run/tilt/tremble), 별도 에이전트 검수. 미반영: 후킹 그림 없음, '재생' 표현 표시광고 위험(확인 불가). 예약 날짜 미정
 - 2026-11-12: salmon-repair-cream-guide 렌더링 성공(46초, 1080x1920). 장면 사진 10장 확인(글자 넘침·겹침 없음). 영상 전체 재생·음성 싱크는 미확인. 예약은 날짜 답변 대기(예약 전)
 - 2026-11-12 16시: 자동 제작 시스템 구축(사용자 요구: 주제 선정부터 렌더링·업로드까지 Claude가 알아서). 구성: pipeline/auto/{config.json, rules.py(글자 수·금지어·구조 검사), generate.py(주제 선정→대본→검사→LLM 검수→연출 지정→저장), topics.json(후보 30개·사용 기록), upload_youtube.py(비공개+예약 공개 업로드, 자격 정보 없으면 queue에 rendered 대기), SETUP.md}, .github/workflows/daily-shorts.yml(매일 06:30 KST), infocard.yml에 업로드 단계 추가. 시험 결과: rules.py·generate.py를 가짜 LLM 응답으로 시험해 통과(정상 케이스 생성·불량 케이스 3회 실패 후 중단), 업로드 스크립트의 '자격 없음' 대기 경로 시험 통과. 미확인: GitHub Models 호출(models.github.ai, 모델명 openai/gpt-4.1)이 실제로 되는지, Actions에서 끝까지 도는지, YouTube API 업로드(심사 전 비공개 고정 가능성). 의료 주장 출처 확인 없음
+
+- 2026-11-12: winter-dry-skin 예약을 11/13 15:00 → 11/12 16:22 KST로 변경(사용자 요청). Metricool post id 425127626 → 425343665, 상태 PENDING. 실제 게시·썸네일 표시는 미확인.
