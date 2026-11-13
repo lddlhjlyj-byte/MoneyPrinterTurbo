@@ -67,7 +67,7 @@ const armTarget = (g: Gesture, f: number): { l: number; r: number } => {
   }
 };
 
-export type Mood = "normal" | "happy" | "sad" | "angry" | "wink" | "shine" | "teary";
+export type Mood = "normal" | "happy" | "sad" | "angry" | "shine" | "teary";
 
 type ViewProps = {
   mood?: Mood;
@@ -117,7 +117,7 @@ const CharacterView: React.FC<ViewProps> = ({
 
   const w = 30 + 12 * mouth;
   const h = 6 + 34 * mouth;
-  const topCurve = mood === "happy" || mood === "wink" || mood === "shine" ? 16 : mood === "sad" || mood === "teary" ? -22 : mood === "angry" ? -14 : -5;
+  const topCurve = mood === "happy" || mood === "shine" ? 16 : mood === "sad" || mood === "teary" ? -22 : mood === "angry" ? -14 : -5;
   const mouthPath = `M ${-w} 0 Q 0 ${topCurve} ${w} 0 C ${w} ${h * 1.35} ${-w} ${h * 1.35} ${-w} 0 Z`;
 
   const eye = (cx: number, key: string) => {
@@ -132,7 +132,7 @@ const CharacterView: React.FC<ViewProps> = ({
         strokeLinecap="round"
       />
     );
-    if (mood === "happy" || (mood === "wink" && !left)) return arc;
+    if (mood === "happy") return arc;
     // 눈꺼풀: 슬픔=바깥쪽을 덮음(팔자), 화남=안쪽을 덮음
     const sad = mood === "sad" || mood === "teary";
     const lid = sad || mood === "angry";
