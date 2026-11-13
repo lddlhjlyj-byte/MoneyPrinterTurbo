@@ -1,6 +1,7 @@
 import { Audio } from "@remotion/media";
 import cardsData from "./cards.json";
 import { CharacterSynthetic, CharacterTalking, Gesture } from "./Character";
+import { KText, TextMotion } from "./KText";
 import {
   CreamJar,
   DryPatch,
@@ -49,7 +50,10 @@ const ACCENT = "#E5322D"; // 색 강조는 숫자에만
 const BRAND = "#FFD84D"; // 캐릭터 노랑
 const EASE = Easing.bezier(0.16, 1, 0.3, 1);
 
-type Common = { move?: MoveName; gesture?: Gesture; deco?: "snow" };
+type Common = { move?: MoveName; gesture?: Gesture; deco?: "snow"; tm?: TextMotion };
+
+// 글자 모션 기본값: 장면마다 다르게(cards.json의 tm으로 덮어쓸 수 있다)
+const TM_BY_ITEM: TextMotion[] = ["push", "flick", "drop", "pop"];
 
 type Scene = (
   | {
@@ -337,20 +341,13 @@ const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
   );
   return (
     <AbsoluteFill style={{ textAlign: "center", padding: "0 60px" }}>
-      <div
-        style={{
-          ...enter(frame, 0),
-          position: "absolute",
-          top: 150,
-          left: 0,
-          right: 0,
-          fontSize: 92,
-          fontWeight: 900,
-          color: INK,
-        }}
-      >
-        {s.head}
-      </div>
+      <KText
+        text={s.head}
+        mode={s.tm ?? "pop"}
+        delay={0}
+        size={92}
+        style={{ position: "absolute", top: 150, left: 0, right: 0, fontWeight: 900, color: INK }}
+      />
       <div
         style={{
           ...enter(frame, 10),
@@ -405,16 +402,13 @@ const Title: React.FC<{ s: Extract<Scene, { type: "title" }> }> = ({ s }) => {
   return (
     <Center gap={10}>
       <div style={{ translate: `0px ${shake}px`, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-        <div
-          style={{
-            ...enter(frame, 0),
-            fontSize: 110,
-            fontWeight: 900,
-            color: INK,
-          }}
-        >
-          {s.text}
-        </div>
+        <KText
+          text={s.text}
+          mode={s.tm ?? "flick"}
+          delay={0}
+          size={110}
+          style={{ fontWeight: 900, color: INK }}
+        />
         <div
           style={{
             fontSize: 300,
@@ -575,16 +569,14 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
               </div>
             ) : null}
           </div>
-          <div
-            style={{
-              ...enter(frame, 14),
-              fontSize: s.head.length > 14 ? 72 : s.head.length > 10 ? 84 : s.head.length > 7 ? 104 : 124,
-              fontWeight: 900,
-              color: INK,
-            }}
-          >
-            {s.head}
-          </div>
+          <KText
+            text={s.head}
+            mode={s.tm ?? TM_BY_ITEM[(s.n - 1) % 4]}
+            from={s.n % 2 === 1 ? "l" : "r"}
+            delay={14}
+            size={s.head.length > 14 ? 72 : s.head.length > 10 ? 84 : s.head.length > 7 ? 104 : 124}
+            style={{ fontWeight: 900, color: INK }}
+          />
           <div
             style={{
               ...enter(frame, 24),
@@ -630,20 +622,13 @@ const Signs: React.FC<{ s: Extract<Scene, { type: "signs" }> }> = ({ s }) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ textAlign: "center", padding: "0 60px" }}>
-      <div
-        style={{
-          ...enter(frame, 0),
-          position: "absolute",
-          top: 150,
-          left: 0,
-          right: 0,
-          fontSize: 92,
-          fontWeight: 900,
-          color: INK,
-        }}
-      >
-        {s.head}
-      </div>
+      <KText
+        text={s.head}
+        mode={s.tm ?? "pop"}
+        delay={0}
+        size={92}
+        style={{ position: "absolute", top: 150, left: 0, right: 0, fontWeight: 900, color: INK }}
+      />
       <div
         style={{
           ...enter(frame, 10),
@@ -728,7 +713,13 @@ const Summary: React.FC<{ s: Extract<Scene, { type: "summary" }> }> = ({
           >
             {i + 1}
           </div>
-          <div style={{ fontSize: 76, fontWeight: 800, color: INK }}>{r}</div>
+          <KText
+            text={r}
+            mode={s.tm ?? (i % 2 === 0 ? "drop" : "pop")}
+            delay={16 + i * 12}
+            size={76}
+            style={{ fontWeight: 800, color: INK }}
+          />
         </div>
       ))}
     </AbsoluteFill>
@@ -739,19 +730,14 @@ const Outro: React.FC<{ s: Extract<Scene, { type: "outro" }> }> = ({ s }) => {
   const frame = useCurrentFrame();
   return (
     <Center>
-      <div
-        style={{
-          fontSize: 130,
-          fontWeight: 900,
-          color: INK,
-          whiteSpace: "pre-line",
-          lineHeight: 1.15,
-          opacity: frame >= 14 ? 1 : 0,
-          translate: `0px ${slam(frame, 14)}px`,
-        }}
-      >
-        {s.text}
-      </div>
+      <KText
+        text={s.text}
+        mode={s.tm ?? "push"}
+        from="r"
+        delay={10}
+        size={130}
+        style={{ fontWeight: 900, color: INK }}
+      />
       <div
         style={{
           ...enter(frame, 30),
