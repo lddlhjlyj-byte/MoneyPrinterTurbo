@@ -267,3 +267,8 @@ print(r.stderr[-3000:])
 - `Character.tsx`에 `mood` 추가: happy(^ 눈) · sad(팔자 눈꺼풀+찡그린 입) · angry(안쪽 눈꺼풀+입꼬리 내림) · wink · shine(큰 하이라이트) · teary(눈물방울). 장면 시작 시 눈을 살짝 찡그렸다 뜨는 전환.
 - cards.json 장면에 `"mood": "happy"` 처럼 지정(미지정=기본, 기존 `surprised`·땀방울은 그대로).
 - 정지 프레임으로 6종 모두 확인. 눈꺼풀 가장자리가 머리 윤곽에 살짝 걸리는 미세한 흔적 있음. 영상 재생 확인은 안 함. 실제 영상에는 아직 미적용(다음 영상에서 장면마다 다르게 지정할 것).
+
+## 저장소 정리 (2026-11-14, 사용자 요청: 쓰지 않을 것 삭제)
+- 삭제: CI·도커 배포·보안 워크플로, Dockerfile·compose, 업스트림 단위 테스트(`test/`), `scripts/`, 후원 광고·번역 README·릴리스 노트 등 `docs/` 일부. README는 짧은 한글 소개로 교체. 이전 내용은 git 기록에 남아 있음.
+- 유지: `shorts-video/`, `pipeline/`, `content/`, 워크플로 2개(infocard, daily-shorts), MPT 본체(`app/`, `webui/`, `resource/`, `docs/MoneyPrinterTurbo.ipynb`).
+- 삭제 후 Colab 설치·렌더링 실행은 확인하지 않음.
