@@ -26,6 +26,7 @@ import {
   lerp,
   MOVES,
   MoveName,
+  naturalize,
   outroPose,
   summaryPose,
   titlePose,
@@ -785,7 +786,8 @@ const gestureFor = (s: Scene): Gesture => {
   }
 };
 
-const poseFor = (s: Scene, f: number, D: number): Pose => {
+const NAT = false; // 모션 보정 테스트(사용자 승인 전 꺼둠)
+const poseForRaw = (s: Scene, f: number, D: number): Pose => {
   if (s.move) return MOVES[s.move](f, D);
   switch (s.type) {
     case "hook":
@@ -838,7 +840,7 @@ const CharLayer: React.FC<{ s: Scene; start: number; dur: number }> = ({
   dur,
 }) => {
   const f = useCurrentFrame();
-  const pose = poseFor(s, f, dur);
+  const pose = NAT ? naturalize((ff, DD) => poseForRaw(s, ff, DD))(f, dur) : poseForRaw(s, f, dur);
   const surprised = s.type === "hook" || (s.type === "item" && s.n === 4 && s.worry !== false);
   return (
     <AbsoluteFill

@@ -106,6 +106,8 @@ const CharacterView: React.FC<ViewProps> = ({
   let angR = rest + (t.r - rest) * enter;
   angL += (pose.armA - angL) * pose.armW;
   angR += (pose.armA - angR) * pose.armW;
+  angL += pose.lag;
+  angR += pose.lag;
 
   const w = 30 + 12 * mouth;
   const h = 6 + 34 * mouth;

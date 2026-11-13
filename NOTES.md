@@ -257,3 +257,8 @@ print(r.stderr[-3000:])
 - 2026-11-13: taste-skill(design-taste-frontend, MIT) 설치·테스트. 이 세션의 임시 폴더에만 설치(저장소·사용자 계정에는 미설치). 동작 확인: gate·deal·palette·copy-lint·shoot 스크립트 실행 성공(Node 22, Chromium). 한계: 사진 검색은 이 환경에서 네트워크 차단으로 실패('fetch failed'), 폰트 조합이 라틴 위주라 한글은 대체 폰트로 표시, 한글 단어 중간 줄바꿈 발생. 노랑이 영상(Remotion)에는 적용 대상 아님, 병원 HTML 페이지용. 테스트 페이지는 가상 병원(실제 병원 아님)
 - 2026-11-13: motionmaxxing(Tejashmakwana/motionmaxxing) 설치·테스트(세션 임시 폴더에만 설치, 저장소 미설치). look.py로 toner-correct-use-motion.mp4 측정: G0 통과, G2 통과, G3 실패(최종 샷 59%)이나 장면 전환이 흰 배경 페이드라 컷이 1개만 감지돼 신뢰 낮음. 실제 참고 가능한 측정: 장면 사이 무음 1.5~1.9초(2.7~3.6·7.2~8.7·13.9~14.8·17.9~19.7·23.6~24.5·27.8~29.7초)와 끝 무음 1.66초, 화면 변화량 1.9(프로 영상 중앙값 6.8)로 정적인 편. 원인 후보: scripts/tts.py가 장면 길이를 음성+0.5초에서 올림(0.5초 단위)으로 맞춤. 규칙 충돌: 이 스킬은 '스프링 최대 1회, 글자 단위 모션 금지, 거의 페이드 안 씀' → KText pop/drop/flick과 충돌. 브랜드 광고 영상(HyperFrames HTML)용이라 Remotion 마스코트 쇼츠에는 부분 적용만 가능. 적용 여부는 사용자 결정 대기
 - 2026-11-14: toner-correct-use-motion 게시 완료 확인(Metricool PUBLISHED, YouTube AEULRp8uPnI, 2026-11-13 18:06 KST 게시, 길이 1:13). 조회 44·좋아요 1·댓글 0(게시 약 14시간 후). motionmaxxing·모션 변경은 사용자 지시로 중단(적용 안 함)
+
+## 모션 스킬 테스트 (animation-principles / spring-animation)
+- 설치·내용 확인 완료. animation-principles는 12원칙 설명뿐(Remotion 수치 없음), spring-animation은 Remotion spring 프리셋 제공.
+- `choreo.ts`의 `naturalize()`로 예비동작(점프 전 웅크림)·공중 늘어남·팔 따라오기(`lag`)·숨쉬기를 적용해 항목 2(spinJump) 정지 프레임 8장을 전후 비교. 웅크림·늘어남·팔 휘어짐은 육안으로 확인됨, 효과는 작음. 영상 재생·음성 동기는 확인하지 않음.
+- 기본값은 꺼짐(`InfoCard.tsx`의 `NAT=false`). 사용자 승인 후 true로 켜서 사용.

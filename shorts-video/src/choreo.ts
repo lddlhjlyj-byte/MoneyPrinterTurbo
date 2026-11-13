@@ -16,6 +16,7 @@ export type Pose = {
   armW: number;
   star: number; // 착지 별 폭발 진행(0=없음)
   sweat: number; // 땀방울(0/1)
+  lag: number; // 팔 따라오기(도, 몸 속도에 반대로 휘어짐)
 };
 
 export const BASE: Pose = {
@@ -29,6 +30,7 @@ export const BASE: Pose = {
   armW: 0,
   star: 0,
   sweat: 0,
+  lag: 0,
 };
 
 const CL = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -269,3 +271,38 @@ export const MOVES: Record<MoveName, (f: number, D: number) => Pose> = {
   hop3: hop3Pose,
   nod: nodPose,
 };
+
+/**
+ * 자연스러운 움직임 보정(animation-principles 적용 테스트).
+ * 예비동작(점프 직전 웅크림) · 늘어남(공중) · 팔 따라오기 · 숨쉬기.
+ */
+const clampN = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
+export const naturalize =
+  (fn: (f: number, D: number) => Pose) =>
+  (f: number, D: number): Pose => {
+    const p = fn(f, D);
+    const prev = fn(f - 1, D);
+    const next = fn(f + 5, D);
+    const vy = p.y - prev.y; // 음수 = 올라가는 중
+    let sx = p.sx;
+    let sy = p.sy;
+    let y = p.y;
+    // 예비동작: 곧 뛰어오를 때 웅크림
+    const ant = p.y > -4 ? clampN((p.y - next.y) / 70, 0, 1) : 0;
+    sy *= 1 - 0.1 * ant;
+    sx *= 1 + 0.05 * ant;
+    y += 14 * ant;
+    // 공중 늘어남
+    if (p.y < -4) {
+      const st = 1 + clampN(Math.abs(vy) / 60, 0, 0.1);
+      sy *= st;
+      sx /= Math.sqrt(st);
+    }
+    // 숨쉬기(거의 정지)
+    if (Math.abs(vy) < 0.3 && ant === 0 && p.sink === 0) {
+      const b = Math.sin(f * 0.18);
+      sy *= 1 + 0.015 * b;
+      sx *= 1 - 0.0075 * b;
+    }
+    return { ...p, sx, sy, y, lag: p.lag + clampN(-vy * 0.8, -30, 30) };
+  };
