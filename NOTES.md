@@ -262,3 +262,8 @@ print(r.stderr[-3000:])
 - 설치·내용 확인 완료. animation-principles는 12원칙 설명뿐(Remotion 수치 없음), spring-animation은 Remotion spring 프리셋 제공.
 - `choreo.ts`의 `naturalize()`로 예비동작(점프 전 웅크림)·공중 늘어남·팔 따라오기(`lag`)·숨쉬기를 적용해 항목 2(spinJump) 정지 프레임 8장을 전후 비교. 웅크림·늘어남·팔 휘어짐은 육안으로 확인됨, 효과는 작음. 영상 재생·음성 동기는 확인하지 않음.
 - 기본값은 꺼짐(`InfoCard.tsx`의 `NAT=false`). 사용자 승인 후 true로 켜서 사용.
+
+## 표정 구현 (ClaudeAnimationBase 참고)
+- `Character.tsx`에 `mood` 추가: happy(^ 눈) · sad(팔자 눈꺼풀+찡그린 입) · angry(안쪽 눈꺼풀+입꼬리 내림) · wink · shine(큰 하이라이트) · teary(눈물방울). 장면 시작 시 눈을 살짝 찡그렸다 뜨는 전환.
+- cards.json 장면에 `"mood": "happy"` 처럼 지정(미지정=기본, 기존 `surprised`·땀방울은 그대로).
+- 정지 프레임으로 6종 모두 확인. 눈꺼풀 가장자리가 머리 윤곽에 살짝 걸리는 미세한 흔적 있음. 영상 재생 확인은 안 함. 실제 영상에는 아직 미적용(다음 영상에서 장면마다 다르게 지정할 것).

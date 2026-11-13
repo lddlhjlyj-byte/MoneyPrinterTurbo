@@ -1,6 +1,6 @@
 import { Audio } from "@remotion/media";
 import cardsData from "./cards.json";
-import { CharacterSynthetic, CharacterTalking, Gesture } from "./Character";
+import { CharacterSynthetic, CharacterTalking, Gesture, Mood } from "./Character";
 import { KText, TextMotion } from "./KText";
 import {
   CreamJar,
@@ -51,7 +51,7 @@ const ACCENT = "#E5322D"; // 색 강조는 숫자에만
 const BRAND = "#FFD84D"; // 캐릭터 노랑
 const EASE = Easing.bezier(0.16, 1, 0.3, 1);
 
-type Common = { move?: MoveName; gesture?: Gesture; deco?: "snow"; tm?: TextMotion };
+type Common = { mood?: Mood; move?: MoveName; gesture?: Gesture; deco?: "snow"; tm?: TextMotion };
 
 // 글자 모션 기본값: 장면마다 다르게(cards.json의 tm으로 덮어쓸 수 있다)
 const TM_BY_ITEM: TextMotion[] = ["push", "flick", "drop", "pop"];
@@ -857,6 +857,7 @@ const CharLayer: React.FC<{ s: Scene; start: number; dur: number }> = ({
           gesture={gestureFor(s)}
           offset={start}
           surprised={surprised}
+          mood={s.mood}
           pose={pose}
         />
       ) : (
@@ -865,6 +866,7 @@ const CharLayer: React.FC<{ s: Scene; start: number; dur: number }> = ({
           offset={start}
           totalFrames={dur}
           surprised={surprised}
+          mood={s.mood}
           pose={pose}
         />
       )}

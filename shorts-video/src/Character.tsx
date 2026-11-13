@@ -67,7 +67,10 @@ const armTarget = (g: Gesture, f: number): { l: number; r: number } => {
   }
 };
 
+export type Mood = "normal" | "happy" | "sad" | "angry" | "wink" | "shine" | "teary";
+
 type ViewProps = {
+  mood?: Mood;
   mouth: number; // 0~1
   gesture: Gesture;
   localFrame: number; // 장면 안에서의 프레임 (제스처 진입용)
@@ -83,6 +86,7 @@ const CharacterView: React.FC<ViewProps> = ({
   globalFrame,
   surprised,
   pose,
+  mood = "normal",
 }) => {
   const f = globalFrame;
   const hop = Math.abs(Math.sin(f * 0.16));
@@ -91,10 +95,12 @@ const CharacterView: React.FC<ViewProps> = ({
   const tilt = 2.5 * Math.sin(f * 0.09);
 
   const blinkPhase = (f + 40) % 96;
-  const eyeScaleY = interpolate(blinkPhase, [0, 2, 5], [1, 0.08, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  let eyeScaleY = interpolate(blinkPhase, [0, 2, 5], [1, 0.08, 1], CLAMP);
+  // 표정이 바뀔 때: 눈을 살짝 찡그렸다가 새 표정으로(예비동작)
+  if (mood !== "normal") {
+    eyeScaleY *= interpolate(localFrame, [0, 3, 8], [0.2, 0.2, 1], CLAMP);
+  }
   const eyeGrow = surprised ? 1.07 : 1;
 
   const t = armTarget(gesture, f);
@@ -111,18 +117,60 @@ const CharacterView: React.FC<ViewProps> = ({
 
   const w = 30 + 12 * mouth;
   const h = 6 + 34 * mouth;
-  const mouthPath = `M ${-w} 0 Q 0 -5 ${w} 0 C ${w} ${h * 1.35} ${-w} ${h * 1.35} ${-w} 0 Z`;
+  const topCurve = mood === "happy" || mood === "wink" || mood === "shine" ? 16 : mood === "sad" || mood === "teary" ? -22 : mood === "angry" ? -14 : -5;
+  const mouthPath = `M ${-w} 0 Q 0 ${topCurve} ${w} 0 C ${w} ${h * 1.35} ${-w} ${h * 1.35} ${-w} 0 Z`;
 
-  const eye = (cx: number, key: string) => (
-    <g
-      key={key}
-      transform={`translate(${cx},300) scale(${eyeGrow},${eyeScaleY * eyeGrow}) translate(${-cx},-300)`}
-    >
-      <ellipse cx={cx} cy={300} rx={100} ry={115} fill={LINE} />
-      <circle cx={cx - 30} cy={255} r={30} fill="#fff" />
-      <circle cx={cx + 36} cy={345} r={14} fill="#fff" />
-    </g>
-  );
+  const eye = (cx: number, key: string) => {
+    const left = key === "l";
+    const arc = (
+      <path
+        key={key}
+        d={`M ${cx - 85} 335 Q ${cx} 215 ${cx + 85} 335`}
+        fill="none"
+        stroke={LINE}
+        strokeWidth="24"
+        strokeLinecap="round"
+      />
+    );
+    if (mood === "happy" || (mood === "wink" && !left)) return arc;
+    // 눈꺼풀: 슬픔=바깥쪽을 덮음(팔자), 화남=안쪽을 덮음
+    const sad = mood === "sad" || mood === "teary";
+    const lid = sad || mood === "angry";
+    const dir = left ? 1 : -1; // 안쪽 방향
+    const outerY = sad ? 285 : 215;
+    const innerY = sad ? 215 : 285;
+    const pts = [
+      [cx - dir * 110, 170],
+      [cx + dir * 110, 170],
+      [cx + dir * 110, innerY],
+      [cx - dir * 110, outerY],
+    ]
+      .map((q) => q.join(","))
+      .join(" ");
+    return (
+      <g key={key}>
+        <g
+          transform={`translate(${cx},300) scale(${eyeGrow},${eyeScaleY * eyeGrow}) translate(${-cx},-300)`}
+        >
+          <ellipse cx={cx} cy={300} rx={100} ry={115} fill={LINE} />
+          <circle cx={cx - 30} cy={255} r={mood === "shine" ? 38 : 30} fill="#fff" />
+          <circle cx={cx + 36} cy={345} r={mood === "shine" ? 20 : 14} fill="#fff" />
+          {mood === "shine" ? (
+            <circle cx={cx + 40} cy={250} r={11} fill="#fff" />
+          ) : null}
+        </g>
+        {lid ? <polygon points={pts} fill={SKIN} /> : null}
+        {mood === "teary" ? (
+          <path
+            d={`M ${cx} 400 C ${cx} 400 ${cx - 22} 432 ${cx - 22} 446 C ${cx - 22} 460 ${cx - 12} 468 ${cx} 468 C ${cx + 12} 468 ${cx + 22} 460 ${cx + 22} 446 C ${cx + 22} 432 ${cx} 400 ${cx} 400 Z`}
+            fill="#BFE6FF"
+            stroke={LINE}
+            strokeWidth="4"
+          />
+        ) : null}
+      </g>
+    );
+  };
 
   // 팔: 손(노랑) + 흰 가운 소매
   const arm = (side: "L" | "R", ang: number) => {
@@ -376,7 +424,8 @@ export const CharacterSynthetic: React.FC<{
   totalFrames: number;
   surprised?: boolean;
   pose?: Pose;
-}> = ({ gesture, offset, totalFrames, surprised, pose = BASE }) => {
+  mood?: Mood;
+}> = ({ gesture, offset, totalFrames, surprised, pose = BASE, mood }) => {
   const frame = useCurrentFrame();
   const speaking = frame > 4 && frame < totalFrames - 14;
   const mouth = speaking
@@ -390,6 +439,7 @@ export const CharacterSynthetic: React.FC<{
       localFrame={frame}
       globalFrame={frame + offset}
       surprised={surprised}
+      mood={mood}
       pose={pose}
     />
   );
@@ -402,7 +452,8 @@ export const CharacterTalking: React.FC<{
   offset: number;
   surprised?: boolean;
   pose?: Pose;
-}> = ({ src, gesture, offset, surprised, pose = BASE }) => {
+  mood?: Mood;
+}> = ({ src, gesture, offset, surprised, pose = BASE, mood }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const { audioData, dataOffsetInSeconds } = useWindowedAudioData({
@@ -431,6 +482,7 @@ export const CharacterTalking: React.FC<{
       localFrame={frame}
       globalFrame={frame + offset}
       surprised={surprised}
+      mood={mood}
       pose={pose}
     />
   );
