@@ -288,3 +288,10 @@ print(r.stderr[-3000:])
 - 연출: hook 기본(놀람)+배너 '물세안 vs 클렌저' · why bounce+pointL+sad(winter) · item1 nod+pointR+happy(수도꼭지) · item2 tremble+shy+angry(크림) · item3 spinJump+both+shine(병) · summary hop3+happy · outro tilt+wave+happy→shine
 - 이전 영상 보관: cards.skin-barrier-first.json. 앞선 skin-barrier-first는 '소리가 안 난다'는 사용자 제보가 있었으나 원본 mp4 음성은 정상(-17dB)으로 확인, 원인 미확정.
 - 2026-11-14 morning-cleansing-method: Metricool 유튜브 쇼츠 예약 — 2026-11-16(월) 13:00 KST(사용자 지정), post id 427965220, 상태 PENDING. 게시 확인 전.
+
+## 유튜브 자동 업로드 설정 진행 (2026-11-14, 중단 — 내일 이어서)
+- 목적: Metricool 월 20개 한도(무료) 회피. `upload_youtube.py`가 쓰는 GitHub Secret 3개(YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN) 등록.
+- 완료(사용자가 Google Cloud 콘솔에서 직접): 프로젝트 noranglab, YouTube Data API v3 사용 설정, OAuth 동의 화면(외부)·브랜딩(앱 이름·이메일·로고·홈페이지/개인정보/약관 링크=저장소 PRIVACY.md·TERMS.md, 승인된 도메인 github.com), 프로덕션 게시 시도(앱 인증 안내 문구 뜸, 제출 안 함), OAuth 클라이언트(웹, 리디렉션 https://developers.google.com/oauthplayground) 생성.
+- 미완료: OAuth Playground에서 Refresh token 발급 — Step 2 Exchange 후 토큰이 안 나옴(오류 문구 미확인). 다음: Authorize APIs 재실행 후 즉시 Exchange, 톱니바퀴의 클라이언트 ID/비밀번호 확인, Response 오류 문구 확인. 그다음 GitHub Secrets 3개 등록 → 영상 1편으로 공개 예약 업로드 시험(미심사 API 프로젝트는 비공개 고정될 수 있음, 미확인).
+- 대상 화면 게시 상태가 실제 '프로덕션'인지 미확인.
+- 그때까지는 Metricool 예약 유지. 예약 현황: skin-barrier-first(11/14 21:00, id 427936318 — 사용자가 소리 안 난다고 제보, 위치 미확인), morning-cleansing-method(11/16 13:00, id 427965220).
