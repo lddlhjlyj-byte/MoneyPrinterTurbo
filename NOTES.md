@@ -280,3 +280,4 @@ print(r.stderr[-3000:])
 - 연출(장면별 move/gesture/mood): hook 기본+sad · why tilt+pointL+teary(winter 그림) · item1 sway+pointR+angry(수도꼭지) · item2 tremble+shy+sad(패치) · item3 hop3+cheer+happy(크림) · item4 rise+up+shine(병) · outro nod+wave+happy
 - 모션 보정(`NAT=true`) 켬. 이전 영상 보관: cards.toner-correct-use-motion.json
 - 미확인: 영상 재생·음성 싱크, '피부장벽'·'세라마이드/판테놀' 효능 문구의 의학적 근거(대본 원문)
+- 2026-11-14 skin-barrier-first: Metricool(blogId 7554094) 유튜브 쇼츠 예약 등록 — 오늘 21:00 KST(사용자 지정, 기본 18시 아님), post id 427936318, 상태 PENDING. 게시 완료 여부는 아직 확인 안 함.
