@@ -287,3 +287,4 @@ print(r.stderr[-3000:])
 - 규칙 검사: 글자 수 한도 초과(사용자 문구 유지)만 남김.
 - 연출: hook 기본(놀람)+배너 '물세안 vs 클렌저' · why bounce+pointL+sad(winter) · item1 nod+pointR+happy(수도꼭지) · item2 tremble+shy+angry(크림) · item3 spinJump+both+shine(병) · summary hop3+happy · outro tilt+wave+happy→shine
 - 이전 영상 보관: cards.skin-barrier-first.json. 앞선 skin-barrier-first는 '소리가 안 난다'는 사용자 제보가 있었으나 원본 mp4 음성은 정상(-17dB)으로 확인, 원인 미확정.
+- 2026-11-14 morning-cleansing-method: Metricool 유튜브 쇼츠 예약 — 2026-11-16(월) 13:00 KST(사용자 지정), post id 427965220, 상태 PENDING. 게시 확인 전.
