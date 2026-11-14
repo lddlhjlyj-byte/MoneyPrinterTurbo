@@ -273,3 +273,10 @@ print(r.stderr[-3000:])
 - 유지: `shorts-video/`, `pipeline/`, `content/`, 워크플로 2개(infocard, daily-shorts), MPT 본체(`app/`, `webui/`, `resource/`, `docs/MoneyPrinterTurbo.ipynb`).
 - 삭제 후 Colab 설치·렌더링 실행은 확인하지 않음.
 - 2026-11-14 사용자 지시: 윙크는 어색해서 삭제(쓰지 않음). 표정은 happy·sad·angry·shine·teary 5종.
+
+## skin-barrier-first (피부장벽, 2026-11-14) — 사용자 대본 그대로
+- 음성·화면 문구: 사용자가 보낸 대본 그대로(화면 글자는 문장을 둘로 나눔만 함). 제목은 사용자가 주지 않아 첫 문장에서 만듦, 해시태그 6개는 내가 정함.
+- 규칙 검사(validate_cards/rules.py): 글자 수 한도 초과 다수·저장/팔로우 유도·면책 note 없음 → 사용자 문구 유지 원칙으로 미적용. 대신 글자 크기 자동 축소(hook·item sub·outro 코드 보정).
+- 연출(장면별 move/gesture/mood): hook 기본+sad · why tilt+pointL+teary(winter 그림) · item1 sway+pointR+angry(수도꼭지) · item2 tremble+shy+sad(패치) · item3 hop3+cheer+happy(크림) · item4 rise+up+shine(병) · outro nod+wave+happy
+- 모션 보정(`NAT=true`) 켬. 이전 영상 보관: cards.toner-correct-use-motion.json
+- 미확인: 영상 재생·음성 싱크, '피부장벽'·'세라마이드/판테놀' 효능 문구의 의학적 근거(대본 원문)

@@ -189,6 +189,11 @@ const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
   const bannerOpacity = lerp(frame, [24, 34], [0, 1]);
   const bannerScale = lerp(frame, [54, 58], [1.1, 1]);
   const pulse = 1 + 0.03 * Math.sin((frame / FPS) * Math.PI * 3);
+  // 긴 문구도 한 화면에 맞도록 글자 크기를 줄인다(문구는 그대로)
+  const l1Size = Math.min(150, Math.floor(940 / Math.max(1, Array.from(s.line1).length)));
+  const l2Max = Math.max(1, ...s.line2.split("\n").map((t) => Array.from(t).length));
+  const l2Size = Math.min(100, Math.floor(940 / l2Max));
+  const l2Top = 100 + Math.round(l1Size * 1.3);
   return (
     <AbsoluteFill style={{ textAlign: "center" }}>
       <div
@@ -197,7 +202,7 @@ const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
           top: 100,
           left: 0,
           right: 0,
-          fontSize: 150,
+          fontSize: l1Size,
           fontWeight: 900,
           color: INK,
           translate: `0px ${slam(frame, 6)}px`,
@@ -210,10 +215,12 @@ const Hook: React.FC<{ s: Extract<Scene, { type: "hook" }> }> = ({ s }) => {
         style={{
           ...enter(frame, 18),
           position: "absolute",
-          top: 280,
+          top: l2Top,
           left: 0,
           right: 0,
-          fontSize: 100,
+          fontSize: l2Size,
+          lineHeight: 1.2,
+          whiteSpace: "pre-line",
           fontWeight: 900,
           color: INK,
         }}
@@ -581,7 +588,8 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
           <div
             style={{
               ...enter(frame, 24),
-              fontSize: 58,
+              fontSize: s.sub.length > 16 ? 46 : 58,
+              wordBreak: "keep-all",
               fontWeight: 500,
               color: SUB,
             }}
@@ -736,13 +744,14 @@ const Outro: React.FC<{ s: Extract<Scene, { type: "outro" }> }> = ({ s }) => {
         mode={s.tm ?? "push"}
         from="r"
         delay={10}
-        size={130}
+        size={Math.min(130, Math.floor(920 / Math.max(1, ...s.text.split("\n").map((t) => Array.from(t).length))))}
         style={{ fontWeight: 900, color: INK }}
       />
       <div
         style={{
           ...enter(frame, 30),
-          fontSize: 56,
+          fontSize: s.sub.length > 18 ? 44 : 56,
+        wordBreak: "keep-all",
           fontWeight: 500,
           color: SUB,
         }}
@@ -786,7 +795,7 @@ const gestureFor = (s: Scene): Gesture => {
   }
 };
 
-const NAT = false; // 모션 보정 테스트(사용자 승인 전 꺼둠)
+const NAT = true;
 const poseForRaw = (s: Scene, f: number, D: number): Pose => {
   if (s.move) return MOVES[s.move](f, D);
   switch (s.type) {
