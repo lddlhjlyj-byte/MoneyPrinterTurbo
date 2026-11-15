@@ -300,3 +300,8 @@ print(r.stderr[-3000:])
 - GitHub Secrets 3개(YT_CLIENT_ID/SECRET/REFRESH_TOKEN) 등록 확인, 구글 토큰 교환 성공(범위 youtube.upload). `yt-check` 워크플로로 확인(영상 업로드 없음). 공개 예약 가능 여부는 영상 업로드로 아직 미확인.
 - `upload_youtube.py`는 `content/queue.json`의 대기 항목만 업로드 → 사용자 대본 영상은 queue에 없어 건너뜀(연결 필요).
 - daily-shorts 실패 원인: GitHub Models가 2026-07-30 종료(공식 문서 확인). 호출은 200 'OK'만 돌려줌. 조치: GitHub Models 제거, OpenRouter 무료 라우터(`openrouter/free`)로 변경. **OPENROUTER_API_KEY(무료) Secret 등록 필요** — 미등록 상태에선 계속 실패.
+
+## 자동 제작 첫 실행 성공 (2026-11-15)
+- OpenRouter 키 등록 후 daily-shorts 수동 실행: 빈 응답 재시도·시도 6회로 수정 후 통과. 영상 `lip-flake-care`('입술 각질, 뜯지 말고 이 순서로 관리하세요') 자동 생성·렌더링·유튜브 업로드 완료(videoId 1qiphD26ViM, 공개 예약 2026-11-15 18:00 KST, queue 상태 uploaded). 음성 -19dB 확인.
+- 연출은 코드 자동 지정(move/gesture만, mood 미지정). 표정(mood)은 자동 제작에 아직 연결 안 됨.
+- 미확인: 유튜브에서 실제로 '예약됨(공개)'인지 '비공개 고정'인지(스튜디오 확인 필요), 영상 전체 재생, 의학 문구 근거. 마지막 장면 '저장하고 팔로우하세요' 문구가 규칙 검사에서 허용된 것으로 보임(확인 필요).
