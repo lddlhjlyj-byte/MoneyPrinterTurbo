@@ -1,0 +1,99 @@
+{
+  "name": "morning-cleansing-method",
+  "title": "아침 세안, 물세안 vs 클렌저 뭐가 맞을까?",
+  "hashtags": [
+    "#아침세안",
+    "#물세안",
+    "#약산성클렌저",
+    "#피부장벽",
+    "#지성피부",
+    "#건성피부"
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "seconds": 7,
+      "line1": "아침에 물세안만 하세요?",
+      "line2": "아니면 폼클렌징 쓰시나요?",
+      "warn": "물세안 vs 클렌저",
+      "voice": "아침에 물세안만 하세요? 아니면 폼클렌징 쓰시나요? 남들 따라 했다가 피부 장벽 다 뒤집어집니다."
+    },
+    {
+      "type": "why",
+      "seconds": 7,
+      "kind": "winter",
+      "move": "bounce",
+      "gesture": "pointL",
+      "mood": "sad",
+      "head": "아침 세안의 목적은 딱 하나",
+      "sub": "밤새 쌓인 노폐물만 걷어내는 거예요",
+      "a": "당기는 건성",
+      "b": "장벽 손상",
+      "c": "물세안",
+      "voice": "아침 세안의 목적은 딱 하나, 밤새 쌓인 노폐물만 걷어내는 거예요."
+    },
+    {
+      "type": "item",
+      "seconds": 9,
+      "n": 1,
+      "icon": "faucet",
+      "move": "nod",
+      "gesture": "pointR",
+      "mood": "happy",
+      "head": "얼굴이 당기는 건성이나 장벽이 손상된 피부라면",
+      "sub": "미온수 물세안만으로 충분합니다",
+      "tags": [],
+      "voice": "아침에 일어났을 때 얼굴이 당기는 건성이나 장벽이 손상된 피부라면 미온수 물세안만으로 충분합니다."
+    },
+    {
+      "type": "item",
+      "seconds": 11,
+      "n": 2,
+      "icon": "cream",
+      "move": "tremble",
+      "gesture": "shy",
+      "mood": "angry",
+      "head": "T존에 기름이 번들거리거나 여드름이 잘 나는 피부라면",
+      "sub": "물세안은 피하세요",
+      "tags": [],
+      "voice": "하지만 T존에 기름이 번들거리거나 여드름이 잘 나는 피부라면 물세안은 피하세요. 산화된 피지가 모공을 막아 트러블이 납니다."
+    },
+    {
+      "type": "item",
+      "seconds": 8,
+      "n": 3,
+      "worry": false,
+      "icon": "bottle",
+      "move": "spinJump",
+      "gesture": "both",
+      "mood": "shine",
+      "head": "약산성 클렌저로",
+      "sub": "T존만 가볍게 20초 롤링해 주세요",
+      "tags": [],
+      "voice": "이런 분들은 약산성 클렌저로 T존만 가볍게 20초 롤링해 주세요."
+    },
+    {
+      "type": "summary",
+      "seconds": 8,
+      "move": "hop3",
+      "mood": "happy",
+      "title": "피부 상태별 요약",
+      "rows": [
+        "번들거리면 약산성 클렌저",
+        "당기고 건조하면 물세안",
+        "T존만 가볍게 20초 롤링"
+      ],
+      "voice": "기준은 간단합니다. 아침에 거울을 봤을 때 번들거리면 약산성 클렌저, 당기고 건조하면 물세안."
+    },
+    {
+      "type": "outro",
+      "seconds": 6,
+      "move": "tilt",
+      "gesture": "wave",
+      "mood": "shine",
+      "text": "오늘 아침\n내 피부 상태부터",
+      "sub": "확인해 보세요.",
+      "voice": "오늘 아침 내 피부 상태부터 확인해 보세요."
+    }
+  ]
+}

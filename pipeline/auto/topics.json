@@ -73,6 +73,23 @@
     "pointL",
     "shy"
    ]
+  },
+  {
+   "topic": "입술 각질 관리하는 법",
+   "name": "lip-flake-care",
+   "date": "2026-11-15",
+   "moves": [
+    "tilt",
+    "hop3",
+    "shiver",
+    "nod"
+   ],
+   "gestures": [
+    "cheer",
+    "pointL",
+    "up",
+    "both"
+   ]
   }
  ]
 }
