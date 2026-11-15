@@ -24,8 +24,16 @@ KST = datetime.timezone(datetime.timedelta(hours=9))
 # ───────── LLM 호출 ─────────
 def _post(url, headers, body, timeout=120):
     req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **headers})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.load(r)["choices"][0]["message"]["content"]
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            raw = r.read()
+            code = r.status
+    except urllib.error.HTTPError as ex:
+        raise RuntimeError(f"HTTP {ex.code}: {ex.read()[:200].decode('utf-8', 'replace')}") from ex
+    try:
+        return json.loads(raw)["choices"][0]["message"]["content"]
+    except Exception as ex:  # noqa: BLE001
+        raise RuntimeError(f"응답 해석 실패(상태 {code}, 길이 {len(raw)}): {raw[:200].decode('utf-8', 'replace')}") from ex
 
 
 def chat(messages, temperature=0.8):
