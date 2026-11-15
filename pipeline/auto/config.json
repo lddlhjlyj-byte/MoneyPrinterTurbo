@@ -2,7 +2,7 @@
   "publish_hour_kst": 18,
   "models": [],
   "openrouter_model": "openrouter/free",
-  "max_attempts": 3,
+  "max_attempts": 6,
   "banned_words": [
     "무조건",
     "100%",

@@ -31,7 +31,10 @@ def _post(url, headers, body, timeout=120):
     except urllib.error.HTTPError as ex:
         raise RuntimeError(f"HTTP {ex.code}: {ex.read()[:200].decode('utf-8', 'replace')}") from ex
     try:
-        return json.loads(raw)["choices"][0]["message"]["content"]
+        out = json.loads(raw)["choices"][0]["message"]["content"]
+        if not out:
+            raise ValueError("빈 응답(content 없음)")
+        return out
     except Exception as ex:  # noqa: BLE001
         raise RuntimeError(f"응답 해석 실패(상태 {code}, 길이 {len(raw)}): {raw[:200].decode('utf-8', 'replace')}") from ex
 
@@ -52,11 +55,12 @@ def chat(messages, temperature=0.8):
                 errs.append(f"GitHub Models {m}: {ex}")
     key = os.environ.get("OPENROUTER_API_KEY")
     if key:
-        try:
-            return _post("https://openrouter.ai/api/v1/chat/completions", {"Authorization": f"Bearer {key}"},
-                         {"model": CFG["openrouter_model"], "messages": messages, "temperature": temperature, "max_tokens": 3500})
-        except Exception as ex:  # noqa: BLE001
-            errs.append(f"OpenRouter: {ex}")
+        for _ in range(4):  # 무료 라우터는 가끔 빈 응답을 주므로 몇 번 더 시도
+            try:
+                return _post("https://openrouter.ai/api/v1/chat/completions", {"Authorization": f"Bearer {key}"},
+                             {"model": CFG["openrouter_model"], "messages": messages, "temperature": temperature, "max_tokens": 3500})
+            except Exception as ex:  # noqa: BLE001
+                errs.append(f"OpenRouter: {ex}")
     raise RuntimeError("LLM 호출 실패: " + " | ".join(errs) if errs else "LLM 호출 불가: GITHUB_TOKEN/OPENROUTER_API_KEY 없음")
 
 
