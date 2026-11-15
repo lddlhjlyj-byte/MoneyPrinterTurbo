@@ -295,3 +295,8 @@ print(r.stderr[-3000:])
 - 미완료: OAuth Playground에서 Refresh token 발급 — Step 2 Exchange 후 토큰이 안 나옴(오류 문구 미확인). 다음: Authorize APIs 재실행 후 즉시 Exchange, 톱니바퀴의 클라이언트 ID/비밀번호 확인, Response 오류 문구 확인. 그다음 GitHub Secrets 3개 등록 → 영상 1편으로 공개 예약 업로드 시험(미심사 API 프로젝트는 비공개 고정될 수 있음, 미확인).
 - 대상 화면 게시 상태가 실제 '프로덕션'인지 미확인.
 - 그때까지는 Metricool 예약 유지. 예약 현황: skin-barrier-first(11/14 21:00, id 427936318 — 사용자가 소리 안 난다고 제보, 위치 미확인), morning-cleansing-method(11/16 13:00, id 427965220).
+
+## 유튜브 자격 정보 점검·자동 제작 실패 원인 (2026-11-15)
+- GitHub Secrets 3개(YT_CLIENT_ID/SECRET/REFRESH_TOKEN) 등록 확인, 구글 토큰 교환 성공(범위 youtube.upload). `yt-check` 워크플로로 확인(영상 업로드 없음). 공개 예약 가능 여부는 영상 업로드로 아직 미확인.
+- `upload_youtube.py`는 `content/queue.json`의 대기 항목만 업로드 → 사용자 대본 영상은 queue에 없어 건너뜀(연결 필요).
+- daily-shorts 실패 원인: GitHub Models가 2026-07-30 종료(공식 문서 확인). 호출은 200 'OK'만 돌려줌. 조치: GitHub Models 제거, OpenRouter 무료 라우터(`openrouter/free`)로 변경. **OPENROUTER_API_KEY(무료) Secret 등록 필요** — 미등록 상태에선 계속 실패.
