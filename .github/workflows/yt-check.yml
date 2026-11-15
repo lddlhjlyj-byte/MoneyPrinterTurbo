@@ -1,0 +1,27 @@
+name: yt-check
+on:
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 유튜브 자격 정보 점검 (영상 업로드 없음, 값은 출력하지 않음)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import os, sys, json, urllib.parse, urllib.request, urllib.error
+          for k in ("YT_CLIENT_ID","YT_CLIENT_SECRET","YT_REFRESH_TOKEN"):
+              print(k, "등록됨" if os.environ.get(k) else "없음", "(길이 %d)" % len(os.environ.get(k,"")))
+          cid=os.environ.get("YT_CLIENT_ID","")
+          print("클라이언트 ID 모양:", "정상" if cid.endswith(".apps.googleusercontent.com") and cid.startswith("449797896198-") else "이상함")
+          body=urllib.parse.urlencode({"client_id":cid,"client_secret":os.environ.get("YT_CLIENT_SECRET",""),"refresh_token":os.environ.get("YT_REFRESH_TOKEN",""),"grant_type":"refresh_token"}).encode()
+          try:
+              r=json.load(urllib.request.urlopen(urllib.request.Request("https://oauth2.googleapis.com/token",data=body),timeout=60))
+              print("토큰 교환 성공. 범위:", r.get("scope"))
+          except urllib.error.HTTPError as e:
+              print("토큰 교환 실패:", e.code, e.read()[:200].decode()); sys.exit(1)
+          PY
