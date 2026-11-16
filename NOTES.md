@@ -323,3 +323,7 @@ print(r.stderr[-3000:])
 - 예약: 유튜브 직접 업로드, 2026-11-18(수) 13:00 KST (시각은 사용자 미지정, 가정).
 - 장면별 동작/표정: 1번 rise·pointL·happy / 2번 spinJump·count·shine / 3번 shiver·shy·sad / 정리 nod·happy / 마무리 bounce·cheer·shine
 - 틱톡: 당분간 사용자가 직접 업로드(영상 파일은 content/videos/).
+
+### 2026-11-16 공개 시각 18:30 통일
+- 사용자 지시: 모든 공개 예약 18:30 KST. config.json publish_hour_kst=18, publish_minute_kst=30 (이후 자동 업로드 기본값).
+- 이미 올라간 2개(cleanser 11/17, moisturizing 11/18)의 유튜브 쪽 시각은 변경 시도했으나 vidIQ 유튜브 인증 대기 중(미확인). 큐 기록값만 18:30으로 바꿈 — 실제 반영은 스튜디오에서 확인 필요.

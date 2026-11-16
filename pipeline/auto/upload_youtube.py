@@ -19,7 +19,7 @@ QP = ROOT / "content/queue.json"
 
 def publish_at():
     now = datetime.datetime.now(KST)
-    t = now.replace(hour=CFG["publish_hour_kst"], minute=0, second=0, microsecond=0)
+    t = now.replace(hour=CFG["publish_hour_kst"], minute=CFG.get("publish_minute_kst", 0), second=0, microsecond=0)
     if t < now + datetime.timedelta(minutes=30):
         t += datetime.timedelta(days=1)
     return t.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
