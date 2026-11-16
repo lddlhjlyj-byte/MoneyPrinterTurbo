@@ -1,7 +1,7 @@
 name: daily-shorts
 on:
   schedule:
-    - cron: "30 21 * * *" # 매일 06:30 KST
+    - cron: "30 21 * * 0,2,4" # 월·수·금 06:30 KST (UTC 일·화·목 21:30)
   workflow_dispatch:
 
 permissions:
@@ -11,6 +11,8 @@ permissions:
 
 jobs:
   generate:
+    # 2026-11-23(월)부터 적용: 그 전 예약 실행은 건너뜀
+    if: github.event_name != 'schedule' || github.run_started_at >= '2026-11-22T00:00:00Z'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:

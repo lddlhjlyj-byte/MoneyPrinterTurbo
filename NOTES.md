@@ -313,3 +313,7 @@ print(r.stderr[-3000:])
 - 예약: 유튜브 직접 업로드, 2026-11-17(화) 13:00 KST (시각은 사용자 미지정, 월요일 영상과 동일하게 가정). queue 항목에 publishAt 지정, upload_youtube.py가 이 값을 우선 사용.
 - 장면별 동작/표정: hook 기본 / 지성 rise·pointR·happy / 건성 shiver·shy·sad / 복합성 sway·both·shine / 민감성 tremble·up·teary / 세안시간 bounce·pointL·happy / 점검 tilt·angry / 마무리 hop3·wave·happy
 - 레이아웃 보정: 긴 제목 자동 축소, 그림 라벨 축소(문구 불변).
+
+### 2026-11-16 자동 제작 일정 변경
+- daily-shorts: 매일 → 월·수·금 06:30 KST, 2026-11-23(월)부터 적용(그 전 예약 실행은 건너뜀). 수동 실행(workflow_dispatch)은 항상 가능.
+- 사용자 확인: skin-barrier-first 소리 정상(들어보니 나옴).
