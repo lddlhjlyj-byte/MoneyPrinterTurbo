@@ -317,3 +317,9 @@ print(r.stderr[-3000:])
 ### 2026-11-16 자동 제작 일정 변경
 - daily-shorts: 매일 → 월·수·금 06:30 KST, 2026-11-23(월)부터 적용(그 전 예약 실행은 건너뜀). 수동 실행(workflow_dispatch)은 항상 가능.
 - 사용자 확인: skin-barrier-first 소리 정상(들어보니 나옴).
+
+### 2026-11-16 moisturizing-habit-check (보습 습관 점검)
+- 사용자 대본 원문 그대로. 제목·해시태그·화면 요약 제목("보습 순서의 기본" 등)은 내가 만든 것.
+- 예약: 유튜브 직접 업로드, 2026-11-18(수) 13:00 KST (시각은 사용자 미지정, 가정).
+- 장면별 동작/표정: 1번 rise·pointL·happy / 2번 spinJump·count·shine / 3번 shiver·shy·sad / 정리 nod·happy / 마무리 bounce·cheer·shine
+- 틱톡: 당분간 사용자가 직접 업로드(영상 파일은 content/videos/).
