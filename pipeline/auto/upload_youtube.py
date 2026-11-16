@@ -51,7 +51,7 @@ def main(name):
         return 0
     try:
         tok = access_token()
-        pa = publish_at()
+        pa = e.get("publishAt") or publish_at()
         meta = {"snippet": {"title": e["title"], "description": e["description"], "tags": e["tags"], "categoryId": "26", "defaultLanguage": "ko"},
                 "status": {"privacyStatus": "private", "publishAt": pa, "selfDeclaredMadeForKids": False}}
         data = video.read_bytes()

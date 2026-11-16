@@ -320,11 +320,18 @@ const Absorb: React.FC = () => (
 
 const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
   const frame = useCurrentFrame();
+  // 긴 제목·라벨은 글자를 줄여 화면 안에 담는다(문구는 그대로)
+  const headLen = Array.from(s.head).length;
+  const headSize = headLen > 10 ? 70 : 92;
+  const headLines = Math.ceil(headLen / Math.floor(920 / headSize));
+  const subTop = headLines > 1 ? 150 + Math.round(headLines * headSize * 1.2) + 24 : 290;
+  const longLabel = Math.max(...[s.a, s.b, s.c].map((x) => Array.from(x).length)) > 6;
   const label = (t: string, delay: number) => (
     <div
       style={{
         ...enter(frame, delay),
-        fontSize: 44,
+        fontSize: longLabel ? 34 : 44,
+        whiteSpace: "nowrap",
         fontWeight: 800,
         color: INK,
         marginTop: 14,
@@ -353,14 +360,14 @@ const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
         text={s.head}
         mode={s.tm ?? "pop"}
         delay={0}
-        size={92}
+        size={headSize}
         style={{ position: "absolute", top: 150, left: 0, right: 0, fontWeight: 900, color: INK }}
       />
       <div
         style={{
           ...enter(frame, 10),
           position: "absolute",
-          top: 290,
+          top: subTop,
           left: 0,
           right: 0,
           fontSize: 54,
@@ -380,7 +387,7 @@ const Why: React.FC<{ s: Extract<Scene, { type: "why" }> }> = ({ s }) => {
           justifyContent: "center",
           alignItems: "flex-end",
           gap: 26,
-          scale: 1.25,
+          scale: longLabel ? 1.0 : 1.25,
         }}
       >
         <div style={{ ...enter(frame, 22), display: "flex", flexDirection: "column", alignItems: "center" }}>
