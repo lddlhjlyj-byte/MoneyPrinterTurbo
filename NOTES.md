@@ -337,3 +337,9 @@ print(r.stderr[-3000:])
 - `pipeline/verify_video.py`: 영상 파일에서 해상도·코덱·영상/오디오 길이 차·전체 음량·장면별 소리 유무·음성 시작 지연·장면 길이 합 vs 영상 길이를 측정. 실패(무음 영상·무음 장면·길이 어긋남·음성이 장면보다 김)면 종료 코드 1, 길이 25~40초 초과·음성 시작 지연·긴 무음은 경고만(사용자 대본 유지 원칙). `infocard.yml`에 렌더링 직후 단계로 연결(실패 시 업로드·보관 전에 중단), 결과는 `verify/report.txt`
 - 시험: 합성 영상(톤)으로 정상=통과, 장면 소리 없음=실패, 장면 길이 합 불일치=실패, 음성 늦게 시작=소리 없음 실패+지연 경고, 기존 실제 영상(morning-cleansing-method)은 기본 검사 통과·길이 경고. 미확인: 실제 Actions 실행에서의 동작(임계값이 정상 영상을 잘못 막는지), '음성이 장면보다 김' 경로 시험, 발음·자막 일치(측정 못 함)
 
+### 2026-11-17 유튜브 분석 조회 연결
+- 구글 콘솔(noranglab)에서 YouTube Analytics API 사용 설정, OAuth Playground로 refresh token 재발급(권한: youtube.upload + yt-analytics.readonly, 응답 scope에 둘 다 확인), GitHub Secrets `YT_REFRESH_TOKEN`·`YT_CLIENT_SECRET` 교체(사용자 진술). 토큰·비밀번호가 채팅에 한 번 노출됨 → 공유할 일이 생기면 콘솔에서 비밀번호 삭제·재발급, myaccount.google.com/permissions 에서 앱 권한 해제 후 재발급
+- `pipeline/analytics/fetch_analytics.py` + `.github/workflows/analytics.yml`: 영상별 지표(조회·평균 시청 시간·평균 시청 비율·좋아요 등), 영상별 시청 유지율 곡선(audienceWatchRatio), 유입 경로, 콘텐츠 유형별 조회를 가져와 `content/analytics/latest.json`·`report.txt`에 저장. 워크플로는 수동 실행(workflow_dispatch) 또는 스크립트 파일 푸시 때 실행
+- 시험: 가짜 API 응답으로 요약·일부 조회 실패 처리·토큰 문자열 미출력 확인. 실제 API 응답(쇼츠에서 유지율 곡선이 나오는지)은 첫 실행 결과 기록 후 갱신
+- 참고: 푸시로 infocard 렌더링이 자동 실행되어 moisturizing-habit-check.mp4가 재렌더링·덮어써짐(유튜브 업로드본은 영향 없음, 업로더는 uploaded 항목을 건너뜀). 이 실행에서 verify_video.py가 실제 Actions에서 통과(58.5초, -18dB, 장면 합 일치) — 완료 판정 검사의 첫 실제 실행 확인
+
