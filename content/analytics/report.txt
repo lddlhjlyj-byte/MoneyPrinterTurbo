@@ -1,0 +1,45 @@
+조회 기간: 2026-11-09 ~ 2026-11-17 (분석 데이터는 1~3일 지연될 수 있음)
+
+## 영상별 지표
+- jISNX7riT5A: 조회 1231, 시청분 78, 평균 시청 23초, 평균 시청 비율 35.13%, 좋아요 2, 댓글 2, 공유 4, 구독 증가 0
+- JZgajzo6ZF8: 조회 320, 시청분 19, 평균 시청 30초, 평균 시청 비율 61.06%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
+- unGaL2IUR8A: 조회 283, 시청분 16, 평균 시청 25초, 평균 시청 비율 48.12%, 좋아요 2, 댓글 1, 공유 3, 구독 증가 0
+- AEULRp8uPnI: 조회 165, 시청분 10, 평균 시청 26초, 평균 시청 비율 36.81%, 좋아요 3, 댓글 0, 공유 2, 구독 증가 0
+- 9qxiu-3ge6s: 조회 97, 시청분 7, 평균 시청 19초, 평균 시청 비율 31.81%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
+- e2qGY8NGqrw: 조회 10, 시청분 0, 평균 시청 8초, 평균 시청 비율 12.9%, 좋아요 0, 댓글 0, 공유 0, 구독 증가 0
+- U5o9BdRlSNw: 조회 2, 시청분 0, 평균 시청 0초, 평균 시청 비율 0%, 좋아요 0, 댓글 0, 공유 0, 구독 증가 0
+- CNz0--a6D6g: 조회 2, 시청분 0, 평균 시청 0초, 평균 시청 비율 0%, 좋아요 0, 댓글 0, 공유 0, 구독 증가 0
+
+## 시청 유지율 (영상 길이 대비 지점별, 1.0=100%)
+- jISNX7riT5A: 5% 1.03, 10% 0.77, 25% 0.49, 50% 0.30, 75% 0.17, 95% 0.05
+- JZgajzo6ZF8: 5% 1.28, 10% 1.21, 25% 0.69, 50% 0.52, 75% 0.48, 95% 0.41
+- unGaL2IUR8A: 5% 1.14, 10% 1.03, 25% 0.62, 50% 0.45, 75% 0.28, 95% 0.17
+- AEULRp8uPnI: 5% 1.00, 10% 0.83, 25% 0.50, 50% 0.39, 75% 0.11, 95% 0.06
+- 9qxiu-3ge6s: 5% 1.06, 10% 0.89, 25% 0.33, 50% 0.22, 75% 0.17, 95% 0.06
+- e2qGY8NGqrw: 데이터 없음
+- U5o9BdRlSNw: 데이터 없음
+- CNz0--a6D6g: 데이터 없음
+
+## 유입 경로 (채널 전체)
+- SHORTS: 조회 1919, 시청분 101
+- YT_SEARCH: 조회 89, 시청분 6
+- YT_CHANNEL: 조회 47, 시청분 12
+- YT_OTHER_PAGE: 조회 37, 시청분 4
+- SUBSCRIBER: 조회 7, 시청분 2
+- PLAYLIST: 조회 4, 시청분 1
+- NOTIFICATION: 조회 4, 시청분 0
+- NO_LINK_OTHER: 조회 2, 시청분 0
+- EXT_URL: 조회 1, 시청분 1
+
+## 콘텐츠 유형별 (쇼츠 등)
+- shorts: 조회 2110
+
+## 영상별 유입 경로
+- jISNX7riT5A: SHORTS 1147, YT_SEARCH 50, YT_CHANNEL 18, YT_OTHER_PAGE 13, SUBSCRIBER 1, EXT_URL 1, NOTIFICATION 1, NO_LINK_OTHER 0
+- JZgajzo6ZF8: SHORTS 298, YT_SEARCH 11, SUBSCRIBER 4, YT_OTHER_PAGE 4, YT_CHANNEL 2, NOTIFICATION 1, NO_LINK_OTHER 0
+- unGaL2IUR8A: SHORTS 247, YT_SEARCH 18, YT_CHANNEL 14, YT_OTHER_PAGE 2, PLAYLIST 2, NO_LINK_OTHER 0
+- AEULRp8uPnI: SHORTS 145, YT_SEARCH 6, YT_CHANNEL 5, YT_OTHER_PAGE 5, NOTIFICATION 2, SUBSCRIBER 1, PLAYLIST 1, NO_LINK_OTHER 0
+- 9qxiu-3ge6s: SHORTS 82, YT_CHANNEL 6, YT_SEARCH 4, YT_OTHER_PAGE 3, SUBSCRIBER 1, PLAYLIST 1, NO_LINK_OTHER 0
+- e2qGY8NGqrw: YT_OTHER_PAGE 8, NO_LINK_OTHER 2
+- U5o9BdRlSNw: YT_OTHER_PAGE 2
+- CNz0--a6D6g: YT_CHANNEL 2
