@@ -6,6 +6,9 @@ from pathlib import Path
 CFG = json.loads((Path(__file__).parent / "config.json").read_text("utf-8"))
 ICONS = {"faucet", "cream", "bottle", "humidifier", "patch", "heater"}
 SIGN_ICONS = {"wrinkle", "flake", "tight"}
+MOODS = {"happy", "sad", "angry", "shine", "teary"}
+# 숫자 규칙: 아라비아 숫자 또는 한글 수+단위(세 가지, 삼 분 등)
+NUM = re.compile(r"\d|(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\s?(가지|번|분|초|회|시간|개|겹)|[일이삼사오십]\s?(분|초|도|회|번)")
 
 
 def _walk_strings(x):
@@ -122,6 +125,17 @@ def validate(d: dict) -> list:
             e.append(f"알 수 없는 장면 type: {t}")
     if total > 560:
         e.append(f"voice 전체 {total}자 (560자 이하, 약 60초 한도)")
+    hook = next((s for s in sc if s.get("type") == "hook"), {})
+    if not NUM.search(" ".join(str(hook.get(k, "")) for k in ("line1", "line2", "voice"))):
+        e.append("숫자 규칙: hook에 구체적 숫자·범위(몇 분·몇 도·몇 %·몇 회)가 없음")
+    for i in items:
+        if not NUM.search(str(i.get("voice", "")) + str(i.get("sub", "")) + str(i.get("head", ""))):
+            e.append(f"숫자 규칙: item{i.get('n')}에 구체적 숫자·범위가 없음")
+    for s in sc:
+        if s.get("mood") is not None and s["mood"] not in MOODS:
+            e.append(f"{s.get('type')}.mood는 {sorted(MOODS)} 중 하나이거나 생략")
+    if not isinstance(d.get("facts"), list) or not d["facts"] or not all(isinstance(x, str) and x.strip() for x in d["facts"]):
+        e.append("facts: 수치·주장별 출처/미확인 목록(문자열 배열) 필요")
     heads = [i.get("head") for i in items]
     if len(set(heads)) != len(heads):
         e.append("item head가 서로 같음")

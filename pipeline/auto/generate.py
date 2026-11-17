@@ -74,7 +74,9 @@ def extract_json(text):
 def system_prompt():
     t = (ROOT / "pipeline/gpt-prompt.md").read_text("utf-8")
     block = re.search(r"```\n(.*?)\n```", t, re.S).group(1)
-    return block + '\n- 출력 JSON 최상위에 "topic"(고른 주제 원문)도 넣는다.\n- 화장품 제품명이 "재생", "치료", "개선" 같은 효능 단어를 포함하면 쓰지 않는다.'
+    return (block + '\n- 출력 JSON 최상위에 "topic"(고른 주제 원문)도 넣는다.'
+            '\n- 출력 JSON 최상위에 "facts"도 넣는다: 대본에 쓴 수치·효능 주장 각각을 "주장 — 출처 이름(아는 경우) 또는 미확인" 형식의 문자열 배열로(2~6개).'
+            '\n- 화장품 제품명이 "재생", "치료", "개선" 같은 효능 단어를 포함하면 쓰지 않는다.')
 
 
 REVIEWER = """너는 쇼츠 검수자다. 아래 cards.json을 읽고 JSON만 출력한다: {"pass": true|false, "issues": ["..."]}.
@@ -93,7 +95,7 @@ CAUTION = ("주의", "자극", "따가", "붉", "확인", "조심", "중단")
 
 
 def design(d, prev):
-    pm, pg = prev.get("moves", []), prev.get("gestures", [])
+    pm, pg, pmood = prev.get("moves", []), prev.get("gestures", []), prev.get("moods", {})
     items = [s for s in d["scenes"] if s["type"] == "item"]
     moves, gests = [], []
     for k, s in enumerate(items):
@@ -111,7 +113,36 @@ def design(d, prev):
     for s in d["scenes"]:
         if s["type"] in ("hook", "outro") and winter:
             s["deco"] = "snow"
-    return moves, gests
+    moods = assign_moods(d, pmood)
+    return moves, gests, moods
+
+
+def assign_moods(d, pmood):
+    """장면 내용에 맞춰 표정 지정. why/signs=걱정(sad), 주의 문구 item=angry/sad, 일반 item=happy/shine, summary=happy, outro=shine/happy.
+    같은 영상 안에서 연속 장면이 같은 표정이 되지 않게 하고, 직전 영상의 같은 위치 표정과도 겹치지 않게 한다. hook은 기본(놀람)을 유지한다."""
+    moods, last = {}, None
+    items = [s for s in d["scenes"] if s["type"] == "item"]
+    for s in d["scenes"]:
+        t = s["type"]
+        key = f"item{s['n']}" if t == "item" else t
+        if t == "hook":
+            continue
+        if t in ("why", "signs"):
+            pool = ["sad", "teary"]
+        elif t == "item":
+            caution = any(w in s["voice"] + s["head"] for w in CAUTION)
+            pool = ["angry", "sad"] if caution else ["happy", "shine"]
+        elif t == "summary":
+            pool = ["happy", "shine"]
+        elif t == "outro":
+            pool = ["shine", "happy"]
+        else:
+            continue
+        pool = [m for m in pool if m != last and m != pmood.get(key)] or [m for m in pool if m != last] or pool
+        s["mood"] = pool[0]
+        moods[key] = pool[0]
+        last = pool[0]
+    return moods
 
 
 def description(d):
@@ -164,8 +195,9 @@ def main():
         print("규칙을 통과하는 대본을 만들지 못함 → 영상 만들지 않음", file=sys.stderr)
         return 3
     prev = st["used"][-1] if st["used"] else {}
-    moves, gests = design(d, prev)
+    moves, gests, moods = design(d, prev)
     topic = d.pop("topic", cands[0])
+    facts = d.pop("facts", [])
     # 이전 cards.json 보관
     if CARDS.exists():
         old = json.loads(CARDS.read_text("utf-8"))
@@ -173,14 +205,16 @@ def main():
         if old.get("name") and not arch.exists():
             arch.write_text(json.dumps(old, ensure_ascii=False, indent=2), "utf-8")
     CARDS.write_text(json.dumps(d, ensure_ascii=False, indent=2), "utf-8")
-    st["used"].append({"topic": topic, "name": d["name"], "date": f"{today:%Y-%m-%d}", "moves": moves, "gestures": gests})
+    st["used"].append({"topic": topic, "name": d["name"], "date": f"{today:%Y-%m-%d}", "moves": moves, "gestures": gests, "moods": moods})
     TOPICS.write_text(json.dumps(st, ensure_ascii=False, indent=1), "utf-8")
     brief = ROOT / f"content/briefs/{d['name']}.md"
     brief.parent.mkdir(parents=True, exist_ok=True)
     brief.write_text(
         f"# {d['name']} — {d['title']}\n(자동 생성 {today:%Y-%m-%d %H:%M} KST, 주제: {topic})\n\n## 대본(voice)\n"
         + "\n".join(f"{i + 1}. {s['voice']}" for i, s in enumerate(d["scenes"]))
-        + "\n\n## 연출\n" + "\n".join(f"- item{s['n']}: icon={s.get('icon', '-')} move={s['move']} gesture={s['gesture']}" for s in d["scenes"] if s["type"] == "item")
+        + "\n\n## 연출\n" + "\n".join(f"- item{s['n']}: icon={s.get('icon', '-')} move={s['move']} gesture={s['gesture']} mood={s.get('mood', '-')}" for s in d["scenes"] if s["type"] == "item")
+        + "\n" + "\n".join(f"- {s['type']}: mood={s.get('mood', '기본(놀람)')}" for s in d["scenes"] if s["type"] != "item")
+        + "\n\n## 게시 전 확인할 사실 (LLM이 적은 목록, 출처 직접 확인 안 됨)\n" + "\n".join(f"- {f}" for f in facts)
         + "\n\n## 검수 기록(자동)\n" + "\n".join(f"- {n}" for n in notes) + "\n- 의료·화장품 주장의 출처는 확인하지 않음(미확인). 사람 검수 없음\n", "utf-8")
     qp = ROOT / "content/queue.json"
     q = json.loads(qp.read_text("utf-8")) if qp.exists() else []

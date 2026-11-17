@@ -327,3 +327,9 @@ print(r.stderr[-3000:])
 ### 2026-11-16 공개 시각 18:30 통일
 - 사용자 지시: 모든 공개 예약 18:30 KST. config.json publish_hour_kst=18, publish_minute_kst=30 (이후 자동 업로드 기본값).
 - 이미 올라간 2개(cleanser 11/17, moisturizing 11/18)는 사용자 결정으로 13:00 그대로 유지(큐 기록도 13:00 KST로 되돌림). 18:30은 다음 영상부터.
+
+### 2026-11-17 자동 제작에 표정·후킹 규칙 연결
+- 분석에서 확인된 결함 수정: ① `gpt-prompt.md`의 숫자 규칙이 코드블록 밖에 있어 `generate.py`가 읽는 프롬프트에 빠져 있었음 → 블록 안으로 이동, 시각 명사·한 문장 한 대상 규칙 추가 ② `rules.py`에 숫자 규칙(hook·item마다 숫자 필수)·mood 값 검사·`facts` 필수 추가 ③ `generate.py`: 표정(`assign_moods`) 자동 지정(why/signs=sad·teary, 주의 문구 item=angry·sad, 일반 item=happy·shine, summary=happy·shine, outro=shine·happy, hook은 기본 놀람 유지), 연속 장면·직전 영상 같은 위치 표정과 겹침 방지, 사용 기록 `moods` 저장, 브리프에 장면별 표정과 '게시 전 확인할 사실' 기록
+- 시험: 가짜 LLM 응답으로 ① 숫자 없는 대본이 6회 모두 거부됨 ② 수정한 대본은 통과·cards.json에 mood 반영·브리프 생성 ③ 두 번째 영상 표정이 직전과 겹치지 않음. 실제 LLM(OpenRouter 무료 라우터)이 새 규칙을 통과하는 대본을 6회 안에 내는지는 미확인(다음 daily-shorts 실행 때 확인, 2026-11-23). 사용자 대본에는 `rules.py`를 적용하지 않음(변경 없음)
+- 숫자 규칙은 infomed-shorts-script 스킬의 필수 규칙을 그대로 옮긴 것. 스킬의 16줄·영어 키워드는 스톡(MPT) 경로용이라 InfoCard 자동 제작에는 적용하지 않음
+
