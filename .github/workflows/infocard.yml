@@ -33,6 +33,11 @@ jobs:
         run: python scripts/tts.py
       - name: 영상 렌더링
         run: npx remotion render InfoCard out/infocard.mp4
+      - name: 완료 판정 (소리·길이·장면 타이밍 측정, 실패하면 업로드 전에 중단)
+        working-directory: .
+        run: |
+          mkdir -p verify
+          python3 pipeline/verify_video.py shorts-video/out/infocard.mp4 shorts-video/src/cards.json --report verify/report.txt
       - name: 영상 정보 확인
         run: ffprobe -v error -show_entries stream=codec_name,width,height,duration -of default=nw=1 out/infocard.mp4
       - name: 확인용 장면 사진·음량 저장 (저장소 verify/ 폴더)
