@@ -68,10 +68,11 @@
    "스킨케어",
    "피부관리"
   ],
-  "status": "uploaded",
+  "status": "discarded",
   "created": "2026-11-18 19:48",
   "videoId": "25w-cgbsINM",
-  "publishAt": "2026-11-19T09:30:00Z"
+  "publishAt": "2026-11-19T09:30:00Z",
+  "note": "2026-11-19 사용자 지시로 폐기(자동 생성 대본)"
  },
  {
   "name": "winter-sunscreen-why",
@@ -87,9 +88,10 @@
    "실내습도",
    "겨울피부"
   ],
-  "status": "uploaded",
+  "status": "discarded",
   "created": "2026-11-18 23:20",
   "videoId": "1nEQmr0E_HA",
-  "publishAt": "2026-11-19T09:30:00Z"
+  "publishAt": "2026-11-19T09:30:00Z",
+  "note": "2026-11-19 사용자 지시로 폐기(자동 생성 대본)"
  }
 ]

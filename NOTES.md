@@ -386,3 +386,7 @@ print(r.stderr[-3000:])
 
 ### 2026-11-19 우선 주제 3개 등록 (사용자 제공 아이디어)
 - `topics.json`의 `priority`에 3개 등록: ①속건조 잡는 나이트 스킨케어 루틴과 성분 궁합 ②블랙헤드와 피지 줄이는 클렌징 오일 유화법과 마사지 ③찬바람에 붉어지는 홍조와 무너진 피부장벽 복구법. `generate.py`는 priority에 안 쓴 주제가 있으면 순서대로 하나씩 먼저 사용(그 뒤 backlog). 코드 구문 검사만 했고 실제 생성 실행은 확인 전
+
+### 2026-11-19 사용자 지시: 자동 생성 대본 폐기, 자동 제작 중지
+- 지시: "내가 짠 대본 모두 폐기, 다른 지시 있기 전까지 사용자가 보내주는 대본으로만 제작". `pipeline/auto/PAUSE` 파일을 만들어 `generate.py` 자동 생성을 중지(재개하려면 이 파일 삭제). 우선 주제 3개(priority)는 보관만 함
+- 폐기 처리: queue의 hand-cream-timing(25w-cgbsINM), winter-sunscreen-why(1nEQmr0E_HA)를 `discarded`로 표시. 유튜브에서 삭제하는 `yt-delete.yml` 워크플로 추가(실행 결과는 아래에 확인 후 기록)
