@@ -134,7 +134,7 @@ const renderNumbers = (text: string) =>
   );
 
 /** 자막: 비트마다 새로 튀어나옴. 등장 방식을 3가지로 돌려 쓰고 숫자는 크게+강조색 */
-export const BeatCaptions: React.FC<{ beats: Beat[] }> = ({ beats }) => {
+export const BeatCaptions: React.FC<{ beats: Beat[]; top?: number }> = ({ beats, top = 1075 }) => {
   const f = useCurrentFrame();
   if (!beats.length) return null;
   const idx = current(beats, f);
@@ -157,7 +157,7 @@ export const BeatCaptions: React.FC<{ beats: Beat[] }> = ({ beats }) => {
       style={{
         justifyContent: "flex-start",
         alignItems: "center",
-        paddingTop: 1075,
+        paddingTop: top,
         pointerEvents: "none",
       }}
     >
