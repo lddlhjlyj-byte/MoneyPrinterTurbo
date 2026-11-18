@@ -32,6 +32,7 @@ import {
   titlePose,
   whyPose,
 } from "./choreo";
+import { MOTIONS, MotionName, isMotion } from "./motions";
 import {
   AbsoluteFill,
   CalculateMetadataFunction,
@@ -51,7 +52,7 @@ const ACCENT = "#E5322D"; // 색 강조는 숫자에만
 const BRAND = "#FFD84D"; // 캐릭터 노랑
 const EASE = Easing.bezier(0.16, 1, 0.3, 1);
 
-type Common = { mood?: Mood; move?: MoveName; gesture?: Gesture; deco?: "snow"; tm?: TextMotion };
+type Common = { mood?: Mood; move?: MoveName | MotionName; gesture?: Gesture; deco?: "snow"; tm?: TextMotion };
 
 // 글자 모션 기본값: 장면마다 다르게(cards.json의 tm으로 덮어쓸 수 있다)
 const TM_BY_ITEM: TextMotion[] = ["push", "flick", "drop", "pop"];
@@ -804,7 +805,9 @@ const gestureFor = (s: Scene): Gesture => {
 
 const NAT = true;
 const poseForRaw = (s: Scene, f: number, D: number): Pose => {
-  if (s.move) return MOVES[s.move](f, D);
+  if (s.move) {
+    return isMotion(s.move) ? MOTIONS[s.move].fn(f, D) : MOVES[s.move](f, D);
+  }
   switch (s.type) {
     case "hook":
       return hookPose(f);

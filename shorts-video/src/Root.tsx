@@ -4,6 +4,7 @@ import script from "./script.json";
 import cards from "./cards.json";
 import { InfoCard, calculateInfoCardMetadata } from "./InfoCard";
 import { Captioned, calculateCaptionedMetadata } from "./Captioned";
+import { MotionSheet } from "./MotionSheet";
 import { calculateShortsMetadata, FPS, Shorts } from "./Shorts";
 
 export const RemotionRoot: React.FC = () => {
@@ -38,6 +39,13 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         defaultProps={cards as never}
         calculateMetadata={calculateInfoCardMetadata}
+      />
+      <Still
+        id="MotionSheet"
+        component={MotionSheet}
+        width={1800}
+        height={2004}
+        defaultProps={{ from: 0, count: 12, frames: [32, 50, 70] }}
       />
       <Still id="Profile" component={Profile} width={800} height={800} />
       <Still id="Banner" component={Banner} width={2560} height={1440} />

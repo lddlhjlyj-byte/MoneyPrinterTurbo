@@ -17,7 +17,25 @@ export type Pose = {
   star: number; // 착지 별 폭발 진행(0=없음)
   sweat: number; // 땀방울(0/1)
   lag: number; // 팔 따라오기(도, 몸 속도에 반대로 휘어짐)
+  // ── 아래는 선택값(없으면 기존 동작 그대로). motions.ts의 동작들이 사용 ──
+  aL?: number; // 왼팔 각도 강제값(0=아래, 90=옆, 180=위, 음수=몸 안쪽)
+  aR?: number; // 오른팔 각도 강제값
+  aLW?: number; // 왼팔 강제 비율(0~1, 없으면 1)
+  aRW?: number;
+  lgL?: number; // 왼다리 각도(도, +면 발이 왼쪽으로)
+  lgR?: number;
+  hr?: number; // 머리 추가 기울기(도)
+  hy?: number; // 머리 위아래(px, +면 아래)
+  look?: number; // 시선 좌우(px)
+  lookY?: number; // 시선 위아래(px)
+  lid?: number; // 눈 감김(0~1)
+  mouthMin?: number; // 입 최소 벌림(0~1, 하품·놀람)
+  blush?: number; // 볼 붉어짐(0~1)
+  fx?: Fx; // 머리 주변 효과
+  front?: boolean; // true면 팔을 머리 앞에 그림(손으로 얼굴 만질 때)
 };
+
+export type Fx = "zzz" | "q" | "ex" | "heart" | "note" | "anger" | "spark" | "dizzy";
 
 export const BASE: Pose = {
   x: 0,

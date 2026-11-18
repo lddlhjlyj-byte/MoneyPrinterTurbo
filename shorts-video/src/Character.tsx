@@ -69,6 +69,161 @@ const armTarget = (g: Gesture, f: number): { l: number; r: number } => {
 
 export type Mood = "normal" | "happy" | "sad" | "angry" | "shine" | "teary";
 
+const SPARK = "M0,-28 Q4,-4 28,0 Q4,4 0,28 Q-4,4 -28,0 Q-4,-4 0,-28 Z";
+const HEART =
+  "M0 22 C-40 -6 -30 -34 -12 -34 C-4 -34 0 -28 0 -22 C0 -28 4 -34 12 -34 C30 -34 40 -6 0 22 Z";
+
+/** 머리 주변 효과(잠, 물음표, 느낌표, 하트, 음표, 화남, 반짝, 어지러움) */
+const Fx: React.FC<{ kind: NonNullable<Pose["fx"]>; f: number }> = ({
+  kind,
+  f,
+}) => {
+  const frac = (v: number) => v - Math.floor(v);
+  switch (kind) {
+    case "zzz":
+      return (
+        <g>
+          {[0, 1, 2].map((i) => {
+            const u = frac(f / 70 + i / 3);
+            return (
+              <text
+                key={i}
+                x={470 + u * 70}
+                y={90 - u * 110}
+                fontSize={46 + u * 34}
+                fontWeight={900}
+                fontFamily="sans-serif"
+                fill={LINE}
+                opacity={Math.min(1, u * 5) * (1 - u)}
+              >
+                Z
+              </text>
+            );
+          })}
+        </g>
+      );
+    case "q":
+      return (
+        <text
+          x={455}
+          y={40 + 8 * Math.sin(f * 0.2)}
+          fontSize={130}
+          fontWeight={900}
+          fontFamily="sans-serif"
+          fill={LINE}
+          transform={`rotate(${10 * Math.sin(f * 0.15)} 490 0)`}
+        >
+          ?
+        </text>
+      );
+    case "ex":
+      return (
+        <text
+          x={470}
+          y={30 + 5 * Math.sin(f * 0.9)}
+          fontSize={130}
+          fontWeight={900}
+          fontFamily="sans-serif"
+          fill="#E5383B"
+        >
+          !
+        </text>
+      );
+    case "heart":
+      return (
+        <g>
+          {[0, 1, 2].map((i) => {
+            const u = frac(f / 60 + i / 3);
+            return (
+              <path
+                key={i}
+                d={HEART}
+                transform={`translate(${470 + 40 * Math.sin(u * 6 + i)},${90 - u * 150}) scale(${0.7 + 0.5 * u})`}
+                fill="#FF6B81"
+                stroke={LINE}
+                strokeWidth={5}
+                strokeLinejoin="round"
+                opacity={Math.min(1, u * 6) * (1 - u * u)}
+              />
+            );
+          })}
+        </g>
+      );
+    case "note":
+      return (
+        <g>
+          {[0, 1].map((i) => {
+            const u = frac(f / 50 + i / 2);
+            return (
+              <g
+                key={i}
+                transform={`translate(${i === 0 ? 70 : 500},${110 - u * 130}) rotate(${12 * Math.sin(f * 0.2 + i)})`}
+                opacity={Math.min(1, u * 6) * (1 - u * u)}
+              >
+                <ellipse cx={0} cy={0} rx={20} ry={14} fill={LINE} />
+                <line x1={17} y1={0} x2={17} y2={-70} stroke={LINE} strokeWidth={8} strokeLinecap="round" />
+                <path d="M 17 -70 Q 52 -58 46 -28" fill="none" stroke={LINE} strokeWidth={8} strokeLinecap="round" />
+              </g>
+            );
+          })}
+        </g>
+      );
+    case "anger": {
+      const k = 1 + 0.15 * Math.sin(f * 0.9);
+      return (
+        <g transform={`translate(500,90) scale(${k})`} stroke="#E5383B" strokeWidth={9} strokeLinecap="round" fill="none">
+          <path d="M -34 -10 Q -10 -10 -10 -34" />
+          <path d="M 34 -10 Q 10 -10 10 -34" />
+          <path d="M -34 10 Q -10 10 -10 34" />
+          <path d="M 34 10 Q 10 10 10 34" />
+        </g>
+      );
+    }
+    case "spark":
+      return (
+        <g>
+          {[
+            [70, 80, 0],
+            [535, 70, 1],
+            [40, 300, 2],
+          ].map(([x, y, i]) => {
+            const p = 0.5 + 0.5 * Math.sin(f * 0.3 + i * 2);
+            return (
+              <path
+                key={i}
+                d={SPARK}
+                transform={`translate(${x},${y}) scale(${0.5 + 0.8 * p}) rotate(${i * 20})`}
+                fill="#FFE066"
+                stroke={LINE}
+                strokeWidth={5}
+                strokeLinejoin="round"
+              />
+            );
+          })}
+        </g>
+      );
+    case "dizzy":
+      return (
+        <g>
+          {[0, 1, 2].map((i) => {
+            const a = f * 0.18 + (i * Math.PI * 2) / 3;
+            return (
+              <path
+                key={i}
+                d={SPARK}
+                transform={`translate(${300 + Math.cos(a) * 170},${20 + Math.sin(a) * 34}) scale(0.7)`}
+                fill="#FFE066"
+                stroke={LINE}
+                strokeWidth={5}
+                strokeLinejoin="round"
+              />
+            );
+          })}
+        </g>
+      );
+  }
+};
+
 type ViewProps = {
   mood?: Mood;
   mouth: number; // 0~1
@@ -112,11 +267,21 @@ const CharacterView: React.FC<ViewProps> = ({
   let angR = rest + (t.r - rest) * enter;
   angL += (pose.armA - angL) * pose.armW;
   angR += (pose.armA - angR) * pose.armW;
+  if (pose.aL !== undefined) angL += (pose.aL - angL) * (pose.aLW ?? 1);
+  if (pose.aR !== undefined) angR += (pose.aR - angR) * (pose.aRW ?? 1);
   angL += pose.lag;
   angR += pose.lag;
 
-  const w = 30 + 12 * mouth;
-  const h = 6 + 34 * mouth;
+  // 새 동작용 선택값(없으면 기존과 동일)
+  const lidK = 1 - 0.93 * (pose.lid ?? 0);
+  eyeScaleY *= lidK;
+  const mo = Math.max(mouth, pose.mouthMin ?? 0);
+  const blushK = pose.blush ?? 0;
+  const lookX = pose.look ?? 0;
+  const lookYY = pose.lookY ?? 0;
+
+  const w = 30 + 12 * mo;
+  const h = 6 + 34 * mo;
   const topCurve = mood === "happy" || mood === "shine" ? 16 : mood === "sad" || mood === "teary" ? -22 : mood === "angry" ? -14 : -5;
   const mouthPath = `M ${-w} 0 Q 0 ${topCurve} ${w} 0 C ${w} ${h * 1.35} ${-w} ${h * 1.35} ${-w} 0 Z`;
 
@@ -217,8 +382,8 @@ const CharacterView: React.FC<ViewProps> = ({
     );
   };
 
-  const leg = (x: number, shoeX: number) => (
-    <g>
+  const leg = (x: number, shoeX: number, ang = 0) => (
+    <g transform={`rotate(${ang} ${x} 560)`}>
       <line
         x1={x}
         y1="560"
@@ -267,8 +432,8 @@ const CharacterView: React.FC<ViewProps> = ({
             <g
               transform={`translate(0,${bobY}) translate(300,610) scale(1,${squash}) translate(-300,-610)`}
             >
-              {leg(232, 222)}
-              {leg(368, 378)}
+              {leg(232, 222, pose.lgL ?? 0)}
+              {leg(368, 378, pose.lgR ?? 0)}
 
               {/* 흰 가운 (짧은 가운이 머리 아래로 드리워진 형태) */}
               <path
@@ -297,11 +462,15 @@ const CharacterView: React.FC<ViewProps> = ({
               />
               <rect x="180" y="520" width="9" height="26" rx="3" fill={LINE} />
 
-              {arm("L", angL)}
-              {arm("R", angR)}
+              {pose.front ? null : (
+                <>
+                  {arm("L", angL)}
+                  {arm("R", angR)}
+                </>
+              )}
 
-              <g transform={`rotate(${tilt} 300 520)`}>
-                <g transform={`translate(0,${HEAD_Y})`}>
+              <g transform={`rotate(${tilt + (pose.hr ?? 0)} 300 520)`}>
+                <g transform={`translate(0,${HEAD_Y + (pose.hy ?? 0)})`}>
                   <ellipse
                     cx="300"
                     cy="300"
@@ -323,21 +492,23 @@ const CharacterView: React.FC<ViewProps> = ({
                   <ellipse
                     cx="108"
                     cy="452"
-                    rx="34"
-                    ry="20"
-                    fill="#FF8FA3"
-                    opacity="0.65"
+                    rx={34 * (1 + 0.5 * blushK)}
+                    ry={20 * (1 + 0.5 * blushK)}
+                    fill={blushK > 0 ? "#FF6F8A" : "#FF8FA3"}
+                    opacity={0.65 + 0.3 * blushK}
                   />
                   <ellipse
                     cx="492"
                     cy="452"
-                    rx="34"
-                    ry="20"
-                    fill="#FF8FA3"
-                    opacity="0.65"
+                    rx={34 * (1 + 0.5 * blushK)}
+                    ry={20 * (1 + 0.5 * blushK)}
+                    fill={blushK > 0 ? "#FF6F8A" : "#FF8FA3"}
+                    opacity={0.65 + 0.3 * blushK}
                   />
-                  {eye(175, "l")}
-                  {eye(425, "r")}
+                  <g transform={`translate(${lookX},${lookYY})`}>
+                    {eye(175, "l")}
+                    {eye(425, "r")}
+                  </g>
                   <g transform="translate(300,478)">
                     <clipPath id="mouthClip">
                       <path d={mouthPath} />
@@ -349,7 +520,7 @@ const CharacterView: React.FC<ViewProps> = ({
                       strokeWidth="5"
                       strokeLinejoin="round"
                     />
-                    {mouth > 0.3 ? (
+                    {mo > 0.3 ? (
                       <ellipse
                         cx="0"
                         cy={h * 1.0}
@@ -408,7 +579,14 @@ const CharacterView: React.FC<ViewProps> = ({
                     />
                   </g>
                 ) : null}
+                {pose.fx ? <Fx kind={pose.fx} f={f} /> : null}
               </g>
+              {pose.front ? (
+                <>
+                  {arm("L", angL)}
+                  {arm("R", angR)}
+                </>
+              ) : null}
             </g>
           </svg>
         </div>
