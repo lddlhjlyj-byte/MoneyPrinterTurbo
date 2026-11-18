@@ -235,11 +235,14 @@ def main():
     used_names = {u["name"] for u in st["used"]} | {p.stem for p in (ROOT / "content/videos").glob("*.mp4")}
     used_topics = [u["topic"] for u in st["used"]]
     cands = [t for t in st["backlog"] if t not in used_topics]
+    prio = [t for t in st.get("priority", []) if t not in used_topics]  # 사용자가 정한 우선 주제: 순서대로 하나씩 먼저 사용
+    if prio:
+        cands = prio[:1]
     if not cands:
         print("주제 후보가 없음: pipeline/auto/topics.json의 backlog를 채워야 함", file=sys.stderr)
         return 2
     today = datetime.datetime.now(KST)
-    user = (f"오늘 날짜: {today:%Y-%m-%d} ({season(today.month)}). 아래 후보 중 지금 계절과 시청자 관심에 가장 맞는 주제 1개를 골라 작성하라.\n후보:\n"
+    user = (f"오늘 날짜: {today:%Y-%m-%d} ({season(today.month)}). 아래 후보 중 지금 계절과 시청자 관심에 가장 맞는 주제 1개를 골라 작성하라(후보가 1개면 그 주제로 작성).\n후보:\n"
             + "\n".join(f"- {t}" for t in cands[:15]) + f"\n이미 쓴 name(재사용 금지): {sorted(used_names)}")
     msgs = [{"role": "system", "content": system_prompt()}, {"role": "user", "content": user}]
     d, notes = None, []
@@ -273,6 +276,8 @@ def main():
     recent = [m for u in st["used"][-3:] for m in u.get("moves", [])]
     moves, gests, moods = design(d, prev, recent)
     topic = d.pop("topic", cands[0])
+    if prio:
+        topic = prio[0]
     facts = d.pop("facts", [])
     # 이전 cards.json 보관
     if CARDS.exists():
