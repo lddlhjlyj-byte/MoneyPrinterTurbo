@@ -34,7 +34,7 @@ def _post(url, headers, body, timeout=120):
         raise RuntimeError(f"HTTP {ex.code}: {ex.read()[:200].decode('utf-8', 'replace')}") from ex
     try:
         out = json.loads(raw)["choices"][0]["message"]["content"]
-        if not out:
+        if not out or not out.strip():
             raise ValueError("빈 응답(content 없음)")
         return out
     except Exception as ex:  # noqa: BLE001
@@ -57,12 +57,25 @@ def chat(messages, temperature=0.8):
                 errs.append(f"GitHub Models {m}: {ex}")
     key = os.environ.get("OPENROUTER_API_KEY")
     if key:
-        for _ in range(4):  # 무료 라우터는 가끔 빈 응답을 주므로 몇 번 더 시도
+        hdr = {"Authorization": f"Bearer {key}"}
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        models = [CFG["openrouter_model"]] * 2  # 무료 라우터는 가끔 빈 응답을 주므로 2번, 그래도 안 되면 모델을 직접 바꿔 시도
+        try:
+            req = urllib.request.Request("https://openrouter.ai/api/v1/models", headers=hdr)
+            with urllib.request.urlopen(req, timeout=30) as r:
+                free = [m for m in json.loads(r.read())["data"]
+                        if m["id"].endswith(":free") and (m.get("context_length") or 0) >= 16000
+                        and "text" in (m.get("architecture", {}).get("output_modalities") or ["text"])
+                        and not any(b in m["id"] for b in ("ernie", "baidu", "vl", "image", "audio"))]
+            free.sort(key=lambda m: -(m.get("context_length") or 0))
+            models += [m["id"] for m in free[:6]]
+        except Exception as ex:  # noqa: BLE001
+            errs.append(f"OpenRouter 모델 목록: {ex}")
+        for m in models:
             try:
-                return _post("https://openrouter.ai/api/v1/chat/completions", {"Authorization": f"Bearer {key}"},
-                             {"model": CFG["openrouter_model"], "messages": messages, "temperature": temperature, "max_tokens": 3500})
+                return _post(url, hdr, {"model": m, "messages": messages, "temperature": temperature, "max_tokens": 3500})
             except Exception as ex:  # noqa: BLE001
-                errs.append(f"OpenRouter: {ex}")
+                errs.append(f"OpenRouter {m}: {str(ex)[:160]}")
     raise RuntimeError("LLM 호출 실패: " + " | ".join(errs) if errs else "LLM 호출 불가: GITHUB_TOKEN/OPENROUTER_API_KEY 없음")
 
 
