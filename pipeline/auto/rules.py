@@ -8,6 +8,8 @@ ICONS = {"faucet", "cream", "bottle", "humidifier", "patch", "heater"}
 SIGN_ICONS = {"wrinkle", "flake", "tight"}
 MOODS = {"happy", "sad", "angry", "shine", "teary"}
 # 숫자 규칙: 아라비아 숫자 또는 한글 수+단위(세 가지, 삼 분 등)
+BEAT_MAX_SENTENCE = 40  # 한 문장 최대 글자(자막은 15~22자 단위로 자동 분할되지만 한 문장이 길면 어색)
+HOOK_FIRST_BEAT_MAX = 24  # hook 첫 호흡(3초)
 NUM = re.compile(r"\d|(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\s?(가지|번|분|초|회|시간|개|겹)|[일이삼사오십]\s?(분|초|도|회|번)")
 
 
@@ -123,6 +125,20 @@ def validate(d: dict) -> list:
                 e.append("outro.note(면책 문구) 필요")
         else:
             e.append(f"알 수 없는 장면 type: {t}")
+    # 시청 유지: 문장(한 호흡)이 길면 2~3초 단위 화면 전환·자막이 따라가지 못한다
+    for s in sc:
+        v = s.get("voice")
+        if not isinstance(v, str):
+            continue
+        for sent in re.split(r"(?<=[.!?。])\s*", v):
+            if len(sent.strip()) > BEAT_MAX_SENTENCE:
+                e.append(f"{s.get('type')}{s.get('n', '')}.voice: 한 문장이 {len(sent.strip())}자 (한 호흡 {BEAT_MAX_SENTENCE}자 이하로 끊어 쓰기) '{sent.strip()[:24]}…'")
+        if s.get("type") != "hook" and len(v) >= 40 and len([x for x in re.split(r"[.!?。]", v) if x.strip()]) < 2:
+            e.append(f"{s.get('type')}{s.get('n', '')}.voice: 문장이 1개뿐 (2개 이상으로 끊어 2~3초마다 새 정보)")
+    hv = str(next((s for s in sc if s.get("type") == "hook"), {}).get("voice", ""))
+    first = re.split(r"[.!?,，。]", hv)[0].strip()
+    if len(first) > HOOK_FIRST_BEAT_MAX:
+        e.append(f"hook.voice: 첫 호흡이 {len(first)}자 (첫 3초 = {HOOK_FIRST_BEAT_MAX}자 이하에서 쉼표·마침표)")
     if total > 560:
         e.append(f"voice 전체 {total}자 (560자 이하, 약 60초 한도)")
     hook = next((s for s in sc if s.get("type") == "hook"), {})
