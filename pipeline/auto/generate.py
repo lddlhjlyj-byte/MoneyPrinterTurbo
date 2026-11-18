@@ -12,7 +12,9 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 import rules  # noqa: E402
+from motion_names import motion_names  # noqa: E402
 
 ROOT = Path(os.environ.get("PIPELINE_ROOT") or HERE.parents[1])
 CFG = rules.CFG
@@ -89,19 +91,79 @@ def season(m):
 
 
 # ───────── 연출 지정 (표정·동작·제스처를 장면 내용에 맞춰, 직전 영상과 겹치지 않게) ─────────
+# 기존 동작 9개 + 사람 동작 100개(shorts-video/src/motions.ts). 장면 내용에 맞는 동작을 먼저 고르고, 없으면 일반 설명용에서 고른다.
 MOVES = ["run", "rise", "spinJump", "bounce", "hop3", "sway", "tilt", "nod", "shiver"]
 GESTS = ["both", "pointR", "pointL", "cheer", "wave", "up", "count"]
 CAUTION = ("주의", "자극", "따가", "붉", "확인", "조심", "중단")
+# 주의 장면(자극·따가움 등): 놀람·걱정 계열
+CAUTION_MOVES = ["tremble", "worry", "scared", "confused", "shocked", "shrug"]
+# 장면 글(voice+head)에 단어가 있으면 그 내용에 맞는 동작 후보(앞쪽이 우선)
+KEYWORD_MOVES = [
+    (("세안", "씻", "클렌징", "거품", "헹"), ["washFace"]),
+    (("선크림", "자외선", "썬", "sun"), ["spreadSunscreen", "applyCream"]),
+    (("크림", "보습", "로션", "앰플", "세럼", "에센스", "바르"), ["applyCream", "patFace", "spreadSunscreen"]),
+    (("토너", "흡수", "두드", "토닥", "톡톡"), ["patFace", "applyCream"]),
+    (("닦", "제거", "화장솜", "문지"), ["wipe"]),
+    (("물", "수분", "마시"), ["drink", "patFace"]),
+    (("거울", "살펴", "체크", "점검", "피부결", "결"), ["mirror", "thinking"]),
+    (("시간", "분 ", "초 ", "기다", "이내", "몇 분"), ["checkWatch"]),
+    (("여기", "이곳", "부위", "턱", "볼", "이마"), ["pointForward"]),
+    (("밤", "수면", "잠", "취침"), ["sleepy", "yawn"]),
+    (("아침", "기상", "일어"), ["stretch", "wakeUp"]),
+    (("호흡", "스트레스", "휴식", "긴장"), ["deepBreath", "meditate", "relief"]),
+    (("먹", "식단", "음식"), ["eat"]),
+    (("핵심", "포인트", "기억", "정리", "팁", "비결"), ["eureka", "present"]),
+    (("촉촉", "윤기", "탄력", "좋아", "효과", "개선"), ["proud", "excited", "joy"]),
+    (("왜", "이유", "원인", "궁금", "고민", "문제"), ["thinking", "confused"]),
+    (("건조", "당김", "각질", "푸석"), ["worry", "shrug"]),
+    (("겨울", "추", "찬 "), ["scared", "relief"]),
+]
+# 내용과 무관할 때 쓰는 일반 설명용(몸짓이 과하지 않은 것)
+GENERAL_MOVES = MOVES + [
+    "present", "nodYes", "thinking", "eureka", "proud", "excited", "pointForward", "smug", "hello", "applaud",
+    "skip", "stepDance", "disco", "wiggle", "twist", "jumpingJack", "cheerlead", "victory", "giggle", "relief",
+    "stretch", "deepBreath", "flex", "salute", "beckon", "highFive", "march", "walk", "love", "shrug",
+]
 
 
-def design(d, prev):
+def pick_move(text, k, name, used, prev_same_pos, recent, caution):
+    """장면 글에 맞는 동작을 고른다. 같은 영상 안 중복·직전 영상 같은 위치·최근 영상에서 쓴 동작은 되도록 피한다."""
+    valid = set(motion_names()) | set(MOVES) | {"tremble"}
+    if caution:
+        cands = CAUTION_MOVES
+    else:
+        cands = []
+        for words, names in KEYWORD_MOVES:
+            if any(w in text for w in words):
+                cands += [n for n in names if n not in cands]
+        cands += [n for n in GENERAL_MOVES if n not in cands]
+    cands = [n for n in cands if n in valid]
+    for relax in (0, 1, 2):
+        pool = [n for n in cands if n not in used]
+        if relax < 2:
+            pool = [n for n in pool if n != prev_same_pos]
+        if relax < 1:
+            pool = [n for n in pool if n not in recent]
+        if pool:
+            if caution or text_match_count(text) > 0:
+                return pool[0]  # 내용에 맞는 후보가 앞에 있으므로 첫 번째
+            return pool[(k * 3 + len(name)) % len(pool)]
+    return "nod"
+
+
+def text_match_count(text):
+    return sum(1 for words, _ in KEYWORD_MOVES if any(w in text for w in words))
+
+
+def design(d, prev, recent=()):
     pm, pg, pmood = prev.get("moves", []), prev.get("gestures", []), prev.get("moods", {})
+    recent = set(recent)
     items = [s for s in d["scenes"] if s["type"] == "item"]
     moves, gests = [], []
     for k, s in enumerate(items):
-        caution = any(w in s["voice"] + s["head"] for w in CAUTION)
-        pool = [m for m in MOVES if m not in moves and (k >= len(pm) or m != pm[k])]
-        mv = "tremble" if caution else pool[(k * 3 + len(d["name"])) % len(pool)]
+        text = s["voice"] + " " + s["head"]
+        caution = any(w in text for w in CAUTION)
+        mv = pick_move(text, k, d["name"], moves, pm[k] if k < len(pm) else None, recent, caution)
         gp = [g for g in GESTS if g not in gests and (k >= len(pg) or g != pg[k])]
         gs = "shy" if caution else gp[(k * 2 + len(d["name"])) % len(gp)]
         s["move"], s["gesture"] = mv, gs
@@ -195,7 +257,8 @@ def main():
         print("규칙을 통과하는 대본을 만들지 못함 → 영상 만들지 않음", file=sys.stderr)
         return 3
     prev = st["used"][-1] if st["used"] else {}
-    moves, gests, moods = design(d, prev)
+    recent = [m for u in st["used"][-3:] for m in u.get("moves", [])]
+    moves, gests, moods = design(d, prev, recent)
     topic = d.pop("topic", cands[0])
     facts = d.pop("facts", [])
     # 이전 cards.json 보관

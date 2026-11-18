@@ -12,7 +12,11 @@ E = errors.append
 W = warns.append
 
 ICONS = {"faucet", "cream", "bottle", "humidifier", "patch"}
-MOVES = {"run", "rise", "spinJump", "tremble", "bounce", "shiver", "tilt", "sway", "hop3", "nod"}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from motion_names import motion_names  # noqa: E402
+
+# 기존 동작 10개 + shorts-video/src/motions.ts의 사람 동작 100개
+MOVES = {"run", "rise", "spinJump", "tremble", "bounce", "shiver", "tilt", "sway", "hop3", "nod"} | set(motion_names())
 GESTURES = {"idle", "up", "pointR", "pointL", "count", "wave", "both", "cheer", "shy"}
 KINDS = {"capsule", "bottle", "sun", "winter"}
 SIGN_ICONS = {"wrinkle", "flake", "tight"}
@@ -68,7 +72,7 @@ for i, s in enumerate(S):
         if not v:
             E(f"{w}: voice 없음")
     if s.get("move") and s["move"] not in MOVES:
-        E(f"{w}: move '{s['move']}' 없음 (가능: {sorted(MOVES)})")
+        E(f"{w}: move '{s['move']}' 없음 (shorts-video/src/motions.ts의 MOTIONS 키 또는 기존 10개만 가능)")
     if s.get("gesture") and s["gesture"] not in GESTURES:
         E(f"{w}: gesture '{s['gesture']}' 없음 (가능: {sorted(GESTURES)})")
     if t == "hook":
