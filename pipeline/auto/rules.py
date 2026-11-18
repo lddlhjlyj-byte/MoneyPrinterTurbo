@@ -139,8 +139,14 @@ def validate(d: dict) -> list:
     first = re.split(r"[.!?,，。]", hv)[0].strip()
     if len(first) > HOOK_FIRST_BEAT_MAX:
         e.append(f"hook.voice: 첫 호흡이 {len(first)}자 (첫 3초 = {HOOK_FIRST_BEAT_MAX}자 이하에서 쉼표·마침표)")
-    if total > 560:
-        e.append(f"voice 전체 {total}자 (560자 이하, 약 60초 한도)")
+    if total > 330:
+        e.append(f"voice 전체 {total}자 (330자 이하, 약 40초 한도)")
+    for i, scn in enumerate(d.get("scenes", [])):
+        for bad in ("보겠습니다", "알아보겠", "살펴보겠", "확인해 볼까", "달라질 수 있습니다", "느낌이 달라"):
+            if bad in (scn.get("voice") or ""):
+                e.append(f"장면{i+1}: 빈말 '{bad}' (내용 없는 문장 금지)")
+        if scn.get("type") == "outro" and len(scn.get("voice") or "") > 25:
+            e.append(f"장면{i+1}(outro): voice는 저장·팔로우 한 문장(25자 이하)")
     hook = next((s for s in sc if s.get("type") == "hook"), {})
     if not NUM.search(" ".join(str(hook.get(k, "")) for k in ("line1", "line2", "voice"))):
         e.append("숫자 규칙: hook에 구체적 숫자·범위(몇 분·몇 도·몇 %·몇 회)가 없음")

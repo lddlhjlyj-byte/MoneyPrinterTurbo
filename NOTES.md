@@ -378,3 +378,8 @@ print(r.stderr[-3000:])
 - 지정한 동작·표정: item1 washFace/happy, item2 relief/shine, item3 salute/happy, item4 bounce/shine, summary happy, outro shine(hook·title 기본)
 - 실제 영상 프레임(2초 간격 24장)에서 발견: hook의 경고 알약·summary 4번 줄이 비트 자막과 겹침 → 자막 위치를 장면별로 분리(hook 560, summary 1185, 그 외 1075, `InfoCard.tsx`). 수정 후 정지 프레임으로 겹침 해소 확인. 이미 업로드된 영상에는 아직 미반영(겹침 있는 상태로 예약됨)
 - 확인 전: 비트 자막과 실제 음성 싱크(소리 들어 확인 못 함), 효과음·음성 음량 균형(전체 평균 -18.6dB·최대 -2.9dB만 확인), 길이 48.5초는 목표 25~40초 초과(경고), 의학 문구 출처는 미확인
+
+### 2026-11-18 사용자 불만 반영: 자막 겹침·대본 품질 (hand-cream-timing 평가: "저장하세요 자막 겹침, 대본 엉망")
+- 원인(확인): outro는 화면에 같은 문구가 이미 있는데 비트 자막이 중복으로 겹침 → outro는 비트 자막을 끔(`InfoCard.tsx`). 대본은 title에 빈말("순서대로 보겠습니다", "느낌이 달라질 수 있습니다"), 딱딱한 ~습니다 체, 길이 48.5초
+- 수정: `gpt-prompt.md` — 말투를 의사·뷰티 전문가의 ~요/~죠 체로, 빈말 금지, title voice도 숫자 든 한 문장, outro voice 한 문장, hook은 뜨끔한 문장, voice 합계 300자(약 35~40초). `rules.py` — 빈말 문구 오류, outro voice 25자 초과 오류, voice 합계 330자 초과 오류. 현재 cards.json(hand-cream-timing)에 적용하면 빈말 3건이 오류로 잡힘(확인함)
+- 확인 전: 새 규칙으로 무료 LLM이 통과하는 대본을 내는지, 새 영상의 자막·싱크. 이미 예약된 hand-cream-timing(videoId 25w-cgbsINM, 11-19 18:30 KST)은 업로더에 삭제 기능이 없어 자동 삭제 못 함(유튜브 스튜디오에서 삭제/비공개 필요)

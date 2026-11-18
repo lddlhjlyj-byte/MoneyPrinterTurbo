@@ -926,7 +926,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({ scenes }) => {
               </BeatPunch>
             </Fade>
             <CharLayer s={s} start={start} dur={dur} />
-            <BeatCaptions beats={beats} top={s.type === "hook" ? 560 : s.type === "summary" ? 1185 : 1075} />
+            {s.type === "outro" ? null : <BeatCaptions beats={beats} top={s.type === "hook" ? 560 : s.type === "summary" ? 1185 : 1075} />}
             <BeatSfx beats={beats} />
             {s.audio ? <Audio src={staticFile(s.audio)} /> : null}
           </Sequence>
