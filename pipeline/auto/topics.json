@@ -115,6 +115,31 @@
     "summary": "happy",
     "outro": "shine"
    }
+  },
+  {
+   "topic": "겨울에도 선크림을 발라야 하는 이유",
+   "name": "winter-sunscreen-why",
+   "date": "2026-11-18",
+   "moves": [
+    "spreadSunscreen",
+    "applyCream",
+    "proud",
+    "worry"
+   ],
+   "gestures": [
+    "pointL",
+    "cheer",
+    "both",
+    "shy"
+   ],
+   "moods": {
+    "item1": "shine",
+    "item2": "happy",
+    "item3": "shine",
+    "item4": "angry",
+    "summary": "shine",
+    "outro": "happy"
+   }
   }
  ]
 }
