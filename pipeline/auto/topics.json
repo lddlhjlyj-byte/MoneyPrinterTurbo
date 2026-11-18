@@ -90,6 +90,31 @@
     "up",
     "both"
    ]
+  },
+  {
+   "topic": "핸드크림 바르는 타이밍",
+   "name": "hand-cream-timing",
+   "date": "2026-11-18",
+   "moves": [
+    "washFace",
+    "relief",
+    "salute",
+    "bounce"
+   ],
+   "gestures": [
+    "count",
+    "up",
+    "pointR",
+    "wave"
+   ],
+   "moods": {
+    "item1": "happy",
+    "item2": "shine",
+    "item3": "happy",
+    "item4": "shine",
+    "summary": "happy",
+    "outro": "shine"
+   }
   }
  ]
 }
