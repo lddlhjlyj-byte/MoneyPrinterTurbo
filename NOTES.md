@@ -390,3 +390,11 @@ print(r.stderr[-3000:])
 ### 2026-11-19 사용자 지시: 자동 생성 대본 폐기, 자동 제작 중지
 - 지시: "내가 짠 대본 모두 폐기, 다른 지시 있기 전까지 사용자가 보내주는 대본으로만 제작". `pipeline/auto/PAUSE` 파일을 만들어 `generate.py` 자동 생성을 중지(재개하려면 이 파일 삭제). 우선 주제 3개(priority)는 보관만 함
 - 폐기 처리: queue의 hand-cream-timing(25w-cgbsINM), winter-sunscreen-why(1nEQmr0E_HA)를 `discarded`로 표시. 유튜브에서 삭제하는 `yt-delete.yml` 워크플로 추가(실행 결과는 아래에 확인 후 기록)
+
+### 2026-11-19 사용자 대본 3편 제작·예약 (출처: 사용자가 보낸 ChatGPT 대본, 순서 2→1→3, 날짜 각각 다르게)
+- voice는 원문과 글자 단위로 일치함을 코드로 대조 확인(15개 장면 전부). 화면 문구(head·sub·tags·line·outro text)와 해시태그 8개, 장면 구성(hook·item·outro, 3번은 원인 why)은 내가 만들었음. 원문에 구독 유도 문장이 없어 outro voice에는 저장·팔로우 없음(화면 sub에만 표시). rules.py 미적용, 길이·글자 수 문제는 알리기만
+- 11/20 18:30 KST: cleansing-oil-emulsify(클렌징 오일 유화법 3단계) videoId LhRibenhSbs, 64.5초. 동작/표정: item1 present/count/happy, item2 patFace/pointR/shine, item3 eureka/up/shine, outro deepBreath/shine 없음→기본
+- 11/21 18:30 KST: night-moisture-order(밤 보습 순서) videoId akVDrhXQGR8, 69.0초. item1 mirror/up/happy, item2 thinking/pointL/shine, item3 pointForward/both/happy, outro proud
+- 11/22 18:30 KST: winter-redness-barrier(겨울 홍조 피부장벽), 결과는 queue.json 참고. why shiver/shy/sad, item1 washFace/pointR/happy, item2 shakeNo/up/shine, outro nodYes. voice 510자(500자 초과 경고)
+- 렌더링 중 apt 설치 단계가 멈추는 문제가 있어 infocard.yml에 시간 제한·재시도 추가(재시도 후에도 여러 번 멈춘 뒤 성공한 원인은 확인하지 못함)
+- 모두 60초 초과(쇼츠 권장 한도 초과 경고), 자막·음성 싱크는 영상 1편의 정지 프레임만 확인(소리 확인 전). 의학 문구 출처: ChatGPT가 적은 참고 자료(Cleveland Clinic, AAD 등) 직접 확인 못함 → 미확인
