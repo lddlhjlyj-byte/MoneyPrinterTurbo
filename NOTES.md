@@ -398,3 +398,9 @@ print(r.stderr[-3000:])
 - 11/22 18:30 KST: winter-redness-barrier(겨울 홍조 피부장벽), 결과는 queue.json 참고. why shiver/shy/sad, item1 washFace/pointR/happy, item2 shakeNo/up/shine, outro nodYes. voice 510자(500자 초과 경고)
 - 렌더링 중 apt 설치 단계가 멈추는 문제가 있어 infocard.yml에 시간 제한·재시도 추가(재시도 후에도 여러 번 멈춘 뒤 성공한 원인은 확인하지 못함)
 - 모두 60초 초과(쇼츠 권장 한도 초과 경고), 자막·음성 싱크는 영상 1편의 정지 프레임만 확인(소리 확인 전). 의학 문구 출처: ChatGPT가 적은 참고 자료(Cleveland Clinic, AAD 등) 직접 확인 못함 → 미확인
+
+### 2026-11-20 사용자 대본 2차 3편 제작·예약 (출처: 사용자가 보낸 ChatGPT 대본, 기존 시리즈와 연결되게 순서 지정)
+- voice는 원문과 일치 확인(코드 대조, 대본 문장 누락 없음). 화면 문구·해시태그·장면 구성은 내가 만듦. 2편(블랙헤드) why 장면 voice에 금지어 '무조건'이 있으나 사용자 대본이라 그대로 둠(알림만). 3편 외 outro voice에 저장·팔로우 유도 없음
+- 순서: 11/23 블랙헤드(blackhead-gentle-care, 11/20 클렌징 오일 유화 영상의 후속, videoId _i0FV5zmtiI, 60.5초) → 11/24 겨울 미스트(heater-mist-usage, 보습·히터 건조 계열 후속, HJXPWFfZeiw, 55.0초) → 11/25 기초 흡수 습관(skincare-30sec-habit, 11/21 밤 보습 순서·앰플 영상 후속). 모두 18:30 KST
+- 동작/표정: 블랙헤드 why confused/up/sad, item beckon/pointR/happy, dizzy/count/shine, wipe/pointL/happy, outro happy. 미스트 why worry/shy/sad, item balance/pointR/happy, wiggle/both/shine, applyCream/up/happy, outro relief. 흡수 item checkWatch/pointL/happy, spin/count/shine, love/both/happy, joy/cheer/shine, why scratchHead/up/happy, outro happy
+- 확인 전: 자막·음성 싱크, 의학 문구 출처(미확인), 3편 영상 상세 프레임
