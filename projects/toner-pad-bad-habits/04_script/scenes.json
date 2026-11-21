@@ -1,0 +1,108 @@
+{
+  "name": "toner-pad-bad-habits",
+  "title": "토너 패드 매일 쓰세요? 피부 망치는 습관 3가지",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "토너 패드",
+        "line2": "매일 써도 괜찮을까?",
+        "warn": "예민해질 수도"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "title",
+      "n": null,
+      "screen": {
+        "text": "피해야 할 습관",
+        "num": "3가지"
+      },
+      "visual": {},
+      "direction": {
+        "move": "shrug",
+        "gesture": "count",
+        "mood": "angry"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "세게 문지르기",
+        "sub": "반복 마찰은 자극",
+        "tags": [
+          "마찰",
+          "자극"
+        ]
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "stomp",
+        "gesture": "pointR",
+        "mood": "angry"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "성분 겹쳐 쓰기",
+        "sub": "각질 성분 중복 주의",
+        "tags": [
+          "각질 성분",
+          "레티놀"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "shocked",
+        "gesture": "up",
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "붉고 따가울 땐",
+        "sub": "패드 사용 잠시 쉬기",
+        "tags": [
+          "붉음",
+          "따가움"
+        ]
+      },
+      "visual": {},
+      "direction": {
+        "move": "sitDown",
+        "gesture": "shy",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 6,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "피부 상태에\n맞게 사용!",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "happy"
+      }
+    }
+  ]
+}

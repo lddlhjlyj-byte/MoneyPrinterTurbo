@@ -417,3 +417,11 @@ print(r.stderr[-3000:])
 - 확인함: 가짜 LLM 응답으로 generate.py → 폴더 24개 파일 생성, 가짜 영상·verify 파일로 sync → 06·07·09 채움 확인(로컬 시험 폴더). 워크플로 YAML 문법 통과
 - 확인 전: GitHub Actions에서 실제 실행(infocard.yml의 sync 단계, daily-shorts의 projects 커밋), 실제 LLM 호출
 - 한계: 자동 제작은 웹 조사를 하지 않아 01_research는 pending, 03_plan의 후킹 후보 3개는 미기록, 음성 오독·라이선스(08)는 자동 확인 불가라 pending/미확인. 기존 영상 기록은 `content/briefs/`에 그대로 둠(이동 안 함)
+
+### 2026-11-21 전체 점검·개선 (사용자 요청: 영상 오류·중복·레거시 점검)
+- 영상 점검(ffprobe/ffmpeg 직접 측정, 영상 23개): 전부 1080x1920·소리 있음·평균 -18~-19dB·최대 -2.5~-3.6dB(클리핑 없음). 길이는 대본 복원된 20편 중 18편이 40초 초과(36.5~72.5초, 목표 25~40초). 이 점검은 발음·자막 내용·화면 품질은 보지 못함
+- 확인된 오류: 이미 업로드된 4편(cleansing-oil-emulsify, heater-mist-usage, night-moisture-order, winter-redness-barrier)의 outro `mood`에 동작 이름(deepBreath·relief·proud·nodYes)이 들어가 표정이 기본값으로 나감, outro `move`는 미지정. 유튜브 영상은 교체 불가라 그대로 두고 재발만 막음. 사용자 대본 문구는 건드리지 않음
+- 확인된 중복·레거시: ①enum 상수(ICONS·MOODS 등)가 rules.py·validate_cards.py에 따로 있었고 validate_cards.py는 heater 아이콘 누락·mood 검사 없음·어느 워크플로에서도 안 쓰임 → `pipeline/schema.py` 한 곳으로 통합 ②유튜브 토큰 교환 코드가 upload_youtube.py·yt-check.yml·yt-delete.yml 3곳 → `pipeline/auto/yt.py` 1곳 ③cards 보관본 `shorts-video/src/cards.<name>.json` 16개와 projects 보관 중복(새로 만들지 않도록 generate.py 보관 로직 삭제, 기존 파일은 삭제하지 않음) ④roles/4-producer.md·SETUP.md의 Metricool 안내와 영상 길이 50~60초 기준이 현재 규칙(유튜브 직접 업로드, 25~40초)과 달랐음 → 정정
+- 개선: infocard.yml에 형식 게이트(`validate_cards.py --schema-only`, 틀린 값이면 렌더링 전 중단)·동시 실행 직렬화(concurrency)·워크플로 파일 수정으로는 재렌더링하지 않도록 paths에서 자기 자신 제거(직전 푸시로 toner-pad-3steps.mp4가 다시 렌더링돼 덮어써짐) 적용. `project.py backfill all`로 기존 영상 projects/ 소급 정리(대본 복원 20편, sunscreen-01·02는 이력에 name이 없어 복원 못 함)
+- 시험: 모든 py 컴파일, 워크플로 YAML 5개 문법, 복원 cards 21개에 형식 검사 → 위 4건만 검출·거짓 양성 0, 가짜 LLM으로 generate.py 재시험 통과, 가짜 HTTP로 yt.py·업로더 경로 시험. 확인 전: Actions에서 새 형식 게이트·yt.py 실제 실행, 실제 유튜브 호출
+- 발견했으나 손대지 않은 것: `pipeline/auto/PAUSE`가 켜져 있어(11-19 사용자 지시) 11-23 자동 제작은 실행되지 않음. 영상 3편(lip-flake-care 삭제, hand-cream-timing·winter-sunscreen-why 폐기)과 queue에 없는 10개 영상 파일이 저장소에 남음. mp4가 저장소에 쌓여 .git 389MB·content 269MB(영상당 약 10MB). 토너 영상 4편(toner-correct-use·-motion은 길이·대본이 거의 같음), `app/`·`webui/`·`resource/`(198MB)는 MoneyPrinterTurbo 원본 코드로 주력 경로가 아님

@@ -1,0 +1,64 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "기초 화장품을 열심히 발라도 피부 위에서 겉도는 느낌이 드시나요? 그렇다면 화장품을 바르는 습관부터 확인해 보세요."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "첫째, 세안 후 피부가 완전히 마르기 전에 토너나 수분 제품을 발라주세요."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "둘째, 앰플은 한꺼번에 많이 바르기보다 적당량을 덜어 얼굴 안쪽에서 바깥쪽으로 부드럽게 펴 발라주세요."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "셋째, 손바닥으로 얼굴을 가볍게 감싸듯 눌러주세요. 세게 문지르거나 두드릴 필요는 없습니다."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "넷째, 마지막에는 보습 크림으로 마무리해 주세요."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "여기서 중요한 팁! 제품을 여러 겹 바를 때는 다음 단계 제품이 심하게 밀리지 않을 정도로 잠시 기다려 주세요. 화장품은 많이 바른다고 더 깊이 흡수되는 게 아닙니다."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "적당량을 피부에 맞게, 순서대로 사용하는 것이 중요합니다. 오늘부터 30초만 바르는 습관을 바꿔보세요!"
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

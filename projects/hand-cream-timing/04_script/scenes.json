@@ -1,0 +1,151 @@
+{
+  "name": "hand-cream-timing",
+  "title": "손등 하얗게 뜨는 초겨울, 핸드크림 바르는 타이밍 4가지",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "씻고 3분",
+        "line2": "손등 각질 들뜨는 밤",
+        "warn": "손 씻고 3분 안에"
+      },
+      "visual": {
+        "deco": "snow"
+      },
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "title",
+      "n": null,
+      "screen": {
+        "text": "핸드크림 타이밍",
+        "num": "4가지"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "씻고 3분 안",
+        "sub": "물기 남은 손등에",
+        "tags": [
+          "3분",
+          "손등"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "washFace",
+        "gesture": "count",
+        "mood": "happy",
+        "worry": false
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "손가락 사이",
+        "sub": "네 곳부터 먼저",
+        "tags": [
+          "4곳",
+          "갈라짐"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "relief",
+        "gesture": "up",
+        "mood": "shine",
+        "worry": false
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "자기 전 1회",
+        "sub": "얇게 한 겹 덧바르기",
+        "tags": [
+          "취침 전",
+          "1회"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "salute",
+        "gesture": "pointR",
+        "mood": "happy",
+        "worry": false
+      }
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "씻을 때마다",
+        "sub": "손 씻은 뒤 1회씩",
+        "tags": [
+          "1회",
+          "습관"
+        ]
+      },
+      "visual": {},
+      "direction": {
+        "move": "bounce",
+        "gesture": "wave",
+        "mood": "shine",
+        "worry": false
+      }
+    },
+    {
+      "no": 7,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "씻고 3분 안에",
+          "손가락 사이 4곳",
+          "자기 전 1회",
+          "씻을 때마다 1회"
+        ],
+        "title": "오늘은 3분"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 8,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "손부터\n발라보세요",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {
+        "deco": "snow"
+      },
+      "direction": {
+        "mood": "shine"
+      }
+    }
+  ]
+}

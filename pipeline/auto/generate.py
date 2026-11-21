@@ -15,7 +15,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 import rules  # noqa: E402
 import project  # noqa: E402
-from motion_names import motion_names  # noqa: E402
+import schema  # noqa: E402
 
 ROOT = Path(os.environ.get("PIPELINE_ROOT") or HERE.parents[1])
 CFG = rules.CFG
@@ -142,7 +142,7 @@ GENERAL_MOVES = MOVES + [
 
 def pick_move(text, k, name, used, prev_same_pos, recent, caution):
     """장면 글에 맞는 동작을 고른다. 같은 영상 안 중복·직전 영상 같은 위치·최근 영상에서 쓴 동작은 되도록 피한다."""
-    valid = set(motion_names()) | set(MOVES) | {"tremble"}
+    valid = schema.moves()
     if caution:
         cands = CAUTION_MOVES
     else:
@@ -280,12 +280,6 @@ def main():
     if prio:
         topic = prio[0]
     facts = d.pop("facts", [])
-    # 이전 cards.json 보관
-    if CARDS.exists():
-        old = json.loads(CARDS.read_text("utf-8"))
-        arch = CARDS.parent / f"cards.{old.get('name', 'previous')}.json"
-        if old.get("name") and not arch.exists():
-            arch.write_text(json.dumps(old, ensure_ascii=False, indent=2), "utf-8")
     CARDS.write_text(json.dumps(d, ensure_ascii=False, indent=2), "utf-8")
     st["used"].append({"topic": topic, "name": d["name"], "date": f"{today:%Y-%m-%d}", "moves": moves, "gestures": gests, "moods": moods})
     TOPICS.write_text(json.dumps(st, ensure_ascii=False, indent=1), "utf-8")

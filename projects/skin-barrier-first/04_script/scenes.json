@@ -1,0 +1,125 @@
+{
+  "name": "skin-barrier-first",
+  "title": "피부장벽 무너졌을 때, 가장 먼저 바꿔야 하는 건 화장품이 아닙니다",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "피부장벽이 무너졌을 때,",
+        "line2": "가장 먼저 바꿔야 하는 건\n화장품이 아닙니다.",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 2,
+      "type": "why",
+      "n": null,
+      "screen": {
+        "head": "피부장벽이 약해지면",
+        "sub": "수분 손실이 증가하고 외부 자극에도 민감해질 수 있습니다"
+      },
+      "visual": {
+        "kind": "winter"
+      },
+      "direction": {
+        "move": "tilt",
+        "gesture": "pointL",
+        "mood": "teary"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "과도한 세안과 강한 클렌징을",
+        "sub": "줄이세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "sway",
+        "gesture": "pointR",
+        "mood": "angry"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "레티놀이나 필링 제품처럼 자극을 줄 수 있는 제품은",
+        "sub": "피부가 안정될 때까지 사용을 쉬어주세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "tremble",
+        "gesture": "shy",
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "세라마이드와 판테놀 등이 함유된 보습제를",
+        "sub": "활용해 피부를 촉촉하게 유지하세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "hop3",
+        "gesture": "cheer",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "낮에는 자외선 차단도 중요합니다",
+        "sub": "",
+        "tags": []
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "rise",
+        "gesture": "up",
+        "mood": "shine",
+        "worry": false
+      }
+    },
+    {
+      "no": 7,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "피부에 필요한 보습과 보호를 꾸준히 유지하는 것입니다.",
+        "text": "피부장벽 관리의 핵심은\n무리한 관리가 아니라"
+      },
+      "visual": {},
+      "direction": {
+        "move": "nod",
+        "gesture": "wave",
+        "mood": "happy"
+      }
+    }
+  ]
+}

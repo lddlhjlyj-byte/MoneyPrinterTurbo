@@ -1,12 +1,13 @@
 """cards.json 규칙 검사. 사람이 하던 글자 수 한도·금지어·구조 점검을 코드로 고정한다."""
 import json
 import re
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from schema import ICONS, MOODS, SIGN_ICONS  # noqa: E402  (enum 값은 pipeline/schema.py 한 곳에서 관리)
+
 CFG = json.loads((Path(__file__).parent / "config.json").read_text("utf-8"))
-ICONS = {"faucet", "cream", "bottle", "humidifier", "patch", "heater"}
-SIGN_ICONS = {"wrinkle", "flake", "tight"}
-MOODS = {"happy", "sad", "angry", "shine", "teary"}
 # 숫자 규칙: 아라비아 숫자 또는 한글 수+단위(세 가지, 삼 분 등)
 BEAT_MAX_SENTENCE = 40  # 한 문장 최대 글자(자막은 15~22자 단위로 자동 분할되지만 한 문장이 길면 어색)
 HOOK_FIRST_BEAT_MAX = 24  # hook 첫 호흡(3초)

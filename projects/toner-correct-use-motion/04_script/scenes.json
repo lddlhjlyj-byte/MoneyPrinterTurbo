@@ -1,0 +1,116 @@
+{
+  "name": "toner-correct-use-motion",
+  "title": "스킨토너 이렇게 바르면 오히려 피부에 자극됩니다",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "토너, 이렇게",
+        "line2": "사용하면 안 됩니다!",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "why",
+      "n": null,
+      "screen": {
+        "head": "토너의 역할은",
+        "sub": "수분 공급과 피부결 정돈"
+      },
+      "visual": {
+        "kind": "bottle"
+      },
+      "direction": {
+        "move": "sway",
+        "gesture": "pointR"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "건성 피부는 손으로 부드럽게",
+        "sub": "",
+        "tags": []
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "nod",
+        "gesture": "pointL"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "화장솜은 충분히 적셔서 한 번 부드럽게",
+        "sub": "",
+        "tags": []
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "spinJump",
+        "gesture": "both"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "많이 바르는 것보다 적절한 양!",
+        "sub": "",
+        "tags": []
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "tremble",
+        "gesture": "shy"
+      }
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "마지막은 보습제로 마무리",
+        "sub": "",
+        "tags": []
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "rise",
+        "gesture": "cheer",
+        "worry": false
+      }
+    },
+    {
+      "no": 7,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "스킨토너, 모든 화장의 시작입니다.",
+        "text": "내 피부에 맞는\n토너 사용법!"
+      },
+      "visual": {},
+      "direction": {
+        "move": "hop3"
+      }
+    }
+  ]
+}

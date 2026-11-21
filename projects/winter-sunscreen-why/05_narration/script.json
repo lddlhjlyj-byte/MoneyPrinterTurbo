@@ -1,0 +1,54 @@
+{
+  "name": "winter-sunscreen-why",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "voice": "SPF30으로 겨울 자외선 80% 차단하세요.",
+      "chars": 25
+    },
+    {
+      "no": 2,
+      "type": "title",
+      "voice": "겨울에도 선크림, 딱 4가지예요.",
+      "chars": 18
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "voice": "SPF30이 겨울 자외선 80%를 막아줘요.",
+      "chars": 24
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "voice": "보습 후 선크림, 보호 30% 더 오래가요.",
+      "chars": 24
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "voice": "실내 습도 40% 유지, 피부 진정에 좋아요.",
+      "chars": 25
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "voice": "실내 온도 20°C, 난방 자극을 줄여줘요.",
+      "chars": 24
+    },
+    {
+      "no": 7,
+      "type": "summary",
+      "voice": "오늘 할 선크림 습관 3가지를 기억하세요.",
+      "chars": 23
+    },
+    {
+      "no": 8,
+      "type": "outro",
+      "voice": "저장하고 팔로우하세요.",
+      "chars": 12
+    }
+  ],
+  "total_chars": 175
+}

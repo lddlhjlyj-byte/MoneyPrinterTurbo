@@ -4,8 +4,11 @@ on:
   push:
     branches: [main]
     paths:
-      - shorts-video/src/cards.json
-      - .github/workflows/infocard.yml
+      - shorts-video/src/cards.json  # 워크플로 파일 수정으로는 재렌더링하지 않는다(같은 영상이 덮어써지고 저장소만 커짐)
+
+concurrency:
+  group: infocard
+  cancel-in-progress: false  # 렌더링이 겹치면 verify·content 푸시가 충돌하므로 순서대로 실행
 
 permissions:
   contents: write
@@ -19,6 +22,9 @@ jobs:
         working-directory: shorts-video
     steps:
       - uses: actions/checkout@v4
+      - name: cards.json 형식 검사 (move·mood·gesture·icon 값이 틀리면 중단, 문구는 검사 안 함)
+        working-directory: .
+        run: python3 pipeline/validate_cards.py shorts-video/src/cards.json --schema-only
       - uses: actions/setup-node@v4
         with:
           node-version: 22

@@ -1,0 +1,64 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 4,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "세안 후 토너까지 몇 분 걸리세요? 3분 안이 좋다고 해요."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 4,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "토너는 세 가지만 기억하세요."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "물기가 남아 있는 세안 후 3분 안에 바르는 게 좋다고 알려져 있어요."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "손이나 화장솜으로 이마, 코, 턱부터 가볍게 바르세요. 눈가와 입술은 피하세요."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "토너 뒤에는 보습제로 마무리하세요. 토너는 보통 아침과 저녁, 두 번 사용합니다."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "정리하면, 세안 후 3분 안에, T존부터 가볍게, 보습으로 마무리입니다."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "오늘 밤 세안 후 3분을 재 보세요. 저장하고 팔로우해 주세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

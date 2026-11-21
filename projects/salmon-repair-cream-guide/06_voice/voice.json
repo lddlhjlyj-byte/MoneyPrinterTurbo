@@ -1,0 +1,72 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 4,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "연어재생크림을 바른 뒤 밀리거나 답답한 느낌이 드시나요?"
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "연어재생크림을 사용할 때 알아두면 좋은 네 가지 방법입니다."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "세안 후 피부에 남은 물기를 부드럽게 닦고 사용합니다."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "처음부터 많이 바르기보다 소량을 얇게 펴 바릅니다."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "일반적인 크림 제형이라면 보습 단계 마지막에 사용합니다."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "처음 사용할 때는 적은 양으로 시작하고 붉어짐이나 따가움이 있는지 확인합니다."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "정리하면, 물기 닦기, 소량씩 얇게, 설명서 확인, 피부 반응 확인입니다."
+    },
+    {
+      "no": 8,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "연어재생크림, 내 피부에 맞게 사용하세요. 저장하고 팔로우하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

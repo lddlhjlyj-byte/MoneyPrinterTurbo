@@ -1,0 +1,137 @@
+{
+  "name": "salmon-repair-cream-guide",
+  "title": "연어재생크림, 제대로 바르는 법 4가지",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "크림 바르는데",
+        "line2": "왜 밀릴까요?",
+        "warn": "사용 순서 확인!"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "title",
+      "n": null,
+      "screen": {
+        "text": "연어재생크림",
+        "num": "4가지"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "먼저 피부 정돈",
+        "sub": "세안 후 물기 닦기",
+        "tags": [
+          "깨끗한 피부",
+          "물기 제거"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "nod",
+        "gesture": "pointR"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "소량부터 시작",
+        "sub": "얇게 펴 발라주세요",
+        "tags": [
+          "소량 사용",
+          "얇게 펴기"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "run",
+        "gesture": "both"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "마지막 단계에",
+        "sub": "제품 제형에 맞춰 사용",
+        "tags": [
+          "보습 마지막",
+          "설명서 확인"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "tilt",
+        "gesture": "pointL"
+      }
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "피부 반응 확인",
+        "sub": "처음엔 적은 양으로",
+        "tags": [
+          "자극 확인",
+          "사용량 조절"
+        ]
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "tremble",
+        "gesture": "shy"
+      }
+    },
+    {
+      "no": 7,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "물기 닦고 시작",
+          "소량씩 얇게",
+          "설명서 확인",
+          "피부 반응 확인"
+        ],
+        "title": "핵심 정리"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 8,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "많이 바르기보다\n제대로 바르기",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {},
+      "direction": {}
+    }
+  ]
+}

@@ -11,16 +11,15 @@ errors, warns = [], []
 E = errors.append
 W = warns.append
 
-ICONS = {"faucet", "cream", "bottle", "humidifier", "patch"}
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from motion_names import motion_names  # noqa: E402
+import schema  # noqa: E402  (enum 값은 pipeline/schema.py 한 곳에서 관리)
+from schema import GESTURES, ICONS, KINDS, SIGN_ICONS, TYPES  # noqa: E402
 
-# 기존 동작 10개 + shorts-video/src/motions.ts의 사람 동작 100개
-MOVES = {"run", "rise", "spinJump", "tremble", "bounce", "shiver", "tilt", "sway", "hop3", "nod"} | set(motion_names())
-GESTURES = {"idle", "up", "pointR", "pointL", "count", "wave", "both", "cheer", "shy"}
-KINDS = {"capsule", "bottle", "sun", "winter"}
-SIGN_ICONS = {"wrinkle", "flake", "tight"}
-TYPES = {"hook", "why", "signs", "title", "item", "summary", "outro"}
+MOVES = schema.moves()
+if "--schema-only" in sys.argv:  # 렌더링 전 게이트: 값(enum)·구조 오류만 막고 문구는 건드리지 않는다
+    errs = schema.check_enums(d)
+    print("\n".join("오류: " + x for x in errs) if errs else "형식 오류 없음")
+    sys.exit(1 if errs else 0)
 BANNED = ["무조건", "100%", "최고", "반드시", "완치", "치료", "기적", "확실히", "즉각", "영구"]
 RISKY = ["재생", "개선", "회복", "효과", "미백", "주름 개선", "탄력"]  # 화장품 표시·광고 주의(사람이 판단)
 
@@ -73,6 +72,8 @@ for i, s in enumerate(S):
             E(f"{w}: voice 없음")
     if s.get("move") and s["move"] not in MOVES:
         E(f"{w}: move '{s['move']}' 없음 (shorts-video/src/motions.ts의 MOTIONS 키 또는 기존 10개만 가능)")
+    if s.get("mood") and s["mood"] not in schema.MOODS:
+        E(f"{w}: mood '{s['mood']}' 없음 (가능: {sorted(schema.MOODS)}; 동작 이름은 move에 넣는다)")
     if s.get("gesture") and s["gesture"] not in GESTURES:
         E(f"{w}: gesture '{s['gesture']}' 없음 (가능: {sorted(GESTURES)})")
     if t == "hook":

@@ -1,0 +1,47 @@
+{
+  "01_research": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-21 19:57"
+  },
+  "02_topic": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-21 19:57"
+  },
+  "03_plan": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-21 19:57"
+  },
+  "04_script": {
+    "state": "auto",
+    "note": "git 이력에서 복원",
+    "updated": "2026-11-21 19:57"
+  },
+  "05_narration": {
+    "state": "auto",
+    "note": "cards.json에서 추출",
+    "updated": "2026-11-21 19:57"
+  },
+  "06_voice": {
+    "state": "auto",
+    "note": "음성 길이·구간만 측정, 발음 확인 전",
+    "updated": "2026-11-21 19:57"
+  },
+  "07_video": {
+    "state": "auto",
+    "note": "",
+    "updated": "2026-11-21 19:57"
+  },
+  "08_verify": {
+    "state": "auto",
+    "note": "음성 오독·라이선스는 확인 전",
+    "updated": "2026-11-21 19:57"
+  },
+  "09_publish": {
+    "state": "auto",
+    "note": "queue.json 기준",
+    "updated": "2026-11-21 19:57"
+  }
+}

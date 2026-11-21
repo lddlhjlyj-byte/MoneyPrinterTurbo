@@ -1,0 +1,72 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 4,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "SPF30으로 겨울 자외선 80% 차단하세요."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "겨울에도 선크림, 딱 4가지예요."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "SPF30이 겨울 자외선 80%를 막아줘요."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "보습 후 선크림, 보호 30% 더 오래가요."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "실내 습도 40% 유지, 피부 진정에 좋아요."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "실내 온도 20°C, 난방 자극을 줄여줘요."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "오늘 할 선크림 습관 3가지를 기억하세요."
+    },
+    {
+      "no": 8,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "저장하고 팔로우하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

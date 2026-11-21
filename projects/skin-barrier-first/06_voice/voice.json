@@ -1,0 +1,64 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "피부장벽이 무너졌을 때, 가장 먼저 바꿔야 하는 건 화장품이 아닙니다."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 12,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "피부장벽이 약해지면 수분 손실이 증가하고 외부 자극에도 민감해질 수 있습니다. 이때 잘못 관리하면 피부 불편감이 더 심해질 수 있는데요."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "첫째, 과도한 세안과 강한 클렌징을 줄이세요."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "둘째, 레티놀이나 필링 제품처럼 자극을 줄 수 있는 제품은 피부가 안정될 때까지 사용을 쉬어주세요."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "셋째, 세라마이드와 판테놀 등이 함유된 보습제를 활용해 피부를 촉촉하게 유지하세요."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "그리고 낮에는 자외선 차단도 중요합니다."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "피부장벽 관리의 핵심은 무리한 관리가 아니라 피부에 필요한 보습과 보호를 꾸준히 유지하는 것입니다."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

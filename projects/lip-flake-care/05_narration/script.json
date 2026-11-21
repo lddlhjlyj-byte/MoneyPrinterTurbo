@@ -1,0 +1,54 @@
+{
+  "name": "lip-flake-care",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "voice": "입술이 갈라져 혀에 자꾸 걸리시나요?",
+      "chars": 20
+    },
+    {
+      "no": 2,
+      "type": "title",
+      "voice": "입술 각질은 이 순서로 관리하시면 됩니다.",
+      "chars": 23
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "voice": "입술에 미지근한 물을 충분히 적셔 각질을 부드럽게 불려 주세요.",
+      "chars": 35
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "voice": "물기가 남아 있을 때 입술 전용 보습제를 얇게 발라 주세요.",
+      "chars": 33
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "voice": "각질은 손으로 뜯지 말고 억지로 떼지 마세요.",
+      "chars": 25
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "voice": "잘 때 가습기를 켜 두면 입술이 덜 마릅니다.",
+      "chars": 25
+    },
+    {
+      "no": 7,
+      "type": "summary",
+      "voice": "물로 불리고, 보습제를 얇게 바르고, 뜯지 말고, 습도를 유지하세요.",
+      "chars": 38
+    },
+    {
+      "no": 8,
+      "type": "outro",
+      "voice": "저장하고 팔로우하세요.",
+      "chars": 12
+    }
+  ],
+  "total_chars": 211
+}

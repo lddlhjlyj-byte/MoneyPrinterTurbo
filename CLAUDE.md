@@ -9,7 +9,7 @@
 ## 현재 구조 (2026-11-17 기준)
 - 주력: Remotion `shorts-video/`의 InfoCard(마스코트 애니메이션 정보카드) → GitHub Actions(`infocard.yml`)가 렌더링 → `content/videos/<name>.mp4`, `content/thumbnails/<name>.png` 보관
 - 보조: MoneyPrinterTurbo(스톡영상, Colab). 스톡 매칭 규칙(시각적 명사/동사, 한 줄 15~20자)은 이 경로에서만 쓴다
-- 자동 제작: `daily-shorts.yml` 월·수·금 06:30 KST(2026-11-23부터). 주제 선정→대본→검사→렌더링→`content/queue.json` 기록. LLM은 OpenRouter 무료 라우터(`OPENROUTER_API_KEY` Secret)
+- 자동 제작: `daily-shorts.yml` 월·수·금 06:30 KST(2026-11-23부터 예정이나, 2026-11-19 사용자 지시로 `pipeline/auto/PAUSE` 파일이 있어 지금은 생성하지 않음. 사용자가 재개를 지시하면 PAUSE 삭제). 주제 선정→대본→검사→렌더링→`content/queue.json` 기록. LLM은 OpenRouter 무료 라우터(`OPENROUTER_API_KEY` Secret)
 - 업로드: 유튜브 직접 업로드(`pipeline/auto/upload_youtube.py`, Secret `YT_CLIENT_ID`·`YT_CLIENT_SECRET`·`YT_REFRESH_TOKEN`). 업로더는 `content/queue.json`의 대기 항목만 처리하므로, 사용자 대본 영상도 queue에 항목(publishAt 포함)을 넣어야 올라간다. Metricool은 월 20개 한도(무료) 때문에 쓰지 않는다
 - 틱톡: 당분간 사용자가 직접 업로드(파일은 `content/videos/`). 릴스는 미구성
 
@@ -41,3 +41,5 @@
 - 영상 1개 = `projects/<name>/` 1개. 9단계: 01_research 조사 · 02_topic 주제선정 · 03_plan 기획서 · 04_script 스크립트 · 05_narration 대본 · 06_voice 음성·자막 · 07_video 소스·합성 영상 · 08_verify 검증 · 09_publish 게시. 설명은 `pipeline/README.md`
 - 새 영상은 `python3 pipeline/project.py new <name>` → 01~03 작성 → `from-cards` → 렌더링 → `sync`. `status.json`의 done은 직접 확인한 단계만, 자동 측정은 auto로 둔다
 - 08_verify의 음성 오독·라이선스는 자동 확인이 안 되므로 pending/미확인으로 두고 "검증 완료"라고 보고하지 않는다
+- 렌더링 전 형식 게이트: `pipeline/schema.py`가 move·mood·gesture·icon·kind·deco 허용값의 단일 출처이고, `infocard.yml`이 `validate_cards.py --schema-only`로 틀린 값을 막는다(문구는 검사하지 않음). 동작 이름(deepBreath 등)은 `move`, 표정(happy 등 6종)은 `mood`에 넣는다
+- 기존 영상은 `python3 pipeline/project.py backfill all`로 git 이력의 cards.json에서 `projects/`를 채운다(2026-11-21 수행). `shorts-video/src/cards.<name>.json` 보관본은 새로 만들지 않는다(원본은 `projects/<name>/04_script/cards.json`)

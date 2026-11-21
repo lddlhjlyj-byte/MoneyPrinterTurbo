@@ -31,6 +31,8 @@ projects/<영상슬러그>/
 | `python3 pipeline/project.py from-cards <슬러그>` | `shorts-video/src/cards.json`에서 04·05 채움 |
 | `python3 pipeline/project.py sync <슬러그>` | 렌더링 뒤 06·07·08(자동 측정분)·09 채움 |
 | `python3 pipeline/project.py check <슬러그>` | 단계별 필수 파일 미작성 여부 표시 |
+| `python3 pipeline/project.py backfill all` | projects/가 없는 기존 영상을 git 이력의 cards.json으로 소급 정리 |
+| `python3 pipeline/validate_cards.py <cards.json> --schema-only` | move·mood·gesture·icon 값 검사(렌더링 전 게이트와 같은 검사) |
 
 ## 자동으로 채워지는 시점
 - 자동 제작(`generate.py`): 렌더링 전에 01·02·03·04·05와 08의 facts·script_review를 기록한다.
@@ -50,4 +52,4 @@ projects/<영상슬러그>/
 - 검수자는 05 대본·04 스크립트·cards.json과 08의 근거만 보고 비판한다. 제작자의 설명은 주지 않는다.
 - 검수에서 "수정 필요"가 나오면 해당 단계로 돌아간다. 수정 후 재검수는 심각한 항목만 한다.
 - 확인하지 못한 것은 해당 파일에 "미확인"으로 적는다. 자동 측정 통과를 "확인함"으로 바꿔 쓰지 않는다.
-- 2026-11-21 이전 영상의 기록은 `content/briefs/<name>.md`에 있다(이동하지 않음). 새 영상부터 `projects/`를 쓴다.
+- 2026-11-21 이전 영상의 상세 기록은 `content/briefs/<name>.md`에 그대로 있고, `projects/`에는 `backfill`로 복원한 대본·음성·영상 측정값이 들어 있다(조사·기획 단계는 pending).

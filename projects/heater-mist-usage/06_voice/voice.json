@@ -1,0 +1,56 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "겨울철 히터 바람 때문에 얼굴이 바짝 마르시나요? 그렇다고 미스트만 계속 뿌리면 오히려 피부가 더 당길 수 있습니다."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "미스트는 피부에 수분을 공급하는 데 도움을 주지만, 수분이 증발하면서 건조함을 느낄 수도 있거든요. 그렇다면 어떻게 사용해야 할까요?"
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "첫째, 얼굴에서 20~30cm 정도 떨어져 가볍게 분사하세요."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "둘째, 미스트가 마르기 전에 손으로 가볍게 눌러 흡수시켜 주세요."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "셋째, 피부가 건조하다면 보습 크림을 얇게 덧발라 수분이 날아가지 않도록 관리하세요. 특히 향료나 알코올에 민감한 피부라면 성분도 확인하는 게 좋습니다."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 10,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "기억하세요! 미스트는 수분 공급, 보습 크림은 수분 유지! 겨울철 촉촉한 피부 관리의 핵심입니다."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

@@ -1,0 +1,95 @@
+{
+  "name": "night-moisture-order",
+  "title": "수분크림을 발라도 건조하다면? 밤에 바르는 순서부터 바꿔보세요",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "수분크림 발라도",
+        "line2": "속건조?",
+        "warn": "순서가 문제?"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "세안 후 수분",
+        "sub": "수분 에센스 먼저",
+        "tags": [
+          "글리세린",
+          "히알루론산"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "mirror",
+        "gesture": "up",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "보습 크림",
+        "sub": "장벽 관리 성분 확인",
+        "tags": [
+          "세라마이드",
+          "판테놀"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "thinking",
+        "gesture": "pointL",
+        "mood": "shine"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "건조 부위",
+        "sub": "한 번 더 얇게 덧바르기",
+        "tags": [
+          "볼",
+          "입가"
+        ]
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "pointForward",
+        "gesture": "both",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 5,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "많이 바르기보다\n제대로 바르기!",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "proud"
+      }
+    }
+  ]
+}

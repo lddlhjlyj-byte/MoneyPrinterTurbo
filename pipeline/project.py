@@ -5,6 +5,7 @@
   python3 pipeline/project.py from-cards <슬러그>  shorts-video/src/cards.json → 04_script, 05_narration 채움
   python3 pipeline/project.py sync <슬러그>        렌더링 뒤 06_voice, 07_video, 08_verify(자동 측정분), 09_publish 채움
   python3 pipeline/project.py check <슬러그>       단계별 필수 파일·상태 점검(없거나 '확인 전'이면 표시)
+  python3 pipeline/project.py backfill all         projects/ 없는 기존 영상을 git 이력의 cards.json으로 소급 정리
 상태 값: done(확인함) / auto(자동 측정·생성만 됨, 사람·Claude 확인 전) / pending(안 함)
 이 스크립트는 값을 지어내지 않는다. 확인하지 못한 항목은 pending 또는 '미확인'으로 남긴다."""
 import datetime
@@ -103,6 +104,7 @@ def from_cards(slug, cards=None):
         scenes.append({"no": i + 1, "type": s["type"], "n": s.get("n"), "screen": screen,
                        "visual": {k: s[k] for k in ("icon", "kind", "icons", "deco") if k in s},
                        "direction": {k: s[k] for k in ("move", "gesture", "mood", "worry") if k in s}})
+    _w(base / "04_script/cards.json", cards)  # 재렌더링용 원본(shorts-video/src/cards.<name>.json 보관본 대체)
     _w(base / "04_script/scenes.json", {"name": cards["name"], "title": cards["title"], "scenes": scenes})
     _w(base / "05_narration/script.json", {"name": cards["name"], "scenes": [
         {"no": i + 1, "type": s["type"], "voice": s["voice"], "chars": len(s["voice"])} for i, s in enumerate(cards["scenes"])],
@@ -139,9 +141,9 @@ def write_pre_render(slug, cards, topic, candidates, season_text, facts, notes, 
 
 
 # ───────── 렌더링 뒤: 06~09 채움 ─────────
-def sync(slug):
-    cards_path = ROOT / "shorts-video/src/cards.json"
-    cards = json.loads(cards_path.read_text("utf-8"))
+def sync(slug, cards=None, with_verify=True):
+    if cards is None:
+        cards = json.loads((ROOT / "shorts-video/src/cards.json").read_text("utf-8"))
     if cards.get("name") != slug:
         print(f"경고: cards.json name({cards.get('name')})이 {slug}와 다름 → 06 음성 정보는 건너뜀", file=sys.stderr)
         cards = None
@@ -168,7 +170,7 @@ def sync(slug):
     set_status(slug, "07_video", "auto" if vid.exists() else "pending", "" if vid.exists() else "영상 파일 없음")
     rep = ROOT / "verify/report.txt"
     vc = base / "08_verify/video_check.md"
-    if rep.exists():
+    if with_verify and rep.exists():
         _w(vc, f"# 영상 확인 (자동 측정)\n상태: auto — 소리·길이·장면 타이밍만 측정함. 발음·자막 내용·화면 품질은 확인하지 못함\n\n```\n{rep.read_text('utf-8')}\n```\n")
         for f in ("probe.txt", "audio.txt"):
             if (ROOT / "verify" / f).exists():
@@ -180,6 +182,8 @@ def sync(slug):
            "# 라이선스\n상태: auto(부분)\n- 음성: edge-tts(Microsoft Edge 온라인 TTS) — 상업 이용 약관 직접 확인 안 됨(미확인)\n"
            "- 그림: 직접 그린 SVG(shorts-video/src/Icons.tsx)\n- 효과음·클립: shorts-video/public/sfx, clips — 출처·라이선스 기록 없음(미확인)\n")
     set_status(slug, "08_verify", "auto", "음성 오독·라이선스는 확인 전")
+    if cards and is_pending(base / "04_script/scenes.json"):
+        from_cards(slug, cards)  # 사용자 대본 영상은 렌더링 전 기록이 없으므로 여기서 04·05를 채움
     q = next((x for x in (json.loads((ROOT / "content/queue.json").read_text("utf-8")) if (ROOT / "content/queue.json").exists() else []) if x["name"] == slug), None)
     _w(base / "09_publish/publish.json", {
         **({} if q else {"status": "pending"}),
@@ -190,6 +194,53 @@ def sync(slug):
         "sources": "08_verify/facts.md 참고(출처 URL 확인 전이면 게시 설명에 쓰지 않음)"})
     set_status(slug, "09_publish", "auto" if q else "pending", "queue.json 기준" if q else "queue 항목 없음")
     return base
+
+
+def _git(*a):
+    import subprocess
+    return subprocess.run(["git", "-C", str(ROOT), *a], capture_output=True, text=True).stdout
+
+
+def _measure(mp4):
+    import re
+    import subprocess
+    dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(mp4)], capture_output=True, text=True).stdout.strip()
+    wh = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=width,height", "-of", "csv=s=x:p=0", str(mp4)], capture_output=True, text=True).stdout.strip()
+    vol = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(mp4), "-af", "volumedetect", "-f", "null", "-"], capture_output=True, text=True).stderr
+    m = re.search(r"mean_volume: ([-\d.]+)", vol)
+    x = re.search(r"max_volume: ([-\d.]+)", vol)
+    return float(dur or 0), wh, float(m.group(1)) if m else None, float(x.group(1)) if x else None
+
+
+def backfill():
+    """이미 만든 영상(content/videos/*.mp4)을 git 이력의 cards.json으로 projects/<name>/에 채운다. 이력에 없으면 해당 단계는 pending."""
+    by_name = {}
+    for h in reversed(_git("log", "--format=%H", "--", "shorts-video/src/cards.json").split()):
+        try:
+            d = json.loads(_git("show", f"{h}:shorts-video/src/cards.json"))
+        except ValueError:
+            continue
+        if d.get("name") and d.get("scenes"):
+            by_name[d["name"]] = d  # 같은 name이면 마지막(최종) 버전
+    done = []
+    for mp4 in sorted((ROOT / "content/videos").glob("*.mp4")):
+        slug = mp4.stem
+        if (pdir(slug) / "status.json").exists():
+            continue
+        scaffold(slug)
+        cards = by_name.get(slug)
+        if cards:
+            from_cards(slug, cards)
+        sync(slug, cards, with_verify=False)
+        dur, wh, mean, mx = _measure(mp4)
+        _w(pdir(slug) / "08_verify/video_check.md",
+           f"# 영상 확인 (자동 측정, {now()} KST 소급 기록)\n상태: auto — 길이·해상도·음량만 측정함. 발음·자막 내용·화면 품질은 확인하지 못함\n"
+           f"- 길이 {dur:.1f}초 (목표 25~40초{' → 초과' if dur > 40 else ''})\n- 해상도 {wh}\n- 평균 음량 {mean}dB, 최대 {mx}dB\n")
+        set_status(slug, "04_script", "auto" if cards else "pending", "git 이력에서 복원" if cards else "git 이력에서 cards를 찾지 못함")
+        done.append((slug, bool(cards), round(dur, 1)))
+    for r in done:
+        print(*r)
+    return 0
 
 
 def check(slug):
@@ -209,10 +260,12 @@ def check(slug):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3 or sys.argv[1] not in ("new", "from-cards", "sync", "check"):
+    if len(sys.argv) < 3 or sys.argv[1] not in ("new", "from-cards", "sync", "check", "backfill"):
         print(__doc__)
         sys.exit(2)
     cmd, slug = sys.argv[1], sys.argv[2]
+    if cmd == "backfill":
+        sys.exit(backfill())
     if cmd == "new":
         print(scaffold(slug))
     elif cmd == "from-cards":

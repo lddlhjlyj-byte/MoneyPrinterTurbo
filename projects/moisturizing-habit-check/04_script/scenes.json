@@ -1,0 +1,105 @@
+{
+  "name": "moisturizing-habit-check",
+  "title": "수분크림 덧발라도 건조하다면? 보습 습관 점검",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "수분크림을 여러 번 덧발라도",
+        "line2": "피부가 금방 건조해진다면,\n지금 보습 습관을 점검해 보세요.",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "첫 번째, 세안 후 피부가 완전히 마를 때까지 기다리지 마세요.",
+        "sub": "피부에 살짝 수분이 남아 있을 때 보습제를 발라주는 것이 좋습니다",
+        "tags": []
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "rise",
+        "gesture": "pointL",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "두 번째, 수분 공급 제품만 바르고 끝내지 마세요.",
+        "sub": "글리세린이나 히알루론산으로 수분을 공급했다면 크림으로 보습막을 만들어 주세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "spinJump",
+        "gesture": "count",
+        "mood": "shine"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "세 번째, 건조한 부위까지 똑같이 관리하지 마세요.",
+        "sub": "볼이나 입가처럼 건조한 부위에는 크림을 한 번 더 얇게 발라주고, 유분이 많은 부위는 과도한 보습을 피하세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "shiver",
+        "gesture": "shy",
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 5,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "얇은 제형부터 무거운 제형 순서",
+          "많이 바르는 것보다",
+          "수분과 유분의 균형이 중요합니다"
+        ],
+        "title": "보습 순서의 기본"
+      },
+      "visual": {},
+      "direction": {
+        "move": "nod",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 6,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "",
+        "text": "오늘부터\n보습 순서를 바꿔보세요"
+      },
+      "visual": {},
+      "direction": {
+        "move": "bounce",
+        "gesture": "cheer",
+        "mood": "shine"
+      }
+    }
+  ]
+}

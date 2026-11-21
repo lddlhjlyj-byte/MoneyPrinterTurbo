@@ -1,0 +1,122 @@
+{
+  "name": "hand-cream-timing",
+  "title": "손등 하얗게 뜨는 초겨울, 핸드크림 바르는 타이밍 4가지",
+  "hashtags": [
+    "#핸드크림",
+    "#손건조",
+    "#초겨울피부",
+    "#핸드케어",
+    "#손보습",
+    "#건조한손",
+    "#스킨케어",
+    "#피부관리"
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "seconds": 4,
+      "line1": "씻고 3분",
+      "line2": "손등 각질 들뜨는 밤",
+      "warn": "손 씻고 3분 안에",
+      "voice": "손등 각질이 하얗게 뜨는 밤입니다. 씻고 3분 안에 발라 보세요.",
+      "deco": "snow"
+    },
+    {
+      "type": "title",
+      "seconds": 6,
+      "text": "핸드크림 타이밍",
+      "num": "4가지",
+      "voice": "핸드크림은 바르는 때에 따라 느낌이 달라질 수 있습니다. 순서대로 보겠습니다."
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 1,
+      "icon": "faucet",
+      "head": "씻고 3분 안",
+      "sub": "물기 남은 손등에",
+      "tags": [
+        "3분",
+        "손등"
+      ],
+      "voice": "첫 번째는 씻고 3분 안입니다. 물기를 남긴 손등에 바로 폅니다.",
+      "move": "washFace",
+      "gesture": "count",
+      "worry": false,
+      "mood": "happy"
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 2,
+      "icon": "cream",
+      "head": "손가락 사이",
+      "sub": "네 곳부터 먼저",
+      "tags": [
+        "4곳",
+        "갈라짐"
+      ],
+      "voice": "두 번째는 손가락 사이입니다. 갈라지기 쉬운 네 곳부터 바릅니다.",
+      "move": "relief",
+      "gesture": "up",
+      "worry": false,
+      "mood": "shine"
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 3,
+      "icon": "bottle",
+      "head": "자기 전 1회",
+      "sub": "얇게 한 겹 덧바르기",
+      "tags": [
+        "취침 전",
+        "1회"
+      ],
+      "voice": "세 번째는 자기 전 1회입니다. 얇게 한 겹 덧바릅니다.",
+      "move": "salute",
+      "gesture": "pointR",
+      "worry": false,
+      "mood": "happy"
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 4,
+      "head": "씻을 때마다",
+      "sub": "손 씻은 뒤 1회씩",
+      "tags": [
+        "1회",
+        "습관"
+      ],
+      "voice": "네 번째는 씻을 때마다입니다. 손을 씻은 뒤 1회씩 바릅니다.",
+      "move": "bounce",
+      "gesture": "wave",
+      "worry": false,
+      "mood": "shine"
+    },
+    {
+      "type": "summary",
+      "seconds": 8,
+      "title": "오늘은 3분",
+      "rows": [
+        "씻고 3분 안에",
+        "손가락 사이 4곳",
+        "자기 전 1회",
+        "씻을 때마다 1회"
+      ],
+      "voice": "네 가지 중 오늘은 씻고 3분 안에 하나만 해보세요. 저장해 두세요.",
+      "mood": "happy"
+    },
+    {
+      "type": "outro",
+      "seconds": 8,
+      "text": "손부터\n발라보세요",
+      "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+      "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요",
+      "voice": "저장하고 팔로우하세요.",
+      "deco": "snow",
+      "mood": "shine"
+    }
+  ]
+}

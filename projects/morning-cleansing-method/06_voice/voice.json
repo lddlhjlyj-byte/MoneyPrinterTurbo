@@ -1,0 +1,64 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "아침에 물세안만 하세요? 아니면 폼클렌징 쓰시나요? 남들 따라 했다가 피부 장벽 다 뒤집어집니다."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "아침 세안의 목적은 딱 하나, 밤새 쌓인 노폐물만 걷어내는 거예요."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 9,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "아침에 일어났을 때 얼굴이 당기는 건성이나 장벽이 손상된 피부라면 미온수 물세안만으로 충분합니다."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 11,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "하지만 T존에 기름이 번들거리거나 여드름이 잘 나는 피부라면 물세안은 피하세요. 산화된 피지가 모공을 막아 트러블이 납니다."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "이런 분들은 약산성 클렌저로 T존만 가볍게 20초 롤링해 주세요."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "기준은 간단합니다. 아침에 거울을 봤을 때 번들거리면 약산성 클렌저, 당기고 건조하면 물세안."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "오늘 아침 내 피부 상태부터 확인해 보세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

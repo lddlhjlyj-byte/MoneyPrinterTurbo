@@ -1,0 +1,122 @@
+{
+  "name": "winter-sunscreen-why",
+  "title": "겨울에도 선크림",
+  "hashtags": [
+    "#겨울선크림",
+    "#겨울자외선",
+    "#피부관리",
+    "#피부과팁",
+    "#스킨케어",
+    "#보습",
+    "#실내습도",
+    "#겨울피부"
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "seconds": 4,
+      "line1": "SPF30 80",
+      "line2": "겨울에도 필수",
+      "warn": "미리 바르세요",
+      "voice": "SPF30으로 겨울 자외선 80% 차단하세요.",
+      "deco": "snow"
+    },
+    {
+      "type": "title",
+      "seconds": 6,
+      "text": "겨울에도 선크림",
+      "num": "4가지",
+      "voice": "겨울에도 선크림, 딱 4가지예요."
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 1,
+      "icon": "bottle",
+      "head": "SPF30",
+      "sub": "겨울 자외선 80% 차단",
+      "tags": [
+        "SPF30",
+        "UV"
+      ],
+      "voice": "SPF30이 겨울 자외선 80%를 막아줘요.",
+      "move": "spreadSunscreen",
+      "gesture": "pointL",
+      "worry": false,
+      "mood": "shine"
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 2,
+      "icon": "cream",
+      "head": "보습 위",
+      "sub": "보습 후 선크림 30%↑",
+      "tags": [
+        "보습",
+        "지속"
+      ],
+      "voice": "보습 후 선크림, 보호 30% 더 오래가요.",
+      "move": "applyCream",
+      "gesture": "cheer",
+      "worry": false,
+      "mood": "happy"
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 3,
+      "icon": "humidifier",
+      "head": "습도 40%",
+      "sub": "실내 40% 유지 진정",
+      "tags": [
+        "습도",
+        "진정"
+      ],
+      "voice": "실내 습도 40% 유지, 피부 진정에 좋아요.",
+      "move": "proud",
+      "gesture": "both",
+      "worry": false,
+      "mood": "shine"
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 4,
+      "icon": "heater",
+      "head": "온도 20°C",
+      "sub": "난방 20°C 자극↓",
+      "tags": [
+        "온도",
+        "자극"
+      ],
+      "voice": "실내 온도 20°C, 난방 자극을 줄여줘요.",
+      "move": "worry",
+      "gesture": "shy",
+      "mood": "angry"
+    },
+    {
+      "type": "summary",
+      "seconds": 8,
+      "title": "겨울 선크림",
+      "rows": [
+        "SPF30",
+        "보습 위",
+        "습도 40%",
+        "온도 20°C"
+      ],
+      "voice": "오늘 할 선크림 습관 3가지를 기억하세요.",
+      "mood": "shine"
+    },
+    {
+      "type": "outro",
+      "seconds": 8,
+      "text": "저장하고\n팔로우",
+      "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+      "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요",
+      "voice": "저장하고 팔로우하세요.",
+      "deco": "snow",
+      "mood": "happy"
+    }
+  ]
+}

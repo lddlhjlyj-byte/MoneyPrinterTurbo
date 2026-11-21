@@ -1,0 +1,72 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 4,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "손등 각질이 하얗게 뜨는 밤입니다. 씻고 3분 안에 발라 보세요."
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "핸드크림은 바르는 때에 따라 느낌이 달라질 수 있습니다. 순서대로 보겠습니다."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "첫 번째는 씻고 3분 안입니다. 물기를 남긴 손등에 바로 폅니다."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "두 번째는 손가락 사이입니다. 갈라지기 쉬운 네 곳부터 바릅니다."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "세 번째는 자기 전 1회입니다. 얇게 한 겹 덧바릅니다."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "네 번째는 씻을 때마다입니다. 손을 씻은 뒤 1회씩 바릅니다."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "네 가지 중 오늘은 씻고 3분 안에 하나만 해보세요. 저장해 두세요."
+    },
+    {
+      "no": 8,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "저장하고 팔로우하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}

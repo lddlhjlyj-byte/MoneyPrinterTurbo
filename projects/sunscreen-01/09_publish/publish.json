@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "title": null,
+  "description": null,
+  "tags": null,
+  "thumbnail": null,
+  "queue_status": null,
+  "publishAt": null,
+  "sources": "08_verify/facts.md 참고(출처 URL 확인 전이면 게시 설명에 쓰지 않음)"
+}

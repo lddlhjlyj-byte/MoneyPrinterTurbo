@@ -1,0 +1,143 @@
+{
+  "name": "lip-flake-care",
+  "title": "입술 각질, 뜯지 말고 이 순서로 관리하세요",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "입술이 갈라져",
+        "line2": "혀에 자꾸 걸리나요?",
+        "warn": "뜯으면 더 갈라져요"
+      },
+      "visual": {
+        "deco": "snow"
+      },
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "title",
+      "n": null,
+      "screen": {
+        "text": "입술 각질 관리",
+        "num": "4가지"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "미지근한 물",
+        "sub": "입술에 물을 충분히 적셔요",
+        "tags": [
+          "미지근한물",
+          "각질불림"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "tilt",
+        "gesture": "cheer",
+        "worry": false
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "보습제 바르기",
+        "sub": "입술 전용 제품을 얇게",
+        "tags": [
+          "입술전용",
+          "얇게"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "hop3",
+        "gesture": "pointL",
+        "worry": false
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "손으로 뜯지 마",
+        "sub": "각질은 억지로 떼지 않아요",
+        "tags": [
+          "손대지않기",
+          "자극주의"
+        ]
+      },
+      "visual": {},
+      "direction": {
+        "move": "shiver",
+        "gesture": "up",
+        "worry": false
+      }
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "실내 습도 유지",
+        "sub": "잘 때 가습기를 켜 두세요",
+        "tags": [
+          "가습기",
+          "습도"
+        ]
+      },
+      "visual": {
+        "icon": "humidifier"
+      },
+      "direction": {
+        "move": "nod",
+        "gesture": "both",
+        "worry": false
+      }
+    },
+    {
+      "no": 7,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "물로 불리기",
+          "보습제 얇게",
+          "손으로 뜯지 않기",
+          "습도 유지하기"
+        ],
+        "title": "입술 관리 순서"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 8,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "입술은 손 대신\n보습제로 지켜요",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {
+        "deco": "snow"
+      },
+      "direction": {}
+    }
+  ]
+}

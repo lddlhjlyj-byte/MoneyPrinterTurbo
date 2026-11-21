@@ -1,0 +1,12 @@
+{
+  "video": "content/videos/lip-flake-care.mp4",
+  "video_bytes": 8333583,
+  "thumbnail": "content/thumbnails/lip-flake-care.png",
+  "renderer": "Remotion InfoCard (shorts-video/)",
+  "sources": {
+    "clips": "shorts-video/public/clips",
+    "sfx": "shorts-video/public/sfx",
+    "icons": "shorts-video/src/Icons.tsx(직접 그린 SVG)"
+  },
+  "note": "영상 파일은 중복 보관하지 않고 위치만 기록"
+}

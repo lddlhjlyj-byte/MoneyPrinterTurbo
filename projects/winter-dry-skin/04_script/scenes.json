@@ -1,0 +1,186 @@
+{
+  "name": "winter-dry-skin",
+  "title": "겨울만 되면 피부가 갑자기 늙어 보이는 이유",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "겨울 거울 앞,",
+        "line2": "잔주름 더 보이나요?",
+        "warn": "건조 신호일 수 있어요"
+      },
+      "visual": {
+        "deco": "snow"
+      },
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "why",
+      "n": null,
+      "screen": {
+        "head": "왜 건조해질까요?",
+        "sub": "기온이 낮아지고 난방을 시작하면"
+      },
+      "visual": {
+        "kind": "winter",
+        "deco": "snow"
+      },
+      "direction": {
+        "move": "shiver",
+        "gesture": "shy"
+      }
+    },
+    {
+      "no": 3,
+      "type": "signs",
+      "n": null,
+      "screen": {
+        "head": "이런 신호가 와요",
+        "sub": "평소보다 이렇게 느껴진다면",
+        "rows": [
+          "잔주름이 도드라져요",
+          "화장이 들떠요",
+          "피부가 당겨요"
+        ]
+      },
+      "visual": {
+        "icons": [
+          "wrinkle",
+          "flake",
+          "tight"
+        ]
+      },
+      "direction": {
+        "move": "tilt",
+        "gesture": "pointR"
+      }
+    },
+    {
+      "no": 4,
+      "type": "title",
+      "n": null,
+      "screen": {
+        "text": "겨울 피부 관리 핵심",
+        "num": "4가지"
+      },
+      "visual": {},
+      "direction": {
+        "gesture": "up"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "짧고 미지근하게",
+        "sub": "세안은 미지근한 물로 짧게",
+        "tags": [
+          "미지근한 물",
+          "짧게"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "hop3",
+        "gesture": "both"
+      }
+    },
+    {
+      "no": 6,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "촉촉할 때 보습",
+        "sub": "세안 후 촉촉할 때 바르기",
+        "tags": [
+          "세안 직후",
+          "보습제"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "sway",
+        "gesture": "wave"
+      }
+    },
+    {
+      "no": 7,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "성분 골라 쓰기",
+        "sub": "내 피부에 맞는 보습 성분",
+        "tags": [
+          "보습 성분",
+          "피부 상태"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "spinJump",
+        "gesture": "pointL"
+      }
+    },
+    {
+      "no": 8,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "실내 습도 관리",
+        "sub": "건조한 실내 공기 줄이기",
+        "tags": [
+          "실내 습도",
+          "가습"
+        ]
+      },
+      "visual": {
+        "icon": "humidifier"
+      },
+      "direction": {
+        "move": "rise",
+        "gesture": "cheer",
+        "worry": false
+      }
+    },
+    {
+      "no": 9,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "미지근하게 짧게",
+          "촉촉할 때 보습",
+          "맞는 보습 성분",
+          "실내 습도 관리"
+        ],
+        "title": "겨울 피부, 한눈에"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 10,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "건조 신호,\n놓치지 마세요",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {
+        "deco": "snow"
+      },
+      "direction": {}
+    }
+  ]
+}

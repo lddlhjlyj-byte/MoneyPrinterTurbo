@@ -1,0 +1,112 @@
+{
+  "name": "blackhead-gentle-care",
+  "title": "블랙헤드 없애려다 모공만 자극하고 있습니다!",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "블랙헤드",
+        "line2": "짜거나 문지르면?",
+        "warn": "자극만 커져요"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "why",
+      "n": null,
+      "screen": {
+        "head": "블랙헤드란?",
+        "sub": "산화되어 검게 보이는 현상"
+      },
+      "visual": {
+        "kind": "capsule"
+      },
+      "direction": {
+        "move": "confused",
+        "gesture": "up",
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "마른 손·얼굴",
+        "sub": "코 주변 부드럽게",
+        "tags": [
+          "클렌징 오일",
+          "마사지"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "beckon",
+        "gesture": "pointR",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "물로 유화",
+        "sub": "우윳빛으로 변할 때까지",
+        "tags": [
+          "유화",
+          "우윳빛"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "dizzy",
+        "gesture": "count",
+        "mood": "shine"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "미온수 헹굼",
+        "sub": "순한 세안제로 마무리",
+        "tags": [
+          "미온수",
+          "순한 세안"
+        ]
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "wipe",
+        "gesture": "pointL",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 6,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "강한 세안 말고\n꾸준·부드럽게",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "happy"
+      }
+    }
+  ]
+}

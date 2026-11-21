@@ -9,23 +9,11 @@ jobs:
   delete:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: 유튜브 영상 삭제
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           IDS: ${{ inputs.video_ids }}
-        run: |
-          python3 - <<'PY'
-          import os, sys, json, urllib.parse, urllib.request, urllib.error
-          body=urllib.parse.urlencode({"client_id":os.environ["YT_CLIENT_ID"],"client_secret":os.environ["YT_CLIENT_SECRET"],"refresh_token":os.environ["YT_REFRESH_TOKEN"],"grant_type":"refresh_token"}).encode()
-          tok=json.load(urllib.request.urlopen(urllib.request.Request("https://oauth2.googleapis.com/token",data=body),timeout=60))["access_token"]
-          bad=0
-          for v in [x.strip() for x in os.environ["IDS"].split(",") if x.strip()]:
-              req=urllib.request.Request("https://www.googleapis.com/youtube/v3/videos?id="+urllib.parse.quote(v),method="DELETE",headers={"Authorization":"Bearer "+tok})
-              try:
-                  r=urllib.request.urlopen(req,timeout=60); print(v,"삭제 응답",r.status)
-              except urllib.error.HTTPError as e:
-                  bad=1; print(v,"실패",e.code,e.read()[:300].decode())
-          sys.exit(bad)
-          PY
+        run: python3 pipeline/auto/yt.py delete "$IDS"

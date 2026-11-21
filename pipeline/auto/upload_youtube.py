@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """렌더링된 영상을 유튜브에 '비공개 + 예약 공개(publishAt)'로 업로드한다. 자격 정보가 없으면 건너뛰고 queue에 'rendered'로 남긴다
-(그러면 Claude가 다음 세션에서 Metricool로 예약한다). 환경변수: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN"""
+(그러면 Claude가 다음 세션에서 자격 정보를 확인하고 다시 업로드한다). 환경변수: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN"""
 import datetime
 import json
 import os
 import sys
 import urllib.error
-import urllib.parse
 import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).parent
+sys.path.insert(0, str(HERE))
+from yt import access_token  # noqa: E402  (토큰 교환은 yt.py 한 곳)
 ROOT = HERE.parents[1]
 CFG = json.loads((HERE / "config.json").read_text("utf-8"))
 KST = datetime.timezone(datetime.timedelta(hours=9))
@@ -23,13 +24,6 @@ def publish_at():
     if t < now + datetime.timedelta(minutes=30):
         t += datetime.timedelta(days=1)
     return t.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def access_token():
-    body = urllib.parse.urlencode({"client_id": os.environ["YT_CLIENT_ID"], "client_secret": os.environ["YT_CLIENT_SECRET"],
-                                   "refresh_token": os.environ["YT_REFRESH_TOKEN"], "grant_type": "refresh_token"}).encode()
-    with urllib.request.urlopen(urllib.request.Request("https://oauth2.googleapis.com/token", data=body), timeout=60) as r:
-        return json.load(r)["access_token"]
 
 
 def main(name):
@@ -47,7 +41,7 @@ def main(name):
     if not all(os.environ.get(k) for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")):
         e["status"] = "rendered"
         QP.write_text(json.dumps(q, ensure_ascii=False, indent=1), "utf-8")
-        print("유튜브 자격 정보 없음 → 'rendered'로 대기 (Claude가 Metricool로 예약)")
+        print("유튜브 자격 정보 없음 → 'rendered'로 대기 (Claude가 다음 세션에서 처리)")
         return 0
     try:
         tok = access_token()

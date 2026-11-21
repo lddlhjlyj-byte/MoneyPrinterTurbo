@@ -1,0 +1,95 @@
+{
+  "name": "cleansing-oil-emulsify",
+  "title": "클렌징 오일, 이렇게 써야 제대로 씻깁니다! 유화법 3단계",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "클렌징 오일",
+        "line2": "오래 문지르면?",
+        "warn": "자극만 줄 수도"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "마른 손·얼굴",
+        "sub": "물기 없이 오일 사용",
+        "tags": [
+          "마른 손",
+          "마른 얼굴"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "present",
+        "gesture": "count",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "힘주지 않기",
+        "sub": "코·턱 손끝으로 가볍게",
+        "tags": [
+          "손끝",
+          "가볍게"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "patFace",
+        "gesture": "pointR",
+        "mood": "shine"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "물로 유화",
+        "sub": "물을 묻혀 하얗게",
+        "tags": [
+          "유화",
+          "우윳빛"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "eureka",
+        "gesture": "up",
+        "mood": "shine"
+      }
+    },
+    {
+      "no": 5,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+        "text": "유화 후\n충분히 헹구기",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "deepBreath"
+      }
+    }
+  ]
+}

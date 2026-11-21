@@ -1,0 +1,123 @@
+{
+  "name": "morning-cleansing-method",
+  "title": "아침 세안, 물세안 vs 클렌저 뭐가 맞을까?",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "아침에 물세안만 하세요?",
+        "line2": "아니면 폼클렌징 쓰시나요?",
+        "warn": "물세안 vs 클렌저"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 2,
+      "type": "why",
+      "n": null,
+      "screen": {
+        "head": "아침 세안의 목적은 딱 하나",
+        "sub": "밤새 쌓인 노폐물만 걷어내는 거예요"
+      },
+      "visual": {
+        "kind": "winter"
+      },
+      "direction": {
+        "move": "bounce",
+        "gesture": "pointL",
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "얼굴이 당기는 건성이나 장벽이 손상된 피부라면",
+        "sub": "미온수 물세안만으로 충분합니다",
+        "tags": []
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "nod",
+        "gesture": "pointR",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "T존에 기름이 번들거리거나 여드름이 잘 나는 피부라면",
+        "sub": "물세안은 피하세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "tremble",
+        "gesture": "shy",
+        "mood": "angry"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "약산성 클렌저로",
+        "sub": "T존만 가볍게 20초 롤링해 주세요",
+        "tags": []
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "spinJump",
+        "gesture": "both",
+        "mood": "shine",
+        "worry": false
+      }
+    },
+    {
+      "no": 6,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "번들거리면 약산성 클렌저",
+          "당기고 건조하면 물세안",
+          "T존만 가볍게 20초 롤링"
+        ],
+        "title": "피부 상태별 요약"
+      },
+      "visual": {},
+      "direction": {
+        "move": "hop3",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 7,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "확인해 보세요.",
+        "text": "오늘 아침\n내 피부 상태부터"
+      },
+      "visual": {},
+      "direction": {
+        "move": "tilt",
+        "gesture": "wave",
+        "mood": "shine"
+      }
+    }
+  ]
+}

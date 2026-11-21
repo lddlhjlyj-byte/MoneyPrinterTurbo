@@ -1,0 +1,72 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": null,
+      "seconds": 4,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "입술이 갈라져 혀에 자꾸 걸리시나요?"
+    },
+    {
+      "no": 2,
+      "audio": null,
+      "seconds": 6,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "입술 각질은 이 순서로 관리하시면 됩니다."
+    },
+    {
+      "no": 3,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "입술에 미지근한 물을 충분히 적셔 각질을 부드럽게 불려 주세요."
+    },
+    {
+      "no": 4,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "물기가 남아 있을 때 입술 전용 보습제를 얇게 발라 주세요."
+    },
+    {
+      "no": 5,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "각질은 손으로 뜯지 말고 억지로 떼지 마세요."
+    },
+    {
+      "no": 6,
+      "audio": null,
+      "seconds": 7,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "잘 때 가습기를 켜 두면 입술이 덜 마릅니다."
+    },
+    {
+      "no": 7,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "물로 불리고, 보습제를 얇게 바르고, 뜯지 말고, 습도를 유지하세요."
+    },
+    {
+      "no": 8,
+      "audio": null,
+      "seconds": 8,
+      "speechStart": null,
+      "speechEnd": null,
+      "text": "저장하고 팔로우하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}
