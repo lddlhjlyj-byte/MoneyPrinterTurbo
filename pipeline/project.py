@@ -225,14 +225,20 @@ def backfill():
     done = []
     for mp4 in sorted((ROOT / "content/videos").glob("*.mp4")):
         slug = mp4.stem
-        if (pdir(slug) / "status.json").exists():
-            continue
+        had = (pdir(slug) / "status.json").exists()
+        if had and not is_pending(pdir(slug) / "04_script/scenes.json"):
+            continue  # 이미 채워진 영상은 건드리지 않음(04가 비어 있는 영상만 보정)
         scaffold(slug)
         cards = by_name.get(slug)
         if cards:
             from_cards(slug, cards)
         sync(slug, cards, with_verify=False)
         dur, wh, mean, mx = _measure(mp4)
+        if had and not is_pending(pdir(slug) / "08_verify/video_check.md"):
+            done.append((slug, bool(cards), round(dur, 1)))
+            set_status(slug, "04_script", "auto" if cards else "pending", "git 이력에서 복원" if cards else "git 이력에서 cards를 찾지 못함")
+            set_status(slug, "05_narration", "auto" if cards else "pending", "git 이력에서 복원" if cards else "")
+            continue
         _w(pdir(slug) / "08_verify/video_check.md",
            f"# 영상 확인 (자동 측정, {now()} KST 소급 기록)\n상태: auto — 길이·해상도·음량만 측정함. 발음·자막 내용·화면 품질은 확인하지 못함\n"
            f"- 길이 {dur:.1f}초 (목표 25~40초{' → 초과' if dur > 40 else ''})\n- 해상도 {wh}\n- 평균 음량 {mean}dB, 최대 {mx}dB\n")
