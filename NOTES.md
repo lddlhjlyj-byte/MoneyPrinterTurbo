@@ -404,3 +404,9 @@ print(r.stderr[-3000:])
 - 순서: 11/23 블랙헤드(blackhead-gentle-care, 11/20 클렌징 오일 유화 영상의 후속, videoId _i0FV5zmtiI, 60.5초) → 11/24 겨울 미스트(heater-mist-usage, 보습·히터 건조 계열 후속, HJXPWFfZeiw, 55.0초) → 11/25 기초 흡수 습관(skincare-30sec-habit, 11/21 밤 보습 순서·앰플 영상 후속). 모두 18:30 KST
 - 동작/표정: 블랙헤드 why confused/up/sad, item beckon/pointR/happy, dizzy/count/shine, wipe/pointL/happy, outro happy. 미스트 why worry/shy/sad, item balance/pointR/happy, wiggle/both/shine, applyCream/up/happy, outro relief. 흡수 item checkWatch/pointL/happy, spin/count/shine, love/both/happy, joy/cheer/shine, why scratchHead/up/happy, outro happy
 - 확인 전: 자막·음성 싱크, 의학 문구 출처(미확인), 3편 영상 상세 프레임
+
+### 2026-11-21 토너 패드 A안·B안 둘 다 제작·예약 (사용자 대본, ChatGPT 기획 2안; 날짜는 ChatGPT 제안(11/26)이 아니라 우리 일정 순서)
+- voice는 원문 문장 그대로(A안 조합: hook/title/item3개/outro, B안: hook/item3개/outro). 화면 문구·해시태그는 내가 만듦. outro voice에 저장·팔로우 없음
+- 11/26 18:30 KST A안 toner-pad-bad-habits(mMxQU2KCrMI, 52.0초): title shrug/count/angry, item stomp/pointR/angry, shocked/up/sad, sitDown/shy/happy
+- 11/27 18:30 KST B안 toner-pad-3steps(영상 길이는 verify 참고): item hello/pointR/happy, meditate/pointL/shine, floatUp/up/happy
+- 확인 전: 자막·음성 싱크, 의학 문구 출처(미확인), 영상 프레임 확인
