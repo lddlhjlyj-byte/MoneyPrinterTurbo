@@ -1,0 +1,48 @@
+{
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 7.5,
+      "speechStart": 0.19,
+      "speechEnd": 5.92,
+      "text": "토너 패드, 얼굴에 붙였다가 떼기만 하시나요? 제대로 사용하는 방법은 따로 있습니다."
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 9.0,
+      "speechStart": 0.19,
+      "speechEnd": 7.23,
+      "text": "첫째, 세안 후 피부 상태부터 확인하세요. 피부가 따갑거나 붉다면 패드 사용을 쉬는 것이 좋습니다."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 8.5,
+      "speechStart": 0.19,
+      "speechEnd": 7.09,
+      "text": "둘째, 패드를 피부 위에 올리거나 가볍게 닦아주세요. 절대 힘을 주어 반복해서 문지르지 마세요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 12.0,
+      "speechStart": 0.19,
+      "speechEnd": 10.51,
+      "text": "셋째, 사용 후에는 보습제를 발라 마무리하세요. 특히 각질 관리용 패드라면 사용 빈도를 조절하고 다른 활성 성분과의 중복 사용에도 주의해야 합니다."
+    },
+    {
+      "no": 5,
+      "audio": "voice/04.mp3",
+      "seconds": 8.0,
+      "speechStart": 0.19,
+      "speechEnd": 6.33,
+      "text": "기억하세요! 토너 패드의 핵심은 많이 사용하는 것이 아니라 피부에 맞게 사용하는 것입니다."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
+}
