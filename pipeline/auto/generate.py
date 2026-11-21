@@ -14,6 +14,7 @@ HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 import rules  # noqa: E402
+import project  # noqa: E402
 from motion_names import motion_names  # noqa: E402
 
 ROOT = Path(os.environ.get("PIPELINE_ROOT") or HERE.parents[1])
@@ -288,15 +289,11 @@ def main():
     CARDS.write_text(json.dumps(d, ensure_ascii=False, indent=2), "utf-8")
     st["used"].append({"topic": topic, "name": d["name"], "date": f"{today:%Y-%m-%d}", "moves": moves, "gestures": gests, "moods": moods})
     TOPICS.write_text(json.dumps(st, ensure_ascii=False, indent=1), "utf-8")
-    brief = ROOT / f"content/briefs/{d['name']}.md"
-    brief.parent.mkdir(parents=True, exist_ok=True)
-    brief.write_text(
-        f"# {d['name']} — {d['title']}\n(자동 생성 {today:%Y-%m-%d %H:%M} KST, 주제: {topic})\n\n## 대본(voice)\n"
-        + "\n".join(f"{i + 1}. {s['voice']}" for i, s in enumerate(d["scenes"]))
-        + "\n\n## 연출\n" + "\n".join(f"- item{s['n']}: icon={s.get('icon', '-')} move={s['move']} gesture={s['gesture']} mood={s.get('mood', '-')}" for s in d["scenes"] if s["type"] == "item")
-        + "\n" + "\n".join(f"- {s['type']}: mood={s.get('mood', '기본(놀람)')}" for s in d["scenes"] if s["type"] != "item")
-        + "\n\n## 게시 전 확인할 사실 (LLM이 적은 목록, 출처 직접 확인 안 됨)\n" + "\n".join(f"- {f}" for f in facts)
-        + "\n\n## 검수 기록(자동)\n" + "\n".join(f"- {n}" for n in notes) + "\n- 의료·화장품 주장의 출처는 확인하지 않음(미확인). 사람 검수 없음\n", "utf-8")
+    # 9단계 폴더(projects/<name>/): 01 조사 · 02 주제 · 03 기획 · 04 스크립트 · 05 대본 · 08 검증(facts·대본검수). 06·07·09와 영상 확인은 렌더링 뒤 project.py sync가 채움
+    project.write_pre_render(d["name"], d, topic, cands[:15], season(today.month), facts, notes, "통과")
+    design_note = "\n".join(f"- item{s['n']}: icon={s.get('icon', '-')} move={s['move']} gesture={s['gesture']} mood={s.get('mood', '-')}" for s in d["scenes"] if s["type"] == "item")
+    design_note += "\n" + "\n".join(f"- {s['type']}: mood={s.get('mood', '기본(놀람)')}" for s in d["scenes"] if s["type"] != "item")
+    (ROOT / f"projects/{d['name']}/04_script/direction.md").write_text(f"# 연출 지정 (자동, {today:%Y-%m-%d %H:%M} KST)\n{design_note}\n", "utf-8")
     qp = ROOT / "content/queue.json"
     q = json.loads(qp.read_text("utf-8")) if qp.exists() else []
     q.append({"name": d["name"], "title": d["title"], "description": description(d), "tags": [t.lstrip("#") for t in d["hashtags"]], "status": "generated", "created": f"{today:%Y-%m-%d %H:%M}"})

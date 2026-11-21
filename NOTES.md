@@ -410,3 +410,10 @@ print(r.stderr[-3000:])
 - 11/26 18:30 KST A안 toner-pad-bad-habits(mMxQU2KCrMI, 52.0초): title shrug/count/angry, item stomp/pointR/angry, shocked/up/sad, sitDown/shy/happy
 - 11/27 18:30 KST B안 toner-pad-3steps(영상 길이는 verify 참고): item hello/pointR/happy, meditate/pointL/shine, floatUp/up/happy
 - 확인 전: 자막·음성 싱크, 의학 문구 출처(미확인), 영상 프레임 확인
+
+### 2026-11-21 9단계 폴더 구조 도입 (사용자 요청: 기존 5역할 폴더가 디테일 부족)
+- 영상 1개 = `projects/<name>/`: 01_research · 02_topic · 03_plan · 04_script · 05_narration · 06_voice · 07_video · 08_verify(facts·script_review·voice_check·video_check·license) · 09_publish + `status.json`. 설명은 `pipeline/README.md`, 빈 틀은 `projects/_template/`
+- 추가·수정: `pipeline/project.py`(new/from-cards/sync/check), `generate.py`(렌더링 전 01~05·08 기록, 기존 `content/briefs` 쓰기 대체), `infocard.yml`(영상 보관 뒤 `sync`, continue-on-error), `daily-shorts.yml`(projects 커밋), 역할 문서 5개, CLAUDE.md
+- 확인함: 가짜 LLM 응답으로 generate.py → 폴더 24개 파일 생성, 가짜 영상·verify 파일로 sync → 06·07·09 채움 확인(로컬 시험 폴더). 워크플로 YAML 문법 통과
+- 확인 전: GitHub Actions에서 실제 실행(infocard.yml의 sync 단계, daily-shorts의 projects 커밋), 실제 LLM 호출
+- 한계: 자동 제작은 웹 조사를 하지 않아 01_research는 pending, 03_plan의 후킹 후보 3개는 미기록, 음성 오독·라이선스(08)는 자동 확인 불가라 pending/미확인. 기존 영상 기록은 `content/briefs/`에 그대로 둠(이동 안 함)

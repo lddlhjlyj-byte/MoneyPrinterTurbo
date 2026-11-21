@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -A shorts-video/src content pipeline/auto/topics.json
+          git add -A shorts-video/src content projects pipeline/auto/topics.json
           if git diff --cached --quiet; then echo "변경 없음(건너뜀)"; exit 0; fi
           git commit -m "chore: 자동 생성 대본 ($(date -u +%F))"
           git pull --rebase --autostash origin main

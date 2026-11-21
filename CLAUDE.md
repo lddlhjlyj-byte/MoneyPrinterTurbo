@@ -36,3 +36,8 @@
 - 렌더링 후 `pipeline/verify_video.py`(infocard.yml에서 자동 실행)가 소리·길이·장면 타이밍을 측정한다. 실패하면 업로드 전에 워크플로가 멈추고, 결과는 `verify/report.txt`. 이 검사는 발음·자막 내용·눈으로 보는 품질은 확인하지 못하므로 "통과"를 "완벽"으로 보고하지 않는다
 - "성공"은 확인한 것만 쓴다. 정지 프레임만 본 경우 음성 싱크·전체 재생은 "확인 전"으로 적는다
 - 외부 서비스 호출(LLM, 업로드 등)은 가짜 응답 시험만으로 완료 보고하지 않는다. 실제 호출 결과를 확인하기 전에는 "미확인"으로 적는다
+
+## 폴더 구조 (2026-11-21, 사용자 요청)
+- 영상 1개 = `projects/<name>/` 1개. 9단계: 01_research 조사 · 02_topic 주제선정 · 03_plan 기획서 · 04_script 스크립트 · 05_narration 대본 · 06_voice 음성·자막 · 07_video 소스·합성 영상 · 08_verify 검증 · 09_publish 게시. 설명은 `pipeline/README.md`
+- 새 영상은 `python3 pipeline/project.py new <name>` → 01~03 작성 → `from-cards` → 렌더링 → `sync`. `status.json`의 done은 직접 확인한 단계만, 자동 측정은 auto로 둔다
+- 08_verify의 음성 오독·라이선스는 자동 확인이 안 되므로 pending/미확인으로 두고 "검증 완료"라고 보고하지 않는다

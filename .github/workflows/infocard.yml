@@ -72,12 +72,16 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: python3 ../pipeline/auto/upload_youtube.py "$(cat ../verify/name.txt)"
+      - name: 9단계 폴더 정리 (projects/<name>/06~09, 실패해도 렌더링 결과는 보관)
+        continue-on-error: true
+        working-directory: .
+        run: python3 pipeline/project.py sync "$(cat verify/name.txt)"
       - name: verify·content 폴더 커밋
         working-directory: .
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -A verify content
+          git add -A verify content projects
           git commit -m "chore: InfoCard 결과 보관 ($(cat verify/name.txt))" || echo "변경 없음"
           git pull --rebase --autostash origin main
           git push

@@ -1,4 +1,5 @@
-# 제작자
+# 제작자 (06_voice · 07_video · 09_publish)
+담당 폴더: `projects/<slug>/06_voice`, `07_video`, `09_publish`. 렌더링 후 `python3 pipeline/project.py sync <slug>`로 기록한다(Actions가 자동 실행).
 입력: 대본 + 스토리보드. 출력: `shorts-video/src/cards.json`, 렌더링된 영상, 썸네일, 예약 게시.
 1. cards.json 맨 위에 고유 `name`(영문)과 유튜브 `title`을 넣는다. 이전 영상은 `cards.<name>.json`으로 보관한다.
 2. 푸시하면 Actions가 자동 렌더링한다(`cards.json` 변경이 트리거). 결과는 main의 `content/videos/<name>.mp4`, `content/thumbnails/<name>.png`와 `verify/` 사진으로 확인한다(Actions 화면은 이 환경에서 볼 수 없음).
