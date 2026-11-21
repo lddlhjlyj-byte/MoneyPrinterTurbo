@@ -1,0 +1,47 @@
+{
+  "01_research": {
+    "state": "done",
+    "note": "웹 조사 2026-11-22. 출처 기사 1~2건, 미확인 항목 표기",
+    "updated": "2026-11-22 01:43"
+  },
+  "02_topic": {
+    "state": "done",
+    "note": "선정 이유 기록",
+    "updated": "2026-11-22 01:43"
+  },
+  "03_plan": {
+    "state": "done",
+    "note": "초안",
+    "updated": "2026-11-22 01:43"
+  },
+  "04_script": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 01:42"
+  },
+  "05_narration": {
+    "state": "pending",
+    "note": "script_draft.md 초안만 작성. cards.json 변환·렌더링 안 함",
+    "updated": "2026-11-22 01:43"
+  },
+  "06_voice": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 01:42"
+  },
+  "07_video": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 01:42"
+  },
+  "08_verify": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 01:42"
+  },
+  "09_publish": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 01:42"
+  }
+}

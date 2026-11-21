@@ -425,3 +425,11 @@ print(r.stderr[-3000:])
 - 개선: infocard.yml에 형식 게이트(`validate_cards.py --schema-only`, 틀린 값이면 렌더링 전 중단)·동시 실행 직렬화(concurrency)·워크플로 파일 수정으로는 재렌더링하지 않도록 paths에서 자기 자신 제거(직전 푸시로 toner-pad-3steps.mp4가 다시 렌더링돼 덮어써짐) 적용. `project.py backfill all`로 기존 영상 projects/ 소급 정리(대본 복원 20편, sunscreen-01·02는 이력에 name이 없어 복원 못 함)
 - 시험: 모든 py 컴파일, 워크플로 YAML 5개 문법, 복원 cards 21개에 형식 검사 → 위 4건만 검출·거짓 양성 0, 가짜 LLM으로 generate.py 재시험 통과, 가짜 HTTP로 yt.py·업로더 경로 시험. 확인 전: Actions에서 새 형식 게이트·yt.py 실제 실행, 실제 유튜브 호출
 - 발견했으나 손대지 않은 것: `pipeline/auto/PAUSE`가 켜져 있어(11-19 사용자 지시) 11-23 자동 제작은 실행되지 않음. 영상 3편(lip-flake-care 삭제, hand-cream-timing·winter-sunscreen-why 폐기)과 queue에 없는 10개 영상 파일이 저장소에 남음. mp4가 저장소에 쌓여 .git 389MB·content 269MB(영상당 약 10MB). 토너 영상 4편(toner-correct-use·-motion은 길이·대본이 거의 같음), `app/`·`webui/`·`resource/`(198MB)는 MoneyPrinterTurbo 원본 코드로 주력 경로가 아님
+
+### 2026-11-22 못 한 일 처리 (사용자 요청: 할 수 있는데 안 한 것만)
+- 기록 보정: `project.py backfill`이 이미 status.json이 있어도 04가 비어 있으면 다시 채우도록 수정. toner-pad-3steps 04·05·06 채움(auto). sunscreen-01·02는 git 이력에 cards가 없어 복원 불가(pending 유지)
+- 분석 갱신: `analytics.yml` REST로 실행 성공(2026-11-09~21 데이터, content/analytics/ 보관). 영상 8편 측정: 조회 1,221(jISNX7riT5A)·457·286·244·172·98·81·28, 평균 시청 비율 30.6~65.9%, 25% 지점 유지율 0.32~0.76. 업로드 후 1~3일 지연 가능
+- 공개 여부: 조회 3종(YouTube oEmbed)이 세션 허용 목록에 없어 확인 못 함 → 업로드 영상 공개 상태는 **미확인**. 현재 토큰(업로드 권한만)으로는 상태 조회 불가
+- 길이 기준 정정(실측): 영상 21편 음성 글자수÷영상 길이 중앙값 4.9자/초(3.9~5.5). 기존 한도 330자는 약 65초라 40초 목표와 어긋났음. 공백 제외 200자(약 40초)로 `rules.py`·`gpt-prompt.md`·roles 2·5 수정. 자동 제작은 PAUSE 중이라 실제 영향은 재개 후
+- 스킬: `.claude/skills/shorts-script-quality/SKILL.md` 추가(훅 10개 이상 후보, 기승전결, 실측 길이, 쇼츠/릴스 제목, 해시태그 7개, 출처 미확인 표기)
+- 시술·성분 대본 초안 3편(`projects/retinol-first-use`, `retinol-vitc-combo`, `rejuran-healer-guide`): 웹 조사(출처 기사 1~2건)로 01~03 작성, 05는 `script_draft.md` 초안만(약 152~178자). 렌더링·업로드 안 함. 미확인: retinol-vitc-combo의 병용 안전성은 의료 출처 미확보(렌더링 금지), 리쥬란은 기사 1건 근거, 프로젝트 자료 수치 대조 전
