@@ -1,45 +1,48 @@
-조회 기간: 2026-11-09 ~ 2026-11-17 (분석 데이터는 1~3일 지연될 수 있음)
+조회 기간: 2026-11-09 ~ 2026-11-21 (분석 데이터는 1~3일 지연될 수 있음)
 
 ## 영상별 지표
-- jISNX7riT5A: 조회 1231, 시청분 78, 평균 시청 23초, 평균 시청 비율 35.13%, 좋아요 2, 댓글 2, 공유 4, 구독 증가 0
-- JZgajzo6ZF8: 조회 320, 시청분 19, 평균 시청 30초, 평균 시청 비율 61.06%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
-- unGaL2IUR8A: 조회 283, 시청분 16, 평균 시청 25초, 평균 시청 비율 48.12%, 좋아요 2, 댓글 1, 공유 3, 구독 증가 0
-- AEULRp8uPnI: 조회 165, 시청분 10, 평균 시청 26초, 평균 시청 비율 36.81%, 좋아요 3, 댓글 0, 공유 2, 구독 증가 0
-- 9qxiu-3ge6s: 조회 97, 시청분 7, 평균 시청 19초, 평균 시청 비율 31.81%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
-- e2qGY8NGqrw: 조회 10, 시청분 0, 평균 시청 8초, 평균 시청 비율 12.9%, 좋아요 0, 댓글 0, 공유 0, 구독 증가 0
-- U5o9BdRlSNw: 조회 2, 시청분 0, 평균 시청 0초, 평균 시청 비율 0%, 좋아요 0, 댓글 0, 공유 0, 구독 증가 0
+- jISNX7riT5A: 조회 1221, 시청분 78, 평균 시청 23초, 평균 시청 비율 34.85%, 좋아요 2, 댓글 2, 공유 4, 구독 증가 0
+- JZgajzo6ZF8: 조회 457, 시청분 29, 평균 시청 32초, 평균 시청 비율 65.91%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
+- unGaL2IUR8A: 조회 286, 시청분 16, 평균 시청 25초, 평균 시청 비율 47.43%, 좋아요 2, 댓글 1, 공유 3, 구독 증가 0
+- 7oB0cfyvFrw: 조회 244, 시청분 16, 평균 시청 29초, 평균 시청 비율 49.33%, 좋아요 4, 댓글 0, 공유 0, 구독 증가 0
+- AEULRp8uPnI: 조회 172, 시청분 13, 평균 시청 32초, 평균 시청 비율 45.07%, 좋아요 3, 댓글 0, 공유 2, 구독 증가 0
+- 9qxiu-3ge6s: 조회 98, 시청분 7, 평균 시청 18초, 평균 시청 비율 30.599999999999998%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
+- 1PUp1xMnbTU: 조회 81, 시청분 9, 평균 시청 21초, 평균 시청 비율 40.95%, 좋아요 3, 댓글 0, 공유 0, 구독 증가 0
+- j-MwtrSxUS0: 조회 28, 시청분 5, 평균 시청 28초, 평균 시청 비율 41.13%, 좋아요 2, 댓글 0, 공유 0, 구독 증가 0
 - CNz0--a6D6g: 조회 2, 시청분 0, 평균 시청 0초, 평균 시청 비율 0%, 좋아요 0, 댓글 0, 공유 0, 구독 증가 0
 
 ## 시청 유지율 (영상 길이 대비 지점별, 1.0=100%)
-- jISNX7riT5A: 5% 1.03, 10% 0.77, 25% 0.49, 50% 0.30, 75% 0.17, 95% 0.05
-- JZgajzo6ZF8: 5% 1.28, 10% 1.21, 25% 0.69, 50% 0.52, 75% 0.48, 95% 0.41
-- unGaL2IUR8A: 5% 1.14, 10% 1.03, 25% 0.62, 50% 0.45, 75% 0.28, 95% 0.17
-- AEULRp8uPnI: 5% 1.00, 10% 0.83, 25% 0.50, 50% 0.39, 75% 0.11, 95% 0.06
-- 9qxiu-3ge6s: 5% 1.06, 10% 0.89, 25% 0.33, 50% 0.22, 75% 0.17, 95% 0.06
-- e2qGY8NGqrw: 데이터 없음
-- U5o9BdRlSNw: 데이터 없음
+- jISNX7riT5A: 5% 1.03, 10% 0.76, 25% 0.49, 50% 0.30, 75% 0.17, 95% 0.05
+- JZgajzo6ZF8: 5% 1.29, 10% 1.17, 25% 0.76, 50% 0.57, 75% 0.52, 95% 0.43
+- unGaL2IUR8A: 5% 1.13, 10% 1.03, 25% 0.63, 50% 0.43, 75% 0.27, 95% 0.17
+- 7oB0cfyvFrw: 5% 1.11, 10% 0.89, 25% 0.54, 50% 0.54, 75% 0.39, 95% 0.18
+- AEULRp8uPnI: 5% 1.05, 10% 0.86, 25% 0.57, 50% 0.48, 75% 0.24, 95% 0.14
+- 9qxiu-3ge6s: 5% 1.05, 10% 0.84, 25% 0.32, 50% 0.21, 75% 0.16, 95% 0.05
+- 1PUp1xMnbTU: 5% 1.14, 10% 1.05, 25% 0.52, 50% 0.38, 75% 0.24, 95% 0.19
+- j-MwtrSxUS0: 5% 0.90, 10% 1.00, 25% 0.60, 50% 0.30, 75% 0.20, 95% 0.10
 - CNz0--a6D6g: 데이터 없음
 
 ## 유입 경로 (채널 전체)
-- SHORTS: 조회 1919, 시청분 101
-- YT_SEARCH: 조회 89, 시청분 6
-- YT_CHANNEL: 조회 47, 시청분 12
-- YT_OTHER_PAGE: 조회 37, 시청분 4
-- SUBSCRIBER: 조회 7, 시청분 2
-- PLAYLIST: 조회 4, 시청분 1
-- NOTIFICATION: 조회 4, 시청분 0
+- SHORTS: 조회 2330, 시청분 134
+- YT_SEARCH: 조회 119, 시청분 9
+- YT_CHANNEL: 조회 66, 시청분 18
+- YT_OTHER_PAGE: 조회 46, 시청분 6
+- SUBSCRIBER: 조회 11, 시청분 3
+- NOTIFICATION: 조회 9, 시청분 0
+- PLAYLIST: 조회 8, 시청분 2
 - NO_LINK_OTHER: 조회 2, 시청분 0
-- EXT_URL: 조회 1, 시청분 1
+- EXT_URL: 조회 2, 시청분 1
 
 ## 콘텐츠 유형별 (쇼츠 등)
-- shorts: 조회 2110
+- shorts: 조회 2605
 
 ## 영상별 유입 경로
-- jISNX7riT5A: SHORTS 1147, YT_SEARCH 50, YT_CHANNEL 18, YT_OTHER_PAGE 13, SUBSCRIBER 1, EXT_URL 1, NOTIFICATION 1, NO_LINK_OTHER 0
-- JZgajzo6ZF8: SHORTS 298, YT_SEARCH 11, SUBSCRIBER 4, YT_OTHER_PAGE 4, YT_CHANNEL 2, NOTIFICATION 1, NO_LINK_OTHER 0
-- unGaL2IUR8A: SHORTS 247, YT_SEARCH 18, YT_CHANNEL 14, YT_OTHER_PAGE 2, PLAYLIST 2, NO_LINK_OTHER 0
-- AEULRp8uPnI: SHORTS 145, YT_SEARCH 6, YT_CHANNEL 5, YT_OTHER_PAGE 5, NOTIFICATION 2, SUBSCRIBER 1, PLAYLIST 1, NO_LINK_OTHER 0
-- 9qxiu-3ge6s: SHORTS 82, YT_CHANNEL 6, YT_SEARCH 4, YT_OTHER_PAGE 3, SUBSCRIBER 1, PLAYLIST 1, NO_LINK_OTHER 0
-- e2qGY8NGqrw: YT_OTHER_PAGE 8, NO_LINK_OTHER 2
-- U5o9BdRlSNw: YT_OTHER_PAGE 2
+- jISNX7riT5A: SHORTS 1136, YT_SEARCH 50, YT_CHANNEL 18, YT_OTHER_PAGE 13, SUBSCRIBER 1, EXT_URL 1, PLAYLIST 1, NOTIFICATION 1, NO_LINK_OTHER 0
+- JZgajzo6ZF8: SHORTS 418, YT_SEARCH 18, YT_CHANNEL 7, SUBSCRIBER 5, YT_OTHER_PAGE 5, PLAYLIST 2, NOTIFICATION 2, NO_LINK_OTHER 0
+- unGaL2IUR8A: SHORTS 247, YT_SEARCH 19, YT_CHANNEL 15, PLAYLIST 3, YT_OTHER_PAGE 2, NO_LINK_OTHER 0
+- 7oB0cfyvFrw: SHORTS 232, YT_SEARCH 6, YT_OTHER_PAGE 3, SUBSCRIBER 2, YT_CHANNEL 1, NO_LINK_OTHER 0
+- AEULRp8uPnI: SHORTS 147, YT_SEARCH 7, YT_CHANNEL 6, YT_OTHER_PAGE 6, NOTIFICATION 4, SUBSCRIBER 1, PLAYLIST 1, NO_LINK_OTHER 0
+- 9qxiu-3ge6s: SHORTS 81, YT_CHANNEL 7, YT_SEARCH 5, YT_OTHER_PAGE 3, SUBSCRIBER 1, PLAYLIST 1, NO_LINK_OTHER 0
+- 1PUp1xMnbTU: SHORTS 64, YT_SEARCH 8, YT_CHANNEL 5, YT_OTHER_PAGE 3, NOTIFICATION 1, NO_LINK_OTHER 0
+- j-MwtrSxUS0: SHORTS 15, YT_SEARCH 7, YT_CHANNEL 2, SUBSCRIBER 1, YT_OTHER_PAGE 1, EXT_URL 1, NOTIFICATION 1, NO_LINK_OTHER 0
 - CNz0--a6D6g: YT_CHANNEL 2
