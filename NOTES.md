@@ -436,3 +436,8 @@ print(r.stderr[-3000:])
 
 ### 2026-11-22 스토리형 전환 (사용자 지시: "스토리가 빠졌다")
 - 사용자 판단: 단순 정보 나열은 경쟁력 없음. 초안 3편(retinol-first-use·retinol-vitc-combo·rejuran-healer-guide)을 노랑이 스토리형(실수→증상→원인→다음 편 예고) v2로 재작성(`05_narration/script_draft.md`), 스킬에 스토리 규칙 추가. 노랑이 경험은 허구 연출. 효과(조회 증가)는 미확인, 렌더링·업로드 안 함
+
+### 2026-11-22 이시연 D-7 시리즈 1편 확인용 렌더링 (사용자 요청: 영상을 바로 볼 수 있게)
+- `acne-d7-ep1` 렌더링 요청(사용자가 영상 확인을 요청). queue에 항목이 없어 유튜브 업로드는 하지 않음(업로더는 queue 대기 항목만 처리). 결과는 `video` 브랜치 infocard.mp4와 content/videos
+- 지정한 동작·표정: hook(기본) / item1 washFace·idle·normal·patch / item2 shocked·both·teary·bottle / item3 nodYes·count·shine·faucet / outro happy. 가상 사례 표기(hook warn, outro note)
+- 근거: AAD 여드름 팁(세안 하루 최대 2회, 땀 뒤 추가, 문지르지 않기) 직접 확인. 음성·자막·화면 품질은 확인 전
