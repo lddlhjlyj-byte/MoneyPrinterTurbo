@@ -20,10 +20,10 @@
       "n": 1,
       "screen": {
         "head": "아침 거울 앞에서",
-        "sub": "턱·볼에 붉고 아픈 트러블",
+        "sub": "턱에 붉고 아픈 트러블",
         "tags": [
           "트러블",
-          "염증"
+          "거울"
         ]
       },
       "visual": {
@@ -32,34 +32,13 @@
       "direction": {
         "move": "shocked",
         "gesture": "both",
-        "mood": "teary"
+        "mood": "normal"
       }
     },
     {
       "no": 3,
       "type": "item",
       "n": 2,
-      "screen": {
-        "head": "엉망이던 요즘 생활",
-        "sub": "잠 부족·커피·스트레스",
-        "tags": [
-          "수면 부족",
-          "스트레스"
-        ]
-      },
-      "visual": {
-        "icon": "heater"
-      },
-      "direction": {
-        "move": "disappointed",
-        "gesture": "idle",
-        "mood": "sad"
-      }
-    },
-    {
-      "no": 4,
-      "type": "item",
-      "n": 3,
       "screen": {
         "head": "급한 마음에 이것저것",
         "sub": "패치·각질 제거·손으로 짜기",
@@ -74,7 +53,28 @@
       "direction": {
         "move": "worry",
         "gesture": "pointL",
-        "mood": "normal"
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "오히려 더 붉어졌어요",
+        "sub": "다음 날 아침",
+        "tags": [
+          "다음 날",
+          "더 붉게"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "disappointed",
+        "gesture": "idle",
+        "mood": "teary"
       }
     },
     {
@@ -82,11 +82,11 @@
       "type": "item",
       "n": 4,
       "screen": {
-        "head": "노랑이의 한마디",
-        "sub": "더 씻고 더 바르면 자극",
+        "head": "잠깐! 노랑이의 한마디",
+        "sub": "피부를 괴롭히는 행동이 있어요",
         "tags": [
-          "자극",
-          "잠깐!"
+          "잠깐!",
+          "행동 점검"
         ]
       },
       "visual": {

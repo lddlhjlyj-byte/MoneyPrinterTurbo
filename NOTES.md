@@ -483,3 +483,7 @@ print(r.stderr[-3000:])
   - 출처 미확인 주장 삭제: "수면 부족·스트레스가 트러블에 영향", "패치·각질 제거가 자극". 이야기 속 행동(패치·각질 제거·손으로 눌러보기)으로만 서술하고 원인 판단은 하지 않음
   - 노랑이 대사 "무조건 더 씻고 더 바르고 손으로 짜면 자극" → "잠깐! 지금 하는 행동 중에 피부를 괴롭히는 게 있어요." + 아웃트로 "뭘까요? 다음 편에서 알려드릴게요.": 답을 1편에서 미리 말하지 않아 2편 궁금증 유지
   - 그대로 둔 것: 증명사진·가상 사례 표기, 이시연 인물, 제목·해시태그, "손으로 짜면 흉터 위험"은 2편에서 AAD 근거로 사용
+
+### 2026-11-22 acne-d7-ep1 수정본 렌더링 (사용자 요청: "일단 1편 먼저 보자")
+- 수정본(cards.revised.json)을 shorts-video/src/cards.json에 반영해 렌더링. queue에 없어 업로드 안 함
+- 지정한 동작·표정: hook(기본) / item1 shocked·both·normal·cream / item2 worry·pointL·sad·patch / item3 disappointed·idle·teary·bottle / item4 pointForward·pointR·shine·faucet / outro happy. "가상 사례" 표기(hook warn·outro note)
