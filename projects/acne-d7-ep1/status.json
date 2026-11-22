@@ -1,0 +1,47 @@
+{
+  "01_research": {
+    "state": "done",
+    "note": "AAD 원문 확인, 미확인 항목 분리",
+    "updated": "2026-11-22 14:17"
+  },
+  "02_topic": {
+    "state": "done",
+    "note": "선정",
+    "updated": "2026-11-22 14:17"
+  },
+  "03_plan": {
+    "state": "done",
+    "note": "초안",
+    "updated": "2026-11-22 14:17"
+  },
+  "04_script": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 14:17"
+  },
+  "05_narration": {
+    "state": "pending",
+    "note": "script_draft.md 초안만. 렌더링 안 함",
+    "updated": "2026-11-22 14:17"
+  },
+  "06_voice": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 14:17"
+  },
+  "07_video": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 14:17"
+  },
+  "08_verify": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 14:17"
+  },
+  "09_publish": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 14:17"
+  }
+}
