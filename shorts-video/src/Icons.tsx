@@ -159,6 +159,86 @@ export const PatchTest: React.FC = () => (
   </svg>
 );
 
+
+/** 거울 (거울 속 내 얼굴 확인) */
+export const MirrorIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <rect x="109" y="150" width="22" height="76" rx="11" fill={BRAND} stroke={INK} strokeWidth={SW} />
+    <ellipse cx="120" cy="92" rx="72" ry="80" fill={BRAND} stroke={INK} strokeWidth={SW} />
+    <ellipse cx="120" cy="92" rx="52" ry="60" fill={SKY} stroke={INK} strokeWidth={SW - 2} />
+    <path d="M 90 66 q 8 -14 26 -18" fill="none" stroke="#FFFFFF" strokeWidth="9" strokeLinecap="round" />
+  </svg>
+);
+
+/** 트러블 난 얼굴 */
+export const PimpleFace: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <circle cx="120" cy="120" r="92" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <circle cx="86" cy="104" r="7" fill={INK} />
+    <circle cx="154" cy="104" r="7" fill={INK} />
+    <path d="M 98 160 q 22 -14 44 0" fill="none" stroke={INK} strokeWidth="7" strokeLinecap="round" />
+    <circle cx="168" cy="146" r="13" fill="#FF8A80" stroke={INK} strokeWidth="5" />
+    <circle cx="150" cy="180" r="10" fill="#FF8A80" stroke={INK} strokeWidth="5" />
+    <circle cx="82" cy="164" r="11" fill="#FF8A80" stroke={INK} strokeWidth="5" />
+  </svg>
+);
+
+/** 달력 (남은 날짜) */
+export const CalendarIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <rect x="30" y="44" width="180" height="170" rx="26" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <path d="M 30 98 V 70 Q 30 44 56 44 H 184 Q 210 44 210 70 V 98 Z" fill={BRAND} stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+    <line x1="80" y1="30" x2="80" y2="62" stroke={INK} strokeWidth="10" strokeLinecap="round" />
+    <line x1="160" y1="30" x2="160" y2="62" stroke={INK} strokeWidth="10" strokeLinecap="round" />
+    {[0, 1, 2].map((c) =>
+      [0, 1].map((r) => (
+        <rect key={`${c}-${r}`} x={58 + c * 48} y={120 + r * 40} width="26" height="24" rx="6" fill={c === 2 && r === 1 ? BRAND : BRAND_LIGHT} stroke={INK} strokeWidth="5" />
+      ))
+    )}
+  </svg>
+);
+
+/** 손 (손으로 만지거나 짜기) */
+export const HandIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <rect x="62" y="64" width="26" height="92" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <rect x="92" y="40" width="26" height="116" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <rect x="122" y="46" width="26" height="110" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <rect x="152" y="70" width="26" height="86" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <rect x="56" y="120" width="128" height="92" rx="40" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <rect x="28" y="118" width="26" height="70" rx="13" transform="rotate(-24 41 153)" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+  </svg>
+);
+
+/** 금지 (하지 마세요) */
+export const StopIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <circle cx="120" cy="120" r="92" fill="#FFFFFF" stroke={INK} strokeWidth="12" />
+    <circle cx="120" cy="120" r="24" fill="#FF8A80" stroke={INK} strokeWidth="6" />
+    <line x1="56" y1="56" x2="184" y2="184" stroke={INK} strokeWidth="14" strokeLinecap="round" />
+  </svg>
+);
+
+/** 병원 십자 (피부과 상담) */
+export const ClinicIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <rect x="30" y="30" width="180" height="180" rx="44" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <path d="M 100 64 H 140 V 100 H 176 V 140 H 140 V 176 H 100 V 140 H 64 V 100 H 100 Z" fill={BRAND} stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+  </svg>
+);
+
+/** 서류 (면접 자료) */
+export const DocumentIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <rect x="52" y="24" width="130" height="188" rx="18" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    {[70, 100, 130].map((y) => (
+      <line key={y} x1="76" y1={y} x2="158" y2={y} stroke={INK} strokeWidth="8" strokeLinecap="round" />
+    ))}
+    <circle cx="166" cy="184" r="34" fill={BRAND} stroke={INK} strokeWidth={SW} />
+    <polyline points="148,184 162,198 186,168" fill="none" stroke={INK} strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 /** 눈 내리는 배경 (deco: "snow") */
 const FLAKES = Array.from({ length: 16 }, (_, i) => ({
   x: (i * 173 + 60) % 1040,

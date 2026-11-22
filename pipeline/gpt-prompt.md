@@ -19,7 +19,7 @@
 hook: {"type":"hook","seconds":4,"line1":"8자 이하","line2":"11자 이하","warn":"11자 이하","voice":"한 문장, 4초 이내"}
 signs: {"type":"signs","seconds":9,"head":"9자 이하","sub":"15자 이하","rows":["10자 이하","10자 이하","10자 이하"],"icons":["wrinkle","flake","tight"],"voice":"..."}
 title: {"type":"title","seconds":6,"text":"10자 이하","num":"4가지","voice":"..."}
-item: {"type":"item","seconds":7,"n":1,"icon":"faucet|cream|bottle|humidifier|heater 중 하나(맞는 게 없으면 생략)","head":"8자 이하","sub":"14자 이하","tags":["6자 이하","6자 이하"],"voice":"..."}
+item: {"type":"item","seconds":7,"n":1,"icon":"faucet|cream|bottle|humidifier|heater|mirror|pimple|calendar|hand|stop|clinic|document 중 하나(맞는 게 없으면 생략)","head":"8자 이하","sub":"14자 이하","tags":["6자 이하","6자 이하"],"voice":"..."}
 summary: {"type":"summary","seconds":8,"title":"9자 이하","rows":["9자 이하","9자 이하","9자 이하","9자 이하"],"voice":"..."}
 outro: {"type":"outro","seconds":8,"text":"8자 이하 두 줄, 줄바꿈은 \n","sub":"저장하고 팔로우 · 노랑이 스킨랩","note":"일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요","voice":"... 저장하고 팔로우하세요."}
 

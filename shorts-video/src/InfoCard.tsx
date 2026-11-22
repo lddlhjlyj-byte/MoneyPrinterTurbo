@@ -4,15 +4,22 @@ import cardsData from "./cards.json";
 import { CharacterSynthetic, CharacterTalking, Gesture, Mood } from "./Character";
 import { KText, TextMotion } from "./KText";
 import {
+  CalendarIcon,
+  ClinicIcon,
   CreamJar,
+  DocumentIcon,
   DryPatch,
   Faucet,
   FlakeIcon,
+  HandIcon,
   Heater,
   Humidifier,
+  MirrorIcon,
   PatchTest,
+  PimpleFace,
   Snow,
   Snowflake,
+  StopIcon,
   TightIcon,
   WrinkleIcon,
 } from "./Icons";
@@ -90,7 +97,7 @@ type Scene = (
       seconds: number;
       n: number;
       worry?: boolean;
-      icon?: "faucet" | "cream" | "bottle" | "humidifier" | "patch" | "heater";
+      icon?: "faucet" | "cream" | "bottle" | "humidifier" | "patch" | "heater" | "mirror" | "pimple" | "calendar" | "hand" | "stop" | "clinic" | "document";
       head: string;
       sub: string;
       tags: string[];
@@ -475,6 +482,13 @@ const ITEM_ICONS = {
   humidifier: <Humidifier />,
   patch: <PatchTest />,
   heater: <Heater />,
+  mirror: <MirrorIcon />,
+  pimple: <PimpleFace />,
+  calendar: <CalendarIcon />,
+  hand: <HandIcon />,
+  stop: <StopIcon />,
+  clinic: <ClinicIcon />,
+  document: <DocumentIcon />,
 };
 
 /* ───────── 항목: n마다 다른 등장 (달려옴 / 솟아오름 / 회전 / 쿵) ───────── */

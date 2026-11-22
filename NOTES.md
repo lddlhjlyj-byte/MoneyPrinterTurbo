@@ -509,3 +509,11 @@ print(r.stderr[-3000:])
 - 지정한 동작·표정: hook(기본) / item1 shocked·both·normal·bottle / item2 worry·pointL·sad·patch / item3 disappointed·idle·teary·heater / item4 pointForward·pointR·shine·faucet / outro happy. "가상 사례" 표기(hook warn·outro note)
 - 렌더링 결과(2026-11-22 20:26): 1080×1920, 47.0초, 장면 6개, 소리 있음(-19.2dB), 자동 검사 통과하나 길이 경고(목표 25~40초 초과, 196자÷47초=약 4.2자/초). queue 없음 → 업로드 안 함
 - 장면 사진 점검(f_2·9·18·33·38·44 직접 확인): 대본·화면 글자 일치, "가상 사례" 표시됨. 문제: ①item1 아이콘(bottle)이 젖병처럼 보여 "몇 달 준비한 면접"과 안 맞음 ②item2 아이콘(patch)이 카메라처럼 보임 ③f_18(item2 시작 부근)은 제목·태그가 아직 안 나온 빈 화면, f_38(item4)은 제목 글자 크기가 들쭉날쭉하고 "한마디" 글자가 잘려 보임 — 애니메이션 도중 사진일 수 있어 확정 못 함(영상 직접 시청 필요) ④47초로 목표 초과. 음성 발음·싱크는 사용자 시청 전 확인 불가
+
+### 2026-11-23 아이콘 추가·표정 일치·'가상 사례' 삭제 (사용자 지시) + 1편 재렌더링
+- 사용자 지적: 아이콘이 내용과 안 맞음, "가상 사례" 글자 삭제, "피부를 괴롭힌 게 있다"는 대사에 표정이 즐거워 보임(대본과 캐릭터가 따로 작동)
+- 아이콘 7종 추가(mirror·pimple·calendar·hand·stop·clinic·document): Icons.tsx·InfoCard.tsx·schema.py·gpt-prompt.md·roles/3-designer.md 반영, tsc 타입 검사 통과, 아이콘 그림 이미지로 직접 확인(우는 얼굴 입은 무표정에서 처진 입으로, 거울은 막대처럼 보여 테두리 추가)
+- 원인: 1편 item4 표정을 shine(웃는 반짝 눈)으로 지정했음. 장면 감정과 표정 대응 규칙이 없었음 → CLAUDE.md·스킬에 규칙 추가
+- '가상 사례' 삭제: hook warn을 빈 문자열로, outro 문구는 "일반 정보입니다. 피부 상태에 따라…"만 남김. 이전에 제가 필수로 적었던 표기를 사용자 지시로 폐기
+- 4편 전체 표정·아이콘 재지정(대사 감정 기준): ep1 hook sad / document·normal / hand·sad / pimple·teary / stop·angry / outro happy. ep2 hook normal / calendar·angry / hand·sad / faucet·normal / bottle·shine / happy. ep3 normal / faucet·happy / cream·shine / stop·normal / clinic·sad / normal. ep4 normal / mirror·sad / stop·happy / document·shine / calendar·normal / happy. move·gesture는 기존 유지(대사와 맞는지 점검함)
+- 1편만 재렌더링(queue 없음, 업로드 안 함). generate.py(자동 제작)의 표정 지정 로직은 이 규칙을 아직 반영하지 않음(자동 제작은 PAUSE 중, 미수정)

@@ -9,10 +9,12 @@
       "screen": {
         "line1": "면접 일주일 전",
         "line2": "턱에 트러블이 났다면?",
-        "warn": "가상 사례"
+        "warn": ""
       },
       "visual": {},
-      "direction": {}
+      "direction": {
+        "mood": "sad"
+      }
     },
     {
       "no": 2,
@@ -27,7 +29,7 @@
         ]
       },
       "visual": {
-        "icon": "bottle"
+        "icon": "document"
       },
       "direction": {
         "move": "shocked",
@@ -48,7 +50,7 @@
         ]
       },
       "visual": {
-        "icon": "patch"
+        "icon": "hand"
       },
       "direction": {
         "move": "worry",
@@ -69,7 +71,7 @@
         ]
       },
       "visual": {
-        "icon": "heater"
+        "icon": "pimple"
       },
       "direction": {
         "move": "disappointed",
@@ -90,12 +92,12 @@
         ]
       },
       "visual": {
-        "icon": "faucet"
+        "icon": "stop"
       },
       "direction": {
         "move": "pointForward",
         "gesture": "pointR",
-        "mood": "shine"
+        "mood": "angry"
       }
     },
     {
@@ -105,7 +107,7 @@
       "screen": {
         "sub": "저장하고 팔로우 · 노랑이 스킨랩",
         "text": "다음 편\n뭘 잘못했을까요?",
-        "note": "가상 사례이며 일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요"
+        "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요"
       },
       "visual": {},
       "direction": {

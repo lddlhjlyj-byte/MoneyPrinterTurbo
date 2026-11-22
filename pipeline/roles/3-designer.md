@@ -1,7 +1,7 @@
 # 디자이너 (04_script)
 담당 폴더: `projects/<slug>/04_script/scenes.json`의 visual·direction, `direction.md`.
 입력: 대본. 출력: 장면별 그림·움직임·표정 표(스토리보드).
-- 장면 내용과 연관된 그림을 쓴다: `kind`(why: capsule/bottle/sun/winter), `icon`(item: faucet/cream/bottle/humidifier), `deco: "snow"`, 장면 `signs`(아이콘 3개: wrinkle/flake/tight). 새 그림이 필요하면 `src/Icons.tsx`에 추가한다.
+- 장면 내용과 연관된 그림을 쓴다: `kind`(why: capsule/bottle/sun/winter), `icon`(item: faucet 세안·cream 보습·bottle 제품병·humidifier 가습·patch·heater 열감·mirror 거울·pimple 트러블 얼굴·calendar 날짜·hand 손·stop 금지·clinic 병원·document 서류), `deco: "snow"`, 장면 `signs`(아이콘 3개: wrinkle/flake/tight). 새 그림이 필요하면 `src/Icons.tsx`에 추가한다.
 - 움직임 `move`: run, rise, spinJump, tremble, bounce, shiver(추위), tilt(갸웃), sway(살랑살랑), hop3(통통 3번), nod(끄덕). 기본값은 장면 종류별 고정 동작이다.
 - 팔 `gesture`: idle, up, pointR, pointL, count, wave, both(양팔 벌림), cheer(만세), shy(오므림).
 - 같은 영상 안에서 같은 `move`를 두 번 쓰지 않는다. 직전 영상과 같은 순서로 쓰지 않는다.
