@@ -1,18 +1,18 @@
 {
   "01_research": {
     "state": "done",
-    "note": "AAD 원문 확인, 미확인 항목 분리",
-    "updated": "2026-11-22 14:17"
+    "note": "v4",
+    "updated": "2026-11-22 20:21"
   },
   "02_topic": {
     "state": "done",
-    "note": "선정",
-    "updated": "2026-11-22 14:17"
+    "note": "v4",
+    "updated": "2026-11-22 20:21"
   },
   "03_plan": {
     "state": "done",
-    "note": "초안",
-    "updated": "2026-11-22 14:17"
+    "note": "v4",
+    "updated": "2026-11-22 20:21"
   },
   "04_script": {
     "state": "auto",
@@ -20,9 +20,9 @@
     "updated": "2026-11-22 14:47"
   },
   "05_narration": {
-    "state": "auto",
-    "note": "cards.json에서 추출",
-    "updated": "2026-11-22 14:47"
+    "state": "pending",
+    "note": "v4 초안. 렌더링 안 함",
+    "updated": "2026-11-22 20:21"
   },
   "06_voice": {
     "state": "auto",

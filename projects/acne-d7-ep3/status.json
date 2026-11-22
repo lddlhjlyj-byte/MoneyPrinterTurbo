@@ -1,0 +1,47 @@
+{
+  "01_research": {
+    "state": "done",
+    "note": "v4",
+    "updated": "2026-11-22 20:21"
+  },
+  "02_topic": {
+    "state": "done",
+    "note": "v4",
+    "updated": "2026-11-22 20:21"
+  },
+  "03_plan": {
+    "state": "done",
+    "note": "v4",
+    "updated": "2026-11-22 20:21"
+  },
+  "04_script": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 20:20"
+  },
+  "05_narration": {
+    "state": "pending",
+    "note": "v4 초안. 렌더링 안 함",
+    "updated": "2026-11-22 20:21"
+  },
+  "06_voice": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 20:20"
+  },
+  "07_video": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 20:20"
+  },
+  "08_verify": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 20:20"
+  },
+  "09_publish": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-22 20:20"
+  }
+}
