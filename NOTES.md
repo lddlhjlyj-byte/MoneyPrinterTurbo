@@ -503,3 +503,7 @@ print(r.stderr[-3000:])
   - 4편 결말: 면접장 문 앞에서 웃음 + "여러분이라면 어땠을까요? 댓글로" (면접 결과·피부 완치는 보여주지 않음)
   - 출처 미확인 삭제: 수면 부족 영향, "패치·각질 제거가 자극"(이야기 속 행동으로만), 질병관리청 "저자극성 세안제"(원문은 약산성 세안제라 사용 안 함)
 - 한계: 허용 아이콘 6종이라 장면 내용과 안 맞을 수 있음. 음성 억양은 들어보기 전 판단 불가. 4편 시리즈의 조회 효과는 미확인
+
+### 2026-11-22 acne-d7-ep1 v4 렌더링 (사용자 요청: "1편 보고 결정")
+- 4부작 수정본 1편(cards.revised.json)을 shorts-video/src/cards.json에 반영해 렌더링. queue 없음 → 업로드 안 함. 같은 이름이라 이전 세안 버전 영상이 덮어써짐
+- 지정한 동작·표정: hook(기본) / item1 shocked·both·normal·bottle / item2 worry·pointL·sad·patch / item3 disappointed·idle·teary·heater / item4 pointForward·pointR·shine·faucet / outro happy. "가상 사례" 표기(hook warn·outro note)

@@ -1,14 +1,14 @@
 {
   "name": "acne-d7-ep1",
-  "title": "증명사진 찍기 일주일 전, 갑자기 뒤집어진 피부",
+  "title": "면접 일주일 전, 갑자기 뒤집어진 피부",
   "scenes": [
     {
       "no": 1,
       "type": "hook",
       "n": null,
       "screen": {
-        "line1": "증명사진 찍기 일주일 전",
-        "line2": "갑자기 뒤집어진 피부",
+        "line1": "면접 일주일 전",
+        "line2": "턱에 트러블이 났다면?",
         "warn": "가상 사례"
       },
       "visual": {},
@@ -19,15 +19,15 @@
       "type": "item",
       "n": 1,
       "screen": {
-        "head": "아침 거울 앞에서",
-        "sub": "턱에 붉고 아픈 트러블",
+        "head": "몇 달 준비한 면접",
+        "sub": "그런데 아침 거울 앞에서",
         "tags": [
-          "트러블",
-          "거울"
+          "면접",
+          "트러블"
         ]
       },
       "visual": {
-        "icon": "cream"
+        "icon": "bottle"
       },
       "direction": {
         "move": "shocked",
@@ -61,15 +61,15 @@
       "type": "item",
       "n": 3,
       "screen": {
-        "head": "오히려 더 붉어졌어요",
-        "sub": "다음 날 아침",
+        "head": "다음 날 아침",
+        "sub": "더 붉고 따가워졌어요",
         "tags": [
           "다음 날",
-          "더 붉게"
+          "따가움"
         ]
       },
       "visual": {
-        "icon": "bottle"
+        "icon": "heater"
       },
       "direction": {
         "move": "disappointed",
@@ -83,7 +83,7 @@
       "n": 4,
       "screen": {
         "head": "잠깐! 노랑이의 한마디",
-        "sub": "피부를 괴롭히는 행동이 있어요",
+        "sub": "피부를 괴롭힌 행동이 있어요",
         "tags": [
           "잠깐!",
           "행동 점검"
