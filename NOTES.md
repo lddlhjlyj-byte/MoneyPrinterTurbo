@@ -487,3 +487,6 @@ print(r.stderr[-3000:])
 ### 2026-11-22 acne-d7-ep1 수정본 렌더링 (사용자 요청: "일단 1편 먼저 보자")
 - 수정본(cards.revised.json)을 shorts-video/src/cards.json에 반영해 렌더링. queue에 없어 업로드 안 함
 - 지정한 동작·표정: hook(기본) / item1 shocked·both·normal·cream / item2 worry·pointL·sad·patch / item3 disappointed·idle·teary·bottle / item4 pointForward·pointR·shine·faucet / outro happy. "가상 사례" 표기(hook warn·outro note)
+- 렌더링 결과(2026-11-22 14:51): 1080×1920, 44.0초, 장면 6개, 소리 있음(-18.9dB), 자동 검사 통과(발음·자막 내용은 측정 못 함). queue 없음 → 업로드 안 함
+- 장면 사진 점검(f_2·9·13·22·27·33·38 직접 확인): 화면 글자(제목·부제·태그·자막)는 대본과 일치, 오탈자 없음, "가상 사례" 표시됨. 문제: ①item1 아이콘이 크림통이라 "거울 앞" 내용과 안 맞음 ②item2 아이콘(patch)이 패치로 안 보이고 카메라처럼 보임 ③item3 아이콘(bottle)이 젖병처럼 보임 ④item1 부제와 아래 자막이 같은 문구("턱에 붉고 아픈 트러블") 반복. 허용 아이콘이 6종뿐이라 거울·얼굴 아이콘이 없음 → 아이콘 교체·추가는 사용자 결정 대기. 음성 발음·싱크는 사용자 시청 전 확인 불가
+- verify/ 폴더에 이전 렌더링의 오래된 사진(f_44·f_50·f_56)이 남아 있어 삭제함. 렌더링마다 이전 사진이 섞일 수 있음(워크플로가 폴더를 비우지 않음, 미수정)
