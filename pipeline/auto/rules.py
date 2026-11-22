@@ -140,8 +140,8 @@ def validate(d: dict) -> list:
     first = re.split(r"[.!?,，。]", hv)[0].strip()
     if len(first) > HOOK_FIRST_BEAT_MAX:
         e.append(f"hook.voice: 첫 호흡이 {len(first)}자 (첫 3초 = {HOOK_FIRST_BEAT_MAX}자 이하에서 쉼표·마침표)")
-    if total > 200:
-        e.append(f"voice 전체 {total}자 (200자 이하 = 약 40초. 2026-11-22 실측 약 5자/초)")
+    if total > 170:
+        e.append(f"voice 전체 {total}자 (170자 이하 = 약 40초. 2026-11-23 실측 약 4.2자/초(이시연 1편 168자=약 40초))")
     for i, scn in enumerate(d.get("scenes", [])):
         for bad in ("보겠습니다", "알아보겠", "살펴보겠", "확인해 볼까", "달라질 수 있습니다", "느낌이 달라"):
             if bad in (scn.get("voice") or ""):

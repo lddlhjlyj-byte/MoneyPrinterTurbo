@@ -201,12 +201,12 @@ export const CalendarIcon: React.FC = () => (
 /** 손 (손으로 만지거나 짜기) */
 export const HandIcon: React.FC = () => (
   <svg width="240" height="240" viewBox="0 0 240 240">
-    <rect x="62" y="64" width="26" height="92" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
-    <rect x="92" y="40" width="26" height="116" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
-    <rect x="122" y="46" width="26" height="110" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
-    <rect x="152" y="70" width="26" height="86" rx="13" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
-    <rect x="56" y="120" width="128" height="92" rx="40" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
-    <rect x="28" y="118" width="26" height="70" rx="13" transform="rotate(-24 41 153)" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <ellipse cx="120" cy="190" rx="96" ry="36" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <circle cx="120" cy="172" r="16" fill="#FF6B6B" stroke={INK} strokeWidth="6" />
+    <rect x="98" y="20" width="44" height="120" rx="22" fill={BRAND_LIGHT} stroke={INK} strokeWidth={SW} />
+    <rect x="108" y="44" width="24" height="10" rx="5" fill="#FFFFFF" opacity="0.7" />
+    <line x1="66" y1="150" x2="86" y2="158" stroke={INK} strokeWidth="8" strokeLinecap="round" />
+    <line x1="174" y1="150" x2="154" y2="158" stroke={INK} strokeWidth="8" strokeLinecap="round" />
   </svg>
 );
 

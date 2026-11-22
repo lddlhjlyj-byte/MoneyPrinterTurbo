@@ -18,7 +18,7 @@
 - 표정 5종 구현됨: `happy`·`sad`·`angry`·`shine`·`teary`(미지정=기본, 기존 `surprised`·땀방울 별도). 윙크는 사용하지 않는다. 자동 제작(`generate.py`)은 move·gesture·mood를 장면 내용·직전 영상과 겹치지 않게 자동 지정한다(2026-11-17 연결, 가짜 LLM 응답으로만 시험)
 - `move`는 기존 10개 외에 `shorts-video/src/motions.ts`의 사람 동작 100개(MOTIONS 키)도 쓸 수 있다. 자동 제작은 장면 글 키워드로 어울리는 동작을 고른다(2026-11-18)
 - 시청 유지(사용자 요구, 평균 시청 지속률 70%↑): 대본은 문장 15~22자로 짧게 끊고 2~3초마다 새 정보·숫자를 넣는다(`gpt-prompt.md`·`rules.py`). 렌더링은 비트 자막·펀치 줌·효과음(`Beats.tsx`)을 쓴다. 이 레이어를 끄거나 줄이지 않는다
-- 장면 내용과 연관된 그림(`icon`·`kind`·`deco`)을 쓴다. item 아이콘 13종: faucet 세안·cream 보습·bottle 제품병·humidifier·patch·heater 열감·mirror 거울·pimple 트러블 얼굴·calendar 날짜·hand 손·stop 금지·clinic 병원·document 서류. 내용과 안 맞는 아이콘은 쓰지 말고 새로 추가한다(`Icons.tsx`·`InfoCard.tsx`·`pipeline/schema.py` 세 곳)
+- 장면 내용과 연관된 그림(`icon`·`kind`·`deco`)을 쓴다. item 아이콘 13종: faucet 세안·cream 보습·bottle 제품병·humidifier·patch·heater 열감·mirror 거울·pimple 트러블 얼굴·calendar 날짜·hand 손가락으로 누르는 장면·stop 금지·clinic 병원·document 서류. 내용과 안 맞는 아이콘은 쓰지 말고 새로 추가한다(`Icons.tsx`·`InfoCard.tsx`·`pipeline/schema.py` 세 곳)
 - 대본과 캐릭터가 따로 놀지 않게 한다(2026-11-23 사용자 지시): 장면마다 `mood`·`move`·`gesture`·`icon`을 그 장면 대사의 감정·내용에 맞춘다. 걱정·문제 대사에 웃는 표정(shine·happy), 즐거운 대사에 슬픈 표정을 쓰지 않는다. hook에도 `mood`를 지정한다. 렌더링 후 장면 사진에서 대사와 표정이 맞는지 직접 확인하고 NOTES.md에 적는다
 - 이시연 등 가상 인물 이야기에서 화면의 '가상 사례' 글자는 사용자 지시로 넣지 않는다(hook `warn`은 빈 문자열)
 - 지정한 동작과 표정은 NOTES.md의 해당 영상 기록에 남긴다
@@ -52,3 +52,10 @@
 - 수정 전→후 문구와 이유를 그 세션의 NOTES.md 진행 기록에 반드시 적는다(고친 것·그대로 둔 것과 이유). 위 ①~④와 문구 전체(대사·화면 글자·제목·자막·해시태그)를 빠짐없이 점검하고 "미점검"으로 남기지 않는다. 렌더링 뒤에는 장면 사진을 직접 보고 화면 글자까지 점검한다
 - 단, 사용자가 직접 준 대본은 문구를 바꾸지 않는다(대본 규칙 우선). 이 경우 문제 문구와 고칠 안을 알리기만 하고 사용자 결정을 받는다. Claude가 쓴 대본은 점검 후 바로 수정한다
 - 렌더링 전에 점검 결과를 사용자에게 보여준다. 사용자가 요청하지 않으면 렌더링하지 않는다
+
+## 렌더링 전 필수 게이트 (2026-11-23, 같은 오류 재발 방지)
+- 원인 기록: `--schema-only`만 돌려 글자 수 한도(hook 줄1≤8·줄2≤11, item head≤8·sub≤14·tag≤6, outro 줄≤8)를 어긴 채 렌더링했다. item4 제목이 깨진 원인으로 추정(확정 아님). 길이 한도도 실측(4.2~5자/초)보다 느슨했다(330→200→170자)
+- 렌더링 전에 반드시 `python3 pipeline/validate_cards.py <cards.json> --allow-existing`(전체 검사)를 돌려 "오류 없음"을 확인한다. `--schema-only`는 값 목록만 보므로 이것만으로 통과 처리하지 않는다
+- voice 공백 제외 170자 이하(약 40초). 사용자가 렌더링을 요청하기 전에는 렌더링하지 않는다(cards.json을 push하면 자동 렌더링되므로 push 전에 사용자 확인)
+- 훅 자막이 제목(line1·line2)과 같은 말을 되풀이하지 않게 쓴다
+- 렌더링 후 장면 사진은 수정 시각을 확인해 새 파일만 본다(`verify/f_*.jpg`에 옛 프레임이 남을 수 있음)
