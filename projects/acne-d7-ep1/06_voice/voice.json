@@ -6,42 +6,42 @@
     {
       "no": 1,
       "audio": "voice/00.mp3",
-      "seconds": 6.5,
-      "speechStart": 0.19,
-      "speechEnd": 5.07,
-      "text": "아, 하필 지금 이러면 어떡해! 23살 취준생 이시연 씨."
+      "seconds": 7.5,
+      "speechStart": 0.18,
+      "speechEnd": 6.15,
+      "text": "면접 일주일 전, 턱에 트러블이 났다면? 23살 취준생 이시연 씨가 딱 그랬어요."
     },
     {
       "no": 2,
       "audio": "voice/01.mp3",
-      "seconds": 9.5,
+      "seconds": 10.0,
       "speechStart": 0.19,
-      "speechEnd": 8.17,
-      "text": "증명사진 찍기를 일주일 앞두고 있어요. 그런데 거울을 보니 트러블이 올라왔어요. 턱에 붉고 아픈 트러블이요."
+      "speechEnd": 8.2,
+      "text": "몇 달 준비한 회사의 면접 기회였어요. 그런데 아침 거울을 봤어요. 턱에 붉고 아픈 트러블이 올라와 있었어요."
     },
     {
       "no": 3,
       "audio": "voice/02.mp3",
-      "seconds": 12.5,
-      "speechStart": 0.19,
-      "speechEnd": 10.78,
-      "text": "빨리 가라앉혀야 하는데… 시연 씨는 마음이 급했어요. 트러블 패치도 붙이고 각질 제거도 했어요. 거울 앞에서 손으로 눌러보기도 했죠."
+      "seconds": 11.5,
+      "speechStart": 0.2,
+      "speechEnd": 9.72,
+      "text": "어제까진 괜찮았는데요. 시연 씨는 마음이 급했어요. 패치를 붙이고 각질 제거도 했어요. 손으로 눌러보기도 했죠."
     },
     {
       "no": 4,
       "audio": "voice/03.mp3",
-      "seconds": 6.0,
+      "seconds": 8.0,
       "speechStart": 0.2,
-      "speechEnd": 4.55,
-      "text": "그런데 다음 날 아침. 피부는 오히려 더 붉어져 있었어요."
+      "speechEnd": 6.45,
+      "text": "그런데 다음 날 아침. 피부는 더 붉고 따가웠어요. 면접까지 이제 엿새."
     },
     {
       "no": 5,
       "audio": "voice/04.mp3",
-      "seconds": 5.0,
+      "seconds": 5.5,
       "speechStart": 0.18,
-      "speechEnd": 3.43,
-      "text": "잠깐! 피부를 괴롭히는 행동이 있어요."
+      "speechEnd": 4.17,
+      "text": "잠깐! 시연 씨 행동 중에 피부를 괴롭힌 게 있어요."
     },
     {
       "no": 6,
