@@ -6,34 +6,34 @@
     {
       "no": 1,
       "audio": "voice/00.mp3",
-      "seconds": 7.5,
-      "speechStart": 0.18,
-      "speechEnd": 6.15,
-      "text": "면접 일주일 전, 턱에 트러블이 났다면? 23살 취준생 이시연 씨가 딱 그랬어요."
+      "seconds": 7.0,
+      "speechStart": 0.19,
+      "speechEnd": 5.52,
+      "text": "면접 일주일 전, 턱에 트러블이 났어요. 23살 이시연 씨 이야기예요."
     },
     {
       "no": 2,
       "audio": "voice/01.mp3",
-      "seconds": 10.0,
+      "seconds": 7.5,
       "speechStart": 0.19,
-      "speechEnd": 8.2,
-      "text": "몇 달 준비한 회사의 면접 기회였어요. 그런데 아침 거울을 봤어요. 턱에 붉고 아픈 트러블이 올라와 있었어요."
+      "speechEnd": 5.78,
+      "text": "몇 달 준비한 면접이었어요. 그런데 아침 거울 속 턱에 붉고 아픈 트러블이 났어요."
     },
     {
       "no": 3,
       "audio": "voice/02.mp3",
-      "seconds": 11.5,
+      "seconds": 8.0,
       "speechStart": 0.2,
-      "speechEnd": 9.72,
-      "text": "어제까진 괜찮았는데요. 시연 씨는 마음이 급했어요. 패치를 붙이고 각질 제거도 했어요. 손으로 눌러보기도 했죠."
+      "speechEnd": 6.23,
+      "text": "시연 씨는 마음이 급했어요. 패치를 붙이고, 각질을 벗기고, 손으로 눌렀죠."
     },
     {
       "no": 4,
       "audio": "voice/03.mp3",
-      "seconds": 8.0,
-      "speechStart": 0.2,
-      "speechEnd": 6.45,
-      "text": "그런데 다음 날 아침. 피부는 더 붉고 따가웠어요. 면접까지 이제 엿새."
+      "seconds": 7.5,
+      "speechStart": 0.19,
+      "speechEnd": 5.9,
+      "text": "그런데 다음 날 아침, 피부는 더 붉고 따가웠어요. 면접까지 엿새 남았죠."
     },
     {
       "no": 5,
@@ -46,10 +46,10 @@
     {
       "no": 6,
       "audio": "voice/05.mp3",
-      "seconds": 4.5,
+      "seconds": 5.5,
       "speechStart": 0.19,
-      "speechEnd": 3.16,
-      "text": "뭘까요? 다음 편에서 알려드릴게요."
+      "speechEnd": 3.81,
+      "text": "뭘까요? 저장하고 다음 편에서 확인하세요."
     }
   ],
   "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
