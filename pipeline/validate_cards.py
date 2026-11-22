@@ -106,13 +106,13 @@ for i, s in enumerate(S):
             E(f"{w}: text에 num '{s['num']}'이 이미 들어 있어 화면에 두 번 표시됨")
         lim(w + " num", s.get("num"), 4)
     elif t == "item":
-        lim(w + " head", s.get("head"), 8)
-        lim(w + " sub", s.get("sub"), 14)
+        lim(w + " head", s.get("head"), 14)
+        lim(w + " sub", s.get("sub"), 20)
         tg = s.get("tags", [])
         if not (1 <= len(tg) <= 2):
             W(f"{w}: tags {len(tg)}개 (1~2개 권장)")
         for x in tg:
-            lim(w + " tag", x, 6)
+            lim(w + " tag", x, 8)
         ic = s.get("icon")
         if ic and ic not in ICONS:
             E(f"{w}: icon '{ic}' 없음 (가능: {sorted(ICONS)})")

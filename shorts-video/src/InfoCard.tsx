@@ -605,13 +605,13 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
             mode={s.tm ?? TM_BY_ITEM[(s.n - 1) % 4]}
             from={s.n % 2 === 1 ? "l" : "r"}
             delay={14}
-            size={s.head.length > 14 ? 72 : s.head.length > 10 ? 84 : s.head.length > 7 ? 104 : 124}
+            size={s.head.length > 16 ? 60 : s.head.length > 14 ? 72 : s.head.length > 10 ? 84 : s.head.length > 7 ? 104 : 124}
             style={{ fontWeight: 900, color: INK }}
           />
           <div
             style={{
               ...enter(frame, 24),
-              fontSize: s.sub.length > 16 ? 46 : 58,
+              fontSize: s.sub.length > 22 ? 38 : s.sub.length > 16 ? 46 : 58,
               wordBreak: "keep-all",
               fontWeight: 500,
               color: SUB,
@@ -625,7 +625,7 @@ const Item: React.FC<{ s: Extract<Scene, { type: "item" }>; dur: number }> = ({
                 key={tag}
                 style={{
                   ...enter(frame, 34 + i * 7),
-                  fontSize: 50,
+                  fontSize: s.tags.join('').length > 12 ? 40 : s.tags.join('').length > 9 ? 46 : 50,
                   fontWeight: 700,
                   color: INK,
                   border: `5px solid ${INK}`,
