@@ -1,14 +1,14 @@
 {
   "name": "acne-d7-ep1",
-  "title": "취업 사진 7일 전, 피부가 뒤집어졌어요",
+  "title": "증명사진 찍기 일주일 전, 갑자기 뒤집어진 피부",
   "scenes": [
     {
       "no": 1,
       "type": "hook",
       "n": null,
       "screen": {
-        "line1": "취업 사진 D-7",
-        "line2": "피부가 뒤집어졌어요",
+        "line1": "증명사진 찍기 일주일 전",
+        "line2": "갑자기 뒤집어진 피부",
         "warn": "가상 사례"
       },
       "visual": {},
@@ -19,36 +19,15 @@
       "type": "item",
       "n": 1,
       "screen": {
-        "head": "급한 마음의 실수",
-        "sub": "패치·세안 4번·박박",
+        "head": "아침 거울 앞에서",
+        "sub": "턱·볼에 붉고 아픈 트러블",
         "tags": [
-          "과한 세안",
-          "문지르기"
+          "트러블",
+          "염증"
         ]
       },
       "visual": {
-        "icon": "patch"
-      },
-      "direction": {
-        "move": "washFace",
-        "gesture": "idle",
-        "mood": "normal"
-      }
-    },
-    {
-      "no": 3,
-      "type": "item",
-      "n": 2,
-      "screen": {
-        "head": "더 따갑고 붉어짐",
-        "sub": "자극이 쌓인 피부",
-        "tags": [
-          "따가움",
-          "붉은기"
-        ]
-      },
-      "visual": {
-        "icon": "bottle"
+        "icon": "cream"
       },
       "direction": {
         "move": "shocked",
@@ -57,33 +36,75 @@
       }
     },
     {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "엉망이던 요즘 생활",
+        "sub": "잠 부족·커피·스트레스",
+        "tags": [
+          "수면 부족",
+          "스트레스"
+        ]
+      },
+      "visual": {
+        "icon": "heater"
+      },
+      "direction": {
+        "move": "disappointed",
+        "gesture": "idle",
+        "mood": "sad"
+      }
+    },
+    {
       "no": 4,
       "type": "item",
       "n": 3,
       "screen": {
-        "head": "세안은 하루 최대 2번",
-        "sub": "땀 난 날만 한 번 더",
+        "head": "급한 마음에 이것저것",
+        "sub": "패치·각질 제거·손으로 짜기",
         "tags": [
-          "하루 2회",
-          "손끝 세안"
+          "패치",
+          "각질 제거"
+        ]
+      },
+      "visual": {
+        "icon": "patch"
+      },
+      "direction": {
+        "move": "worry",
+        "gesture": "pointL",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "노랑이의 한마디",
+        "sub": "더 씻고 더 바르면 자극",
+        "tags": [
+          "자극",
+          "잠깐!"
         ]
       },
       "visual": {
         "icon": "faucet"
       },
       "direction": {
-        "move": "nodYes",
-        "gesture": "count",
+        "move": "pointForward",
+        "gesture": "pointR",
         "mood": "shine"
       }
     },
     {
-      "no": 5,
+      "no": 6,
       "type": "outro",
       "n": null,
       "screen": {
         "sub": "저장하고 팔로우 · 노랑이 스킨랩",
-        "text": "다음 편\n놓친 습관은?",
+        "text": "다음 편\n뭘 잘못했을까요?",
         "note": "가상 사례이며 일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요"
       },
       "visual": {},
