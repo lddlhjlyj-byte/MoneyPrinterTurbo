@@ -27,21 +27,21 @@
   "06_voice": {
     "state": "auto",
     "note": "음성 길이·구간만 측정, 발음 확인 전",
-    "updated": "2026-11-22 20:25"
+    "updated": "2026-11-23 06:16"
   },
   "07_video": {
     "state": "auto",
     "note": "",
-    "updated": "2026-11-22 20:25"
+    "updated": "2026-11-23 06:16"
   },
   "08_verify": {
     "state": "auto",
     "note": "음성 오독·라이선스는 확인 전",
-    "updated": "2026-11-22 20:25"
+    "updated": "2026-11-23 06:16"
   },
   "09_publish": {
     "state": "pending",
     "note": "queue 항목 없음",
-    "updated": "2026-11-22 20:25"
+    "updated": "2026-11-23 06:16"
   }
 }
