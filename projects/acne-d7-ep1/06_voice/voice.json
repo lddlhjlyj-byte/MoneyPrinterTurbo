@@ -1,3 +1,48 @@
 {
-  "status": "pending"
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 8.5,
+      "speechStart": 0.19,
+      "speechEnd": 6.92,
+      "text": "취업 사진 D-7, 이시연 23살. 어제까지 멀쩡하던 턱에 빨갛고 아픈 트러블이 올라왔어요."
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 10.5,
+      "speechStart": 0.21,
+      "speechEnd": 8.79,
+      "text": "시연 씨는 급했어요. 트러블 패치를 여러 개 붙이고, 세안을 하루 네 번이나 했죠. 수건으로 박박 문지르기까지요."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 4.0,
+      "speechStart": 0.2,
+      "speechEnd": 2.44,
+      "text": "그런데 피부가 더 따갑고 붉어졌어요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 10.5,
+      "speechStart": 0.2,
+      "speechEnd": 8.96,
+      "text": "세안은 하루 최대 2번이면 충분해요. 땀을 흘린 날만 한 번 더 씻으세요. 수건으로 문지르지 말고 손끝으로 씻으세요."
+    },
+    {
+      "no": 5,
+      "audio": "voice/04.mp3",
+      "seconds": 6.5,
+      "speechStart": 0.2,
+      "speechEnd": 5.06,
+      "text": "그런데 시연 씨가 놓친 습관이 하나 더 있어요. 다음 편에서 알려드릴게요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
 }
