@@ -507,3 +507,5 @@ print(r.stderr[-3000:])
 ### 2026-11-22 acne-d7-ep1 v4 렌더링 (사용자 요청: "1편 보고 결정")
 - 4부작 수정본 1편(cards.revised.json)을 shorts-video/src/cards.json에 반영해 렌더링. queue 없음 → 업로드 안 함. 같은 이름이라 이전 세안 버전 영상이 덮어써짐
 - 지정한 동작·표정: hook(기본) / item1 shocked·both·normal·bottle / item2 worry·pointL·sad·patch / item3 disappointed·idle·teary·heater / item4 pointForward·pointR·shine·faucet / outro happy. "가상 사례" 표기(hook warn·outro note)
+- 렌더링 결과(2026-11-22 20:26): 1080×1920, 47.0초, 장면 6개, 소리 있음(-19.2dB), 자동 검사 통과하나 길이 경고(목표 25~40초 초과, 196자÷47초=약 4.2자/초). queue 없음 → 업로드 안 함
+- 장면 사진 점검(f_2·9·18·33·38·44 직접 확인): 대본·화면 글자 일치, "가상 사례" 표시됨. 문제: ①item1 아이콘(bottle)이 젖병처럼 보여 "몇 달 준비한 면접"과 안 맞음 ②item2 아이콘(patch)이 카메라처럼 보임 ③f_18(item2 시작 부근)은 제목·태그가 아직 안 나온 빈 화면, f_38(item4)은 제목 글자 크기가 들쭉날쭉하고 "한마디" 글자가 잘려 보임 — 애니메이션 도중 사진일 수 있어 확정 못 함(영상 직접 시청 필요) ④47초로 목표 초과. 음성 발음·싱크는 사용자 시청 전 확인 불가
