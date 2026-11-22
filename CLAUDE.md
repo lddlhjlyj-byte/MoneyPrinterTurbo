@@ -43,3 +43,8 @@
 - 08_verify의 음성 오독·라이선스는 자동 확인이 안 되므로 pending/미확인으로 두고 "검증 완료"라고 보고하지 않는다
 - 렌더링 전 형식 게이트: `pipeline/schema.py`가 move·mood·gesture·icon·kind·deco 허용값의 단일 출처이고, `infocard.yml`이 `validate_cards.py --schema-only`로 틀린 값을 막는다(문구는 검사하지 않음). 동작 이름(deepBreath 등)은 `move`, 표정(happy 등 6종)은 `mood`에 넣는다
 - 기존 영상은 `python3 pipeline/project.py backfill all`로 git 이력의 cards.json에서 `projects/`를 채운다(2026-11-21 수행). `shorts-video/src/cards.<name>.json` 보관본은 새로 만들지 않는다(원본은 `projects/<name>/04_script/cards.json`)
+
+## 문맥점검 (2026-11-22, 사용자 지시: 각 세션마다 반드시 기록)
+- 매 세션마다, 그리고 대본·화면 글자·제목을 쓰거나 고칠 때마다 문맥점검을 한다: ①실제 일상 대화에서 쓰는 말인지(예: "취업 사진 D-7"·"취업 사진 찍기"는 부자연스러움 → "증명사진 찍기 일주일 전") ②전문용어·약어·숫자 표기가 처음 보는 사람에게 바로 이해되는지 ③앞뒤 장면과 이야기·인물·수치가 맞는지 ④의학·효능 문구가 출처 확인 항목만인지
+- 점검 결과(고친 것·남긴 것)는 그 세션의 NOTES.md 진행 기록에 반드시 적는다. 점검하지 않은 항목은 "미점검"으로 적는다
+- 렌더링 전에 점검 결과를 사용자에게 보여준다. 사용자가 요청하지 않으면 렌더링하지 않는다

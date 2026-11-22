@@ -441,3 +441,7 @@ print(r.stderr[-3000:])
 - `acne-d7-ep1` 렌더링 요청(사용자가 영상 확인을 요청). queue에 항목이 없어 유튜브 업로드는 하지 않음(업로더는 queue 대기 항목만 처리). 결과는 `video` 브랜치 infocard.mp4와 content/videos
 - 지정한 동작·표정: hook(기본) / item1 washFace·idle·normal·patch / item2 shocked·both·teary·bottle / item3 nodYes·count·shine·faucet / outro happy. 가상 사례 표기(hook warn, outro note)
 - 근거: AAD 여드름 팁(세안 하루 최대 2회, 땀 뒤 추가, 문지르지 않기) 직접 확인. 음성·자막·화면 품질은 확인 전
+
+### 2026-11-22 문맥점검 규칙 추가 (사용자 지시)
+- 사용자 지시: 각 세션마다 문맥점검을 하고 반드시 기록. CLAUDE.md "문맥점검"과 스킬에 규칙 추가(일상어 여부·첫 3초 이해·앞뒤 일관성·출처 확인, 결과는 NOTES.md에 기록)
+- 이번 세션 점검 결과(acne-d7-ep1): "취업 사진 D-7"·"취업 사진 찍기 7일 전"은 일상어가 아니라는 지적을 받아 확인함 → 고칠 안: "증명사진 찍기 일주일 전". 사용자 선택 대기(수정 안 함, 재렌더링 안 함). 이시연 인물·세안 수치(AAD)는 점검함, 영상 속 음성·자막은 사용자 시청 전 미점검
