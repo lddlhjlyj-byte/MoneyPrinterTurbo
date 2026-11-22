@@ -433,3 +433,6 @@ print(r.stderr[-3000:])
 - 길이 기준 정정(실측): 영상 21편 음성 글자수÷영상 길이 중앙값 4.9자/초(3.9~5.5). 기존 한도 330자는 약 65초라 40초 목표와 어긋났음. 공백 제외 200자(약 40초)로 `rules.py`·`gpt-prompt.md`·roles 2·5 수정. 자동 제작은 PAUSE 중이라 실제 영향은 재개 후
 - 스킬: `.claude/skills/shorts-script-quality/SKILL.md` 추가(훅 10개 이상 후보, 기승전결, 실측 길이, 쇼츠/릴스 제목, 해시태그 7개, 출처 미확인 표기)
 - 시술·성분 대본 초안 3편(`projects/retinol-first-use`, `retinol-vitc-combo`, `rejuran-healer-guide`): 웹 조사(출처 기사 1~2건)로 01~03 작성, 05는 `script_draft.md` 초안만(약 152~178자). 렌더링·업로드 안 함. 미확인: retinol-vitc-combo의 병용 안전성은 의료 출처 미확보(렌더링 금지), 리쥬란은 기사 1건 근거, 프로젝트 자료 수치 대조 전
+
+### 2026-11-22 스토리형 전환 (사용자 지시: "스토리가 빠졌다")
+- 사용자 판단: 단순 정보 나열은 경쟁력 없음. 초안 3편(retinol-first-use·retinol-vitc-combo·rejuran-healer-guide)을 노랑이 스토리형(실수→증상→원인→다음 편 예고) v2로 재작성(`05_narration/script_draft.md`), 스킬에 스토리 규칙 추가. 노랑이 경험은 허구 연출. 효과(조회 증가)는 미확인, 렌더링·업로드 안 함
