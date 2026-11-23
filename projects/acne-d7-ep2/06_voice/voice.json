@@ -1,3 +1,56 @@
 {
-  "status": "pending"
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 4.5,
+      "speechStart": 0.19,
+      "speechEnd": 2.85,
+      "text": "빨리 없애려고 짰는데 왜 더 심해질까요?"
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 9.0,
+      "speechStart": 0.18,
+      "speechEnd": 7.57,
+      "text": "면접까지 엿새. 시연 씨는 조급했어요. 트러블을 손으로 짜고, 세안도 하루 네 번 했어요."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 7.0,
+      "speechStart": 0.2,
+      "speechEnd": 5.59,
+      "text": "노랑이가 말했어요. 손으로 짜면 더 붉어지고, 흉터가 남을 수도 있어요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 7.5,
+      "speechStart": 0.2,
+      "speechEnd": 5.68,
+      "text": "잦은 세안과 문지르기는 피부를 약하게 해요. 트러블은 안 씻어서 생기는 게 아니에요."
+    },
+    {
+      "no": 5,
+      "audio": "voice/04.mp3",
+      "seconds": 7.5,
+      "speechStart": 0.2,
+      "speechEnd": 5.96,
+      "text": "시연 씨는 화장대 제품부터 치웠어요. 면접까지 닷새, 이제 뭘 해야 할까요?"
+    },
+    {
+      "no": 6,
+      "audio": "voice/05.mp3",
+      "seconds": 4.0,
+      "speechStart": 0.2,
+      "speechEnd": 2.34,
+      "text": "저장하고 다음 편에서 확인하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
 }
