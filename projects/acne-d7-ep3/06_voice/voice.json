@@ -14,26 +14,26 @@
     {
       "no": 2,
       "audio": "voice/01.mp3",
-      "seconds": 6.0,
-      "speechStart": 0.2,
-      "speechEnd": 4.34,
-      "text": "첫째, 하루 두 번 미온수로 손끝만 써서 부드럽게 씻었어요."
+      "seconds": 6.5,
+      "speechStart": 0.19,
+      "speechEnd": 5.13,
+      "text": "첫째, 짜지도 긁지도 않았어요. 새 제품도 바꾸지 않았어요."
     },
     {
       "no": 3,
       "audio": "voice/02.mp3",
-      "seconds": 5.5,
-      "speechStart": 0.2,
-      "speechEnd": 3.87,
-      "text": "둘째, 물기가 남은 피부에 오일프리 보습제를 발랐어요."
+      "seconds": 4.5,
+      "speechStart": 0.19,
+      "speechEnd": 2.74,
+      "text": "둘째, 세안과 보습만 차분히 했어요."
     },
     {
       "no": 4,
       "audio": "voice/03.mp3",
-      "seconds": 5.5,
+      "seconds": 6.0,
       "speechStart": 0.19,
-      "speechEnd": 3.96,
-      "text": "셋째, 짜지도 긁지도 않고 새 제품도 바꾸지 않았어요."
+      "speechEnd": 4.28,
+      "text": "셋째, 많이 아프고 붉다면 피부과 상담도 좋은 방법이에요."
     },
     {
       "no": 5,
@@ -46,10 +46,10 @@
     {
       "no": 6,
       "audio": "voice/05.mp3",
-      "seconds": 7.0,
+      "seconds": 6.0,
       "speechStart": 0.2,
-      "speechEnd": 5.67,
-      "text": "많이 아프고 붉다면 피부과 상담도 좋은 방법이에요. 저장하고 팔로우하세요."
+      "speechEnd": 4.21,
+      "text": "트러블은 하루 만에 안 없어져요. 저장하고 팔로우하세요."
     }
   ],
   "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
