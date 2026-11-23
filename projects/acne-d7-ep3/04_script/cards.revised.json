@@ -23,16 +23,32 @@
     },
     {
       "type": "item",
-      "seconds": 9,
+      "seconds": 8,
       "n": 1,
-      "head": "첫째 세안",
-      "sub": "미온수·손끝으로 부드럽게",
+      "head": "첫째 안 만지기",
+      "sub": "짜지도 긁지도 않기",
       "tags": [
-        "하루 두 번",
-        "손끝"
+        "손대지 않기",
+        "신제품 금지"
       ],
-      "voice": "첫째, 하루 두 번 미온수로 손끝만 써서 부드럽게 씻었어요.",
-      "move": "patFace",
+      "voice": "첫째, 짜지도 긁지도 않았어요. 새 제품도 바꾸지 않았어요.",
+      "move": "proud",
+      "gesture": "pointL",
+      "mood": "normal",
+      "icon": "stop"
+    },
+    {
+      "type": "item",
+      "seconds": 8,
+      "n": 2,
+      "head": "둘째 차분한 관리",
+      "sub": "세안과 보습만 차분히",
+      "tags": [
+        "세안",
+        "보습"
+      ],
+      "voice": "둘째, 세안과 보습만 차분히 했어요.",
+      "move": "nodYes",
       "gesture": "count",
       "mood": "happy",
       "icon": "faucet"
@@ -40,34 +56,18 @@
     {
       "type": "item",
       "seconds": 8,
-      "n": 2,
-      "head": "둘째, 보습",
-      "sub": "세안 후 물기가 남았을 때",
-      "tags": [
-        "보습",
-        "오일프리"
-      ],
-      "voice": "둘째, 물기가 남은 피부에 오일프리 보습제를 발랐어요.",
-      "move": "applyCream",
-      "gesture": "both",
-      "mood": "shine",
-      "icon": "cream"
-    },
-    {
-      "type": "item",
-      "seconds": 8,
       "n": 3,
-      "head": "셋째 안 만지기",
-      "sub": "짜지도 긁지도 않기",
+      "head": "셋째 피부과 상담",
+      "sub": "많이 아프고 붉다면",
       "tags": [
-        "손대지 않기",
-        "신제품 금지"
+        "피부과",
+        "상담"
       ],
-      "voice": "셋째, 짜지도 긁지도 않고 새 제품도 바꾸지 않았어요.",
-      "move": "proud",
-      "gesture": "pointL",
+      "voice": "셋째, 많이 아프고 붉다면 피부과 상담도 좋은 방법이에요.",
+      "move": "beckon",
+      "gesture": "pointR",
       "mood": "normal",
-      "icon": "stop"
+      "icon": "clinic"
     },
     {
       "type": "item",
@@ -87,11 +87,11 @@
     },
     {
       "type": "outro",
-      "seconds": 7,
+      "seconds": 6,
       "text": "시연 씨를\n응원해요",
       "sub": "저장하고 팔로우 · 노랑이 스킨랩",
       "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요",
-      "voice": "많이 아프고 붉다면 피부과 상담도 좋은 방법이에요. 저장하고 팔로우하세요.",
+      "voice": "트러블은 하루 만에 안 없어져요. 저장하고 팔로우하세요.",
       "mood": "happy"
     }
   ]
