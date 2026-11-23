@@ -1,0 +1,131 @@
+{
+  "name": "cleansing-water-direction-wrapup",
+  "title": "닦는 방향보다 중요한 건 반복 마찰 줄이기",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "닦는 방향",
+        "line2": "너무 집착하나요?",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "방향보다 마찰",
+        "sub": "잡아당기지 않기",
+        "tags": [
+          "절대 규칙 없음",
+          "반복 금지"
+        ]
+      },
+      "visual": {
+        "icon": "mirror"
+      },
+      "direction": {
+        "move": "tilt",
+        "gesture": "pointL",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "얇은 부위는 가볍게",
+        "sub": "눈가·입가",
+        "tags": [
+          "더 가볍게"
+        ]
+      },
+      "visual": {
+        "icon": "cotton"
+      },
+      "direction": {
+        "move": "tiptoe",
+        "gesture": "count",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "토너 패드는 다름",
+        "sub": "클렌징하듯 문지르지 않기",
+        "tags": [
+          "목적이 달라요"
+        ]
+      },
+      "visual": {
+        "icon": "bottle"
+      },
+      "direction": {
+        "move": "confused",
+        "gesture": "pointR",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "사용 뒤 확인",
+        "sub": "제품 설명을 먼저 봐요",
+        "tags": [
+          "물세안",
+          "미온수"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "nodYes",
+        "gesture": "idle",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 6,
+      "type": "summary",
+      "n": null,
+      "screen": {
+        "rows": [
+          "솜 충분히 적시기",
+          "올려두고 녹이기",
+          "반복 마찰 금지"
+        ],
+        "title": "기억할 세 가지"
+      },
+      "visual": {},
+      "direction": {}
+    },
+    {
+      "no": 7,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "노랑이 스킨랩이었습니다",
+        "text": "오늘 클렌징은\n솜 잡기부터",
+        "note": "일반 정보입니다. 제품마다 사용법이 다르니 제품 안내를 먼저 확인하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "happy"
+      }
+    }
+  ]
+}
