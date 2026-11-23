@@ -1,0 +1,118 @@
+{
+  "name": "cleansing-water-melt-grip",
+  "title": "메이크업은 문지르지 말고, 화장솜은 넓게 잡으세요",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "문지르지 마세요",
+        "line2": "메이크업 지울 때",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {
+        "mood": "angry"
+      }
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "먼저 올려두기",
+        "sub": "눈가·입술 색조 부위",
+        "tags": [
+          "가볍게",
+          "솜 올리기"
+        ]
+      },
+      "visual": {
+        "icon": "cotton"
+      },
+      "direction": {
+        "move": "present",
+        "gesture": "pointL",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "기다리는 시간",
+        "sub": "제품 안내가 먼저예요",
+        "tags": [
+          "5~10초",
+          "고정 아님"
+        ]
+      },
+      "visual": {
+        "icon": "clock"
+      },
+      "direction": {
+        "move": "checkWatch",
+        "gesture": "idle",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "손가락 면으로 받치기",
+        "sub": "힘이 한곳에 몰리지 않게",
+        "tags": [
+          "넓게 잡기",
+          "꾹 누르지 않기"
+        ]
+      },
+      "visual": {
+        "icon": "hand"
+      },
+      "direction": {
+        "move": "pointForward",
+        "gesture": "count",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "n": 4,
+      "screen": {
+        "head": "왕복하지 않기",
+        "sub": "한 번 지난 자리는 그대로",
+        "tags": [
+          "밀어내지 않기",
+          "새 솜"
+        ]
+      },
+      "visual": {
+        "icon": "stop"
+      },
+      "direction": {
+        "move": "shakeNo",
+        "gesture": "pointR",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 6,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 다음 편도 확인하세요",
+        "text": "다음 편\n방향 고민",
+        "note": "일반 정보입니다. 제품마다 사용법이 다르니 제품 안내를 먼저 확인하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "normal"
+      }
+    }
+  ]
+}
