@@ -1,6 +1,6 @@
 {
-  "name": "acne-d7-ep2",
-  "title": "면접까지 엿새, 왜 더 심해졌을까?",
+  "name": "acne-d7-ep3",
+  "title": "면접 전날 밤, 시연 씨가 한 세 가지",
   "hashtags": [
     "#여드름",
     "#트러블케어",
@@ -15,84 +15,84 @@
     {
       "type": "hook",
       "seconds": 6,
-      "line1": "면접까지 엿새",
-      "line2": "왜 더 심해졌을까?",
+      "line1": "면접 전날 밤",
+      "line2": "시연 씨가 한 일",
       "warn": "",
-      "voice": "면접까지 엿새. 왜 더 심해졌을까요?",
+      "voice": "면접 전날 밤, 시연 씨는 뭘 했을까요?",
       "mood": "normal"
     },
     {
       "type": "item",
       "seconds": 8,
       "n": 1,
-      "head": "손으로 짜면",
-      "sub": "염증이 번지고 흉터 위험",
+      "head": "첫째 안 만지기",
+      "sub": "짜지도 긁지도 않기",
       "tags": [
-        "염증",
-        "흉터"
+        "손대지 않기",
+        "신제품 금지"
       ],
-      "voice": "손으로 짜면 더 붉어지고, 흉터가 남을 수도 있어요.",
-      "move": "shakeNo",
-      "gesture": "pointR",
-      "mood": "sad",
-      "icon": "hand"
+      "voice": "첫째, 짜지도 긁지도 않았어요. 새 제품도 바꾸지 않았어요.",
+      "move": "proud",
+      "gesture": "pointL",
+      "mood": "normal",
+      "icon": "stop"
     },
     {
       "type": "item",
       "seconds": 8,
       "n": 2,
-      "head": "세안·문지르기",
-      "sub": "피부 장벽이 약해져요",
+      "head": "둘째 차분한 관리",
+      "sub": "세안과 보습만 차분히",
       "tags": [
-        "잦은 세안",
-        "스크럽"
+        "세안",
+        "보습"
       ],
-      "voice": "세안은 하루 두 번이면 충분해요. 잦은 세안과 문지르기는 피부를 약하게 해요.",
-      "move": "washFace",
+      "voice": "둘째, 세안과 보습만 차분히 했어요.",
+      "move": "nodYes",
       "gesture": "count",
-      "mood": "normal",
+      "mood": "happy",
       "icon": "faucet"
     },
     {
       "type": "item",
       "seconds": 8,
       "n": 3,
-      "head": "물기 남았을 때 보습",
-      "sub": "오일프리 보습제",
+      "head": "셋째 피부과 상담",
+      "sub": "많이 아프고 붉다면",
       "tags": [
-        "보습",
-        "오일프리"
+        "피부과",
+        "상담"
       ],
-      "voice": "세안 뒤 물기가 남은 피부에 오일프리 보습제를 발랐어요.",
-      "move": "applyCream",
-      "gesture": "both",
-      "mood": "shine",
-      "icon": "cream"
+      "voice": "셋째, 많이 아프고 붉다면 피부과 상담도 좋은 방법이에요.",
+      "move": "beckon",
+      "gesture": "pointR",
+      "mood": "normal",
+      "icon": "clinic"
     },
     {
       "type": "item",
-      "seconds": 8,
+      "seconds": 9,
       "n": 4,
-      "head": "제품 치우기",
-      "sub": "면접까지 닷새",
+      "head": "면접 당일 아침",
+      "sub": "다 사라지진 않았어요",
       "tags": [
-        "정리",
-        "닷새"
+        "붉은 자국",
+        "차분함"
       ],
-      "voice": "시연 씨는 화장대 위 제품부터 치웠어요. 면접까지 닷새 남았죠.",
-      "move": "thinking",
+      "voice": "면접 당일, 트러블이 다 사라지진 않았어요. 그래도 시연 씨는 웃으며 들어갔어요.",
+      "move": "relief",
       "gesture": "idle",
       "mood": "normal",
-      "icon": "bottle"
+      "icon": "calendar"
     },
     {
       "type": "outro",
       "seconds": 6,
-      "text": "다음 편\n전날 밤은?",
+      "text": "시연 씨를\n응원해요",
       "sub": "저장하고 팔로우 · 노랑이 스킨랩",
       "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요",
-      "voice": "저장하고 다음 편에서 확인하세요.",
-      "mood": "normal"
+      "voice": "트러블은 하루 만에 안 없어져요. 저장하고 팔로우하세요.",
+      "mood": "happy"
     }
   ]
 }
