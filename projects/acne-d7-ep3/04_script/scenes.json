@@ -1,14 +1,14 @@
 {
   "name": "acne-d7-ep3",
-  "title": "트러블 난 피부, 면접 전 닷새 관리법",
+  "title": "면접 전날 밤, 시연 씨가 한 세 가지",
   "scenes": [
     {
       "no": 1,
       "type": "hook",
       "n": null,
       "screen": {
-        "line1": "트러블 난 피부",
-        "line2": "닷새간 뭘 할까요?",
+        "line1": "면접 전날 밤",
+        "line2": "시연 씨가 한 일",
         "warn": ""
       },
       "visual": {},
@@ -74,7 +74,7 @@
         "icon": "stop"
       },
       "direction": {
-        "move": "meditate",
+        "move": "proud",
         "gesture": "pointL",
         "mood": "normal"
       }
@@ -84,20 +84,20 @@
       "type": "item",
       "n": 4,
       "screen": {
-        "head": "염증이 심하면",
-        "sub": "혼자 해결하지 말고 피부과",
+        "head": "면접 당일 아침",
+        "sub": "다 사라지진 않았어요",
         "tags": [
-          "피부과",
-          "상담"
+          "붉은 자국",
+          "차분함"
         ]
       },
       "visual": {
-        "icon": "clinic"
+        "icon": "calendar"
       },
       "direction": {
-        "move": "beckon",
-        "gesture": "pointR",
-        "mood": "sad"
+        "move": "relief",
+        "gesture": "idle",
+        "mood": "normal"
       }
     },
     {
@@ -106,12 +106,12 @@
       "n": null,
       "screen": {
         "sub": "저장하고 팔로우 · 노랑이 스킨랩",
-        "text": "다음 편\n전날 밤은?",
+        "text": "시연 씨를\n응원해요",
         "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요"
       },
       "visual": {},
       "direction": {
-        "mood": "normal"
+        "mood": "happy"
       }
     }
   ]

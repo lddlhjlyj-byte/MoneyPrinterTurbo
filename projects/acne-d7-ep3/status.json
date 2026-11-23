@@ -17,12 +17,12 @@
   "04_script": {
     "state": "auto",
     "note": "cards.json에서 추출",
-    "updated": "2026-11-23 13:40"
+    "updated": "2026-11-23 15:27"
   },
   "05_narration": {
     "state": "auto",
     "note": "cards.json에서 추출",
-    "updated": "2026-11-23 13:40"
+    "updated": "2026-11-23 15:27"
   },
   "06_voice": {
     "state": "auto",
