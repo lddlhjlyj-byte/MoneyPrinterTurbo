@@ -1,3 +1,56 @@
 {
-  "status": "pending"
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 4.0,
+      "speechStart": 0.19,
+      "speechEnd": 2.62,
+      "text": "트러블 난 피부, 닷새 동안 뭘 할까요?"
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 6.0,
+      "speechStart": 0.2,
+      "speechEnd": 4.62,
+      "text": "첫째, 세안은 하루 두 번. 미온수로 손끝만 써서 부드럽게 하세요."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 8.0,
+      "speechStart": 0.2,
+      "speechEnd": 6.45,
+      "text": "둘째, 보습이에요. 물기가 남은 피부에 바르세요. 오일프리 표시를 보세요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 7.0,
+      "speechStart": 0.19,
+      "speechEnd": 5.65,
+      "text": "셋째, 안 건드리기. 짜지도 긁지도 말고, 새 제품도 바꾸지 마세요."
+    },
+    {
+      "no": 5,
+      "audio": "voice/04.mp3",
+      "seconds": 5.5,
+      "speechStart": 0.2,
+      "speechEnd": 4.11,
+      "text": "염증이 심하면 피부과에 가세요. 혼자 애쓰지 마세요."
+    },
+    {
+      "no": 6,
+      "audio": "voice/05.mp3",
+      "seconds": 7.5,
+      "speechStart": 0.19,
+      "speechEnd": 6.0,
+      "text": "전날 밤, 시연 씨는 거울 앞에 섰어요. 저장하고 다음 편에서 확인하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
 }

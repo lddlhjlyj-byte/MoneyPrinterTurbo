@@ -1,0 +1,116 @@
+{
+  "name": "acne-d7-ep3",
+  "title": "트러블 난 피부, 면접 전 닷새 관리법",
+  "hashtags": [
+    "#여드름",
+    "#트러블케어",
+    "#면접준비",
+    "#피부과꿀팁",
+    "#피부관리",
+    "#세안법",
+    "#스킨케어",
+    "#노랑이스킨랩"
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "seconds": 4.0,
+      "line1": "트러블 난 피부",
+      "line2": "닷새간 뭘 할까요?",
+      "warn": "",
+      "voice": "트러블 난 피부, 닷새 동안 뭘 할까요?",
+      "mood": "normal",
+      "audio": "voice/00.mp3",
+      "speechStart": 0.19,
+      "speechEnd": 2.62
+    },
+    {
+      "type": "item",
+      "seconds": 6.0,
+      "n": 1,
+      "head": "첫째 세안",
+      "sub": "미온수·손끝으로 부드럽게",
+      "tags": [
+        "하루 두 번",
+        "손끝"
+      ],
+      "voice": "첫째, 세안은 하루 두 번. 미온수로 손끝만 써서 부드럽게 하세요.",
+      "move": "patFace",
+      "gesture": "count",
+      "mood": "happy",
+      "icon": "faucet",
+      "audio": "voice/01.mp3",
+      "speechStart": 0.2,
+      "speechEnd": 4.62
+    },
+    {
+      "type": "item",
+      "seconds": 8.0,
+      "n": 2,
+      "head": "둘째, 보습",
+      "sub": "세안 후 물기가 남았을 때",
+      "tags": [
+        "보습",
+        "오일프리"
+      ],
+      "voice": "둘째, 보습이에요. 물기가 남은 피부에 바르세요. 오일프리 표시를 보세요.",
+      "move": "applyCream",
+      "gesture": "both",
+      "mood": "shine",
+      "icon": "cream",
+      "audio": "voice/02.mp3",
+      "speechStart": 0.2,
+      "speechEnd": 6.45
+    },
+    {
+      "type": "item",
+      "seconds": 7.0,
+      "n": 3,
+      "head": "셋째 안 만지기",
+      "sub": "짜지도 긁지도 않기",
+      "tags": [
+        "손대지 않기",
+        "신제품 금지"
+      ],
+      "voice": "셋째, 안 건드리기. 짜지도 긁지도 말고, 새 제품도 바꾸지 마세요.",
+      "move": "meditate",
+      "gesture": "pointL",
+      "mood": "normal",
+      "icon": "stop",
+      "audio": "voice/03.mp3",
+      "speechStart": 0.19,
+      "speechEnd": 5.65
+    },
+    {
+      "type": "item",
+      "seconds": 5.5,
+      "n": 4,
+      "head": "염증이 심하면",
+      "sub": "혼자 해결하지 말고 피부과",
+      "tags": [
+        "피부과",
+        "상담"
+      ],
+      "voice": "염증이 심하면 피부과에 가세요. 혼자 애쓰지 마세요.",
+      "move": "beckon",
+      "gesture": "pointR",
+      "mood": "sad",
+      "icon": "clinic",
+      "audio": "voice/04.mp3",
+      "speechStart": 0.2,
+      "speechEnd": 4.11
+    },
+    {
+      "type": "outro",
+      "seconds": 7.5,
+      "text": "다음 편\n전날 밤은?",
+      "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+      "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요",
+      "voice": "전날 밤, 시연 씨는 거울 앞에 섰어요. 저장하고 다음 편에서 확인하세요.",
+      "mood": "normal",
+      "audio": "voice/05.mp3",
+      "speechStart": 0.19,
+      "speechEnd": 6.0
+    }
+  ]
+}

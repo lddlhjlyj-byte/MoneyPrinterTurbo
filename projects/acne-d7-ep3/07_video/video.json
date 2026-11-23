@@ -1,3 +1,12 @@
 {
-  "status": "pending"
+  "video": "content/videos/acne-d7-ep3.mp4",
+  "video_bytes": 8559438,
+  "thumbnail": "content/thumbnails/acne-d7-ep3.png",
+  "renderer": "Remotion InfoCard (shorts-video/)",
+  "sources": {
+    "clips": "shorts-video/public/clips",
+    "sfx": "shorts-video/public/sfx",
+    "icons": "shorts-video/src/Icons.tsx(직접 그린 SVG)"
+  },
+  "note": "영상 파일은 중복 보관하지 않고 위치만 기록"
 }
