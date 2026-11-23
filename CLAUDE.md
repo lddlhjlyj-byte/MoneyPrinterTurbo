@@ -20,7 +20,7 @@
 - 시청 유지(사용자 요구, 평균 시청 지속률 70%↑): 대본은 문장 15~22자로 짧게 끊고 2~3초마다 새 정보·숫자를 넣는다(`gpt-prompt.md`·`rules.py`). 렌더링은 비트 자막·펀치 줌·효과음(`Beats.tsx`)을 쓴다. 이 레이어를 끄거나 줄이지 않는다
 - 장면 내용과 연관된 그림(`icon`·`kind`·`deco`)을 쓴다. item 아이콘 13종: faucet 세안·cream 보습·bottle 제품병·humidifier·patch·heater 열감·mirror 거울·pimple 트러블 얼굴·calendar 날짜·hand 손가락으로 누르는 장면·stop 금지·clinic 병원·document 서류. 내용과 안 맞는 아이콘은 쓰지 말고 새로 추가한다(`Icons.tsx`·`InfoCard.tsx`·`pipeline/schema.py` 세 곳)
 - 대본과 캐릭터가 따로 놀지 않게 한다(2026-11-23 사용자 지시): 장면마다 `mood`·`move`·`gesture`·`icon`을 그 장면 대사의 감정·내용에 맞춘다. 걱정·문제 대사에 웃는 표정(shine·happy), 즐거운 대사에 슬픈 표정을 쓰지 않는다. hook에도 `mood`를 지정한다. 렌더링 후 장면 사진에서 대사와 표정이 맞는지 직접 확인하고 NOTES.md에 적는다
-- 이시연 등 가상 인물 이야기에서 화면의 '가상 사례' 글자는 사용자 지시로 넣지 않는다(hook `warn`은 빈 문자열)
+- 가상 인물 이야기에서 화면의 '가상 사례' 글자는 사용자 지시로 넣지 않는다(hook `warn`은 빈 문자열)
 - 지정한 동작과 표정은 NOTES.md의 해당 영상 기록에 남긴다
 - 영상마다 `src/cards.json` 최상단에 고유한 영문 `name`(파일명)과 유튜브 `title`을 넣는다. 같은 `name`을 재사용하면 보관 파일이 덮어써진다
 
