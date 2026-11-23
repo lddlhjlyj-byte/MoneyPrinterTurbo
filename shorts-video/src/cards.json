@@ -1,6 +1,6 @@
 {
-  "name": "acne-d7-ep2",
-  "title": "빨리 없애려고 짰는데 더 심해진 이유",
+  "name": "acne-d7-ep3",
+  "title": "트러블 난 피부, 면접 전 닷새 관리법",
   "hashtags": [
     "#여드름",
     "#트러블케어",
@@ -15,84 +15,84 @@
     {
       "type": "hook",
       "seconds": 6,
-      "line1": "급하게 짰는데",
-      "line2": "왜 더 심해질까요?",
+      "line1": "트러블 난 피부",
+      "line2": "닷새간 뭘 할까요?",
       "warn": "",
-      "voice": "빨리 없애려고 짰는데 왜 더 심해질까요?",
+      "voice": "트러블 난 피부, 닷새 동안 뭘 할까요?",
       "mood": "normal"
     },
     {
       "type": "item",
-      "seconds": 10,
-      "n": 1,
-      "head": "면접까지 엿새",
-      "sub": "시연 씨는 조급했어요",
-      "tags": [
-        "조급함",
-        "세안 네 번"
-      ],
-      "voice": "면접까지 엿새. 시연 씨는 조급했어요. 트러블을 손으로 짜고, 세안도 하루 네 번 했어요.",
-      "move": "pace",
-      "gesture": "both",
-      "mood": "angry",
-      "icon": "calendar"
-    },
-    {
-      "type": "item",
-      "seconds": 8,
-      "n": 2,
-      "head": "손으로 짜면",
-      "sub": "염증이 번지고 흉터 위험",
-      "tags": [
-        "염증",
-        "흉터"
-      ],
-      "voice": "노랑이가 말했어요. 손으로 짜면 더 붉어지고, 흉터가 남을 수도 있어요.",
-      "move": "shakeNo",
-      "gesture": "pointR",
-      "mood": "sad",
-      "icon": "hand"
-    },
-    {
-      "type": "item",
       "seconds": 9,
-      "n": 3,
-      "head": "세안·문지르기",
-      "sub": "피부 장벽이 약해져요",
+      "n": 1,
+      "head": "첫째 세안",
+      "sub": "미온수·손끝으로 부드럽게",
       "tags": [
-        "잦은 세안",
-        "스크럽"
+        "하루 두 번",
+        "손끝"
       ],
-      "voice": "잦은 세안과 문지르기는 피부를 약하게 해요. 트러블은 안 씻어서 생기는 게 아니에요.",
-      "move": "washFace",
+      "voice": "첫째, 세안은 하루 두 번. 미온수로 손끝만 써서 부드럽게 하세요.",
+      "move": "patFace",
       "gesture": "count",
-      "mood": "normal",
+      "mood": "happy",
       "icon": "faucet"
     },
     {
       "type": "item",
-      "seconds": 7,
-      "n": 4,
-      "head": "제품 치우기",
-      "sub": "면접까지 닷새",
+      "seconds": 9,
+      "n": 2,
+      "head": "둘째, 보습",
+      "sub": "세안 후 물기가 남았을 때",
       "tags": [
-        "정리",
-        "닷새"
+        "보습",
+        "오일프리"
       ],
-      "voice": "시연 씨는 화장대 제품부터 치웠어요. 면접까지 닷새, 이제 뭘 해야 할까요?",
-      "move": "thinking",
-      "gesture": "idle",
+      "voice": "둘째, 보습이에요. 물기가 남은 피부에 바르세요. 오일프리 표시를 보세요.",
+      "move": "applyCream",
+      "gesture": "both",
       "mood": "shine",
-      "icon": "bottle"
+      "icon": "cream"
+    },
+    {
+      "type": "item",
+      "seconds": 8,
+      "n": 3,
+      "head": "셋째 안 만지기",
+      "sub": "짜지도 긁지도 않기",
+      "tags": [
+        "손대지 않기",
+        "신제품 금지"
+      ],
+      "voice": "셋째, 안 건드리기. 짜지도 긁지도 말고, 새 제품도 바꾸지 마세요.",
+      "move": "meditate",
+      "gesture": "pointL",
+      "mood": "normal",
+      "icon": "stop"
+    },
+    {
+      "type": "item",
+      "seconds": 8,
+      "n": 4,
+      "head": "염증이 심하면",
+      "sub": "혼자 해결하지 말고 피부과",
+      "tags": [
+        "피부과",
+        "상담"
+      ],
+      "voice": "염증이 심하면 피부과에 가세요. 혼자 애쓰지 마세요.",
+      "move": "beckon",
+      "gesture": "pointR",
+      "mood": "sad",
+      "icon": "clinic"
     },
     {
       "type": "outro",
-      "seconds": 5,
-      "text": "다음 편\n뭘 해야 할까?",
+      "seconds": 6,
+      "text": "다음 편\n전날 밤은?",
       "sub": "저장하고 팔로우 · 노랑이 스킨랩",
       "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요",
-      "voice": "저장하고 다음 편에서 확인하세요.",
-      "mood": "happy"
+      "voice": "전날 밤, 시연 씨는 거울 앞에 섰어요. 저장하고 다음 편에서 확인하세요.",
+      "mood": "normal"
     }
   ]
 }
