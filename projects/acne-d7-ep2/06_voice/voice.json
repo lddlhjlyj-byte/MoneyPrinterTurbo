@@ -6,42 +6,42 @@
     {
       "no": 1,
       "audio": "voice/00.mp3",
-      "seconds": 4.5,
-      "speechStart": 0.19,
-      "speechEnd": 2.85,
-      "text": "빨리 없애려고 짰는데 왜 더 심해질까요?"
+      "seconds": 5.0,
+      "speechStart": 0.18,
+      "speechEnd": 3.39,
+      "text": "면접까지 엿새. 왜 더 심해졌을까요?"
     },
     {
       "no": 2,
       "audio": "voice/01.mp3",
-      "seconds": 9.0,
-      "speechStart": 0.18,
-      "speechEnd": 7.57,
-      "text": "면접까지 엿새. 시연 씨는 조급했어요. 트러블을 손으로 짜고, 세안도 하루 네 번 했어요."
+      "seconds": 5.0,
+      "speechStart": 0.2,
+      "speechEnd": 3.52,
+      "text": "손으로 짜면 더 붉어지고, 흉터가 남을 수도 있어요."
     },
     {
       "no": 3,
       "audio": "voice/02.mp3",
       "seconds": 7.0,
       "speechStart": 0.2,
-      "speechEnd": 5.59,
-      "text": "노랑이가 말했어요. 손으로 짜면 더 붉어지고, 흉터가 남을 수도 있어요."
+      "speechEnd": 5.49,
+      "text": "세안은 하루 두 번이면 충분해요. 잦은 세안과 문지르기는 피부를 약하게 해요."
     },
     {
       "no": 4,
       "audio": "voice/03.mp3",
-      "seconds": 7.5,
+      "seconds": 5.5,
       "speechStart": 0.2,
-      "speechEnd": 5.68,
-      "text": "잦은 세안과 문지르기는 피부를 약하게 해요. 트러블은 안 씻어서 생기는 게 아니에요."
+      "speechEnd": 3.73,
+      "text": "세안 뒤 물기가 남은 피부에 오일프리 보습제를 발랐어요."
     },
     {
       "no": 5,
       "audio": "voice/04.mp3",
-      "seconds": 7.5,
+      "seconds": 7.0,
       "speechStart": 0.2,
-      "speechEnd": 5.96,
-      "text": "시연 씨는 화장대 제품부터 치웠어요. 면접까지 닷새, 이제 뭘 해야 할까요?"
+      "speechEnd": 5.26,
+      "text": "시연 씨는 화장대 위 제품부터 치웠어요. 면접까지 닷새 남았죠."
     },
     {
       "no": 6,
