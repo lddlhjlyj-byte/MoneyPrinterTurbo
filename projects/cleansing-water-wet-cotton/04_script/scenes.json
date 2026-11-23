@@ -1,0 +1,97 @@
+{
+  "name": "cleansing-water-wet-cotton",
+  "title": "클렌징 워터, 화장솜부터 충분히 적셔보세요",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "클렌징 후",
+        "line2": "따가웠나요?",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "닦는 과정의 마찰",
+        "sub": "자극 줄이는 방법",
+        "tags": [
+          "마찰",
+          "자극"
+        ]
+      },
+      "visual": {
+        "icon": "cotton"
+      },
+      "direction": {
+        "move": "nodYes",
+        "gesture": "count",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "솜부터 충분히 적시기",
+        "sub": "솜 전체가 고르게 젖게",
+        "tags": [
+          "클렌징 워터",
+          "충분히"
+        ]
+      },
+      "visual": {
+        "icon": "faucet"
+      },
+      "direction": {
+        "move": "applyCream",
+        "gesture": "both",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "n": 3,
+      "screen": {
+        "head": "화장솜도 확인하기",
+        "sub": "부드럽고 밀착되는 제품",
+        "tags": [
+          "보풀",
+          "거칠면 자극"
+        ]
+      },
+      "visual": {
+        "icon": "cotton"
+      },
+      "direction": {
+        "move": "scratchHead",
+        "gesture": "pointR",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 5,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 다음 편도 확인하세요",
+        "text": "다음 편\n문지르지 말고",
+        "note": "일반 정보입니다. 제품마다 사용법이 다르니 제품 안내를 먼저 확인하세요"
+      },
+      "visual": {},
+      "direction": {
+        "mood": "normal"
+      }
+    }
+  ]
+}
