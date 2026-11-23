@@ -268,3 +268,24 @@ export const Snow: React.FC = () => {
     </svg>
   );
 };
+
+/** 화장솜 (클렌징 워터에 적신 둥근 솜 + 물방울) */
+export const CottonIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <ellipse cx="124" cy="176" rx="82" ry="30" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <ellipse cx="120" cy="152" rx="82" ry="30" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <ellipse cx="120" cy="152" rx="62" ry="20" fill="none" stroke={INK} strokeWidth="4" strokeDasharray="8 8" />
+    <path d="M 120 30 q 30 38 0 60 q -30 -22 0 -60 z" fill={SKY} stroke={INK} strokeWidth={SW - 1} strokeLinejoin="round" />
+  </svg>
+);
+
+/** 시계 (기다리기) */
+export const ClockIcon: React.FC = () => (
+  <svg width="240" height="240" viewBox="0 0 240 240">
+    <circle cx="120" cy="124" r="88" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+    <rect x="104" y="20" width="32" height="18" rx="6" fill={BRAND} stroke={INK} strokeWidth="6" />
+    <line x1="120" y1="124" x2="120" y2="72" stroke={INK} strokeWidth="9" strokeLinecap="round" />
+    <line x1="120" y1="124" x2="156" y2="144" stroke={INK} strokeWidth="9" strokeLinecap="round" />
+    <circle cx="120" cy="124" r="9" fill={INK} />
+  </svg>
+);

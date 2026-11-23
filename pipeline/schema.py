@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from motion_names import motion_names  # noqa: E402
 
 TYPES = {"hook", "why", "signs", "title", "item", "summary", "outro"}
-ICONS = {"faucet", "cream", "bottle", "humidifier", "patch", "heater", "mirror", "pimple", "calendar", "hand", "stop", "clinic", "document"}  # InfoCard.tsx ITEM_ICONS
+ICONS = {"faucet", "cream", "bottle", "humidifier", "patch", "heater", "mirror", "pimple", "calendar", "hand", "stop", "clinic", "document", "cotton", "clock"}  # InfoCard.tsx ITEM_ICONS
 SIGN_ICONS = {"wrinkle", "flake", "tight"}
 KINDS = {"capsule", "bottle", "sun", "winter"}
 MOODS = {"normal", "happy", "sad", "angry", "shine", "teary"}  # Character.tsx Mood

@@ -8,6 +8,8 @@ import {
   ClinicIcon,
   CreamJar,
   DocumentIcon,
+  CottonIcon,
+  ClockIcon,
   DryPatch,
   Faucet,
   FlakeIcon,
@@ -97,7 +99,7 @@ type Scene = (
       seconds: number;
       n: number;
       worry?: boolean;
-      icon?: "faucet" | "cream" | "bottle" | "humidifier" | "patch" | "heater" | "mirror" | "pimple" | "calendar" | "hand" | "stop" | "clinic" | "document";
+      icon?: "faucet" | "cream" | "bottle" | "humidifier" | "patch" | "heater" | "mirror" | "pimple" | "calendar" | "hand" | "stop" | "clinic" | "document" | "cotton" | "clock";
       head: string;
       sub: string;
       tags: string[];
@@ -489,6 +491,8 @@ const ITEM_ICONS = {
   stop: <StopIcon />,
   clinic: <ClinicIcon />,
   document: <DocumentIcon />,
+  cotton: <CottonIcon />,
+  clock: <ClockIcon />,
 };
 
 /* ───────── 항목: n마다 다른 등장 (달려옴 / 솟아오름 / 회전 / 쿵) ───────── */
