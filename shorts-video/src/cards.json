@@ -1,6 +1,6 @@
 {
-  "name": "acne-d7-ep3",
-  "title": "트러블 난 피부, 면접 전 닷새 관리법",
+  "name": "acne-d7-ep4",
+  "title": "면접 당일, 시연 씨 피부는 어땠을까?",
   "hashtags": [
     "#여드름",
     "#트러블케어",
@@ -15,84 +15,84 @@
     {
       "type": "hook",
       "seconds": 6,
-      "line1": "트러블 난 피부",
-      "line2": "닷새간 뭘 할까요?",
+      "line1": "전날 밤",
+      "line2": "시연 씨 피부는?",
       "warn": "",
-      "voice": "트러블 난 피부, 닷새 동안 뭘 할까요?",
+      "voice": "전날 밤, 시연 씨 피부는 어땠을까요?",
       "mood": "normal"
     },
     {
       "type": "item",
       "seconds": 9,
       "n": 1,
-      "head": "첫째 세안",
-      "sub": "미온수·손끝으로 부드럽게",
+      "head": "거울 앞에서",
+      "sub": "다 사라지진 않았어요",
       "tags": [
-        "하루 두 번",
-        "손끝"
+        "거울",
+        "붉은 자국"
       ],
-      "voice": "첫째, 세안은 하루 두 번. 미온수로 손끝만 써서 부드럽게 하세요.",
-      "move": "patFace",
-      "gesture": "count",
-      "mood": "happy",
-      "icon": "faucet"
-    },
-    {
-      "type": "item",
-      "seconds": 9,
-      "n": 2,
-      "head": "둘째, 보습",
-      "sub": "세안 후 물기가 남았을 때",
-      "tags": [
-        "보습",
-        "오일프리"
-      ],
-      "voice": "둘째, 보습이에요. 물기가 남은 피부에 바르세요. 오일프리 표시를 보세요.",
-      "move": "applyCream",
+      "voice": "거울 앞에 섰어요. 트러블이 다 사라지진 않았고, 붉은 자국도 남아 있었어요.",
+      "move": "mirror",
       "gesture": "both",
-      "mood": "shine",
-      "icon": "cream"
+      "mood": "sad",
+      "icon": "mirror"
     },
     {
       "type": "item",
       "seconds": 8,
-      "n": 3,
-      "head": "셋째 안 만지기",
-      "sub": "짜지도 긁지도 않기",
+      "n": 2,
+      "head": "달라진 점",
+      "sub": "손으로 짜지 않았어요",
       "tags": [
-        "손대지 않기",
-        "신제품 금지"
+        "안 짜기",
+        "차분한 관리"
       ],
-      "voice": "셋째, 안 건드리기. 짜지도 긁지도 말고, 새 제품도 바꾸지 마세요.",
-      "move": "meditate",
-      "gesture": "pointL",
-      "mood": "normal",
+      "voice": "그래도 달라진 게 있었어요. 손으로 짜지 않았고, 세안과 보습을 차분히 했어요.",
+      "move": "relief",
+      "gesture": "idle",
+      "mood": "happy",
       "icon": "stop"
     },
     {
       "type": "item",
       "seconds": 8,
-      "n": 4,
-      "head": "염증이 심하면",
-      "sub": "혼자 해결하지 말고 피부과",
+      "n": 3,
+      "head": "거울 대신 자료",
+      "sub": "준비한 건 피부만이 아냐",
       "tags": [
-        "피부과",
-        "상담"
+        "면접 준비",
+        "자신감"
       ],
-      "voice": "염증이 심하면 피부과에 가세요. 혼자 애쓰지 마세요.",
-      "move": "beckon",
-      "gesture": "pointR",
-      "mood": "sad",
-      "icon": "clinic"
+      "voice": "시연 씨는 면접 자료를 펼쳤어요. 준비한 건 피부만이 아니니까요.",
+      "move": "deepBreath",
+      "gesture": "pointL",
+      "mood": "shine",
+      "icon": "document"
+    },
+    {
+      "type": "item",
+      "seconds": 8,
+      "n": 4,
+      "head": "노랑이의 한마디",
+      "sub": "하루 만에 없어지진 않아요",
+      "tags": [
+        "꾸준히",
+        "피부과"
+      ],
+      "voice": "트러블은 하루 만에 안 없어져요. 차분히 관리하고, 심하면 피부과에 가세요.",
+      "move": "nodYes",
+      "gesture": "count",
+      "mood": "normal",
+      "icon": "calendar"
     },
     {
       "type": "outro",
-      "seconds": 6,
-      "text": "다음 편\n전날 밤은?",
-      "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+      "seconds": 7,
+      "text": "면접장 앞에서\n웃은 시연 씨",
+      "sub": "여러분이라면 어땠을까요? 댓글로 알려주세요",
       "note": "일반 정보입니다. 피부 상태에 따라 다를 수 있고 증상이 심하면 피부과 전문의와 상담하세요",
-      "voice": "전날 밤, 시연 씨는 거울 앞에 섰어요. 저장하고 다음 편에서 확인하세요.",
-      "mood": "normal"
+      "voice": "면접장 문 앞에서 시연 씨는 웃었어요. 저장하고 팔로우, 노랑이가 응원해요.",
+      "mood": "happy"
     }
   ]
 }
