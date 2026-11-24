@@ -451,3 +451,9 @@ print(r.stderr[-3000:])
 - 연출: A hook sad·item normal(마찰 nodYes/적시기 applyCream/솜 확인 scratchHead)·outro normal / B hook angry·item normal(present·checkWatch·pointForward·shakeNo) / C hook normal·item(tilt·tiptoe·confused·nodYes)·outro happy. 신규 아이콘 cotton(화장솜)·clock(시계) 사용
 - 장면 사진 확인: 글자·아이콘·표정 대체로 대사와 맞음. 문제: ①훅 자막이 캐릭터 머리와 겹침(전 편) ②C item3 제목 "토너 패드는 다름"이 27초 프레임에서 글자가 흩어져 보임(등장 애니메이션 중 프레임으로 추정, 38초에는 정상. 이전 영상에서도 같은 현상) ③B 64초 프레임에서 자막이 태그와 겹침(장면 전환 순간으로 추정). 음성 억양·싱크·전체 재생: 확인 전
 - 업로드 대기열에 넣지 않음(유튜브에 올라가지 않음)
+
+## 2026-11-24 중복 검토 (사용자 지시) — 클렌징 워터 3편 대 기존 영상
+- 결과: 같은 제목·같은 주제의 업로드/예약/제작 영상은 없음(클렌징 워터·화장솜 주제는 기존에 없음). 기계 점검(대사 3글자 겹침): 기존 영상과 0.6 이상 겹친 장면은 C 마지막 요약 문장("세 가지만 기억하세요", toner-timing-guide와 0.7)과 A·B outro 문구(서로 동일 "저장하고 다음 편도 확인하세요")뿐
+- 조언 단위 겹침(직접 읽고 확인): A "솜 충분히 적시기" ≈ toner-correct-use "화장솜은 충분히 적셔서", B·C "세게 문지르지 말기·마찰" ≈ toner-pad-bad-habits 첫째·toner-pad-3steps, C "토너 패드는 목적이 다름" ≈ 토너 패드 2편. 제품(클렌징 워터 대 토너)과 상황이 달라 중복으로 보지 않고 3편 유지, 사용자에게 보고
+- 발견한 중복: 이 작업 전에 같은 대본으로 만들어 둔 단일 영상 초안(cleansing-water-low-friction, 미렌더링·미커밋 상태였고 backfill로 projects에 들어감)이 있었는데 모르고 3편으로 다시 만듦 → 3편이 대체하므로 초안 프로젝트 삭제. 재발 방지: 만들기 전 기존 초안·projects 확인(CLAUDE.md "중복 검토")
+- 도구: pipeline/dup_check.py 추가(같은 제목 또는 장면 절반 이상 겹침이면 exit 1)
