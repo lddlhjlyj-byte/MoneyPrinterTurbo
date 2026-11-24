@@ -471,3 +471,4 @@ print(r.stderr[-3000:])
 - 문맥점검: 후킹 "겨울만 되면 피부가 당기나요?"(일상어), "숫자 네 개"로 통일(화면 "숫자 4개"). 앞 초안의 어색한 "겨울 거울 앞"은 폐기. 효능 단정 없음("맞춰 보세요·목표로 해 보세요")
 - 연출: hook sad·worry / item1 faucet washFace·pointR·happy / item2 cream applyCream·both·shine / item3 heater thinking·pointL·normal / item4 humidifier stretch·up·happy / outro happy·waveBoth
 - 예약: queue에 status generated, publishAt 2026-11-28T09:30Z(18:30 KST)로 추가(11-25~27 슬롯은 기존 영상이 차지). 렌더링 후 업로드 결과·장면 사진 확인 전
+- 2026-11-24 17:22: vidIQ 인증 후 winter-dry-skin(9qxiu-3ge6s)을 비공개로 전환함(vidIQ 응답 privacyStatus private 확인, 조회 98·좋아요 2). 삭제는 아님(되돌릴 수 있음). 교체본 winter-skin-4-numbers 렌더링 결과는 확인 전
