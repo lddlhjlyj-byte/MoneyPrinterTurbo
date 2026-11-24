@@ -1,3 +1,56 @@
 {
-  "status": "pending"
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 6.0,
+      "speechStart": 0.19,
+      "speechEnd": 4.54,
+      "text": "겨울만 되면 피부가 당기나요? 이 숫자 네 개만 기억하세요."
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 5.0,
+      "speechStart": 0.2,
+      "speechEnd": 3.48,
+      "text": "샤워는 미지근한 물로, 5분에서 10분 안에 끝내세요."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 4.5,
+      "speechStart": 0.19,
+      "speechEnd": 2.72,
+      "text": "씻고 나면 3분 안에 보습제를 바르세요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 5.0,
+      "speechStart": 0.19,
+      "speechEnd": 3.26,
+      "text": "실내 온도는 18도에서 22도 사이로 맞춰 보세요."
+    },
+    {
+      "no": 5,
+      "audio": "voice/04.mp3",
+      "seconds": 4.5,
+      "speechStart": 0.2,
+      "speechEnd": 3.14,
+      "text": "습도는 40에서 60퍼센트를 목표로 해 보세요."
+    },
+    {
+      "no": 6,
+      "audio": "voice/05.mp3",
+      "seconds": 6.5,
+      "speechStart": 0.2,
+      "speechEnd": 4.93,
+      "text": "저장해 두고 오늘 밤부터 해 보세요. 도움이 됐다면 팔로우해 주세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
 }
