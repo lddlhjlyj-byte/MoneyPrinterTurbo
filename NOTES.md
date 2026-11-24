@@ -457,3 +457,9 @@ print(r.stderr[-3000:])
 - 조언 단위 겹침(직접 읽고 확인): A "솜 충분히 적시기" ≈ toner-correct-use "화장솜은 충분히 적셔서", B·C "세게 문지르지 말기·마찰" ≈ toner-pad-bad-habits 첫째·toner-pad-3steps, C "토너 패드는 목적이 다름" ≈ 토너 패드 2편. 제품(클렌징 워터 대 토너)과 상황이 달라 중복으로 보지 않고 3편 유지, 사용자에게 보고
 - 발견한 중복: 이 작업 전에 같은 대본으로 만들어 둔 단일 영상 초안(cleansing-water-low-friction, 미렌더링·미커밋 상태였고 backfill로 projects에 들어감)이 있었는데 모르고 3편으로 다시 만듦 → 3편이 대체하므로 초안 프로젝트 삭제. 재발 방지: 만들기 전 기존 초안·projects 확인(CLAUDE.md "중복 검토")
 - 도구: pipeline/dup_check.py 추가(같은 제목 또는 장면 절반 이상 겹침이면 exit 1)
+
+## 2026-11-24 중복 검토 — winter-numbers-routine (사용자 지시: 이미 올라간 영상과 겹치지 않게)
+- 상태: 11-12 렌더링만 됨(content/videos/winter-numbers-routine.mp4), queue 항목 없음 → 업로드·예약 안 함
+- 기계 점검(dup_check.py): 겹침 없음(대사 3글자 조각 기준). 직접 읽은 결과: 조언 단위로 겹침. ①winter-dry-skin(11-12 게시, 유튜브 9qxiu-3ge6s): 같은 주제·같은 4팁 중 3개(미지근한 물 세안·촉촉할 때 보습·실내 습도), 후킹도 "겨울만 되면"으로 같은 방향 ②moisturizing-habit-check(11-18)·night-moisture-order(11-21): "세안 직후 보습" 조언 반복 ③heater-mist-usage(11-24)는 난방·미스트 주제라 일부만 겹침
+- 새로운 내용은 숫자 4개(샤워 5~10분·실내 18~22도·습도 40~60%)뿐. 출처: 샤워·3분 보습은 Cleveland Clinic·GQ Korea 확인, 습도 40~60%는 국내 자료(Cleveland Clinic은 30~50%), 18~22도는 2차 자료(20~22도 표기도 있음)
+- 사용자 결정 대기: 11-12 대화에서 "기존 영상 삭제 후 교체"를 고르셨으나 그 뒤 12일간 영상이 늘어 기준이 바뀜. 유튜브 삭제는 되돌릴 수 없어 다시 확인 전에는 하지 않음
