@@ -59,8 +59,8 @@ voice_total = 0
 items = [s for s in S if s.get("type") == "item"]
 if items and [s.get("n") for s in items] != list(range(1, len(items) + 1)):
     E(f"item n이 1,2,3..순서가 아님: {[s.get('n') for s in items]}")
-if items and not (3 <= len(items) <= 4):
-    W(f"item {len(items)}개 (3~4개 권장)")
+if items and not (1 <= len(items) <= 2):
+    W(f"item {len(items)}개 (2주 실험: 핵심 1~2개 권장)")
 
 for i, s in enumerate(S):
     t = s.get("type")

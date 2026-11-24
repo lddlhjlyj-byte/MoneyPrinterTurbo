@@ -472,3 +472,9 @@ print(r.stderr[-3000:])
 - 연출: hook sad·worry / item1 faucet washFace·pointR·happy / item2 cream applyCream·both·shine / item3 heater thinking·pointL·normal / item4 humidifier stretch·up·happy / outro happy·waveBoth
 - 예약: queue에 status generated, publishAt 2026-11-28T09:30Z(18:30 KST)로 추가(11-25~27 슬롯은 기존 영상이 차지). 렌더링 후 업로드 결과·장면 사진 확인 전
 - 2026-11-24 17:22: vidIQ 인증 후 winter-dry-skin(9qxiu-3ge6s)을 비공개로 전환함(vidIQ 응답 privacyStatus private 확인, 조회 98·좋아요 2). 삭제는 아님(되돌릴 수 있음). 교체본 winter-skin-4-numbers 렌더링 결과는 확인 전
+
+## 2026-11-24 2주 실험 시작(사용자 승인) + 교체본 결과
+- 실험 규칙을 CLAUDE.md("2주 실험")·스킬 shorts-script-quality·gpt-prompt.md·roles 2·5에 반영. 스토리 규칙은 폐기. `rules.py`는 item 1~4·title/summary 선택, `validate_cards.py`는 item 1~2개 권장 경고로 변경(시험: 현재 cards.json 검사 통과, 경고 1건)
+- 측정 계획: 12-08 `analytics.yml`로 조회·평균 시청 비율·구독 증가를 실험 전(11-09~21: 총 조회 약 2,600, 구독 0)과 비교
+- 교체본 winter-skin-4-numbers: 첫 렌더링은 apt 서버 시간 초과로 실패(대본 문제 아님) → 재실행 성공. verify 통과(길이 31.5초, 평균 -18.5dB, 장면 6개; 발음·자막 내용·장면 사진은 확인 전). 유튜브에 비공개+예약(2026-11-28 18:30 KST)으로 업로드됨(videoId nmCLihc_6xA). 이 영상은 item 4개라 실험 규칙(1~2개)에는 안 맞지만 31.5초라 그대로 두고, 실험 규칙은 다음 영상부터 적용
+- 다음: 캐릭터 시안 2~3종, 검수 에이전트로 다음 대본 작성

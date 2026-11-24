@@ -47,3 +47,4 @@ outro: {"type":"outro","seconds":8,"text":"8자 이하 두 줄, 줄바꿈은 \n"
 - 권장: Claude 대화창에 그대로 붙여넣는다. 동작·그림 지정(move·gesture·deco), 검수, 푸시, 예약을 Claude가 한다.
 - 바로 반영: https://github.com/lddlhjlyj-byte/MoneyPrinterTurbo/edit/main/shorts-video/src/cards.json 에서 내용을 전부 지우고 붙여넣은 뒤 Commit changes → main에 바로 커밋. 렌더링이 자동 시작되지만 동작은 기본값(같은 동작 반복)이다. `name`이 이전 영상과 같으면 파일이 덮어써지니 반드시 바꾼다.
 
+[2주 실험] 영상은 30~35초(공백 제외 140~160자), item 1~2개(title·summary 생략 가능), 첫 3초는 문제 상황+"~하면 이거부터 바꾸세요"형 문장, outro는 다음 편 예고+시리즈명. 스토리 금지.

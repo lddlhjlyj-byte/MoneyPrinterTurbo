@@ -50,14 +50,17 @@ def validate(d: dict) -> list:
         e.append("첫 장면은 hook")
     if types[-1] != "outro":
         e.append("마지막 장면은 outro")
-    for t in ("hook", "title", "summary", "outro"):
+    for t in ("hook", "outro"):
         if types.count(t) != 1:
             e.append(f"{t} 장면은 정확히 1개")
+    for t in ("title", "summary"):  # 2주 실험(2026-11-24): 짧은 영상은 title·summary 생략 가능
+        if types.count(t) > 1:
+            e.append(f"{t} 장면은 최대 1개")
     if types.count("signs") > 1:
         e.append("signs는 최대 1개")
     items = [s for s in sc if s.get("type") == "item"]
-    if not 3 <= len(items) <= 4:
-        e.append(f"item은 3~4개 (현재 {len(items)}개)")
+    if not 1 <= len(items) <= 4:
+        e.append(f"item은 1~4개 (현재 {len(items)}개, 2주 실험은 1~2개 권장)")
     if [i.get("n") for i in items] != list(range(1, len(items) + 1)):
         e.append("item의 n은 1부터 순서대로")
     if "title" in types and "summary" in types:
