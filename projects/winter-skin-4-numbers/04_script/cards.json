@@ -1,0 +1,100 @@
+{
+  "name": "winter-skin-4-numbers",
+  "title": "겨울 피부 숫자 4개, 이것만 기억하세요",
+  "hashtags": [
+    "#Shorts",
+    "#겨울철피부관리",
+    "#피부건조",
+    "#피부보습",
+    "#실내습도",
+    "#세안방법",
+    "#피부상식",
+    "#노랑이스킨랩"
+  ],
+  "scenes": [
+    {
+      "type": "hook",
+      "seconds": 5,
+      "line1": "겨울 피부,",
+      "line2": "숫자 4개만",
+      "warn": "저장해 두세요",
+      "mood": "sad",
+      "move": "worry",
+      "voice": "겨울만 되면 피부가 당기나요? 이 숫자 네 개만 기억하세요."
+    },
+    {
+      "type": "item",
+      "seconds": 7,
+      "n": 1,
+      "icon": "faucet",
+      "move": "washFace",
+      "gesture": "pointR",
+      "mood": "happy",
+      "head": "샤워 5~10분",
+      "sub": "미지근한 물로 짧게",
+      "tags": [
+        "5~10분",
+        "미지근한 물"
+      ],
+      "voice": "샤워는 미지근한 물로, 5분에서 10분 안에 끝내세요."
+    },
+    {
+      "type": "item",
+      "seconds": 6,
+      "n": 2,
+      "icon": "cream",
+      "move": "applyCream",
+      "gesture": "both",
+      "mood": "shine",
+      "head": "3분 안에 보습",
+      "sub": "씻은 뒤 3분 이내 바르기",
+      "tags": [
+        "3분 이내",
+        "보습제"
+      ],
+      "voice": "씻고 나면 3분 안에 보습제를 바르세요."
+    },
+    {
+      "type": "item",
+      "seconds": 6,
+      "n": 3,
+      "icon": "heater",
+      "move": "thinking",
+      "gesture": "pointL",
+      "mood": "normal",
+      "head": "18~22도",
+      "sub": "실내 온도, 난방 적당히",
+      "tags": [
+        "18~22도",
+        "난방"
+      ],
+      "voice": "실내 온도는 18도에서 22도 사이로 맞춰 보세요."
+    },
+    {
+      "type": "item",
+      "seconds": 6,
+      "n": 4,
+      "icon": "humidifier",
+      "move": "stretch",
+      "gesture": "up",
+      "mood": "happy",
+      "head": "습도 40~60%",
+      "sub": "가습기나 젖은 수건 활용",
+      "tags": [
+        "40~60%",
+        "가습"
+      ],
+      "voice": "습도는 40에서 60퍼센트를 목표로 해 보세요."
+    },
+    {
+      "type": "outro",
+      "seconds": 7,
+      "text": "숫자 4개,\n오늘 밤부터",
+      "sub": "저장하고 팔로우 · 노랑이 스킨랩",
+      "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요",
+      "mood": "happy",
+      "move": "waveBoth",
+      "voice": "저장해 두고 오늘 밤부터 해 보세요. 도움이 됐다면 팔로우해 주세요."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "01_research": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  },
+  "02_topic": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  },
+  "03_plan": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  },
+  "04_script": {
+    "state": "auto",
+    "note": "cards.json에서 추출",
+    "updated": "2026-11-24 17:19"
+  },
+  "05_narration": {
+    "state": "auto",
+    "note": "cards.json에서 추출",
+    "updated": "2026-11-24 17:19"
+  },
+  "06_voice": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  },
+  "07_video": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  },
+  "08_verify": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  },
+  "09_publish": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-24 17:19"
+  }
+}

@@ -463,3 +463,11 @@ print(r.stderr[-3000:])
 - 기계 점검(dup_check.py): 겹침 없음(대사 3글자 조각 기준). 직접 읽은 결과: 조언 단위로 겹침. ①winter-dry-skin(11-12 게시, 유튜브 9qxiu-3ge6s): 같은 주제·같은 4팁 중 3개(미지근한 물 세안·촉촉할 때 보습·실내 습도), 후킹도 "겨울만 되면"으로 같은 방향 ②moisturizing-habit-check(11-18)·night-moisture-order(11-21): "세안 직후 보습" 조언 반복 ③heater-mist-usage(11-24)는 난방·미스트 주제라 일부만 겹침
 - 새로운 내용은 숫자 4개(샤워 5~10분·실내 18~22도·습도 40~60%)뿐. 출처: 샤워·3분 보습은 Cleveland Clinic·GQ Korea 확인, 습도 40~60%는 국내 자료(Cleveland Clinic은 30~50%), 18~22도는 2차 자료(20~22도 표기도 있음)
 - 사용자 결정 대기: 11-12 대화에서 "기존 영상 삭제 후 교체"를 고르셨으나 그 뒤 12일간 영상이 늘어 기준이 바뀜. 유튜브 삭제는 되돌릴 수 없어 다시 확인 전에는 하지 않음
+
+## 2026-11-24 겨울 영상 교체 (사용자 지시: 기존 영상 삭제 후 교체)
+- 삭제 시도: `yt-delete.yml`(videoId 9qxiu-3ge6s) 실행 → 실패(HTTP 403 insufficientPermissions, 현재 유튜브 토큰은 업로드 권한만 있음). 영상은 아직 공개 상태. 대안으로 vidIQ로 비공개 전환을 시도했으나 YouTube 본인 인증이 필요해 사용자 승인 대기(미완료)
+- 교체본: `winter-skin-4-numbers`(제목 "겨울 피부 숫자 4개, 이것만 기억하세요"). 기존 미업로드 초안 winter-numbers-routine(376자·약 60초, 규칙 초과)은 폐기·삭제(git 이력에 남음). 새 대본 6장면·공백 제외 138자, 형식·전체 검사 오류 없음, dup_check 겹침 없음(기계)
+- 숫자·출처: 샤워 5~10분·씻고 3분 이내 보습(Cleveland Clinic·GQ Korea 확인), 습도 40~60%(국내 자료. Cleveland Clinic은 30~50%), 실내 18~22도(질병관리청 인용 2차 자료, 20~22도 표기도 있음). 물 온도·세안 시간은 근거 없어 미사용
+- 문맥점검: 후킹 "겨울만 되면 피부가 당기나요?"(일상어), "숫자 네 개"로 통일(화면 "숫자 4개"). 앞 초안의 어색한 "겨울 거울 앞"은 폐기. 효능 단정 없음("맞춰 보세요·목표로 해 보세요")
+- 연출: hook sad·worry / item1 faucet washFace·pointR·happy / item2 cream applyCream·both·shine / item3 heater thinking·pointL·normal / item4 humidifier stretch·up·happy / outro happy·waveBoth
+- 예약: queue에 status generated, publishAt 2026-11-28T09:30Z(18:30 KST)로 추가(11-25~27 슬롯은 기존 영상이 차지). 렌더링 후 업로드 결과·장면 사진 확인 전

@@ -1,0 +1,42 @@
+{
+  "name": "winter-skin-4-numbers",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "voice": "겨울만 되면 피부가 당기나요? 이 숫자 네 개만 기억하세요.",
+      "chars": 33
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "voice": "샤워는 미지근한 물로, 5분에서 10분 안에 끝내세요.",
+      "chars": 30
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "voice": "씻고 나면 3분 안에 보습제를 바르세요.",
+      "chars": 22
+    },
+    {
+      "no": 4,
+      "type": "item",
+      "voice": "실내 온도는 18도에서 22도 사이로 맞춰 보세요.",
+      "chars": 28
+    },
+    {
+      "no": 5,
+      "type": "item",
+      "voice": "습도는 40에서 60퍼센트를 목표로 해 보세요.",
+      "chars": 26
+    },
+    {
+      "no": 6,
+      "type": "outro",
+      "voice": "저장해 두고 오늘 밤부터 해 보세요. 도움이 됐다면 팔로우해 주세요.",
+      "chars": 38
+    }
+  ],
+  "total_chars": 177
+}
