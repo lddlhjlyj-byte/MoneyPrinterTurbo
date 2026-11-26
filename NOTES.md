@@ -478,3 +478,10 @@ print(r.stderr[-3000:])
 - 측정 계획: 12-08 `analytics.yml`로 조회·평균 시청 비율·구독 증가를 실험 전(11-09~21: 총 조회 약 2,600, 구독 0)과 비교
 - 교체본 winter-skin-4-numbers: 첫 렌더링은 apt 서버 시간 초과로 실패(대본 문제 아님) → 재실행 성공. verify 통과(길이 31.5초, 평균 -18.5dB, 장면 6개; 발음·자막 내용·장면 사진은 확인 전). 유튜브에 비공개+예약(2026-11-28 18:30 KST)으로 업로드됨(videoId nmCLihc_6xA). 이 영상은 item 4개라 실험 규칙(1~2개)에는 안 맞지만 31.5초라 그대로 두고, 실험 규칙은 다음 영상부터 적용
 - 다음: 캐릭터 시안 2~3종, 검수 에이전트로 다음 대본 작성
+
+### 2026-11-26 사용자 기획서(노랑이 겨울 3편) 중 1편 제작·예약 (office-heater-direction)
+- 출처: 사용자 기획서. 2편(샤워 세안)은 winter-dry-skin·winter-skin-4-numbers와 겹쳐 사용자 지시로 제외. 3편(바셀린)은 vaseline-cheek-care로 뒤이어 제작
+- 점검: `validate_cards.py --allow-existing` 오류 없음, `dup_check.py` '만들지 않음' 0건(공통 outro 장면만 겹침), 별도 검수 에이전트 지적 10건 반영(상세 `projects/office-heater-direction/08_verify/script_review.md`)
+- 지정한 동작·표정: hook sad/worry, item1 normal/shakeNo/pointL(heater), item2 happy/wipe/both(humidifier), outro happy/waveBoth
+- 사실 출처: 가습기 정기 청소만 AAD 직접 확인. 히터 방향 효과·난방과 습도 관계는 미확인(권유형으로 씀). 숫자는 '오후 3시' 상황 설정과 '한 가지' 개수 표현뿐, 의학 수치 아님
+- 예약: queue에 status generated, publishAt 2026-11-29T09:30Z(11-29 18:30 KST). 렌더링·업로드 결과, 장면 사진, 음성은 확인 전
