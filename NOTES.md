@@ -485,3 +485,11 @@ print(r.stderr[-3000:])
 - 지정한 동작·표정: hook sad/worry, item1 normal/shakeNo/pointL(heater), item2 happy/wipe/both(humidifier), outro happy/waveBoth
 - 사실 출처: 가습기 정기 청소만 AAD 직접 확인. 히터 방향 효과·난방과 습도 관계는 미확인(권유형으로 씀). 숫자는 '오후 3시' 상황 설정과 '한 가지' 개수 표현뿐, 의학 수치 아님
 - 예약: queue에 status generated, publishAt 2026-11-29T09:30Z(11-29 18:30 KST). 렌더링·업로드 결과, 장면 사진, 음성은 확인 전
+- 1편 office-heater-direction 결과(2026-11-26, Actions 실제 실행): 렌더링 성공(2m50s), verify 통과(길이 26.0초, 평균 -18.9dB, 장면 4개), 유튜브 비공개+예약 업로드 완료(videoId GfCqjFuuT7c, publishAt 2026-11-29 18:30 KST). 장면 사진 4장(2·9·18·22초)을 직접 확인: 화면 글자 깨짐 없음, 표정·대사 일치. 발견: hook 큰 제목 '얼굴이 당기면'과 비트 자막 '얼굴이 당기나요?'가 같은 말 반복(규칙 위반, 1편은 이미 예약되어 그대로 둠). 음성 발음·전체 재생은 확인 전. 영상 길이 26.0초로 실험 목표 30~35초에 못 미침(허용 25~40초 안)
+
+### 2026-11-26 3편 vaseline-cheek-care 제작·예약 (사용자 기획서 3편)
+- 점검: validate_cards 오류 없음, dup_check '만들지 않음' 0건(공통 outro만 겹침), 별도 검수 지적 반영(상세 projects/vaseline-cheek-care/08_verify/script_review.md)
+- 후킹 자막 반복 방지: 제목 '크림 먼저, 바셀린은 한 겹'으로 변경
+- 지정한 동작·표정: hook sad/worry, item1 normal/thinking/pointR(pimple), item2 happy/applyCream/both(cream), outro shine/waveBoth
+- 사실 출처: 여드름 피부는 얼굴에 바셀린 피하기만 AAD 직접 확인. 크림 먼저 순서·수분 증발 감소는 미확인(권유형). 숫자는 '한 겹'·'한 가지' 표현, 의학 수치 아님
+- 예약: queue status generated, publishAt 2026-11-30T09:30Z(11-30 18:30 KST). 결과·장면 사진·음성은 확인 전

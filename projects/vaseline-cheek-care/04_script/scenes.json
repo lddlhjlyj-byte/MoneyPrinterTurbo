@@ -1,0 +1,78 @@
+{
+  "name": "vaseline-cheek-care",
+  "title": "볼 각질에 바셀린만 바르고 있다면? 크림 먼저, 바셀린은 한 겹",
+  "scenes": [
+    {
+      "no": 1,
+      "type": "hook",
+      "n": null,
+      "screen": {
+        "line1": "크림 먼저,",
+        "line2": "바셀린은 한 겹",
+        "warn": ""
+      },
+      "visual": {},
+      "direction": {
+        "move": "worry",
+        "mood": "sad"
+      }
+    },
+    {
+      "no": 2,
+      "type": "item",
+      "n": 1,
+      "screen": {
+        "head": "한 가지 확인",
+        "sub": "여드름 피부는 얼굴 피하기",
+        "tags": [
+          "여드름 피부",
+          "얼굴 주의"
+        ]
+      },
+      "visual": {
+        "icon": "pimple"
+      },
+      "direction": {
+        "move": "thinking",
+        "gesture": "pointR",
+        "mood": "normal"
+      }
+    },
+    {
+      "no": 3,
+      "type": "item",
+      "n": 2,
+      "screen": {
+        "head": "크림 먼저",
+        "sub": "건조한 곳만 얇게",
+        "tags": [
+          "보습 크림",
+          "얇게 한 겹"
+        ]
+      },
+      "visual": {
+        "icon": "cream"
+      },
+      "direction": {
+        "move": "applyCream",
+        "gesture": "both",
+        "mood": "happy"
+      }
+    },
+    {
+      "no": 4,
+      "type": "outro",
+      "n": null,
+      "screen": {
+        "sub": "저장하고 팔로우 · 노랑이 겨울 피부 구원",
+        "text": "저장해\n두세요",
+        "note": "일반 정보이며 피부 상태에 따라 다를 수 있습니다. 이상이 생기면 사용을 중단하고 전문의와 상담하세요"
+      },
+      "visual": {},
+      "direction": {
+        "move": "waveBoth",
+        "mood": "shine"
+      }
+    }
+  ]
+}

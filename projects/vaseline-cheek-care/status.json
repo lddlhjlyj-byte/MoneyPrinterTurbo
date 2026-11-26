@@ -1,0 +1,47 @@
+{
+  "01_research": {
+    "state": "done",
+    "note": "AAD 여드름 피부 주의만 직접 확인, 나머지 미확인. 경쟁 조사는 안 함",
+    "updated": "2026-11-26 15:10"
+  },
+  "02_topic": {
+    "state": "done",
+    "note": "겹침 검토 기록함",
+    "updated": "2026-11-26 15:10"
+  },
+  "03_plan": {
+    "state": "done",
+    "note": "후킹 후보는 기획서 2안만 비교",
+    "updated": "2026-11-26 15:10"
+  },
+  "04_script": {
+    "state": "auto",
+    "note": "cards.json에서 추출",
+    "updated": "2026-11-26 15:10"
+  },
+  "05_narration": {
+    "state": "auto",
+    "note": "cards.json에서 추출",
+    "updated": "2026-11-26 15:10"
+  },
+  "06_voice": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-26 15:10"
+  },
+  "07_video": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-26 15:10"
+  },
+  "08_verify": {
+    "state": "pending",
+    "note": "script_review.md만 작성. 음성·영상·라이선스 확인 전",
+    "updated": "2026-11-26 15:10"
+  },
+  "09_publish": {
+    "state": "pending",
+    "note": "",
+    "updated": "2026-11-26 15:10"
+  }
+}
