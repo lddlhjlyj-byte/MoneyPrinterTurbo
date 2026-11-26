@@ -493,3 +493,4 @@ print(r.stderr[-3000:])
 - 지정한 동작·표정: hook sad/worry, item1 normal/thinking/pointR(pimple), item2 happy/applyCream/both(cream), outro shine/waveBoth
 - 사실 출처: 여드름 피부는 얼굴에 바셀린 피하기만 AAD 직접 확인. 크림 먼저 순서·수분 증발 감소는 미확인(권유형). 숫자는 '한 겹'·'한 가지' 표현, 의학 수치 아님
 - 예약: queue status generated, publishAt 2026-11-30T09:30Z(11-30 18:30 KST). 결과·장면 사진·음성은 확인 전
+- 3편 vaseline-cheek-care 결과(2026-11-26, Actions 실제 실행): 렌더링 성공, verify 통과(길이 27.0초, 평균 -18.4dB, 장면 4개), 유튜브 비공개+예약 업로드 완료(videoId wbIlRBSi6qc, publishAt 2026-11-30 18:30 KST). 장면 사진 4장(2·9·18·22초) 직접 확인: 글자 깨짐 없음, 표정·대사 일치. 후킹 큰 제목 '크림 먼저,'가 비트 자막 '…크림 먼저,'와 같은 말로 반복됨(제목을 바꿨지만 반복은 남음, 이미 예약되어 그대로 둠). 다음 영상부터 hook 제목과 첫 대사에 같은 구절을 쓰지 않는다. 음성 발음·전체 재생은 확인 전. 영상 길이 27초로 실험 목표 30~35초에 못 미침(허용 25~40초 안)
