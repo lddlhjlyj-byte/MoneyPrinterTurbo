@@ -1,3 +1,40 @@
 {
-  "status": "pending"
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 6.5,
+      "speechStart": 0.19,
+      "speechEnd": 5.06,
+      "text": "볼 각질에 바셀린만 바르나요? 크림 먼저, 한 겹만 얹어 보세요."
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 8.5,
+      "speechStart": 0.2,
+      "speechEnd": 6.83,
+      "text": "여드름이 잘 생기는 피부라면 얼굴엔 바셀린을 피하세요. 쓰기 전에 피부과나 약국에 물어보세요."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 9.0,
+      "speechStart": 0.19,
+      "speechEnd": 7.42,
+      "text": "그 외에는 볼에 보습 크림을 먼저 발라 주세요. 그다음 건조한 데만 바셀린을 얇게 한 겹 덧발라 보세요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 3.0,
+      "speechStart": 0.2,
+      "speechEnd": 1.51,
+      "text": "저장하고 팔로우하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
 }

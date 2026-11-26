@@ -25,23 +25,23 @@
     "updated": "2026-11-26 15:10"
   },
   "06_voice": {
-    "state": "pending",
-    "note": "",
-    "updated": "2026-11-26 15:10"
+    "state": "auto",
+    "note": "음성 길이·구간만 측정, 발음 확인 전",
+    "updated": "2026-11-26 15:13"
   },
   "07_video": {
-    "state": "pending",
+    "state": "auto",
     "note": "",
-    "updated": "2026-11-26 15:10"
+    "updated": "2026-11-26 15:13"
   },
   "08_verify": {
-    "state": "pending",
-    "note": "script_review.md만 작성. 음성·영상·라이선스 확인 전",
-    "updated": "2026-11-26 15:10"
+    "state": "auto",
+    "note": "음성 오독·라이선스는 확인 전",
+    "updated": "2026-11-26 15:13"
   },
   "09_publish": {
-    "state": "pending",
-    "note": "",
-    "updated": "2026-11-26 15:10"
+    "state": "auto",
+    "note": "queue.json 기준",
+    "updated": "2026-11-26 15:13"
   }
 }
