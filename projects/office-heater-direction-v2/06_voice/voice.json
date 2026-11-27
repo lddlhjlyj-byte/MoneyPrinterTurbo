@@ -1,3 +1,40 @@
 {
-  "status": "pending"
+  "engine": "edge-tts",
+  "voice": "ko-KR-SunHiNeural",
+  "rate": "+10%",
+  "scenes": [
+    {
+      "no": 1,
+      "audio": "voice/00.mp3",
+      "seconds": 7.0,
+      "speechStart": 0.19,
+      "speechEnd": 5.22,
+      "text": "사무실 책상에서 얼굴이 쩍쩍 마르나요? 히터 바람부터 돌려 보세요."
+    },
+    {
+      "no": 2,
+      "audio": "voice/01.mp3",
+      "seconds": 7.0,
+      "speechStart": 0.19,
+      "speechEnd": 5.62,
+      "text": "오후 3시가 되기 전에, 히터 바람이 얼굴로 바로 오지 않게 방향이나 자리를 바꿔 보세요."
+    },
+    {
+      "no": 3,
+      "audio": "voice/02.mp3",
+      "seconds": 7.5,
+      "speechStart": 0.19,
+      "speechEnd": 6.03,
+      "text": "그리고 가습기 쓰시죠? 켜 두는 것 말고 한 가지 더, 물통도 꾸준히 청소해 주세요."
+    },
+    {
+      "no": 4,
+      "audio": "voice/03.mp3",
+      "seconds": 5.0,
+      "speechStart": 0.18,
+      "speechEnd": 3.54,
+      "text": "다음 편은 바셀린! 저장하고 팔로우하세요."
+    }
+  ],
+  "subtitles": "비트 자막: shorts-video/src/Beats.tsx가 voice 문장 단위로 자동 분할(별도 자막 파일 없음)"
 }
